@@ -24,20 +24,42 @@ seo:
   description: "Streetlight helps people find your business right here by fixing the fundamentals that quietly block visibility on maps."
 ---
 
-Most local businesses don't have a marketing problem. They have a visibility problem.
+Most local businesses don’t have a marketing problem.They have a visibility problem.
 
-People are already searching nearby. Maps decide who gets seen first.
+People are already searching for what you offer. They’re on their phones, driving, looking in the moment. The decision about who shows up happens before anyone clicks a website.
 
-## What Streetlight does
+Streetlight exists to remove the quiet friction that keeps good local businesses from being found.
 
-Streetlight helps you show up more reliably on Google Maps, Apple Maps, and local listings.
+### What Streetlight is
 
-It's not a long contract. It's clarity, fixes that matter, and optional maintenance if you want it.
+Streetlight helps local businesses show up more reliably on maps and local search by fixing the fundamentals that actually matter.
 
-## Who it's for
+That means making sure your business information is accurate, consistent, and active across the places people — and search engines — check.
 
-Local businesses that depend on discovery. People searching for what you offer, not your name.
+This isn’t traditional SEO.It’s about clarity, consistency, and follow-through.
 
-## What to do next
+### Who it’s for
 
-If you want a quick, clear starting point, begin with a one-time audit.
+Streetlight is for local businesses that depend on discovery.
+
+Not businesses people already know by name — they’ll be found anyway.But businesses where someone is actively searching for what you offer and deciding who to trust.
+
+Boutiques. Bookstores. Specialty services. Local operators where visibility drives growth.
+
+### How Streetlight usually starts
+
+Most work begins with a one-time audit and cleanup. That’s where inconsistencies get resolved, basics are fixed, and everything is put into clean working order.
+
+From there, some people take it themselves.Some keep things moving with ongoing support.Both are valid.
+
+### What Streetlight is not
+
+It’s not for national brands chasing scale.It’s not for shortcuts or guarantees.It’s not mystery work.
+
+We work with how local search actually behaves and explain what’s being changed along the way.
+
+### The point
+
+Being findable isn’t about winning Google.It’s about being there when someone nearby is looking for what you offer — and continuing to show up.
+
+If that’s the problem you’re trying to solve, Streetlight is built for it.
