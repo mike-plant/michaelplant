@@ -12,7 +12,7 @@ layout: layouts/base.njk
   </section>
 
   <section class="home-contexts">
-    {% for ctx in contexts %}
+    {% for ctx in contextDefs %}
     <a href="/{{ ctx.key }}/" class="context-card" style="--ctx-color: {{ ctx.color }}">
       <span class="context-card-icon">{{ ctx.icon }}</span>
       <h2>{{ ctx.label }}</h2>

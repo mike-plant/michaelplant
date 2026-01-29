@@ -15,6 +15,7 @@
 </head>
 {% set nc = bridges | neighborColors(section) %}
 <body{% if section %} data-section="{{ section }}"{% endif %}{% if nc | length %} style="--neighbor-1: {{ nc[0] }};{% if nc[1] %} --neighbor-2: {{ nc[1] }};{% endif %}"{% endif %}>
+  <a href="/" class="name-anchor">Michael Plant</a>
   {% include "components/bubble.njk" %}
   <main>
     {{ content | safe }}

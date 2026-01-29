@@ -11,20 +11,14 @@
         {% endif %}
       {% endfor %}
     {% else %}
-      <span class="beacon-dot beacon-dot-home"></span>
+      {% for ctxDef in contextDefs %}
+        <span class="beacon-dot beacon-dot-all" style="--dot-color: {{ ctxDef.color }}"></span>
+      {% endfor %}
     {% endif %}
   </button>
 
-  {# Expanded: orientation map #}
+  {# Expanded: context capsules only #}
   <div class="beacon-map" id="beacon-map" hidden>
-    <div class="beacon-here">
-      <a href="/" class="beacon-home">Michael Plant</a>
-      <span class="beacon-utility">
-        <a href="/now/">now</a>
-        <a href="mailto:{{ site.email }}">contact</a>
-      </span>
-    </div>
-
     <div class="beacon-constellation">
       {% for ctxDef in contextDefs %}
         <a href="/{{ ctxDef.key | lower | replace(' ', '-') }}/"

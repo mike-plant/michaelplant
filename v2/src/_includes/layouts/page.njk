@@ -1,7 +1,18 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="page-content section-{{ section | default('default') }}">
+{%- set resolved = contexts | resolveContexts -%}
+
+<article class="page-content section-{{ section | default('default') }}" style="position: relative;">
+  {% if resolved | length %}
+  <div class="context-field" aria-hidden="true">
+    <span class="context-field-label" style="--context-color: {{ resolved[0].color }}">{{ resolved[0].label }}</span>
+    {% if resolved | length > 1 %}
+    <span class="context-field-secondary" style="--secondary-color: {{ resolved[1].color }}"></span>
+    {% endif %}
+  </div>
+  {% endif %}
+
   <header class="page-hero">
     <h1>{{ title }}</h1>
   </header>

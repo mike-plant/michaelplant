@@ -2,9 +2,6 @@ module.exports = function (eleventyConfig) {
   // Global data: current year
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
 
-  // Global data: context definitions (alias to avoid collision with page front matter "contexts")
-  eleventyConfig.addGlobalData("contextDefs", () => require("./src/_data/contexts.json"));
-
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/css");
@@ -127,7 +124,7 @@ module.exports = function (eleventyConfig) {
   // Skips bridges that point to the same section as the current page
   eleventyConfig.addFilter("neighborColors", function (bridges, currentSection) {
     if (!bridges || !bridges.length) return [];
-    const contexts = require("./src/_data/contexts.json");
+    const contexts = require("./src/_data/contextDefs.json");
     const sectionMap = {
       "streetlight": "Streetlight",
       "real-estate": "Real Estate",
@@ -152,7 +149,7 @@ module.exports = function (eleventyConfig) {
 
   // Filter: resolve a URL to its section's context color
   eleventyConfig.addFilter("sectionColor", function (url) {
-    const contexts = require("./src/_data/contexts.json");
+    const contexts = require("./src/_data/contextDefs.json");
     const sectionMap = {
       "streetlight": "Streetlight",
       "real-estate": "Real Estate",
@@ -172,6 +169,18 @@ module.exports = function (eleventyConfig) {
   // Filter: extract section slug from a URL (first path segment)
   eleventyConfig.addFilter("urlSection", function (url) {
     return (url || "").replace(/^\//, "").split("/")[0];
+  });
+
+  // Filter: resolve page contexts array to context definitions (with color, label, etc.)
+  eleventyConfig.addFilter("resolveContexts", function (pageContexts) {
+    if (!pageContexts || !pageContexts.length) return [];
+    const contexts = require("./src/_data/contextDefs.json");
+    const results = [];
+    for (const label of pageContexts) {
+      const ctx = contexts.find((c) => c.label === label || c.key === label);
+      if (ctx) results.push(ctx);
+    }
+    return results;
   });
 
   // Filter: fix permalink paths

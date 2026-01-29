@@ -5,6 +5,8 @@
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-md);
   border-bottom: 2px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .page-hero h1 {
@@ -19,6 +21,8 @@
 
 .page-body {
   margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 1;
 }
 
 .page-body > *:first-child {
