@@ -5,7 +5,7 @@
 .beacon {
   position: fixed;
   top: var(--space-md);
-  left: var(--space-md);
+  left: max(var(--space-md), calc(50vw - 420px));
   z-index: 200;
   font-family: var(--font-body);
 }
@@ -16,20 +16,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
   cursor: pointer;
   padding: 0;
   transition: box-shadow 0.3s, transform 0.15s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .beacon-pulse:hover {
   transform: scale(1.08);
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 12px var(--color-shadow);
 }
 
 .beacon-pulse[aria-expanded="true"] {
@@ -39,8 +39,8 @@
 
 /* The dot inside the pulse — context-colored */
 .beacon-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--dot-color, var(--color-text-muted));
   transition: background 0.3s;
@@ -72,7 +72,7 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 24px var(--color-shadow);
   padding: 8px;
   animation: beacon-appear 0.15s ease-out;
 }
@@ -156,22 +156,55 @@
 }
 
 /* ========================================
-   Page context glow
-   Subtle background tint from the current context color
-   Applied via data-section on <body>
+   Streetlight — dark warm theme
    ======================================== */
 body[data-section="streetlight"] {
-  background: linear-gradient(
+  --color-bg:          #1a1714;
+  --color-bg-alt:      #242019;
+  --color-text:        #e8e4de;
+  --color-text-muted:  #a09888;
+  --color-text-light:  #6b6058;
+  --color-border:      #332e27;
+  --color-link:        #e8e4de;
+  --color-link-hover:  #E8A825;
+  --color-shadow:      rgba(0, 0, 0, 0.18);
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
     180deg,
-    rgba(232, 168, 37, 0.04) 0%,
-    var(--color-bg) 40%
+    rgba(232, 168, 37, 0.10) 0%,
+    transparent 35%
   );
 }
 
+body[data-section="streetlight"] .name-anchor:hover {
+  color: rgba(232, 168, 37, 0.7);
+}
+
+body[data-section="streetlight"] .context-field-label {
+  opacity: 0.06;
+}
+
+body[data-section="streetlight"] .page-hero-shadow {
+  opacity: 0.05;
+}
+
+/* Streetlight neighbor glow — brighter on dark */
+body[data-section="streetlight"][style*="--neighbor-1"]::after {
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--neighbor-1) 8%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   Page context glow — other sections
+   Subtle background tint from the current context color
+   ======================================== */
 body[data-section="real-estate"] {
   background: linear-gradient(
     180deg,
-    rgba(43, 108, 176, 0.04) 0%,
+    rgba(43, 108, 176, 0.07) 0%,
     var(--color-bg) 40%
   );
 }
@@ -179,7 +212,7 @@ body[data-section="real-estate"] {
 body[data-section="third-places"] {
   background: linear-gradient(
     180deg,
-    rgba(74, 139, 110, 0.04) 0%,
+    rgba(74, 139, 110, 0.07) 0%,
     var(--color-bg) 40%
   );
 }
@@ -187,23 +220,23 @@ body[data-section="third-places"] {
 body[data-section="building"] {
   background: linear-gradient(
     180deg,
-    rgba(123, 143, 161, 0.04) 0%,
+    rgba(123, 143, 161, 0.07) 0%,
     var(--color-bg) 40%
   );
 }
 
 /* Beacon pulse picks up section color glow */
 body[data-section="streetlight"] .beacon-pulse {
-  box-shadow: 0 2px 8px rgba(232, 168, 37, 0.12);
+  box-shadow: 0 2px 12px rgba(232, 168, 37, 0.30), 0 0 24px rgba(232, 168, 37, 0.10);
 }
 body[data-section="real-estate"] .beacon-pulse {
-  box-shadow: 0 2px 8px rgba(43, 108, 176, 0.12);
+  box-shadow: 0 2px 10px rgba(43, 108, 176, 0.18);
 }
 body[data-section="third-places"] .beacon-pulse {
-  box-shadow: 0 2px 8px rgba(74, 139, 110, 0.12);
+  box-shadow: 0 2px 10px rgba(74, 139, 110, 0.18);
 }
 body[data-section="building"] .beacon-pulse {
-  box-shadow: 0 2px 8px rgba(123, 143, 161, 0.12);
+  box-shadow: 0 2px 10px rgba(123, 143, 161, 0.18);
 }
 
 /* ========================================
@@ -212,29 +245,54 @@ body[data-section="building"] .beacon-pulse {
    Environmental only — not interactive
    ======================================== */
 .context-field {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: -0.25em;
   left: 0;
   right: 0;
-  height: 180px;
-  overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .context-field-label {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  font-size: 18vw;
+  line-height: 0.85;
+  color: var(--context-color, var(--color-text));
+  opacity: 0.04;
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+/* Section index: shadow label sits behind the H1 */
+.page-hero-index {
+  position: relative;
+}
+
+.page-hero-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--context-color, var(--color-text));
   opacity: 0.03;
-  white-space: nowrap;
-  letter-spacing: -0.02em;
+  pointer-events: none;
   user-select: none;
+  white-space: nowrap;
+}
+
+.page-hero-index h1 {
+  position: relative;
+  transform: translateY(-4px);
 }
 
 /* Secondary context edge influence */
@@ -274,6 +332,24 @@ body[style*="--neighbor-1"]::after {
 }
 
 /* ========================================
+   Beacon idle spin — subtle cue for interactivity
+   ======================================== */
+@keyframes beacon-idle-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.beacon-pulse.beacon-spin {
+  animation: beacon-idle-spin 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beacon-pulse.beacon-spin {
+    animation: none;
+  }
+}
+
+/* ========================================
    Mobile
    ======================================== */
 @media (max-width: 640px) {
@@ -283,18 +359,18 @@ body[style*="--neighbor-1"]::after {
   }
 
   .beacon-pulse {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
   }
 
   .beacon-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 
   .beacon-dot-all {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
   }
 
   .beacon-map {
@@ -302,7 +378,7 @@ body[style*="--neighbor-1"]::after {
   }
 
   .context-field-label {
-    font-size: clamp(2rem, 10vw, 3.5rem);
-    top: 12px;
+    font-size: 16vw;
   }
+
 }

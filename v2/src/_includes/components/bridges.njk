@@ -6,7 +6,7 @@
     {% set destSection = bridge.url | urlSection %}
     {% set isCrossSection = destColor and destSection != section %}
     <a href="{{ bridge.url }}" class="bridge-pill"{% if isCrossSection %} style="--bridge-color: {{ destColor }}"{% endif %}>
-      {% if isCrossSection %}<span class="bridge-pill-dot" style="background: {{ destColor }}"></span>{% endif %}
+      {% if isCrossSection %}<span class="bridge-pill-dot" style="--dot-bg: {{ destColor }}"></span>{% endif %}
       <span class="bridge-pill-label">{{ bridge.label }}</span>
       {% if bridge.because %}<span class="bridge-pill-why">{{ bridge.because }}</span>{% endif %}
     </a>

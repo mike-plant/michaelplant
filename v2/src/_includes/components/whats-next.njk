@@ -1,0 +1,6 @@
+{% if next %}
+<div class="whats-next">
+  <a href="{{ next.url }}" class="whats-next-action">{{ next.label }} &rarr;</a>
+  {% if next.note %}<p class="whats-next-note">{{ next.note }}</p>{% endif %}
+</div>
+{% endif %}

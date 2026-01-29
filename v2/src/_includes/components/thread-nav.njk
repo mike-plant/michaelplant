@@ -9,7 +9,7 @@
         {% set prevColor = info.prev.url | sectionColor %}
         {% set prevSection = info.prev.url | urlSection %}
         <a href="{{ info.prev.url }}" class="thread-hint-link">
-          {% if prevColor and prevSection != section %}<span class="thread-hint-dot" style="background: {{ prevColor }}"></span>{% endif %}
+          {% if prevColor and prevSection != section %}<span class="thread-hint-dot" style="--dot-bg: {{ prevColor }}"></span>{% endif %}
           &larr; {{ info.prev.data.title }}
         </a>
       {% endif %}
@@ -19,7 +19,7 @@
         {% set nextSection = info.next.url | urlSection %}
         <a href="{{ info.next.url }}" class="thread-hint-link">
           {{ info.next.data.title }}
-          {% if nextColor and nextSection != section %}<span class="thread-hint-dot" style="background: {{ nextColor }}"></span>{% endif %}
+          {% if nextColor and nextSection != section %}<span class="thread-hint-dot" style="--dot-bg: {{ nextColor }}"></span>{% endif %}
           &rarr;
         </a>
       {% endif %}

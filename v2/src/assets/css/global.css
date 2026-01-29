@@ -31,6 +31,9 @@
   --space-xl: 3rem;
   --space-2xl: 4rem;
 
+  /* Shadows */
+  --color-shadow: rgba(0, 0, 0, 0.06);
+
   /* Layout */
   --max-width: 720px;
   --max-width-wide: 1080px;
@@ -55,6 +58,16 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.65;
+  animation: page-fade-in 400ms ease-out;
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
 }
 
 /* Typography */
@@ -114,8 +127,14 @@ hr {
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
+  padding: calc(48px + var(--space-lg) + var(--space-md)) var(--space-md) var(--space-lg);
   min-height: 60vh;
+}
+
+@media (max-width: 640px) {
+  main {
+    padding-top: calc(42px + var(--space-sm) + var(--space-xs));
+  }
 }
 
 /* ========================================
@@ -126,14 +145,14 @@ main {
 .name-anchor {
   position: fixed;
   top: var(--space-md);
-  right: var(--space-md);
+  right: max(var(--space-md), calc(50vw - 420px));
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text-muted);
   text-decoration: none;
   z-index: 200;
   letter-spacing: -0.01em;
-  line-height: 40px;
+  line-height: 48px;
 }
 
 .name-anchor:hover {
@@ -145,7 +164,7 @@ main {
     top: var(--space-xs);
     right: var(--space-xs);
     font-size: 0.78rem;
-    line-height: 36px;
+    line-height: 42px;
   }
 }
 

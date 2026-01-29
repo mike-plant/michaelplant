@@ -55,7 +55,32 @@
     if (e.key === 'Escape') {
       map.hidden = true;
       toggle.setAttribute('aria-expanded', 'false');
+      startIdleTimer();
     }
   });
+
+  // Idle spin — gentle cue that beacon is interactive
+  var idleTimer = null;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function startIdleTimer() {
+    clearTimeout(idleTimer);
+    if (reducedMotion) return;
+    idleTimer = setTimeout(function() {
+      if (!map.hidden) return;
+      toggle.classList.add('beacon-spin');
+    }, 10000);
+  }
+
+  toggle.addEventListener('animationend', function() {
+    toggle.classList.remove('beacon-spin');
+    startIdleTimer();
+  });
+
+  toggle.addEventListener('mouseenter', function() { clearTimeout(idleTimer); });
+  toggle.addEventListener('mouseleave', function() { startIdleTimer(); });
+  toggle.addEventListener('touchstart', function() { clearTimeout(idleTimer); }, {passive: true});
+
+  startIdleTimer();
 })();
 </script>
