@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   // Collection: all content pages (exclude drafts)
   eleventyConfig.addCollection("allPages", function (collectionApi) {
