@@ -1,0 +1,16 @@
+{
+  "name": "michaelplant.com",
+  "version": "2.0.0",
+  "description": "Michael Plant — personal brand hub",
+  "scripts": {
+    "dev": "eleventy --serve --incremental",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": ["personal-brand", "cleveland", "lakewood", "real-estate", "streetlight"],
+  "author": "Michael Plant",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

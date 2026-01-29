@@ -1,0 +1,316 @@
+/* Form Styles */
+
+.simple-form {
+  max-width: 500px;
+  margin: 0 auto;
+  /* DEBUG: Ensure form doesn't clip dropdowns */
+  overflow: visible;
+}
+
+.address-group {
+  position: relative;
+  /* DEBUG: Ensure suggestions don't get clipped */
+  overflow: visible;
+}
+
+.address-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  box-shadow: var(--shadow);
+  z-index: 1000; /* High z-index to ensure visibility above other elements */
+  max-height: 200px;
+  overflow-y: auto;
+  display: block;
+}
+
+.suggestion-item {
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--text-sm);
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background-color: var(--background-light);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.home-sale-form,
+.deal-analyzer-form {
+  background: var(--background);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  margin-top: var(--spacing-lg);
+  /* DEBUG: Ensure form container doesn't clip dropdowns */
+  overflow: visible;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-section h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--background-light);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--background);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.field-help {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+/* Checkbox Styling */
+.checkbox-group {
+  margin-top: var(--spacing-lg);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  position: relative;
+  top: 2px;
+}
+
+.checkbox-label .checkmark {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Form Footer */
+.form-footer {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.form-footer .cta-button {
+  margin-bottom: var(--spacing-md);
+  min-width: 200px;
+}
+
+.form-disclaimer {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Form Success State */
+.form-success {
+  background: var(--background);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  border: 2px solid var(--accent-color);
+  margin-top: var(--spacing-lg);
+}
+
+.form-success h3 {
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--text-2xl);
+}
+
+.form-success p {
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.form-success a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.form-success a:hover {
+  color: var(--primary-dark);
+}
+
+/* Validation States */
+.form-group input:invalid,
+.form-group select:invalid,
+.form-group textarea:invalid {
+  border-color: #dc3545;
+}
+
+.form-group input:valid,
+.form-group select:valid,
+.form-group textarea:valid {
+  border-color: var(--accent-color);
+}
+
+/* Loading States */
+.cta-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cta-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Form Design */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .home-sale-form,
+  .deal-analyzer-form {
+    padding: var(--spacing-lg);
+  }
+
+  .form-footer .cta-button {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Specific Form Variations */
+.analyzer-section {
+  background: var(--background-light);
+  padding: var(--spacing-xl) 0;
+}
+
+.analyzer-section .container {
+  max-width: 800px;
+}
+
+.analyzer-section h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.analyzer-section p {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Error States */
+.form-error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  margin-top: var(--spacing-xs);
+  font-size: var(--text-sm);
+}
+
+/* Focus Management */
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .home-sale-form,
+  .deal-analyzer-form {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+}

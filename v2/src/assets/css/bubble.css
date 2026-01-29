@@ -1,0 +1,267 @@
+/* ========================================
+   Beacon — Orientation compass
+   A "you are here" dot, not a nav menu
+   ======================================== */
+.beacon {
+  position: fixed;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 200;
+  font-family: var(--font-body);
+}
+
+/* The pulse: resting state
+   A small colored dot showing current context */
+.beacon-pulse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.3s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.beacon-pulse:hover {
+  transform: scale(1.08);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.beacon-pulse[aria-expanded="true"] {
+  background: var(--color-bg-alt);
+  border-color: var(--color-text-light);
+}
+
+/* The dot inside the pulse — context-colored */
+.beacon-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--color-text-muted));
+  transition: background 0.3s;
+}
+
+.beacon-dot-home {
+  background: var(--color-text-muted);
+}
+
+/* Multiple dots if page is multi-context */
+.beacon-pulse:has(.beacon-dot + .beacon-dot) {
+  gap: 2px;
+}
+
+/* The map: expanded state
+   Appears on click — small, focused, not a menu */
+.beacon-map {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  padding: var(--space-sm);
+  animation: beacon-appear 0.15s ease-out;
+}
+
+@keyframes beacon-appear {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Identity — quiet, small */
+.beacon-here {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.beacon-home {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.beacon-home:hover {
+  color: var(--color-link);
+}
+
+.beacon-utility {
+  display: flex;
+  gap: 8px;
+}
+
+.beacon-utility a {
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+.beacon-utility a:hover {
+  color: var(--color-link);
+}
+
+/* Constellation — context nodes arranged organically */
+.beacon-constellation {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.beacon-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.beacon-node:hover {
+  background: var(--color-bg-alt);
+}
+
+.beacon-node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--node-color, var(--color-text-light));
+  flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.beacon-node:hover .beacon-node-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 6px var(--node-color);
+}
+
+.beacon-node-label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.beacon-node:hover .beacon-node-label {
+  color: var(--color-text);
+}
+
+/* Active context — the "you are here" emphasis */
+.beacon-node-active .beacon-node-dot {
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 8px var(--node-color);
+}
+
+.beacon-node-active .beacon-node-label {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ========================================
+   Page context glow
+   Subtle background tint from the current context color
+   Applied via data-section on <body>
+   ======================================== */
+body[data-section="streetlight"] {
+  background: linear-gradient(
+    180deg,
+    rgba(232, 168, 37, 0.04) 0%,
+    var(--color-bg) 40%
+  );
+}
+
+body[data-section="real-estate"] {
+  background: linear-gradient(
+    180deg,
+    rgba(47, 79, 79, 0.04) 0%,
+    var(--color-bg) 40%
+  );
+}
+
+body[data-section="third-places"] {
+  background: linear-gradient(
+    180deg,
+    rgba(139, 94, 60, 0.04) 0%,
+    var(--color-bg) 40%
+  );
+}
+
+body[data-section="building"] {
+  background: linear-gradient(
+    180deg,
+    rgba(90, 125, 124, 0.04) 0%,
+    var(--color-bg) 40%
+  );
+}
+
+/* Beacon pulse picks up section color glow too */
+body[data-section="streetlight"] .beacon-pulse {
+  box-shadow: 0 2px 8px rgba(232, 168, 37, 0.12);
+}
+body[data-section="real-estate"] .beacon-pulse {
+  box-shadow: 0 2px 8px rgba(47, 79, 79, 0.12);
+}
+body[data-section="third-places"] .beacon-pulse {
+  box-shadow: 0 2px 8px rgba(139, 94, 60, 0.12);
+}
+body[data-section="building"] .beacon-pulse {
+  box-shadow: 0 2px 8px rgba(90, 125, 124, 0.12);
+}
+
+/* ========================================
+   Neighbor glow — bottom of page
+   Hints at where bridges lead, using
+   --neighbor-1 / --neighbor-2 set on <body>
+   ======================================== */
+body[style*="--neighbor-1"]::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--neighbor-1) 4%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   Mobile
+   ======================================== */
+@media (max-width: 640px) {
+  .beacon {
+    top: var(--space-xs);
+    left: var(--space-xs);
+  }
+
+  .beacon-pulse {
+    width: 32px;
+    height: 32px;
+  }
+
+  .beacon-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .beacon-map {
+    min-width: 160px;
+  }
+}

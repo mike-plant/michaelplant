@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+---
+<div class="home">
+  <section class="home-intro">
+    <p class="home-lede">{{ lede }}</p>
+  </section>
+
+  <section class="home-now">
+    <h2>Right now</h2>
+    {{ content | safe }}
+  </section>
+
+  <section class="home-contexts">
+    {% for ctx in contexts %}
+    <a href="/{{ ctx.key }}/" class="context-card" style="--ctx-color: {{ ctx.color }}">
+      <span class="context-card-icon">{{ ctx.icon }}</span>
+      <h2>{{ ctx.label }}</h2>
+      <p>{{ ctx.description }}</p>
+    </a>
+    {% endfor %}
+  </section>
+</div>

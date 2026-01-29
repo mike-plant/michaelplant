@@ -1,0 +1,74 @@
+[
+  {
+    "id": "findable",
+    "label": "How things become findable",
+    "summary": "How people actually find local businesses",
+    "pages": [
+      "/streetlight/",
+      "/streetlight/google-looks-for/",
+      "/streetlight/apple-yelp-consistency/",
+      "/streetlight/websites-still-matter/",
+      "/building/"
+    ]
+  },
+  {
+    "id": "deals",
+    "label": "How deals work",
+    "summary": "Criteria, underwriting, risk, and decision-making",
+    "pages": [
+      "/real-estate/",
+      "/real-estate/investors/",
+      "/real-estate/portfolio/"
+    ]
+  },
+  {
+    "id": "places-work",
+    "label": "How places work",
+    "summary": "Why neighborhoods, buildings, and businesses succeed or struggle",
+    "pages": [
+      "/third-places/",
+      "/real-estate/",
+      "/building/"
+    ]
+  },
+  {
+    "id": "systems",
+    "label": "How systems replace stress",
+    "summary": "Simple structure that removes friction",
+    "pages": [
+      "/streetlight/pricing/",
+      "/streetlight/audit/",
+      "/about/how-i-work/"
+    ]
+  },
+  {
+    "id": "community",
+    "label": "Why third places matter",
+    "summary": "Belonging, atmosphere, and local ecosystems",
+    "pages": [
+      "/third-places/",
+      "/about/",
+      "/now/"
+    ]
+  },
+  {
+    "id": "how-i-work",
+    "label": "How I work",
+    "summary": "What it's like to work together",
+    "pages": [
+      "/about/how-i-work/",
+      "/streetlight/pricing/",
+      "/real-estate/investors/"
+    ]
+  },
+  {
+    "id": "why-i-care",
+    "label": "Why I care",
+    "summary": "The long arc behind the work",
+    "pages": [
+      "/about/",
+      "/third-places/",
+      "/now/"
+    ]
+  }
+]

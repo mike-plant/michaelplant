@@ -1,0 +1,67 @@
+{% set pageContexts = contexts | default([]) %}
+
+<nav class="beacon" id="beacon" aria-label="Orientation">
+  {# Resting state: a small dot colored by current context #}
+  <button class="beacon-pulse" id="beacon-toggle" aria-expanded="false"
+    aria-controls="beacon-map">
+    {% if pageContexts | length %}
+      {% for ctxDef in contextDefs %}
+        {% if pageContexts | includes(ctxDef.label) %}
+          <span class="beacon-dot" style="--dot-color: {{ ctxDef.color }}"></span>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <span class="beacon-dot beacon-dot-home"></span>
+    {% endif %}
+  </button>
+
+  {# Expanded: orientation map #}
+  <div class="beacon-map" id="beacon-map" hidden>
+    <div class="beacon-here">
+      <a href="/" class="beacon-home">Michael Plant</a>
+      <span class="beacon-utility">
+        <a href="/now/">now</a>
+        <a href="mailto:{{ site.email }}">contact</a>
+      </span>
+    </div>
+
+    <div class="beacon-constellation">
+      {% for ctxDef in contextDefs %}
+        <a href="/{{ ctxDef.key | lower | replace(' ', '-') }}/"
+           class="beacon-node{% if pageContexts | includes(ctxDef.label) %} beacon-node-active{% endif %}"
+           style="--node-color: {{ ctxDef.color }}">
+          <span class="beacon-node-dot"></span>
+          <span class="beacon-node-label">{{ ctxDef.label }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
+
+<script>
+(function() {
+  var toggle = document.getElementById('beacon-toggle');
+  var map = document.getElementById('beacon-map');
+  if (!toggle || !map) return;
+
+  toggle.addEventListener('click', function() {
+    var open = map.hidden;
+    map.hidden = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.beacon')) {
+      map.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      map.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>

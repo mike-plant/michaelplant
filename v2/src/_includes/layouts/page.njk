@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+<article class="page-content section-{{ section | default('default') }}">
+  <header class="page-hero">
+    <h1>{{ title }}</h1>
+  </header>
+
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+
+  {% include "components/thread-nav.njk" %}
+  {% include "components/bridges.njk" %}
+</article>

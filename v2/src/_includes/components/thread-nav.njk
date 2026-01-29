@@ -1,0 +1,30 @@
+{% if threads and threads.length and collections.byThread %}
+<nav class="thread-hints" aria-label="Thread navigation">
+  {% for threadId in threads %}
+    {% set info = collections.byThread | threadInfo(threadId, page.url) %}
+    {% if info and (info.prev or info.next) %}
+    <span class="thread-hint">
+      <span class="thread-hint-label">{{ info.label }}:</span>
+      {% if info.prev %}
+        {% set prevColor = info.prev.url | sectionColor %}
+        {% set prevSection = info.prev.url | urlSection %}
+        <a href="{{ info.prev.url }}" class="thread-hint-link">
+          {% if prevColor and prevSection != section %}<span class="thread-hint-dot" style="background: {{ prevColor }}"></span>{% endif %}
+          &larr; {{ info.prev.data.title }}
+        </a>
+      {% endif %}
+      {% if info.prev and info.next %}<span class="thread-hint-sep">/</span>{% endif %}
+      {% if info.next %}
+        {% set nextColor = info.next.url | sectionColor %}
+        {% set nextSection = info.next.url | urlSection %}
+        <a href="{{ info.next.url }}" class="thread-hint-link">
+          {{ info.next.data.title }}
+          {% if nextColor and nextSection != section %}<span class="thread-hint-dot" style="background: {{ nextColor }}"></span>{% endif %}
+          &rarr;
+        </a>
+      {% endif %}
+    </span>
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endif %}

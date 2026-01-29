@@ -1,0 +1,30 @@
+[
+  {
+    "key": "Streetlight",
+    "label": "Streetlight",
+    "description": "Helping local businesses get found — GBP audits, Apple, Yelp, and visibility strategy.",
+    "color": "#E8A825",
+    "icon": "💡"
+  },
+  {
+    "key": "Real Estate",
+    "label": "Real Estate",
+    "description": "Investing, consulting with investors, and navigating the Cleveland market.",
+    "color": "#2B6CB0",
+    "icon": "🏠"
+  },
+  {
+    "key": "Third Places",
+    "label": "Third Places",
+    "description": "The Wandering Lantern, literacy, community spaces, and what makes Lakewood home.",
+    "color": "#4A8B6E",
+    "icon": "🏮"
+  },
+  {
+    "key": "Building",
+    "label": "Building",
+    "description": "20+ years of making things — websites, software, businesses, and systems.",
+    "color": "#7B8FA1",
+    "icon": "🔧"
+  }
+]
