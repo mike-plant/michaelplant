@@ -1,16 +1,57 @@
 {% if bridges and bridges.length %}
-<aside class="bridges" aria-label="Where this connects">
-  <div class="bridges-scatter">
-    {% for bridge in bridges %}
-    {% set destColor = bridge.url | sectionColor %}
-    {% set destSection = bridge.url | urlSection %}
-    {% set isCrossSection = destColor and destSection != section %}
-    <a href="{{ bridge.url }}" class="bridge-pill"{% if isCrossSection %} style="--bridge-color: {{ destColor }}"{% endif %}>
-      {% if isCrossSection %}<span class="bridge-pill-dot" style="--dot-bg: {{ destColor }}"></span>{% endif %}
-      <span class="bridge-pill-label">{{ bridge.label }}</span>
-      {% if bridge.because %}<span class="bridge-pill-why">{{ bridge.because }}</span>{% endif %}
-    </a>
-    {% endfor %}
-  </div>
+{% set sameSectionBridges = [] %}
+{% for bridge in bridges %}
+  {% if (bridge.url | urlSection) == section %}
+    {% set sameSectionBridges = (sameSectionBridges.push(bridge), sameSectionBridges) %}
+  {% endif %}
+{% endfor %}
+
+{% if sameSectionBridges.length %}
+<nav class="bridges-inline" aria-label="Keep going">
+  <span class="bridges-inline-lead">If you want to keep going &rarr;</span>
+  {% for b in sameSectionBridges %}
+    <a href="{{ b.url }}"{% if b.because %} title="{{ b.because }}"{% endif %}>{{ b.label }}</a>{% if not loop.last %}<span class="bridges-inline-sep">&rarr;</span>{% endif %}
+  {% endfor %}
+</nav>
+
+<aside class="bridges-rail" aria-label="More in this section">
+  <span class="bridges-rail-heading">read more about:</span>
+  {% for b in sameSectionBridges %}
+    <a href="{{ b.url }}" class="bridges-rail-link"{% if b.because %} title="{{ b.because }}"{% endif %}>{{ b.label }}</a>
+  {% endfor %}
 </aside>
+
+<script>
+(function() {
+  var rail = document.querySelector('.bridges-rail');
+  var inline = document.querySelector('.bridges-inline');
+  var hero = document.querySelector('.page-hero');
+  if (!rail || !inline || !hero) return;
+
+  var heroVisible = true;
+  var bottomVisible = false;
+
+  function update() {
+    if (heroVisible || bottomVisible) {
+      rail.classList.remove('bridges-rail--visible');
+      rail.classList.add('bridges-rail--hidden');
+    } else {
+      rail.classList.add('bridges-rail--visible');
+      rail.classList.remove('bridges-rail--hidden');
+    }
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.target === hero) heroVisible = entry.isIntersecting;
+      if (entry.target === inline) bottomVisible = entry.isIntersecting;
+    });
+    update();
+  });
+
+  observer.observe(hero);
+  observer.observe(inline);
+})();
+</script>
+{% endif %}
 {% endif %}

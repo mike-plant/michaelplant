@@ -13,7 +13,7 @@ layout: layouts/base.njk
 
   <section class="home-contexts">
     {% for ctx in contextDefs %}
-    <a href="/{{ ctx.key }}/" class="context-card" style="--ctx-color: {{ ctx.color }}">
+    <a href="/{{ ctx.key | slugify  }}/" class="context-card" style="--ctx-color: {{ ctx.color }}">
       <span class="context-card-icon">{{ ctx.icon }}</span>
       <h2>{{ ctx.label }}</h2>
       <p>{{ ctx.description }}</p>

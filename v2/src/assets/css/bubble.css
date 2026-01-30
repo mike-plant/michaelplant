@@ -202,7 +202,10 @@ body[data-section="streetlight"][style*="--neighbor-1"]::after {
    Subtle background tint from the current context color
    ======================================== */
 body[data-section="real-estate"] {
-  background: linear-gradient(
+  --color-bg: #f8f9fb;
+  --color-bg-alt: #eef1f5;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
     180deg,
     rgba(43, 108, 176, 0.07) 0%,
     var(--color-bg) 40%
@@ -210,7 +213,10 @@ body[data-section="real-estate"] {
 }
 
 body[data-section="third-places"] {
-  background: linear-gradient(
+  --color-bg: #f8faf8;
+  --color-bg-alt: #eef3ef;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
     180deg,
     rgba(74, 139, 110, 0.07) 0%,
     var(--color-bg) 40%
@@ -218,7 +224,10 @@ body[data-section="third-places"] {
 }
 
 body[data-section="building"] {
-  background: linear-gradient(
+  --color-bg: #f8f9fa;
+  --color-bg-alt: #eff0f2;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
     180deg,
     rgba(123, 143, 161, 0.07) 0%,
     var(--color-bg) 40%
@@ -268,31 +277,6 @@ body[data-section="building"] .beacon-pulse {
   letter-spacing: -0.03em;
   user-select: none;
   text-transform: uppercase;
-}
-
-/* Section index: shadow label sits behind the H1 */
-.page-hero-index {
-  position: relative;
-}
-
-.page-hero-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--context-color, var(--color-text));
-  opacity: 0.03;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-
-.page-hero-index h1 {
-  position: relative;
-  transform: translateY(-4px);
 }
 
 /* Secondary context edge influence */

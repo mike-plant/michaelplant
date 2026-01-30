@@ -9,9 +9,9 @@ threads:
   - "how-i-work"
   - "systems"
 bridges:
-  - url: "/streetlight/audit/"
-    label: "Streetlight audit"
-    because: "This is the clearest example of how I work: bounded, transparent, practical."
+  - url: "/about/"
+    label: "About"
+    because: "Who I am before how I work."
 bubble:
   eligible: true
   contextKey: "Building"

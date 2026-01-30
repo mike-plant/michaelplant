@@ -17,25 +17,31 @@ bubble:
   eligible: true
   contextKey: "Third Places"
 seo:
-  description: "Why community spaces matter and what we're building with The Wandering Lantern."
+  description: "Why community spaces matter and what I'm building with The Wandering Lantern."
 ---
 
-Third places are the spaces that aren't home or work, but still shape people's lives.
+Third places are the spaces that aren’t home or work, but still shape people’s lives.
+They’re where connection happens outside of transactions.
 
 ## The Wandering Lantern
 
-Cleveland's first children's bookstore, opening in Lakewood. [The Wandering Lantern](https://thewanderinglantern.com) is about creating a space where kids read and parents connect.
+A children’s bookstore in Lakewood.
+A place for kids to read and explore, and for parents to connect and linger.
 
 Literacy matters. Access to books matters.
 
 ## Lakewood
 
-Walkable, diverse, full of people who give a damn. I chose to build here.
+Walkable. Diverse. Full of people who give a damn.
+I chose to build here.
 
 ## Community for men
 
-Personal. Adult men in America are lonely and don't have enough spaces to be honest with each other. Working on that.
+Personal.
+Adult men in America are lonely and don’t have enough places to be honest with each other.
+I’m working on that.
 
 ## The connection
 
-The bookstore, the investing, the marketing work — it all comes back to community.
+The bookstore, the investing, the marketing work —
+it all comes back to community.
