@@ -13,6 +13,9 @@ bridges:
   - url: "/real-estate/"
     label: "Real estate, grounded"
     because: "Everything here flows from the same way of thinking."
+  - url: "/real-estate/search/lakewood/"
+    label: "Search Lakewood"
+    because: "Start by understanding which neighborhoods fit."
 bubble:
   eligible: true
   contextKey: "Real Estate"

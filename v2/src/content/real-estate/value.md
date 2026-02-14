@@ -13,6 +13,9 @@ bridges:
   - url: "/real-estate/"
     label: "How I think about real estate"
     because: "This is part of a larger way of deciding, not a standalone belief."
+  - url: "/real-estate/search/lakewood/"
+    label: "Search Lakewood"
+    because: "See how these ideas play out neighborhood by neighborhood."
 bubble:
   eligible: true
   contextKey: "Real Estate"

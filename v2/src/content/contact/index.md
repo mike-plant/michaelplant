@@ -13,7 +13,7 @@ seo:
 
 Two ways to reach me.
 
-**Email** — [michael@michaelplant.com](mailto:michael@michaelplant.com)
+**Email** — [msplant@gmail.com](mailto:msplant@gmail.com)
 
 **Book a call** — pick a time below, or go to [calendly.com/michaelplant](https://calendly.com/michaelplant).
 

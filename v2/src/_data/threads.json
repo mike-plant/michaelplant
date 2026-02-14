@@ -70,5 +70,19 @@
       "/third-places/",
       "/now/"
     ]
+  },
+  {
+    "id": "neighborhoods",
+    "label": "Lakewood neighborhoods",
+    "summary": "Understanding where to buy, block by block",
+    "pages": [
+      "/real-estate/search/lakewood/",
+      "/real-estate/search/lakewood/birdtown/",
+      "/real-estate/search/lakewood/gold-coast-clifton/",
+      "/real-estate/search/lakewood/detroit-avenue/",
+      "/real-estate/search/lakewood/madison-avenue/",
+      "/real-estate/search/lakewood/lakewood-park-western/",
+      "/real-estate/search/lakewood/eastern-edge/"
+    ]
   }
 ]

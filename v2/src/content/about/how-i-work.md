@@ -43,4 +43,4 @@ Honesty. If something isn't working, tell me.
 
 ## How to start
 
-[Book a call](https://calendly.com/michaelplant) or [email me](mailto:michael@michaelplant.com).
+[Book a call](https://calendly.com/michaelplant) or [email me](mailto:msplant@gmail.com).

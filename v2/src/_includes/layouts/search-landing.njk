@@ -1,0 +1,411 @@
+---
+layout: layouts/base.njk
+---
+{%- set resolved = contexts | resolveContexts -%}
+
+{% if resolved | length %}
+<div class="context-field" aria-hidden="true">
+  <span class="context-field-label" style="--context-color: {{ resolved[0].color }}">{{ resolved[0].label }}</span>
+  {% if resolved | length > 1 %}
+  <span class="context-field-secondary" style="--secondary-color: {{ resolved[1].color }}"></span>
+  {% endif %}
+</div>
+{% endif %}
+
+<article class="page-content section-{{ section | default('default') }}">
+  <header class="page-hero">
+    <h1>{{ title }}</h1>
+  </header>
+
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+
+  {# ── Early CTA hint ── #}
+  <div class="search-cta-hint">
+    <p>Know which part of {{ search.display }} fits you? <a href="#lead-form">Tell me what matters and I'll narrow it down</a>.</p>
+  </div>
+
+  {# ── Primary CTA: Decision help intake form ── #}
+  <div class="search-cta-primary">
+    <h2 class="lead-form-heading">Help me narrow it down</h2>
+    <p>Not sure which parts of {{ search.display }} actually fit how you live? I help buyers narrow the city down to a few streets or blocks first — then we target homes there instead of chasing everything.</p>
+
+    <form class="lead-form" id="lead-form" aria-label="Get help narrowing down {{ search.display }}">
+
+      <div class="lead-form-fields">
+        <div class="lead-form-field">
+          <label for="lead-first-name">First name</label>
+          <input type="text" id="lead-first-name" name="first_name" required autocomplete="given-name">
+        </div>
+        <div class="lead-form-field">
+          <label for="lead-email">Email</label>
+          <input type="email" id="lead-email" name="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="lead-form-fields">
+        <div class="lead-form-field">
+          <label for="lead-timeline">Buying timeline</label>
+          <select id="lead-timeline" name="timeline">
+            <option value="" disabled selected>Select one</option>
+            <option value="exploring">Just starting to explore</option>
+            <option value="3-6 months">3–6 months</option>
+            <option value="6-12 months">6–12 months</option>
+            <option value="not sure">Not sure yet</option>
+          </select>
+        </div>
+        <div class="lead-form-field">
+          <label for="lead-budget">Budget comfort range</label>
+          <select id="lead-budget" name="budget_range">
+            <option value="" disabled selected>Select one</option>
+            <option value="under 250k">Under $250k</option>
+            <option value="250k-350k">$250k–$350k</option>
+            <option value="350k-450k">$350k–$450k</option>
+            <option value="450k+">$450k+</option>
+            <option value="not sure">Not sure yet</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="lead-form-fieldset">
+        <legend>What matters most right now?</legend>
+        <div class="lead-form-checks">
+          <label><input type="checkbox" name="priorities" value="walkability"> Walkability / neighborhood feel</label>
+          <label><input type="checkbox" name="priorities" value="schools"> Schools</label>
+          <label><input type="checkbox" name="priorities" value="quiet streets"> Quiet streets</label>
+          <label><input type="checkbox" name="priorities" value="budget"> Budget / affordability</label>
+          <label><input type="checkbox" name="priorities" value="investment"> Investment or rental potential</label>
+          <label><input type="checkbox" name="priorities" value="low maintenance"> Low maintenance / move-in ready</label>
+          <label><input type="checkbox" name="priorities" value="renovate"> Willing to renovate</label>
+          <label><input type="checkbox" name="priorities" value="parking"> Parking / garage</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="lead-form-fieldset">
+        <legend>Housing type preference</legend>
+        <div class="lead-form-checks">
+          <label><input type="checkbox" name="housing_type" value="single-family"> Single-family home</label>
+          <label><input type="checkbox" name="housing_type" value="duplex"> Duplex / "double"</label>
+          <label><input type="checkbox" name="housing_type" value="condo"> Condo / townhouse</label>
+          <label><input type="checkbox" name="housing_type" value="open"> Open to more than one</label>
+        </div>
+      </fieldset>
+
+      <div class="lead-form-field lead-form-field-full">
+        <label for="lead-notes">Anything else helpful?</label>
+        <textarea id="lead-notes" name="notes" rows="3" placeholder="Streets you've liked, places you've lived, noise concerns, kids, pets, parking — anything helpful."></textarea>
+      </div>
+
+      <input type="hidden" name="source" value="{{ search.display }} Area Decision Form">
+      <input type="hidden" name="campaign" value="{{ search.campaign | default('lakewood-search') }}">
+      <button type="submit" class="search-cta-button">Help me narrow it down</button>
+    </form>
+
+    <div class="lead-form-success" id="lead-form-success" hidden>
+      <p>Thanks — I'll review this and follow up with a short note about which parts of {{ search.display }} tend to fit what you're looking for.</p>
+    </div>
+  </div>
+
+  {# ── Market Reports: lead-gated PDF downloads ── #}
+  {% if search.reports and search.reports | length %}
+  <div class="market-reports-section">
+    <h2 class="market-reports-heading">Market reports</h2>
+    <p class="market-reports-intro">Monthly stats, sold listings, and price trends for {{ search.display }}. Enter your info to download.</p>
+
+    <div class="market-reports-list" id="reports-list">
+      {% for report in search.reports %}
+      <div class="market-report-item" data-file="{{ report.file }}">
+        <span class="market-report-label">{{ report.label }}</span>
+        <button type="button" class="market-report-download" data-file="{{ report.file }}">Download PDF</button>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="market-reports-gate" id="reports-gate" hidden>
+      <form class="report-gate-form" id="report-gate-form" aria-label="Get market report for {{ search.display }}">
+        <div class="lead-form-fields">
+          <div class="lead-form-field">
+            <label for="report-name">Name</label>
+            <input type="text" id="report-name" name="name" required autocomplete="name">
+          </div>
+          <div class="lead-form-field">
+            <label for="report-email">Email</label>
+            <input type="email" id="report-email" name="email" required autocomplete="email">
+          </div>
+          <div class="lead-form-field">
+            <label for="report-phone">Phone</label>
+            <input type="tel" id="report-phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+        <input type="hidden" name="report_source" value="{{ search.display }} Market Report">
+        <input type="hidden" name="report_file" value="">
+        <input type="hidden" name="campaign" value="{{ search.campaign | default('lakewood-search') }}">
+        <button type="submit" class="search-cta-button">Get the report</button>
+      </form>
+    </div>
+
+    <div class="market-reports-success" id="reports-success" hidden>
+      <p>Thanks — your download should start automatically.</p>
+    </div>
+  </div>
+  {% endif %}
+
+  {# ── Secondary: Optional listings ── #}
+  <div class="search-form-section">
+    <h2 class="search-form-heading">Explore current listings</h2>
+    <p class="search-form-intro">You can browse listings below, or use the form above if you'd rather take a more targeted, street-level approach.</p>
+
+    <form class="search-form" id="idx-search-form" aria-label="Search {{ search.display }} real estate listings">
+
+      <div class="search-form-row">
+        <div class="search-form-field">
+          <label for="search-min-price">Min Price</label>
+          <select id="search-min-price" name="min">
+            <option value="0">No min</option>
+            <option value="50000">$50,000</option>
+            <option value="100000">$100,000</option>
+            <option value="150000">$150,000</option>
+            <option value="200000">$200,000</option>
+            <option value="250000">$250,000</option>
+            <option value="300000">$300,000</option>
+            <option value="400000">$400,000</option>
+            <option value="500000">$500,000</option>
+          </select>
+        </div>
+        <div class="search-form-field">
+          <label for="search-max-price">Max Price</label>
+          <select id="search-max-price" name="max">
+            <option value="100000000">No max</option>
+            <option value="100000">$100,000</option>
+            <option value="150000">$150,000</option>
+            <option value="200000">$200,000</option>
+            <option value="250000">$250,000</option>
+            <option value="300000">$300,000</option>
+            <option value="400000">$400,000</option>
+            <option value="500000">$500,000</option>
+            <option value="750000">$750,000</option>
+            <option value="1000000">$1,000,000</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="search-form-row">
+        <div class="search-form-field">
+          <label for="search-beds">Beds</label>
+          <select id="search-beds" name="beds">
+            <option value="0">Any</option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+        <div class="search-form-field">
+          <label for="search-baths">Baths</label>
+          <select id="search-baths" name="baths">
+            <option value="0">Any</option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="search-form-fieldset">
+        <legend>Property Type</legend>
+        <div class="search-form-checks">
+          <label><input type="checkbox" name="types" value="1" checked> Single Family</label>
+          <label><input type="checkbox" name="types" value="2" checked> Condo / Townhouse</label>
+          <label><input type="checkbox" name="types" value="3"> Multi-Family</label>
+          <label><input type="checkbox" name="types" value="4"> Land / Lot</label>
+          <label><input type="checkbox" name="types" value="5"> Commercial</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="search-form-submit">Browse {{ search.display }} Listings</button>
+    </form>
+  </div>
+
+  {# ── Footer CTA: Reinforcement ── #}
+  <div class="search-cta-footer">
+    <p>Prefer a focused approach? I can send custom listings based on streets and blocks we identify together.</p>
+    <a href="#lead-form" class="search-cta-footer-link">Get in touch</a>
+  </div>
+
+  {% include "components/bridges.njk" %}
+</article>
+
+<script>
+(function() {
+  var leadForm = document.getElementById('lead-form');
+  var leadSuccess = document.getElementById('lead-form-success');
+  if (!leadForm) return;
+
+  leadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Collect checked values as arrays
+    var priorities = [];
+    leadForm.querySelectorAll('[name="priorities"]:checked').forEach(function(el) {
+      priorities.push(el.value);
+    });
+    var housingType = [];
+    leadForm.querySelectorAll('[name="housing_type"]:checked').forEach(function(el) {
+      housingType.push(el.value);
+    });
+
+    var payload = {
+      source: leadForm.querySelector('[name="source"]').value,
+      campaign: leadForm.querySelector('[name="campaign"]').value,
+      first_name: leadForm.querySelector('[name="first_name"]').value,
+      email: leadForm.querySelector('[name="email"]').value,
+      timeline: leadForm.querySelector('[name="timeline"]').value,
+      budget_range: leadForm.querySelector('[name="budget_range"]').value,
+      priorities: priorities,
+      housing_type: housingType,
+      notes: leadForm.querySelector('[name="notes"]').value,
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    };
+
+    {% if search.leadEndpoint %}
+    fetch('{{ search.leadEndpoint }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      leadForm.hidden = true;
+      leadSuccess.hidden = false;
+    }).catch(function() {
+      // Fallback: email
+      var body = 'Name: ' + payload.first_name +
+        '\nEmail: ' + payload.email +
+        '\nTimeline: ' + payload.timeline +
+        '\nBudget: ' + payload.budget_range +
+        '\nPriorities: ' + priorities.join(', ') +
+        '\nHousing type: ' + housingType.join(', ') +
+        '\nNotes: ' + payload.notes;
+      window.location.href = 'mailto:{{ search.contactEmail }}?subject=' +
+        encodeURIComponent('Lakewood area help — ' + payload.first_name) +
+        '&body=' + encodeURIComponent(body);
+    });
+    {% else %}
+    // No endpoint configured — email fallback
+    var body = 'Name: ' + payload.first_name +
+      '\nEmail: ' + payload.email +
+      '\nTimeline: ' + payload.timeline +
+      '\nBudget: ' + payload.budget_range +
+      '\nPriorities: ' + priorities.join(', ') +
+      '\nHousing type: ' + housingType.join(', ') +
+      '\nNotes: ' + payload.notes;
+    window.location.href = 'mailto:{{ search.contactEmail }}?subject=' +
+      encodeURIComponent('Lakewood area help — ' + payload.first_name) +
+      '&body=' + encodeURIComponent(body);
+    leadForm.hidden = true;
+    leadSuccess.hidden = false;
+    {% endif %}
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var reportsList = document.getElementById('reports-list');
+  var gate = document.getElementById('reports-gate');
+  var gateForm = document.getElementById('report-gate-form');
+  var success = document.getElementById('reports-success');
+  if (!reportsList || !gate || !gateForm) return;
+
+  var pendingFile = null;
+
+  // Click a download button → show the gate form
+  reportsList.addEventListener('click', function(e) {
+    var btn = e.target.closest('.market-report-download');
+    if (!btn) return;
+    pendingFile = btn.getAttribute('data-file');
+    gateForm.querySelector('[name="report_file"]').value = pendingFile;
+    gate.hidden = false;
+    gateForm.querySelector('[name="name"]').focus();
+  });
+
+  gateForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var payload = {
+      source: gateForm.querySelector('[name="report_source"]').value,
+      campaign: gateForm.querySelector('[name="campaign"]').value,
+      name: gateForm.querySelector('[name="name"]').value,
+      email: gateForm.querySelector('[name="email"]').value,
+      phone: gateForm.querySelector('[name="phone"]').value,
+      report_file: pendingFile,
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    };
+
+    {% if search.leadEndpoint %}
+    fetch('{{ search.leadEndpoint }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      gate.hidden = true;
+      success.hidden = false;
+      if (pendingFile) window.open(pendingFile, '_blank');
+    }).catch(function() {
+      // Fallback: just deliver the PDF
+      gate.hidden = true;
+      success.hidden = false;
+      if (pendingFile) window.open(pendingFile, '_blank');
+    });
+    {% else %}
+    // No endpoint — deliver PDF directly after capture
+    gate.hidden = true;
+    success.hidden = false;
+    if (pendingFile) window.open(pendingFile, '_blank');
+    {% endif %}
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var form = document.getElementById('idx-search-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var base = '{{ site.agentSite }}index.php';
+    var params = [];
+
+    params.push('advanced=1');
+    params.push('display=' + encodeURIComponent('{{ search.display }}'));
+    params.push('min=' + form.querySelector('[name="min"]').value);
+    params.push('max=' + form.querySelector('[name="max"]').value);
+    params.push('beds=' + form.querySelector('[name="beds"]').value);
+    params.push('baths=' + form.querySelector('[name="baths"]').value);
+
+    var checks = form.querySelectorAll('[name="types"]:checked');
+    for (var i = 0; i < checks.length; i++) {
+      params.push('types%5B%5D=' + checks[i].value);
+    }
+
+    params.push('statuses%5B%5D=0');
+    params.push('statuses%5B%5D=57');
+    params.push('minfootage=0');
+    params.push('maxfootage=30000');
+    params.push('minacres=0');
+    params.push('maxacres=0');
+    params.push('yearbuilt=0');
+    params.push('maxyearbuilt=0');
+    params.push('walkscore=0');
+    params.push('keywords=');
+    params.push('pak=' + encodeURIComponent('{{ search.pak }}'));
+    params.push('sortby=' + encodeURIComponent('listings.price DESC'));
+    params.push('rtype=grid');
+
+    window.open(base + '?' + params.join('&'), '_blank', 'noopener');
+  });
+})();
+</script>

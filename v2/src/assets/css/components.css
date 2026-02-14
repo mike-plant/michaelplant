@@ -93,22 +93,24 @@
 }
 
 .bridges-rail-heading {
-  font-size: 0.72rem;
-  color: var(--color-text-light);
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
   text-transform: lowercase;
   letter-spacing: 0.02em;
   margin-bottom: 0.2em;
 }
 
 .bridges-rail-link {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  color: var(--color-text);
   text-decoration: none;
   line-height: 1.35;
+  font-weight: 500;
+  transition: color 0.15s;
 }
 
 .bridges-rail-link:hover {
-  color: var(--color-text);
+  color: var(--color-real-estate);
 }
 
 @media (max-width: 768px) {
@@ -260,4 +262,118 @@
   .home-contexts {
     grid-template-columns: 1fr;
   }
+}
+
+/* ========================================
+   Callout boxes — key stats, quotes, notes
+   ======================================== */
+
+.callout {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Stat callout — for key numbers */
+.callout-stat {
+  border-left-color: var(--color-real-estate);
+}
+
+.callout-stat .callout-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.1;
+  margin-bottom: var(--space-xs);
+}
+
+.callout-stat .callout-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Pull quote — inline emphasis that stays in the reading flow */
+.pull-quote {
+  margin: var(--space-md) 0;
+  padding: var(--space-sm) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+.pull-quote p {
+  margin: 0;
+}
+
+.pull-quote p:first-child::before {
+  content: "— ";
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+/* Key takeaway / summary box */
+.key-takeaway {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.key-takeaway-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xs);
+  margin-top: 0;
+}
+
+.key-takeaway ul {
+  margin-bottom: 0;
+}
+
+.key-takeaway li {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ========================================
+   Page CTA — inline call-to-action
+   ======================================== */
+
+.page-cta-inline {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-alt);
+  border-left: 3px solid var(--color-real-estate);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.page-cta-inline p {
+  margin: 0 0 var(--space-xs) 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.page-cta-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.page-cta-link:hover {
+  text-decoration: underline;
 }

@@ -13,6 +13,9 @@ bridges:
   - url: "/third-places/"
     label: "Why third places matter"
     because: "Housing decisions shape how connected people feel long after closing."
+  - url: "/real-estate/search/lakewood/"
+    label: "Explore Lakewood neighborhoods"
+    because: "See which neighborhoods match what you're looking for."
 bubble:
   eligible: true
   contextKey: "Real Estate"

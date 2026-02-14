@@ -1,10 +1,10 @@
 ---
 title: "Michael Plant"
 layout: layouts/home.njk
-lede: "I build things, help people find things, invest in real estate, and care about my community in Lakewood, Ohio. This site is how it all connects."
+lede: "Everything I do connects back to Lakewood, Ohio — helping people find the right neighborhood, helping local businesses get found, and building places worth showing up to."
 section: home
 seo:
-  description: "Michael Plant — real estate, local marketing, community, and building things in Cleveland and Lakewood, Ohio."
+  description: "Michael Plant — real estate, local marketing, community, and building things in Lakewood and Cleveland, Ohio."
 ---
 
-Right now I'm launching [Streetlight](/streetlight/) — local visibility for small businesses — and getting [The Wandering Lantern](https://thewanderinglantern.com) running smoothly.
+Right now I'm helping buyers [explore Lakewood's neighborhoods](/real-estate/search/lakewood/) block by block, launching [Streetlight](/streetlight/) for local business visibility, and getting [The Wandering Lantern](https://thewanderinglantern.com) running smoothly.

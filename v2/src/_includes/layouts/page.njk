@@ -22,6 +22,13 @@ layout: layouts/base.njk
     {{ content | safe }}
   </div>
 
+  {% if pageCta %}
+  <div class="page-cta-inline">
+    <p>{{ pageCta.text }}</p>
+    <a href="{{ pageCta.url }}" class="page-cta-link">{{ pageCta.label }} &rarr;</a>
+  </div>
+  {% endif %}
+
   {# {% include "components/thread-nav.njk" %} #}
   {% include "components/bridges.njk" %}
 </article>

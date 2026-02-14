@@ -12,7 +12,10 @@ threads:
 bridges:
   - url: "/real-estate/value/"
     label: "Lasting value"
-    because: "Restraint only makes sense if you know what you’re protecting."
+    because: "Restraint only makes sense if you know what you're protecting."
+  - url: "/real-estate/search/lakewood/"
+    label: "Search Lakewood"
+    because: "Understanding neighborhoods reduces risk before you buy."
 bubble:
   eligible: true
   contextKey: "Real Estate"

@@ -5,7 +5,22 @@ module.exports = function (eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/assets/pdf");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+
+  // Paired shortcodes for content formatting
+  eleventyConfig.addPairedShortcode("callout", function (content, type) {
+    const cls = type ? `callout callout-${type}` : "callout";
+    return `<div class="${cls}">\n${content}\n</div>`;
+  });
+
+  eleventyConfig.addPairedShortcode("pullquote", function (content) {
+    return `<div class="pull-quote">\n${content}\n</div>`;
+  });
+
+  eleventyConfig.addPairedShortcode("keytakeaway", function (content) {
+    return `<div class="key-takeaway">\n<h3 class="key-takeaway-heading">At a glance</h3>\n${content}\n</div>`;
+  });
 
   // Collection: all content pages (exclude drafts)
   eleventyConfig.addCollection("allPages", function (collectionApi) {

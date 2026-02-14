@@ -1,0 +1,484 @@
+/* ========================================
+   Search Landing Pages
+   ======================================== */
+
+/* ── Early CTA hint ── */
+
+.search-cta-hint {
+  margin: var(--space-lg) 0;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  font-size: 0.92rem;
+}
+
+.search-cta-hint p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.search-cta-hint a {
+  color: var(--color-real-estate);
+  font-weight: 600;
+}
+
+/* ── Nearby neighborhoods ── */
+
+.neighborhood-siblings {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.neighborhood-siblings-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xs);
+}
+
+.neighborhood-siblings-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.neighborhood-sibling-link {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.neighborhood-sibling-link:hover {
+  color: var(--color-real-estate);
+  text-decoration: underline;
+}
+
+/* ── Primary CTA: Decision help ── */
+
+.search-cta-primary {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  border-left: 3px solid var(--color-real-estate);
+  background: var(--color-bg-alt);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.search-cta-primary > p {
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.55;
+}
+
+/* ── Lead capture form ── */
+
+.lead-form-heading {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.lead-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.lead-form-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.lead-form-field input,
+.lead-form-field select,
+.lead-form-field textarea {
+  width: 100%;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+.lead-form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b6b' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+.lead-form-field textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.lead-form-field input:focus,
+.lead-form-field select:focus,
+.lead-form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-real-estate);
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15);
+}
+
+.lead-form-field-full {
+  width: 100%;
+}
+
+.lead-form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lead-form-fieldset legend {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.lead-form-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.lead-form-checks label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.lead-form-checks input[type="checkbox"] {
+  accent-color: var(--color-real-estate);
+}
+
+.lead-form .search-cta-button {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+}
+
+.lead-form-success p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── CTA button (shared) ── */
+
+.search-cta-button {
+  display: inline-block;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-real-estate);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.search-cta-button:hover {
+  background: #245c9a;
+  color: white;
+}
+
+.search-cta-button:active {
+  transform: scale(0.98);
+}
+
+/* ── Secondary: Listings form ── */
+
+.search-form-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.search-form-heading {
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.search-form-intro {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.search-form-intro a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.search-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.search-form-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.search-form-field select {
+  width: 100%;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b6b' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+.search-form-field select:focus {
+  outline: none;
+  border-color: var(--color-real-estate);
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15);
+}
+
+.search-form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-form-fieldset legend {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.search-form-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.search-form-checks label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.search-form-checks input[type="checkbox"] {
+  accent-color: var(--color-real-estate);
+}
+
+.search-form-submit {
+  align-self: flex-start;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.search-form-submit:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.search-form-submit:active {
+  transform: scale(0.98);
+}
+
+/* ── Footer CTA: Reinforcement ── */
+
+.search-cta-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.search-cta-footer p {
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.search-cta-footer a {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ── Market Reports: lead-gated PDFs ── */
+
+.market-reports-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.market-reports-heading {
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+}
+
+.market-reports-intro {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.market-reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.market-report-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.market-report-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.market-report-download {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-real-estate);
+  background: none;
+  border: 1px solid var(--color-real-estate);
+  border-radius: var(--radius);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.market-report-download:hover {
+  background: var(--color-real-estate);
+  color: white;
+}
+
+.market-reports-gate {
+  margin-top: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-bg-alt);
+  border-left: 3px solid var(--color-real-estate);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.report-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.report-gate-form .search-cta-button {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+}
+
+.market-reports-success p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+  .search-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-form-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .search-cta-primary {
+    padding: var(--space-md);
+  }
+
+  .market-reports-gate {
+    padding: var(--space-md);
+  }
+
+  .market-report-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+}
