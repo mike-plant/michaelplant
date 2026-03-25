@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 2: Neon & Mortar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Inter:wght@300;400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal: #0e0e0e;
+    --near-black: #141414;
+    --panel: #1a1a1a;
+    --neon-magenta: #ff2d78;
+    --neon-amber: #ffa500;
+    --neon-teal: #00e5cc;
+    --neon-blue: #4488ff;
+    --brick-red: #8b2020;
+    --cream: #f0ead0;
+    --muted: #888;
+  }
+
+  body {
+    background: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    color: var(--cream);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 40px; height: 64px;
+    background: rgba(14,14,14,0.97);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .logo-mark {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-u {
+    width: 36px; height: 36px; border: 2px solid var(--neon-magenta);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+    color: var(--neon-magenta);
+    box-shadow: 0 0 12px rgba(255,45,120,0.4), inset 0 0 8px rgba(255,45,120,0.1);
+    animation: neonPulse 3s ease-in-out infinite;
+  }
+  @keyframes neonPulse {
+    0%,100% { box-shadow: 0 0 12px rgba(255,45,120,0.4), inset 0 0 8px rgba(255,45,120,0.1); }
+    50% { box-shadow: 0 0 22px rgba(255,45,120,0.7), inset 0 0 14px rgba(255,45,120,0.2); }
+  }
+  .logo-text { line-height: 1.15; }
+  .logo-text .top { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.12em; color: var(--cream); }
+  .logo-text .bot { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul li a {
+    color: var(--muted); text-decoration: none; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: var(--cream); }
+  nav ul li.cta a {
+    color: var(--neon-magenta); border: 1px solid rgba(255,45,120,0.4);
+    padding: 6px 14px;
+    box-shadow: 0 0 10px rgba(255,45,120,0.2);
+  }
+  nav ul li.cta a:hover {
+    background: rgba(255,45,120,0.1);
+    box-shadow: 0 0 20px rgba(255,45,120,0.4);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    padding-top: 64px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Scan line effect */
+  .hero::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 50; pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+      transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+  }
+
+  /* Left panel */
+  .hero-left {
+    grid-row: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 40px 60px 60px;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--neon-teal); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: ''; display: inline-block;
+    width: 30px; height: 1px; background: var(--neon-teal);
+    box-shadow: 0 0 6px var(--neon-teal);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+  }
+  h1 .highlight {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon-magenta);
+    text-shadow:
+      0 0 20px rgba(255,45,120,0.6),
+      0 0 60px rgba(255,45,120,0.3);
+    animation: strokePulse 4s ease-in-out infinite;
+  }
+  @keyframes strokePulse {
+    0%,100% { text-shadow: 0 0 20px rgba(255,45,120,0.6), 0 0 60px rgba(255,45,120,0.3); }
+    50% { text-shadow: 0 0 40px rgba(255,45,120,0.9), 0 0 100px rgba(255,45,120,0.5); }
+  }
+  h1 .sub-word {
+    display: block; color: var(--neon-amber);
+    text-shadow: 0 0 20px rgba(255,165,0,0.5);
+  }
+
+  .hero-desc {
+    margin-top: 28px; max-width: 400px;
+    font-size: 0.95rem; line-height: 1.7;
+    color: rgba(240,234,208,0.6); font-weight: 300;
+  }
+
+  .cta-row {
+    margin-top: 36px; display: flex; gap: 16px; align-items: center;
+  }
+  .btn-primary {
+    background: var(--neon-magenta);
+    color: #0e0e0e; font-size: 0.78rem; font-weight: 900;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 14px 28px; border: none; cursor: pointer;
+    box-shadow: 0 0 20px rgba(255,45,120,0.5);
+    transition: box-shadow 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { box-shadow: 0 0 40px rgba(255,45,120,0.8); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--cream);
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--cream); }
+
+  /* Right panel — neon sign / visual */
+  .hero-right {
+    grid-row: 1;
+    position: relative; overflow: hidden;
+    background: var(--near-black);
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Brick texture */
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px),
+      repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 31px);
+  }
+  /* Corner glow */
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,45,120,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* The neon sign */
+  .neon-sign {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 40px;
+  }
+  .sign-border {
+    border: 3px solid rgba(255,165,0,0.3);
+    box-shadow: 0 0 20px rgba(255,165,0,0.2), inset 0 0 20px rgba(255,165,0,0.05);
+    padding: 40px 50px;
+    position: relative;
+    animation: signGlow 4s ease-in-out infinite;
+  }
+  @keyframes signGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(255,165,0,0.2), inset 0 0 20px rgba(255,165,0,0.05); }
+    50% { box-shadow: 0 0 40px rgba(255,165,0,0.4), inset 0 0 30px rgba(255,165,0,0.1); }
+  }
+
+  /* Corner dots */
+  .sign-border::before, .sign-border::after,
+  .corner-bl, .corner-br {
+    content: '';
+    position: absolute;
+    width: 10px; height: 10px;
+    background: var(--neon-amber);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-amber), 0 0 20px rgba(255,165,0,0.5);
+  }
+  .sign-border::before { top: -5px; left: -5px; }
+  .sign-border::after { top: -5px; right: -5px; }
+  .corner-bl { bottom: -5px; left: -5px; }
+  .corner-br { bottom: -5px; right: -5px; }
+
+  .sign-line1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--neon-teal);
+    text-shadow:
+      0 0 10px var(--neon-teal),
+      0 0 30px rgba(0,229,204,0.6),
+      0 0 60px rgba(0,229,204,0.3);
+    animation: neonFlicker 5s ease-in-out infinite;
+    line-height: 1.1;
+  }
+  @keyframes neonFlicker {
+    0%,100% { opacity: 1; }
+    96% { opacity: 1; }
+    97% { opacity: 0.6; }
+    98% { opacity: 1; }
+    99% { opacity: 0.75; }
+  }
+  .sign-line2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--neon-amber);
+    text-shadow: 0 0 10px var(--neon-amber), 0 0 30px rgba(255,165,0,0.5);
+    letter-spacing: 0.4em;
+    margin-top: 8px;
+    display: block;
+  }
+  .sign-divider {
+    width: 80%; height: 1px; margin: 16px auto;
+    background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent);
+    box-shadow: 0 0 8px var(--neon-magenta);
+  }
+  .sign-line3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.3em;
+    color: var(--neon-magenta);
+    text-shadow: 0 0 10px var(--neon-magenta), 0 0 25px rgba(255,45,120,0.5);
+    animation: neonFlicker2 7s ease-in-out infinite 2s;
+  }
+  @keyframes neonFlicker2 {
+    0%,100% { opacity: 1; }
+    88% { opacity: 1; }
+    89% { opacity: 0.4; }
+    90% { opacity: 1; }
+  }
+
+  /* ── MARQUEE TICKER ── */
+  .marquee-bar {
+    grid-column: 1 / -1;
+    background: var(--neon-magenta);
+    padding: 12px 0; overflow: hidden;
+    position: relative;
+  }
+  .marquee-track {
+    display: flex; gap: 60px;
+    animation: marqueeScroll 25s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem; letter-spacing: 0.2em;
+    color: var(--near-black); display: flex; align-items: center; gap: 20px;
+    flex-shrink: 0;
+  }
+  .marquee-sep { opacity: 0.4; font-size: 0.8rem; }
+
+  /* ── BOTTOM SECTION ── */
+  .bottom-section {
+    background: var(--near-black);
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .feature-card {
+    padding: 40px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .feature-card:last-child { border-right: none; }
+  .feature-card:hover { background: rgba(255,255,255,0.02); }
+  .fc-icon {
+    font-size: 2rem; margin-bottom: 16px;
+    filter: drop-shadow(0 0 8px rgba(0,229,204,0.5));
+  }
+  .fc-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem; line-height: 1;
+    color: rgba(255,255,255,0.06);
+    position: absolute; top: 20px; right: 24px;
+  }
+  .feature-card { position: relative; overflow: hidden; }
+  .fc-label {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .fc-label.magenta { color: var(--neon-magenta); }
+  .fc-label.teal { color: var(--neon-teal); }
+  .fc-label.amber { color: var(--neon-amber); }
+  .fc-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; letter-spacing: 0.05em; margin-bottom: 10px;
+    color: var(--cream);
+  }
+  .fc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  .concept-badge {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--neon-magenta); color: var(--near-black);
+    font-size: 0.7rem; font-weight: 900; letter-spacing: 0.1em;
+    padding: 8px 16px; text-transform: uppercase; z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-mark">
+    <div class="logo-u">U</div>
+    <div class="logo-text">
+      <div class="top">Uptown Lakewood</div>
+      <div class="bot">Business Association</div>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#">The District</a></li>
+    <li><a href="#">Business Directory</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Spotlight</a></li>
+    <li class="cta"><a href="#">Join Us</a></li>
+  </ul>
+</nav>
+
+<main class="hero">
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="eyebrow">West End · Madison Ave · Lakewood, OH</div>
+    <h1>
+      <span>Where</span>
+      <span class="highlight">Lakewood</span>
+      <span class="sub-word">Comes Alive.</span>
+    </h1>
+    <p class="hero-desc">
+      A fiercely independent district of shops, studios, bars, and makers.
+      Real businesses. Real neighbors. Real community on the west end of Madison Avenue.
+    </p>
+    <div class="cta-row">
+      <button class="btn-primary">Explore the District</button>
+      <button class="btn-ghost">This Weekend →</button>
+    </div>
+  </div>
+
+  <!-- RIGHT — NEON SIGN -->
+  <div class="hero-right">
+    <div class="neon-sign">
+      <div class="sign-border">
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+        <div class="sign-line1">Open<br>for Business</div>
+        <div class="sign-divider"></div>
+        <span class="sign-line2">Madison Ave</span>
+        <div class="sign-line3">Est. Lakewood · Ohio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+</main>
+
+<!-- BOTTOM -->
+<section class="bottom-section">
+  <div class="feature-card">
+    <div class="fc-number">01</div>
+    <div class="fc-label magenta">Business Spotlight</div>
+    <div class="fc-title">This Month's Feature</div>
+    <p class="fc-desc">Every month we put a neighborhood business center stage — their story, their craft, their people.</p>
+  </div>
+  <div class="feature-card">
+    <div class="fc-number">02</div>
+    <div class="fc-label teal">Events & Happenings</div>
+    <div class="fc-title">What's On</div>
+    <p class="fc-desc">From gallery openings to sidewalk sales, keep up with everything the district has going on.</p>
+  </div>
+  <div class="feature-card">
+    <div class="fc-number">03</div>
+    <div class="fc-label amber">Starting a Business?</div>
+    <div class="fc-title">We'll Guide You</div>
+    <p class="fc-desc">New to the district? We connect you with the right people at Lakewood Live and City Hall.</p>
+  </div>
+</section>
+
+<div class="concept-badge">Concept 2 · Neon & Mortar</div>
+
+<script>
+const items = [
+  'Business Directory', 'Weekend Events', 'Eat & Drink',
+  'Shop Local', 'Arts & Culture', 'New Businesses',
+  'Community Spotlight', 'Madison Avenue', 'Lakewood Ohio',
+  'Business Directory', 'Weekend Events', 'Eat & Drink',
+  'Shop Local', 'Arts & Culture', 'New Businesses',
+  'Community Spotlight', 'Madison Avenue', 'Lakewood Ohio',
+];
+const track = document.getElementById('marqueeTrack');
+items.concat(items).forEach((text, i) => {
+  const item = document.createElement('div');
+  item.className = 'marquee-item';
+  item.innerHTML = `${text}<span class="marquee-sep">◆</span>`;
+  track.appendChild(item);
+});
+</script>
+</body>
+</html>

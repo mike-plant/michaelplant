@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptown Lakewood — Design Concepts</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #111; color: white; min-height: 100vh; padding: 60px 40px; }
+  h1 { font-size: 1.8rem; font-weight: 900; margin-bottom: 6px; }
+  .sub { color: #888; font-size: 0.85rem; margin-bottom: 50px; letter-spacing: 0.05em; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; }
+  .card {
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px;
+    padding: 28px 32px; text-decoration: none; color: white;
+    display: block; transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: #555; transform: translateY(-2px); }
+  .concept-num { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #666; margin-bottom: 10px; }
+  .concept-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+  .concept-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 12px; }
+  .concept-desc { font-size: 0.85rem; line-height: 1.6; color: #888; }
+  .arrow { margin-top: 20px; font-size: 0.8rem; color: #555; }
+  .card:hover .arrow { color: white; }
+
+  .c1 .concept-tag { background: rgba(232,160,32,0.15); color: #e8a020; }
+  .c2 .concept-tag { background: rgba(255,45,120,0.15); color: #ff2d78; }
+  .c3 .concept-tag { background: rgba(200,52,26,0.15); color: #c8341a; }
+  .c4 .concept-tag { background: rgba(232,150,10,0.15); color: #e8960a; }
+</style>
+</head>
+<body>
+<h1>Uptown Lakewood Business Association</h1>
+<div class="sub">Design Concept Mockups — Pick your direction</div>
+<div class="grid">
+  <a class="card c1" href="concept-1-living-street.html">
+    <div class="concept-num">Concept 01</div>
+    <div class="concept-name">The Living Street</div>
+    <div class="concept-tag">Illustrated · Atmospheric · Interactive</div>
+    <div class="concept-desc">An animated nighttime streetscape. Businesses glow as lit storefronts. Warm ink-and-watercolor aesthetic with amber streetlights.</div>
+    <div class="arrow">Open mockup →</div>
+  </a>
+  <a class="card c2" href="concept-2-neon-mortar.html">
+    <div class="concept-num">Concept 02</div>
+    <div class="concept-name">Neon & Mortar</div>
+    <div class="concept-tag">Dark · Bold · Urban Retro</div>
+    <div class="concept-desc">Deep charcoal with neon glow effects. Vintage marquee ticker. Bold Bebas Neue type. The district at Friday night energy.</div>
+    <div class="arrow">Open mockup →</div>
+  </a>
+  <a class="card c3" href="concept-3-broadside.html">
+    <div class="concept-num">Concept 03</div>
+    <div class="concept-name">The Community Broadside</div>
+    <div class="concept-tag">Editorial · Newsprint · Zine</div>
+    <div class="concept-desc">A living newspaper front page. Editorial grid layout on cream newsprint. Business spotlights as cover stories. Fresh each month.</div>
+    <div class="arrow">Open mockup →</div>
+  </a>
+  <a class="card c4" href="concept-4-golden-hour.html">
+    <div class="concept-num">Concept 04</div>
+    <div class="concept-name">Golden Hour Lakewood</div>
+    <div class="concept-tag">Warm · Cinematic · Inviting</div>
+    <div class="concept-desc">Honey and terracotta tones. Golden dusk photography. Elegant Cormorant Garamond type. Feels like a perfect evening walk.</div>
+    <div class="arrow">Open mockup →</div>
+  </a>
+</div>
+</body>
+</html>

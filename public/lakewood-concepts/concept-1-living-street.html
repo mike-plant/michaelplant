@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 1: The Living Street</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f5f0e8;
+    --rust: #b5451b;
+    --amber: #e8a020;
+    --brick: #8b3a2a;
+    --sage: #6b7f5e;
+    --teal: #2d6e6e;
+    --ink: #1a1208;
+    --warm-white: #faf6ee;
+  }
+
+  body {
+    background: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px;
+    background: linear-gradient(to bottom, rgba(26,18,8,0.95), transparent);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--amber); letter-spacing: 0.05em;
+  }
+  .nav-logo span { display: block; font-size: 0.65rem; color: var(--cream); letter-spacing: 0.2em; text-transform: uppercase; font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul li a { color: var(--cream); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; transition: opacity 0.2s; }
+  nav ul li a:hover { opacity: 1; color: var(--amber); }
+
+  /* ── HERO / STREET SCENE ── */
+  .hero {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #0d1a2e 0%, #1a2d1a 40%, #2a1a0a 70%, #1a0d08 100%);
+  }
+
+  /* Sky */
+  .sky {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      #0a0f1e 0%,
+      #1a1535 25%,
+      #2d1f1a 55%,
+      #3d2010 70%,
+      #1a0d08 100%);
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute; inset: 0;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--min-op, 0.3); }
+    50% { opacity: 1; }
+  }
+
+  /* Street perspective */
+  .street-scene {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
+  }
+
+  /* Road */
+  .road {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 30%;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  }
+  .road::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 8px; height: 100%;
+    background: repeating-linear-gradient(180deg, var(--amber) 0, var(--amber) 30px, transparent 30px, transparent 60px);
+    opacity: 0.6;
+  }
+  /* Sidewalk */
+  .sidewalk {
+    position: absolute; bottom: 29%; left: 0; right: 0; height: 6%;
+    background: linear-gradient(180deg, #3a3028 0%, #2a2218 100%);
+  }
+
+  /* Buildings row */
+  .buildings {
+    position: absolute; bottom: 35%; left: 0; right: 0;
+    display: flex; align-items: flex-end; justify-content: center;
+    gap: 4px; padding: 0 20px;
+  }
+
+  .building {
+    position: relative;
+    flex-shrink: 0;
+    background: var(--bg, #2a1f18);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: filter 0.3s;
+    cursor: pointer;
+  }
+  .building:hover { filter: brightness(1.3); }
+  .building:hover .storefront-label { opacity: 1; transform: translateY(0); }
+
+  /* Brick texture via gradient */
+  .building::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent, transparent 12px,
+      rgba(0,0,0,0.15) 12px, rgba(0,0,0,0.15) 13px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent, transparent 20px,
+      rgba(0,0,0,0.1) 20px, rgba(0,0,0,0.1) 21px
+    );
+    pointer-events: none;
+  }
+
+  /* Windows */
+  .windows {
+    position: absolute; inset: 8px; display: grid;
+    gap: 5px;
+  }
+  .window {
+    background: var(--win-color, #1a0a02);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .window.lit {
+    background: var(--lit, #e8a020);
+    box-shadow: 0 0 8px var(--lit, #e8a020), 0 0 20px rgba(232,160,32,0.3);
+    animation: flicker var(--flick-d, 4s) ease-in-out infinite;
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.85; }
+    94% { opacity: 1; }
+    97% { opacity: 0.9; }
+  }
+
+  .storefront {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 28%;
+    background: rgba(0,0,0,0.3);
+    border-top: 2px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .storefront-label {
+    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(6px);
+    background: var(--amber);
+    color: var(--ink);
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; white-space: nowrap; border-radius: 2px;
+    opacity: 0; transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+  }
+
+  /* Awnings */
+  .awning {
+    position: absolute; bottom: 28%; left: -4px; right: -4px; height: 8px;
+    background: var(--awning-color, #8b3a2a);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    z-index: 2;
+  }
+
+  /* Streetlamps */
+  .lamp-post {
+    position: absolute; bottom: 35%; z-index: 10;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .lamp-arm { width: 2px; height: 80px; background: #4a4030; }
+  .lamp-head {
+    width: 16px; height: 8px; background: #3a3028;
+    border-radius: 4px 4px 0 0; position: relative;
+  }
+  .lamp-glow {
+    position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 40px;
+    background: radial-gradient(circle, rgba(255,200,80,0.9) 0%, rgba(255,180,40,0.4) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: lampPulse 3s ease-in-out infinite;
+  }
+  @keyframes lampPulse {
+    0%, 100% { opacity: 0.9; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+  }
+  .lamp-base { width: 6px; height: 120px; background: linear-gradient(180deg, #4a4030 0%, #2a2018 100%); }
+
+  /* Foreground pedestrians (abstract) */
+  .pedestrian {
+    position: absolute; bottom: 36%;
+    width: 8px; height: 20px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50% 50% 0 0;
+    animation: walk linear infinite;
+  }
+  @keyframes walk {
+    from { transform: translateX(0); }
+    to { transform: translateX(120vw); }
+  }
+
+  /* Ground fog */
+  .fog {
+    position: absolute; bottom: 29%; left: 0; right: 0; height: 20px;
+    background: linear-gradient(180deg, transparent, rgba(255,200,100,0.05), transparent);
+    animation: fogDrift 8s ease-in-out infinite;
+  }
+  @keyframes fogDrift {
+    0%, 100% { opacity: 0.5; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.02); }
+  }
+
+  /* ── OVERLAY CONTENT ── */
+  .hero-content {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center; z-index: 20;
+    pointer-events: none;
+  }
+  .district-tag {
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 12px; opacity: 0.9;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--warm-white);
+    line-height: 1.05;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+  }
+  .hero-title em {
+    font-style: italic; color: var(--amber);
+    text-shadow: 0 0 40px rgba(232,160,32,0.4);
+  }
+  .hero-subtitle {
+    margin-top: 16px;
+    font-size: 0.95rem; color: rgba(245,240,232,0.75);
+    letter-spacing: 0.08em; font-weight: 300;
+  }
+
+  /* ── FLOATING BUSINESS CARDS ── */
+  .business-card {
+    position: absolute; z-index: 30;
+    background: rgba(26,18,8,0.92);
+    border: 1px solid rgba(232,160,32,0.3);
+    border-radius: 6px; padding: 12px 16px;
+    backdrop-filter: blur(4px);
+    animation: float var(--fd, 6s) ease-in-out infinite var(--fdelay, 0s);
+    cursor: pointer; transition: border-color 0.2s;
+    max-width: 160px;
+  }
+  .business-card:hover { border-color: var(--amber); }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .bc-category { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+  .bc-name { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--cream); }
+  .bc-tag { font-size: 0.65rem; color: rgba(245,240,232,0.55); margin-top: 2px; }
+  .bc-dot {
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 20px; background: linear-gradient(180deg, var(--amber), transparent);
+  }
+
+  /* ── BOTTOM STRIP ── */
+  .bottom-strip {
+    background: var(--cream);
+    padding: 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    flex-wrap: wrap;
+  }
+  .strip-intro { max-width: 500px; }
+  .strip-intro h2 {
+    font-family: 'Playfair Display', serif; font-size: 1.8rem;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .strip-intro p { color: #5a4a38; line-height: 1.6; font-size: 0.9rem; }
+
+  .category-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill {
+    padding: 8px 18px; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .pill.food { background: #2d6e6e; color: white; }
+  .pill.shop { background: #b5451b; color: white; }
+  .pill.art { background: #6b7f5e; color: white; }
+  .pill.services { background: #8b3a2a; color: white; }
+  .pill.events { background: #e8a020; color: var(--ink); }
+
+  /* concept label */
+  .concept-badge {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--amber); color: var(--ink);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    padding: 8px 16px; border-radius: 4px; text-transform: uppercase; z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    Uptown Lakewood
+    <span>Business Association</span>
+  </div>
+  <ul>
+    <li><a href="#">Explore</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Spotlight</a></li>
+    <li><a href="#">Join</a></li>
+    <li><a href="#">Start Here</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="sky"></div>
+  <div class="stars" id="stars"></div>
+
+  <!-- STREET SCENE -->
+  <div class="street-scene">
+
+    <!-- Buildings — hand-placed for variety -->
+    <div class="buildings" id="buildingRow"></div>
+
+    <!-- Street lamps -->
+    <div class="lamp-post" style="left:18%">
+      <div class="lamp-arm"></div>
+      <div class="lamp-head"><div class="lamp-glow"></div></div>
+      <div class="lamp-base"></div>
+    </div>
+    <div class="lamp-post" style="left:48%">
+      <div class="lamp-arm"></div>
+      <div class="lamp-head"><div class="lamp-glow"></div></div>
+      <div class="lamp-base"></div>
+    </div>
+    <div class="lamp-post" style="left:78%">
+      <div class="lamp-arm"></div>
+      <div class="lamp-head"><div class="lamp-glow"></div></div>
+      <div class="lamp-base"></div>
+    </div>
+
+    <div class="sidewalk"></div>
+    <div class="road"></div>
+    <div class="fog"></div>
+  </div>
+
+  <!-- Floating business cards -->
+  <div class="business-card" style="top:22%; left:8%; --fd:7s; --fdelay:0.5s;">
+    <div class="bc-category">Food & Drink</div>
+    <div class="bc-name">The Rusty Fork</div>
+    <div class="bc-tag">Farm-to-table brunch · Madison Ave</div>
+    <div class="bc-dot"></div>
+  </div>
+  <div class="business-card" style="top:18%; right:9%; --fd:5.5s; --fdelay:1s;">
+    <div class="bc-category">Retail</div>
+    <div class="bc-name">West End Provisions</div>
+    <div class="bc-tag">Gifts, goods & local finds</div>
+    <div class="bc-dot"></div>
+  </div>
+  <div class="business-card" style="top:38%; left:3%; --fd:6.5s; --fdelay:2s;">
+    <div class="bc-category">Arts & Culture</div>
+    <div class="bc-name">Studio 1240</div>
+    <div class="bc-tag">Gallery · Classes · Events</div>
+    <div class="bc-dot"></div>
+  </div>
+
+  <!-- Hero copy -->
+  <div class="hero-content">
+    <div class="district-tag">West End · Madison Avenue · Lakewood, Ohio</div>
+    <h1 class="hero-title">Your<br><em>neighborhood</em><br>awaits.</h1>
+    <p class="hero-subtitle">Explore the shops, studios & stories of Uptown Lakewood</p>
+  </div>
+
+  <!-- Pedestrians -->
+  <div class="pedestrian" style="left:-5%; --duration:12s; animation-duration:18s; bottom:37%; opacity:0.5;"></div>
+  <div class="pedestrian" style="left:-15%; animation-duration:22s; width:6px; height:16px; bottom:37.5%; opacity:0.4; animation-delay:-8s;"></div>
+
+</section>
+
+<!-- BOTTOM STRIP -->
+<section class="bottom-strip">
+  <div class="strip-intro">
+    <h2>Every block tells a story.</h2>
+    <p>Hover the map to discover what's inside — from the best Sunday brunch spot to the gallery showing new work this weekend. The district is alive. Come walk it.</p>
+  </div>
+  <div>
+    <div style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a7060; margin-bottom:12px;">Explore by category</div>
+    <div class="category-pills">
+      <div class="pill food">Eat & Drink</div>
+      <div class="pill shop">Shop</div>
+      <div class="pill art">Arts</div>
+      <div class="pill services">Services</div>
+      <div class="pill events">Events</div>
+    </div>
+  </div>
+</section>
+
+<div class="concept-badge">Concept 1 · The Living Street</div>
+
+<script>
+// Generate stars
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `
+    width:${size}px; height:${size}px;
+    top:${Math.random()*55}%;
+    left:${Math.random()*100}%;
+    --d:${(Math.random()*4+2).toFixed(1)}s;
+    --delay:-${(Math.random()*6).toFixed(1)}s;
+    --min-op:${(Math.random()*0.3+0.1).toFixed(2)};
+  `;
+  starsEl.appendChild(s);
+}
+
+// Generate buildings
+const buildings = [
+  { w:80, h:160, bg:'#3a2218', awning:'#b5451b', name:'The Rusty Fork', windows:[[3,4]] },
+  { w:60, h:120, bg:'#2a1f2e', awning:'#2d6e6e', name:'Studio 1240', windows:[[2,3]] },
+  { w:100, h:190, bg:'#1e2a1e', awning:'#6b7f5e', name:'West End Provisions', windows:[[3,5]] },
+  { w:55, h:100, bg:'#2e1a18', awning:'#8b3a2a', name:'Corner Cuts', windows:[[2,2]] },
+  { w:90, h:170, bg:'#1a1f2a', awning:'#e8a020', name:'The Ale House', windows:[[3,4]] },
+  { w:70, h:140, bg:'#2a2218', awning:'#b5451b', name:'Bloom & Co.', windows:[[2,3]] },
+  { w:85, h:155, bg:'#1e1e2e', awning:'#2d6e6e', name:'BookEnd', windows:[[3,4]] },
+  { w:65, h:125, bg:'#2a1e18', awning:'#6b7f5e', name:'Provisions', windows:[[2,3]] },
+];
+
+const litColors = ['#e8a020','#e8c080','#c8e0a0','#a0c0e8','#e8a080'];
+const row = document.getElementById('buildingRow');
+
+buildings.forEach(b => {
+  const el = document.createElement('div');
+  el.className = 'building';
+  el.style.cssText = `width:${b.w}px; height:${b.h}px; --bg:${b.bg};`;
+
+  const label = document.createElement('div');
+  label.className = 'storefront-label';
+  label.textContent = b.name;
+  el.appendChild(label);
+
+  // Windows
+  const [rows, cols] = b.windows[0];
+  const winGrid = document.createElement('div');
+  winGrid.className = 'windows';
+  winGrid.style.cssText = `grid-template-columns: repeat(${cols}, 1fr); grid-template-rows: repeat(${rows}, 1fr); bottom:32%;`;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const w = document.createElement('div');
+      w.className = 'window' + (Math.random() > 0.35 ? ' lit' : '');
+      const litColor = litColors[Math.floor(Math.random()*litColors.length)];
+      w.style.cssText = `--lit:${litColor}; --flick-d:${(Math.random()*5+3).toFixed(1)}s;`;
+      winGrid.appendChild(w);
+    }
+  }
+  el.appendChild(winGrid);
+
+  // Awning
+  const awning = document.createElement('div');
+  awning.className = 'awning';
+  awning.style.setProperty('--awning-color', b.awning);
+  el.appendChild(awning);
+
+  // Storefront
+  const sf = document.createElement('div');
+  sf.className = 'storefront';
+  el.appendChild(sf);
+
+  row.appendChild(el);
+});
+</script>
+</body>
+</html>

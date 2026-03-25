@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 3: The Community Broadside</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Special+Elite&family=Space+Grotesk:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --paper: #f2ede4;
+    --paper-dark: #e8e0d0;
+    --ink: #1a1610;
+    --accent: #c8341a; /* this month's edition color */
+    --muted: #7a7060;
+    --border: rgba(26,22,16,0.15);
+  }
+
+  body {
+    background: var(--paper);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* Paper grain */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px;
+  }
+
+  /* ── EDITION HEADER ── */
+  .edition-header {
+    position: relative; z-index: 1;
+    border-bottom: 3px solid var(--ink);
+    padding: 8px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .edition-meta {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .edition-number {
+    background: var(--accent);
+    color: white; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 3px 10px;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    position: relative; z-index: 1;
+    padding: 20px 40px 16px;
+    border-bottom: 6px double var(--ink);
+    text-align: center;
+  }
+  .masthead-sub {
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .masthead-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900; line-height: 0.88;
+    letter-spacing: -0.02em;
+  }
+  .masthead-title .up { display: block; }
+  .masthead-title .town {
+    display: block; color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .masthead-rule {
+    height: 1px; background: var(--ink); opacity: 0.2;
+    margin: 12px 0;
+  }
+  .masthead-tagline {
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem; color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MAIN GRID ── */
+  .broadside-grid {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+    border-bottom: 3px solid var(--ink);
+  }
+
+  .grid-cell {
+    border-right: 1px solid var(--border);
+    padding: 28px 28px;
+  }
+  .grid-cell:last-child { border-right: none; }
+
+  /* CENTER CELL — cover story */
+  .cover-story {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 28px 36px;
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    font-weight: 700; color: var(--accent);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--accent); opacity: 0.4;
+  }
+
+  /* Cover story photo placeholder */
+  .cover-photo {
+    width: 100%; height: 240px;
+    background:
+      linear-gradient(135deg, #2a2018 0%, #1a1410 50%, #2d2820 100%);
+    margin-bottom: 16px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cover-photo-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1.2rem;
+    color: rgba(242,237,228,0.3);
+    text-align: center; padding: 20px;
+  }
+  /* Photo torn edge */
+  .cover-photo::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 0; height: 8px;
+    background: var(--paper);
+    clip-path: polygon(0 100%, 3% 0, 7% 80%, 11% 10%, 15% 90%, 19% 0, 24% 100%, 28% 20%, 32% 85%, 36% 5%, 40% 100%, 44% 30%, 48% 95%, 52% 0, 56% 100%, 61% 25%, 65% 90%, 69% 5%, 74% 100%, 78% 20%, 82% 80%, 86% 0, 90% 100%, 94% 30%, 98% 90%, 100% 100%);
+  }
+
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .deck {
+    font-size: 0.9rem; line-height: 1.65;
+    color: var(--muted); font-style: italic;
+    margin-bottom: 16px;
+    font-family: 'Playfair Display', serif;
+  }
+  .byline {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .body-text {
+    font-size: 0.82rem; line-height: 1.7; color: #3a3020;
+    columns: 2; column-gap: 24px;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+    break-inside: avoid;
+    column-span: all;
+  }
+  .pull-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; line-height: 0.7;
+    color: var(--accent);
+    position: absolute; top: 12px; left: 16px;
+    opacity: 0.8;
+  }
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1.1rem;
+    line-height: 1.4; padding-left: 20px;
+  }
+  .pull-quote cite { display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 8px; opacity: 0.6; padding-left: 20px; }
+
+  /* Left column — small items */
+  .small-item { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .small-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .small-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 6px;
+  }
+  .small-text { font-size: 0.78rem; line-height: 1.6; color: var(--muted); }
+
+  /* Right column — events */
+  .event-list { list-style: none; }
+  .event-item {
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 44px 1fr; gap: 12px;
+    align-items: start;
+  }
+  .event-date {
+    text-align: center;
+    background: var(--ink); color: var(--paper);
+    padding: 4px 0;
+  }
+  .event-date .day { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1; }
+  .event-date .month { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; }
+  .event-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 2px; }
+  .event-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+  .event-venue { font-size: 0.65rem; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; margin-top: 3px; }
+
+  /* ── BOTTOM STRIP ── */
+  .bottom-strip {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-bottom: 3px solid var(--ink);
+  }
+  .bottom-cell {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+    cursor: pointer; transition: background 0.2s;
+  }
+  .bottom-cell:last-child { border-right: none; }
+  .bottom-cell:hover { background: rgba(26,22,16,0.04); }
+  .bc-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: rgba(26,22,16,0.08); line-height: 1; }
+  .bc-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .bc-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .bc-text { font-size: 0.75rem; line-height: 1.55; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  .footer {
+    position: relative; z-index: 1;
+    padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .footer-note { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
+  .footer-logo { font-family: 'Special Elite', cursive; font-size: 0.8rem; color: var(--ink); }
+
+  /* Rubber stamp effect */
+  .stamp {
+    position: absolute; top: 20px; right: 28px;
+    border: 3px solid var(--accent);
+    color: var(--accent); font-family: 'Special Elite', cursive;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 10px; transform: rotate(-8deg);
+    opacity: 0.75;
+  }
+
+  .concept-badge {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--accent); color: white;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 8px 16px; text-transform: uppercase; z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<!-- EDITION HEADER -->
+<div class="edition-header">
+  <div class="edition-meta">Volume I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Free</div>
+  <div class="edition-number">Spring Edition</div>
+  <div class="edition-meta">West End · Madison Avenue · Lakewood, Ohio</div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-sub">Community Publication of the</div>
+  <div class="masthead-title">
+    <span class="up">UPTOWN</span>
+    <span class="town">LAKEWOOD</span>
+  </div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-tagline">"The Neighborhood Is The Story" &nbsp;&nbsp;·&nbsp;&nbsp; Business Association of the West End</div>
+</header>
+
+<!-- MAIN BROADSIDE GRID -->
+<section class="broadside-grid">
+
+  <!-- LEFT COLUMN -->
+  <div class="grid-cell">
+    <div class="section-label">In Brief</div>
+
+    <div class="small-item">
+      <div class="small-headline">New businesses joining the west end all spring</div>
+      <div class="small-text">Three new storefronts signed leases on the 1200 block this month, bringing the district to its highest occupancy since 2019.</div>
+    </div>
+    <div class="small-item">
+      <div class="small-headline">Sidewalk season starts April 19th</div>
+      <div class="small-text">Outdoor seating permits approved for all participating businesses. The block will look alive.</div>
+    </div>
+    <div class="small-item">
+      <div class="small-headline">Looking to open here?</div>
+      <div class="small-text">We connect you with the right contacts at Lakewood Live and the City. No cold calls. We know the people.</div>
+    </div>
+    <div class="small-item">
+      <div class="small-headline">Follow us district-wide</div>
+      <div class="small-text">Business spotlights, event recaps, and neighborhood stories hit the feed every week.</div>
+    </div>
+  </div>
+
+  <!-- CENTER — COVER STORY -->
+  <div class="cover-story">
+    <div class="stamp">This Month's Spotlight</div>
+    <div class="section-label">Business Spotlight</div>
+
+    <div class="cover-photo">
+      <div class="cover-photo-text">Portrait photography<br>of this month's featured business</div>
+    </div>
+
+    <div class="byline">By the ULBA Editorial Team</div>
+    <h2 class="headline">The shop that became the neighborhood's living room</h2>
+    <p class="deck">How one small business on the west end of Madison turned a storefront into a community anchor — and what they're planning next.</p>
+
+    <div class="pull-quote">
+      <p>This isn't just where I come to shop. This is where I come to find out what's happening in my neighborhood.</p>
+      <cite>— A Regular</cite>
+    </div>
+
+    <p class="body-text">
+      When they opened the door on a cold January morning three years ago, they didn't know if anyone would come. Now, the shop on the 1200 block of Madison Avenue is standing room only on Saturday afternoons.
+      <br><br>
+      It started with a simple idea: bring the things the neighborhood was missing to the neighborhood that was asking for them. Local goods, local art, local knowledge.
+      <br><br>
+      The owners have become de facto historians of the west end, tracking who moves in, what closes, what the street needs. Their chalkboard calendar is often the most reliable event listing in the district.
+    </p>
+  </div>
+
+  <!-- RIGHT COLUMN — EVENTS -->
+  <div class="grid-cell">
+    <div class="section-label">This Month</div>
+    <ul class="event-list">
+      <li class="event-item">
+        <div class="event-date"><div class="day">05</div><div class="month">Apr</div></div>
+        <div>
+          <div class="event-title">Spring Gallery Walk</div>
+          <div class="event-desc">Six studios open their doors for a self-guided evening.</div>
+          <div class="event-venue">West End District</div>
+        </div>
+      </li>
+      <li class="event-item">
+        <div class="event-date"><div class="day">12</div><div class="month">Apr</div></div>
+        <div>
+          <div class="event-title">Founder's Mixer</div>
+          <div class="event-desc">Network with business owners & Lakewood city reps.</div>
+          <div class="event-venue">The Ale House · Madison Ave</div>
+        </div>
+      </li>
+      <li class="event-item">
+        <div class="event-date"><div class="day">19</div><div class="month">Apr</div></div>
+        <div>
+          <div class="event-title">Sidewalk Season Kickoff</div>
+          <div class="event-desc">Opening day. The whole street, outside.</div>
+          <div class="event-venue">Full Block · 1200–1400 Madison</div>
+        </div>
+      </li>
+      <li class="event-item">
+        <div class="event-date"><div class="day">26</div><div class="month">Apr</div></div>
+        <div>
+          <div class="event-title">New Business Workshop</div>
+          <div class="event-desc">Starting a business in Lakewood? Start here.</div>
+          <div class="event-venue">Lakewood Public Library</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- BOTTOM STRIP -->
+<section class="bottom-strip">
+  <div class="bottom-cell">
+    <div class="bc-label">Directory</div>
+    <div class="bc-title">Find Every Business</div>
+    <p class="bc-text">Every shop, bar, studio, and service on the west end — with hours, location, and what's happening.</p>
+  </div>
+  <div class="bottom-cell">
+    <div class="bc-label">Spotlights</div>
+    <div class="bc-title">Their Story, Told Right</div>
+    <p class="bc-text">Monthly in-depth features on the people behind the storefronts. Real portraits. Real words.</p>
+  </div>
+  <div class="bottom-cell">
+    <div class="bc-label">Sign Up</div>
+    <div class="bc-title">List Your Business</div>
+    <p class="bc-text">Get in the directory, be considered for spotlights, and plug into the district community.</p>
+  </div>
+  <div class="bottom-cell">
+    <div class="bc-label">Resources</div>
+    <div class="bc-title">Starting Here</div>
+    <p class="bc-text">Navigating permits, city contacts, Lakewood Live — we connect new businesses to the right people.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-note">© 2026 Uptown Lakewood Business Association &nbsp;·&nbsp; West End · Madison Avenue · Lakewood, Ohio</div>
+  <div class="footer-logo">ULBA · The Community Broadside</div>
+  <div class="footer-note">Published monthly &nbsp;·&nbsp; Free &nbsp;·&nbsp; Distributed throughout the district</div>
+</footer>
+
+<div class="concept-badge">Concept 3 · The Community Broadside</div>
+
+</body>
+</html>

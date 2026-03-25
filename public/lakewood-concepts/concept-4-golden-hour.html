@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 4: Golden Hour Lakewood</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --honey: #e8960a;
+    --amber: #c97820;
+    --terracotta: #c4522a;
+    --sage: #5e7a5a;
+    --cream: #faf5eb;
+    --warm-white: #fefcf6;
+    --ink: #1c160e;
+    --muted: #7a6a50;
+    --sand: #d4c4a0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 48px;
+    height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(254,252,246,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,196,160,0.3);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-mark-circle {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-mark-circle span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: white;
+    font-style: italic;
+  }
+  .logo-name { line-height: 1.2; }
+  .logo-name .top { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+  .logo-name .bot { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--honey); color: white !important;
+    padding: 10px 22px; border-radius: 999px;
+    font-weight: 700 !important; font-size: 0.8rem !important;
+    letter-spacing: 0.05em; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--amber) !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+
+  /* Golden hour sky gradient */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      160deg,
+      #f5e8c8 0%,
+      #f0d490 20%,
+      #e8a840 40%,
+      #c87830 55%,
+      #8b3a1a 75%,
+      #3a1a0e 100%
+    );
+    opacity: 0.15;
+  }
+
+  /* Warm overlay gradient */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(254,252,246,0.98) 0%,
+      rgba(254,252,246,0.92) 45%,
+      rgba(254,252,246,0.4) 65%,
+      rgba(254,252,246,0) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Photo canvas */
+  .hero-photo-canvas {
+    position: absolute; right: 0; top: 70px; bottom: 0;
+    width: 60%;
+    background:
+      linear-gradient(160deg, #c87030 0%, #e8a020 30%, #8b4020 60%, #3a2010 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Illustrated golden hour scene */
+  .scene-art {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(255,220,100,0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 80%, rgba(180,80,20,0.4) 0%, transparent 60%),
+      linear-gradient(180deg, #1a2a3a 0%, #3a5040 25%, #6a7850 50%, #c89840 75%, #2a1808 100%);
+  }
+
+  /* Sun disc */
+  .sun {
+    position: absolute; top: 15%; right: 25%;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, #fff8d0 0%, #ffe060 30%, #ffa820 60%, rgba(255,140,20,0) 100%);
+    animation: sunGlow 4s ease-in-out infinite;
+    filter: blur(2px);
+  }
+  @keyframes sunGlow {
+    0%,100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  /* Silhouette buildings */
+  .silhouette-row {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; align-items: flex-end;
+  }
+  .sil-building {
+    background: rgba(10,8,5,0.85);
+    flex-shrink: 0;
+    position: relative;
+  }
+  /* Windows with warm glow */
+  .sil-window {
+    position: absolute;
+    background: rgba(255,220,100,0.7);
+    box-shadow: 0 0 6px rgba(255,200,80,0.6);
+    animation: winFlicker var(--d,4s) ease-in-out infinite var(--del,0s);
+  }
+  @keyframes winFlicker { 0%,100%{opacity:0.8;} 50%{opacity:1;} 97%{opacity:1;} 98%{opacity:0.3;} }
+
+  /* Tree silhouettes */
+  .tree { position: absolute; bottom: 0; }
+  .tree-trunk { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background: rgba(10,8,5,0.9); }
+  .tree-crown { position: absolute; border-radius: 50% 50% 40% 40%; background: rgba(15,25,10,0.85); }
+
+  /* Photo placeholder text */
+  .photo-placeholder-text {
+    position: relative; z-index: 5;
+    text-align: center; color: rgba(255,255,255,0.2);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.1rem;
+    pointer-events: none;
+  }
+
+  /* Hero content */
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 80px 48px 80px 60px;
+    max-width: 600px;
+  }
+
+  .location-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--amber); font-weight: 700; margin-bottom: 24px;
+  }
+  .location-tag::before {
+    content: ''; width: 20px; height: 2px; background: var(--amber);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  h1 em {
+    font-style: italic; font-weight: 600;
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-text {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--muted); font-weight: 300; max-width: 440px;
+    margin-bottom: 40px;
+  }
+
+  .cta-cluster { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    color: white; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.08em; padding: 16px 32px; border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(200,120,32,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,120,32,0.5); }
+  .btn-text {
+    font-size: 0.85rem; color: var(--amber); font-weight: 700;
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+    cursor: pointer;
+  }
+  .btn-text:hover { color: var(--terracotta); }
+
+  /* ── TRUST ROW ── */
+  .trust-row {
+    position: relative; z-index: 2;
+    margin-top: 50px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; line-height: 1;
+    color: var(--honey);
+  }
+  .trust-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; margin-top: 2px; }
+
+  /* ── FEATURE CARDS ── */
+  .features {
+    background: var(--cream);
+    padding: 80px 60px;
+  }
+  .features-header { text-align: center; margin-bottom: 60px; }
+  .features-header .eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 12px;
+  }
+  .features-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300; color: var(--ink);
+  }
+  .features-header h2 em { font-style: italic; font-weight: 600; }
+
+  .cards-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+
+  .feature-card {
+    background: var(--warm-white);
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(212,196,160,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(140,80,20,0.12);
+  }
+
+  .card-image {
+    height: 200px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-image.food {
+    background: linear-gradient(135deg, #c87020, #8b4010, #e8a030);
+  }
+  .card-image.shop {
+    background: linear-gradient(135deg, #5e7a5a, #3a5035, #8ba080);
+  }
+  .card-image.arts {
+    background: linear-gradient(135deg, #c4522a, #7a2a10, #e87840);
+  }
+  .card-img-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1rem;
+    color: rgba(255,255,255,0.3); text-align: center; padding: 20px;
+  }
+  /* Golden hour light streak */
+  .card-image::after {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 40%; opacity: 0.3;
+    background: linear-gradient(90deg, transparent, rgba(255,220,100,0.6));
+  }
+
+  .card-body { padding: 24px 28px; }
+  .card-tag {
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .card-tag.food { color: var(--amber); }
+  .card-tag.shop { color: var(--sage); }
+  .card-tag.arts { color: var(--terracotta); }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .card-text { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 16px; font-size: 0.78rem; font-weight: 700;
+    color: var(--honey); cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* ── SPOTLIGHT STRIP ── */
+  .spotlight-strip {
+    padding: 80px 60px;
+    background: var(--ink);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .spotlight-text .label {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--honey); margin-bottom: 16px;
+  }
+  .spotlight-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 20px;
+  }
+  .spotlight-text h2 em { font-style: italic; font-weight: 600; color: var(--honey); }
+  .spotlight-text p { font-size: 0.9rem; color: rgba(250,245,235,0.6); line-height: 1.7; margin-bottom: 28px; }
+  .spotlight-text a {
+    color: var(--honey); font-weight: 700; font-size: 0.85rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+
+  .spotlight-portrait {
+    position: relative;
+  }
+  .portrait-frame {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #c87030, #8b4020, #3a1808);
+    border-radius: 8px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .portrait-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 40% 30%, rgba(255,200,80,0.3) 0%, transparent 60%);
+  }
+  .portrait-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1rem;
+    color: rgba(255,255,255,0.2); text-align: center; padding: 40px; position: relative; z-index: 1;
+  }
+  .portrait-caption {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--honey); color: var(--ink);
+    padding: 16px 20px; border-radius: 8px;
+    font-size: 0.75rem; font-weight: 700;
+    box-shadow: 0 8px 24px rgba(200,120,20,0.4);
+  }
+  .portrait-caption span { display: block; font-weight: 300; opacity: 0.8; margin-top: 2px; }
+
+  .concept-badge {
+    position: fixed; bottom: 20px; right: 20px;
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    color: white;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 8px 16px; border-radius: 999px; text-transform: uppercase; z-index: 999;
+    box-shadow: 0 4px 16px rgba(200,120,20,0.4);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark-circle"><span>U</span></div>
+    <div class="logo-name">
+      <div class="top">Uptown Lakewood</div>
+      <div class="bot">Business Association</div>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#">The District</a></li>
+    <li><a href="#">Businesses</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Spotlight</a></li>
+    <li><a href="#">Start a Business</a></li>
+    <li><a href="#" class="nav-cta">Join the Association</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Photo side -->
+  <div class="hero-photo-canvas">
+    <div class="scene-art"></div>
+    <div class="sun"></div>
+    <!-- Silhouette buildings -->
+    <div class="silhouette-row" id="silRow"></div>
+    <!-- Trees -->
+    <div class="photo-placeholder-text" style="z-index:10;">
+      Golden hour photography of<br>Madison Avenue West End
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- Text side -->
+  <div class="hero-content">
+    <div class="location-tag">West End · Madison Ave · Lakewood, Ohio</div>
+    <h1>
+      Come for the coffee.<br>
+      Stay for the <em>community.</em>
+    </h1>
+    <p class="hero-text">
+      Uptown Lakewood's west end is a neighborhood alive with independent
+      shops, studios, bars, and restaurants. This is where Lakewood gathers.
+    </p>
+    <div class="cta-cluster">
+      <button class="btn-primary">Explore the District</button>
+      <a class="btn-text" href="#">What's happening this weekend →</a>
+    </div>
+
+    <!-- Trust row -->
+    <div class="trust-row">
+      <div class="trust-item">
+        <div class="trust-num">40+</div>
+        <div class="trust-label">Member businesses</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">12+</div>
+        <div class="trust-label">Events each year</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1</div>
+        <div class="trust-label">Great neighborhood</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE CARDS -->
+<section class="features">
+  <div class="features-header">
+    <div class="eyebrow">The West End Has It All</div>
+    <h2>Everything you need,<br><em>all on one street.</em></h2>
+  </div>
+  <div class="cards-grid">
+    <div class="feature-card">
+      <div class="card-image food">
+        <div class="card-img-text">Photography: dining & bars<br>on Madison Ave</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag food">Eat & Drink</div>
+        <div class="card-title">From first coffee to last call</div>
+        <p class="card-text">Independent cafés, neighborhood bars, wine shops, and restaurants that cook with intention. Every meal is local.</p>
+        <a class="card-link" href="#">See all restaurants →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="card-image shop">
+        <div class="card-img-text">Photography: retail storefronts<br>& boutiques</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag shop">Shop Local</div>
+        <div class="card-title">Goods worth having</div>
+        <p class="card-text">Boutiques, bookshops, plant shops, and makers markets. Things made by people who live here, sold by people who care.</p>
+        <a class="card-link" href="#">Browse the shops →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="card-image arts">
+        <div class="card-img-text">Photography: galleries &<br>community events</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag arts">Arts & Culture</div>
+        <div class="card-title">Something's always on</div>
+        <p class="card-text">Gallery walks, live music, workshops, pop-ups. The west end's calendar is never empty — and you're always welcome.</p>
+        <a class="card-link" href="#">See what's on →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS SPOTLIGHT STRIP -->
+<section class="spotlight-strip">
+  <div class="spotlight-text">
+    <div class="label">Business Spotlight · March 2026</div>
+    <h2>The people who make<br>this <em>neighborhood</em> worth walking.</h2>
+    <p>Every month, we sit down with one of the west end's business owners to hear their story — why they came here, what they've built, and what they love about this street.</p>
+    <a href="#">Read this month's spotlight →</a>
+  </div>
+  <div class="spotlight-portrait">
+    <div class="portrait-frame">
+      <div class="portrait-placeholder">
+        Golden-hour portrait photography<br>of this month's featured<br>business owner
+      </div>
+    </div>
+    <div class="portrait-caption">
+      This Month's Feature
+      <span>West End Business Owner</span>
+    </div>
+  </div>
+</section>
+
+<div class="concept-badge">Concept 4 · Golden Hour</div>
+
+<script>
+// Build silhouette buildings
+const row = document.getElementById('silRow');
+const bldgs = [
+  {w:80,h:160},{w:55,h:110},{w:90,h:180},{w:65,h:130},
+  {w:100,h:200},{w:70,h:145},{w:85,h:165},{w:60,h:120},
+  {w:95,h:175},{w:75,h:150},{w:50,h:100},{w:110,h:210},
+];
+bldgs.forEach(b => {
+  const el = document.createElement('div');
+  el.className = 'sil-building';
+  el.style.cssText = `width:${b.w}px; height:${b.h}px;`;
+  // Add windows
+  const cols = Math.floor(b.w/22);
+  const rows = Math.floor(b.h/28);
+  for (let r = 1; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (Math.random() > 0.4) {
+        const w = document.createElement('div');
+        w.className = 'sil-window';
+        w.style.cssText = `
+          width:10px; height:14px;
+          top:${r*26}px; left:${c*22+6}px;
+          --d:${(Math.random()*4+3).toFixed(1)}s;
+          --del:-${(Math.random()*6).toFixed(1)}s;
+        `;
+        el.appendChild(w);
+      }
+    }
+  }
+  row.appendChild(el);
+});
+</script>
+</body>
+</html>
