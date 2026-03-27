@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptown Lakewood Business Alliance — West End of Madison Ave, Lakewood OH</title>
+<meta name="description" content="The Uptown Lakewood Business Alliance connects businesses and community on the west end of Madison Avenue between Warren and Riverside in Lakewood, Ohio.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --honey: #d4960e;
+    --amber: #c97820;
+    --terracotta: #c4522a;
+    --slate-blue: #5b7db1;
+    --slate-dark: #3d5a85;
+    --cream: #faf5eb;
+    --warm-white: #fefcf6;
+    --ink: #1c160e;
+    --muted: #7a6a50;
+    --sand: #d4c4a0;
+    --light-sand: #ede5d4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 48px;
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(254,252,246,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,196,160,0.25);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(254,252,246,0.98);
+    box-shadow: 0 2px 20px rgba(28,22,14,0.08);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: inherit;
+  }
+  .logo-mark {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--slate-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-mark span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: white;
+    letter-spacing: 0.05em;
+  }
+  .logo-text { line-height: 1.15; }
+  .logo-text .top {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--slate-blue);
+    letter-spacing: 0.02em;
+  }
+  .logo-text .bot {
+    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+
+  .nav-links { list-style: none; display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.82rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--honey), var(--amber));
+    color: white !important; padding: 10px 24px;
+    border-radius: 999px; font-weight: 700 !important;
+    font-size: 0.78rem !important; letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+    box-shadow: 0 4px 12px rgba(200,120,32,0.25);
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(200,120,32,0.4) !important;
+  }
+
+  .nav-hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 32px; height: 24px; position: relative;
+  }
+  .nav-hamburger span {
+    display: block; width: 100%; height: 2px; background: var(--ink);
+    position: absolute; left: 0; transition: 0.3s;
+  }
+  .nav-hamburger span:nth-child(1) { top: 0; }
+  .nav-hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .nav-hamburger span:nth-child(3) { bottom: 0; }
+
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-sky {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      170deg,
+      #fef8e8 0%,
+      #fde8b0 15%,
+      #f5c060 30%,
+      #e89830 45%,
+      #c06828 60%,
+      #8b3820 75%,
+      #3a1a10 90%,
+      #1a0e08 100%
+    );
+  }
+
+  /* Animated sun glow */
+  .hero-sun {
+    position: absolute;
+    top: 12%; right: 18%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,248,210,0.9) 0%, rgba(255,220,80,0.6) 25%, rgba(255,160,40,0.3) 50%, transparent 70%);
+    animation: sunPulse 6s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes sunPulse {
+    0%,100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+
+  /* Lake Erie water reflection */
+  .hero-lake {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 25%;
+    background: linear-gradient(180deg,
+      rgba(91,125,177,0.15) 0%,
+      rgba(91,125,177,0.25) 40%,
+      rgba(61,90,133,0.35) 100%
+    );
+    z-index: 1;
+  }
+  .hero-lake::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      rgba(255,220,100,0.08) 4px,
+      rgba(255,220,100,0.08) 6px
+    );
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%,100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Silhouette skyline */
+  .hero-skyline {
+    position: absolute; bottom: 24%; left: 0; right: 0;
+    height: 220px; z-index: 2;
+  }
+  .hero-skyline svg { width: 100%; height: 100%; }
+
+  /* Overlay for text readability */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(254,252,246,0.96) 0%,
+      rgba(254,252,246,0.88) 35%,
+      rgba(254,252,246,0.4) 55%,
+      transparent 70%
+    );
+    z-index: 3;
+  }
+
+  .hero-content {
+    position: relative; z-index: 4;
+    padding: 60px 48px 60px 64px;
+    max-width: 620px;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber); font-weight: 700; margin-bottom: 24px;
+  }
+  .hero-tag::before {
+    content: ''; width: 24px; height: 2px;
+    background: linear-gradient(to right, var(--honey), var(--terracotta));
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.2vw, 5rem);
+    font-weight: 300; line-height: 1.08;
+    color: var(--ink); margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 600;
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--muted); font-weight: 300;
+    max-width: 460px; margin-bottom: 36px;
+  }
+
+  .hero-btns { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center;
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    color: white; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.84rem;
+    font-weight: 700; letter-spacing: 0.06em;
+    padding: 15px 32px; border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(200,120,32,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(200,120,32,0.45);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.84rem; color: var(--slate-blue);
+    font-weight: 600; text-decoration: none; cursor: pointer;
+    transition: color 0.2s;
+  }
+  .btn-secondary:hover { color: var(--slate-dark); }
+  .btn-secondary svg { transition: transform 0.2s; }
+  .btn-secondary:hover svg { transform: translateX(3px); }
+
+  .hero-stats {
+    margin-top: 48px; display: flex; gap: 36px; flex-wrap: wrap;
+  }
+  .hero-stat { display: flex; flex-direction: column; }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; line-height: 1;
+    color: var(--honey);
+  }
+  .hero-stat-label {
+    font-size: 0.7rem; color: var(--muted);
+    letter-spacing: 0.04em; margin-top: 4px;
+  }
+
+  /* ══════════════════════════════════════
+     SHARED SECTION STYLES
+     ══════════════════════════════════════ */
+  .section-pad { padding: 100px 48px; }
+  .section-pad-lg { padding: 120px 48px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .eyebrow.amber { color: var(--amber); }
+  .eyebrow.slate { color: var(--slate-blue); }
+  .eyebrow.terra { color: var(--terracotta); }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 300; color: var(--ink); line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-heading em {
+    font-style: italic; font-weight: 600;
+  }
+  .section-heading em.gold {
+    background: linear-gradient(135deg, var(--honey), var(--terracotta));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-heading em.blue { color: var(--slate-blue); }
+  .section-sub {
+    font-size: 0.95rem; line-height: 1.7;
+    color: var(--muted); max-width: 560px;
+  }
+
+  /* ══════════════════════════════════════
+     ABOUT
+     ══════════════════════════════════════ */
+  .about { background: var(--cream); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .about-pillars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-top: 8px;
+  }
+  .pillar {
+    background: var(--warm-white);
+    border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 14px; padding: 28px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(140,80,20,0.08);
+  }
+  .pillar-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; font-size: 1.3rem;
+  }
+  .pillar-icon.gold { background: rgba(212,150,14,0.12); color: var(--honey); }
+  .pillar-icon.blue { background: rgba(91,125,177,0.12); color: var(--slate-blue); }
+  .pillar-icon.terra { background: rgba(196,82,42,0.12); color: var(--terracotta); }
+  .pillar-icon.green { background: rgba(94,122,90,0.12); color: #5e7a5a; }
+  .pillar h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .pillar p {
+    font-size: 0.8rem; line-height: 1.6; color: var(--muted);
+  }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-photo {
+    width: 100%; aspect-ratio: 4/3;
+    border-radius: 12px; overflow: hidden;
+    background: linear-gradient(145deg, #ddd0b8, #c4b090, #a8946c);
+    position: relative;
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(255,200,80,0.2) 0%, transparent 60%);
+  }
+  .about-photo-text {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.95rem;
+    color: rgba(255,255,255,0.35); text-align: center;
+    padding: 40px;
+  }
+  .about-badge {
+    position: absolute; bottom: -16px; left: -16px;
+    background: var(--slate-blue); color: white;
+    padding: 18px 24px; border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(91,125,177,0.3);
+    z-index: 2;
+  }
+  .about-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 700; line-height: 1;
+  }
+  .about-badge-text {
+    font-size: 0.68rem; letter-spacing: 0.06em;
+    opacity: 0.85; margin-top: 2px;
+  }
+
+  /* ══════════════════════════════════════
+     BUSINESS DIRECTORY
+     ══════════════════════════════════════ */
+  .directory { background: var(--warm-white); }
+  .directory-header { text-align: center; margin-bottom: 56px; }
+  .directory-header .section-sub { margin: 0 auto; }
+
+  .biz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .biz-card {
+    background: var(--cream);
+    border: 1px solid rgba(212,196,160,0.3);
+    border-radius: 14px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .biz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(140,80,20,0.1);
+  }
+  .biz-thumb {
+    height: 140px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .biz-thumb::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+  }
+  .biz-thumb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.8rem;
+    color: rgba(255,255,255,0.3); text-align: center;
+    position: relative; z-index: 1; padding: 12px;
+  }
+  .biz-info { padding: 18px 20px; }
+  .biz-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600;
+    margin-bottom: 4px; line-height: 1.2;
+  }
+  .biz-type {
+    font-size: 0.7rem; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Color scheme per category */
+  .biz-thumb.food { background: linear-gradient(140deg, #c87020, #a05818, #d49030); }
+  .biz-thumb.drink { background: linear-gradient(140deg, #8b4020, #6a2a10, #b06030); }
+  .biz-thumb.retail { background: linear-gradient(140deg, #5e7a5a, #3a5035, #7a9a70); }
+  .biz-thumb.salon { background: linear-gradient(140deg, #9a6a8a, #6a3a5a, #b888a0); }
+  .biz-thumb.wellness { background: linear-gradient(140deg, #5b7db1, #3d5a85, #7a9ac8); }
+  .biz-thumb.cafe { background: linear-gradient(140deg, #b08850, #8a6838, #c8a068); }
+  .biz-thumb.bar { background: linear-gradient(140deg, #c4522a, #8b3218, #e07040); }
+  .biz-thumb.gallery { background: linear-gradient(140deg, #6a5a8a, #4a3a6a, #8a78a8); }
+
+  /* ══════════════════════════════════════
+     EVENTS
+     ══════════════════════════════════════ */
+  .events { background: var(--cream); }
+  .events-inner {
+    display: grid; grid-template-columns: 1fr 1.5fr;
+    gap: 60px; align-items: start;
+  }
+  .events-list { display: flex; flex-direction: column; gap: 20px; }
+  .event-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 14px; padding: 28px;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 24px; align-items: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(140,80,20,0.08);
+  }
+  .event-date {
+    width: 64px; text-align: center;
+    background: linear-gradient(135deg, var(--honey), var(--amber));
+    border-radius: 12px; padding: 12px 8px; color: white;
+  }
+  .event-date-month {
+    font-size: 0.6rem; letter-spacing: 0.15em;
+    text-transform: uppercase; font-weight: 700; opacity: 0.9;
+  }
+  .event-date-day {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; line-height: 1;
+  }
+  .event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600;
+    margin-bottom: 6px; line-height: 1.2;
+  }
+  .event-meta {
+    font-size: 0.75rem; color: var(--muted);
+    margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .event-meta span {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .event-desc {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ══════════════════════════════════════
+     SPOTLIGHT
+     ══════════════════════════════════════ */
+  .spotlight {
+    background: var(--ink);
+    position: relative; overflow: hidden;
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(212,150,14,0.08) 0%, transparent 60%);
+  }
+  .spotlight-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .spotlight-text .section-heading { color: var(--cream); }
+  .spotlight-text .section-heading em { color: var(--honey); -webkit-text-fill-color: var(--honey); }
+  .spotlight-text p {
+    font-size: 0.92rem; color: rgba(250,245,235,0.55);
+    line-height: 1.75; margin-bottom: 12px;
+  }
+  .spotlight-text blockquote {
+    border-left: 3px solid var(--honey);
+    padding-left: 20px; margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.2rem;
+    color: rgba(250,245,235,0.75); line-height: 1.5;
+  }
+  .spotlight-text .spotlight-cite {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal; font-size: 0.78rem;
+    color: var(--honey); letter-spacing: 0.04em;
+    display: block; margin-top: 8px;
+  }
+  .spotlight-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--honey); font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    margin-top: 20px; transition: gap 0.2s;
+  }
+  .spotlight-link:hover { gap: 12px; }
+
+  .spotlight-portrait {
+    position: relative;
+  }
+  .portrait-frame {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: 12px; overflow: hidden;
+    background: linear-gradient(160deg, #c87030, #8b4020, #3a1808);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .portrait-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 35% 30%, rgba(255,200,80,0.25) 0%, transparent 60%);
+  }
+  .portrait-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.95rem;
+    color: rgba(255,255,255,0.2); text-align: center;
+    padding: 40px; position: relative; z-index: 1;
+  }
+  .portrait-label {
+    position: absolute; bottom: -16px; right: 24px;
+    background: var(--honey); color: var(--ink);
+    padding: 14px 22px; border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(200,120,20,0.4);
+    z-index: 2;
+  }
+  .portrait-label strong {
+    display: block; font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .portrait-label span {
+    font-size: 0.7rem; opacity: 0.75;
+  }
+
+  /* ══════════════════════════════════════
+     JOIN / CTA
+     ══════════════════════════════════════ */
+  .join {
+    background: var(--warm-white);
+    position: relative; overflow: hidden;
+  }
+  .join::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,150,14,0.06) 0%, transparent 70%);
+  }
+  .join-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .join-form {
+    background: var(--cream);
+    border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 16px; padding: 40px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 0.75rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 13px 16px;
+    border: 1px solid var(--light-sand);
+    border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; color: var(--ink);
+    background: var(--warm-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--slate-blue);
+    box-shadow: 0 0 0 3px rgba(91,125,177,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .btn-submit {
+    width: 100%; padding: 15px;
+    background: var(--slate-blue); color: white;
+    border: none; border-radius: 999px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-submit:hover {
+    background: var(--slate-dark);
+    transform: translateY(-1px);
+  }
+
+  /* ══════════════════════════════════════
+     START A BUSINESS
+     ══════════════════════════════════════ */
+  .start-biz { background: var(--cream); }
+  .start-biz-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .resource-cards { display: flex; flex-direction: column; gap: 16px; }
+  .resource-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 14px; padding: 28px;
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 20px; align-items: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(140,80,20,0.08);
+  }
+  .resource-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .resource-icon.gold { background: rgba(212,150,14,0.12); }
+  .resource-icon.blue { background: rgba(91,125,177,0.12); }
+  .resource-icon.terra { background: rgba(196,82,42,0.12); }
+  .resource-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .resource-text {
+    font-size: 0.82rem; line-height: 1.6; color: var(--muted);
+  }
+  .resource-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 700;
+    color: var(--slate-blue); text-decoration: none;
+    margin-top: 8px; transition: gap 0.2s;
+  }
+  .resource-link:hover { gap: 10px; }
+
+  .start-biz-cta {
+    background: var(--warm-white);
+    border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 16px; padding: 40px;
+    text-align: center;
+  }
+  .start-biz-cta .section-heading {
+    font-size: 1.8rem; margin-bottom: 16px;
+  }
+  .start-biz-cta p {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.7; margin-bottom: 28px;
+    max-width: 400px; margin-left: auto; margin-right: auto;
+  }
+  .contact-row {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--cream); border: 1px solid rgba(212,196,160,0.35);
+    border-radius: 999px; padding: 10px 20px;
+    font-size: 0.78rem; font-weight: 500; color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-pill:hover {
+    border-color: var(--slate-blue);
+    transform: translateY(-1px);
+  }
+  .contact-pill svg { width: 16px; height: 16px; color: var(--slate-blue); }
+
+  /* ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ */
+  footer {
+    background: #0f0c08;
+    color: rgba(250,245,235,0.45);
+    padding: 60px 48px 40px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand .logo-text .top { color: rgba(250,245,235,0.8); }
+  .footer-brand .logo-text .bot { color: rgba(250,245,235,0.35); }
+  .footer-brand .logo-mark { background: var(--slate-blue); }
+  .footer-brand p {
+    font-size: 0.82rem; line-height: 1.6;
+    margin-top: 16px; max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 600;
+    color: rgba(250,245,235,0.7); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    color: rgba(250,245,235,0.4); text-decoration: none;
+    font-size: 0.82rem; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--honey); }
+
+  .footer-bottom {
+    max-width: 1200px; margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,245,235,0.08);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+    font-size: 0.72rem;
+  }
+  .footer-bottom a {
+    color: rgba(250,245,235,0.35); text-decoration: none;
+  }
+  .footer-bottom a:hover { color: var(--honey); }
+
+  /* ══════════════════════════════════════
+     SCROLL ANIMATIONS
+     ══════════════════════════════════════ */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .about-inner, .events-inner, .spotlight-inner,
+    .join-inner, .start-biz-inner, .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .biz-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(254,252,246,0.96) 0%,
+        rgba(254,252,246,0.88) 50%,
+        rgba(254,252,246,0.7) 80%,
+        rgba(254,252,246,0.5) 100%
+      );
+    }
+    .hero-content { max-width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 72px; left: 0; right: 0;
+      background: var(--warm-white);
+      padding: 24px; gap: 16px;
+      border-bottom: 1px solid rgba(212,196,160,0.25);
+      box-shadow: 0 8px 24px rgba(28,22,14,0.08);
+    }
+    .section-pad { padding: 64px 24px; }
+    .section-pad-lg { padding: 80px 24px; }
+    .hero-content { padding: 40px 24px; }
+    .about-pillars { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .event-card { grid-template-columns: 1fr; }
+    .event-date { width: auto; display: flex; gap: 8px; align-items: center; padding: 8px 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .biz-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark"><span>UL</span></div>
+    <div class="logo-text">
+      <div class="top">Uptown Lakewood</div>
+      <div class="bot">Business Alliance &middot; Est. 2007</div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#directory">Businesses</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#spotlight">Spotlight</a></li>
+    <li><a href="#start">Start Here</a></li>
+    <li><a href="#join" class="nav-cta">Join the Alliance</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <!-- Golden hour sky -->
+  <div class="hero-sky"></div>
+  <div class="hero-sun"></div>
+
+  <!-- Lake Erie reflection -->
+  <div class="hero-lake"></div>
+
+  <!-- Skyline silhouette -->
+  <div class="hero-skyline">
+    <svg viewBox="0 0 1600 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skylineGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(15,10,5,0.85)"/>
+          <stop offset="100%" stop-color="rgba(10,8,5,0.95)"/>
+        </linearGradient>
+      </defs>
+      <!-- Buildings silhouette -->
+      <path d="M0,220 L0,160 50,160 50,120 80,120 80,80 110,80 110,120 130,120 130,100 160,100 160,140 190,140 190,90 220,90 220,130 250,130 250,70 280,70 280,110 310,110 310,150 340,150 340,60 360,60 360,50 380,50 380,60 400,60 400,130 430,130 430,100 460,100 460,80 480,80 480,60 500,60 500,80 520,80 520,120 550,120 550,90 580,90 580,140 610,140 610,110 640,110 640,70 670,70 670,90 700,90 700,130 730,130 730,85 760,85 760,55 780,55 780,45 800,45 800,55 820,55 820,85 850,85 850,120 880,120 880,100 910,100 910,60 940,60 940,90 970,90 970,130 1000,130 1000,110 1030,110 1030,75 1060,75 1060,120 1090,120 1090,140 1120,140 1120,95 1150,95 1150,130 1180,130 1180,105 1210,105 1210,80 1240,80 1240,120 1270,120 1270,90 1300,90 1300,130 1330,130 1330,110 1360,110 1360,140 1390,140 1390,120 1420,120 1420,150 1450,150 1450,130 1480,130 1480,160 1510,160 1510,140 1540,140 1540,170 1570,170 1570,150 1600,150 1600,220 Z" fill="url(#skylineGrad)"/>
+      <!-- Tree shapes -->
+      <ellipse cx="180" cy="145" rx="30" ry="35" fill="rgba(10,15,5,0.9)"/>
+      <ellipse cx="520" cy="125" rx="25" ry="30" fill="rgba(10,15,5,0.85)"/>
+      <ellipse cx="880" cy="125" rx="28" ry="32" fill="rgba(10,15,5,0.88)"/>
+      <ellipse cx="1200" cy="115" rx="22" ry="28" fill="rgba(10,15,5,0.85)"/>
+      <ellipse cx="1450" cy="140" rx="26" ry="30" fill="rgba(10,15,5,0.87)"/>
+      <!-- Glowing windows -->
+      <g fill="rgba(255,210,80,0.7)">
+        <rect x="92" y="88" width="6" height="8" rx="1"/>
+        <rect x="100" y="88" width="6" height="8" rx="1"/>
+        <rect x="92" y="100" width="6" height="8" rx="1"/>
+        <rect x="260" y="80" width="6" height="8" rx="1"/>
+        <rect x="268" y="80" width="6" height="8" rx="1"/>
+        <rect x="260" y="92" width="6" height="8" rx="1"/>
+        <rect x="268" y="92" width="6" height="8" rx="1"/>
+        <rect x="350" y="68" width="6" height="8" rx="1"/>
+        <rect x="370" y="68" width="6" height="8" rx="1"/>
+        <rect x="350" y="80" width="6" height="8" rx="1"/>
+        <rect x="490" y="68" width="6" height="8" rx="1"/>
+        <rect x="498" y="68" width="6" height="8" rx="1"/>
+        <rect x="490" y="80" width="6" height="8" rx="1"/>
+        <rect x="650" y="78" width="6" height="8" rx="1"/>
+        <rect x="658" y="78" width="6" height="8" rx="1"/>
+        <rect x="650" y="90" width="6" height="8" rx="1"/>
+        <rect x="770" y="55" width="6" height="8" rx="1"/>
+        <rect x="790" y="55" width="6" height="8" rx="1"/>
+        <rect x="770" y="67" width="6" height="8" rx="1"/>
+        <rect x="790" y="67" width="6" height="8" rx="1"/>
+        <rect x="920" y="68" width="6" height="8" rx="1"/>
+        <rect x="928" y="68" width="6" height="8" rx="1"/>
+        <rect x="920" y="80" width="6" height="8" rx="1"/>
+        <rect x="1040" y="82" width="6" height="8" rx="1"/>
+        <rect x="1048" y="82" width="6" height="8" rx="1"/>
+        <rect x="1040" y="94" width="6" height="8" rx="1"/>
+        <rect x="1220" y="88" width="6" height="8" rx="1"/>
+        <rect x="1228" y="88" width="6" height="8" rx="1"/>
+        <rect x="1220" y="100" width="6" height="8" rx="1"/>
+      </g>
+      <!-- Animated window flicker -->
+      <g fill="rgba(255,210,80,0.5)">
+        <rect x="100" y="100" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s" repeatCount="indefinite"/></rect>
+        <rect x="268" y="100" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.6;1;0.6" dur="4.2s" repeatCount="indefinite"/></rect>
+        <rect x="370" y="80" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.5;1;0.5" dur="3.8s" repeatCount="indefinite"/></rect>
+        <rect x="498" y="80" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.4;1;0.4" dur="5s" repeatCount="indefinite"/></rect>
+        <rect x="658" y="90" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.5;1;0.5" dur="4.5s" repeatCount="indefinite"/></rect>
+        <rect x="928" y="80" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" repeatCount="indefinite"/></rect>
+        <rect x="1048" y="94" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.5;1;0.5" dur="4.8s" repeatCount="indefinite"/></rect>
+        <rect x="1228" y="100" width="6" height="8" rx="1"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.7s" repeatCount="indefinite"/></rect>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Madison Avenue &middot; Warren to Riverside &middot; Lakewood, Ohio</div>
+    <h1>Where the west end<br>meets the <em>golden hour.</em></h1>
+    <p class="hero-sub">
+      Independent shops, neighborhood restaurants, and a community that shows up.
+      Uptown Lakewood is the west end of Madison Avenue — and it's been worth the walk since 2007.
+    </p>
+    <div class="hero-btns">
+      <a href="#directory" class="btn-primary">Explore Our Businesses</a>
+      <a href="#events" class="btn-secondary">
+        What's happening
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">10+</div>
+        <div class="hero-stat-label">Local businesses</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">18</div>
+        <div class="hero-stat-label">Years strong</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-label">Great neighborhood</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="about section-pad-lg" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-content fade-up">
+        <div class="eyebrow amber">About the Alliance</div>
+        <h2 class="section-heading">
+          Building community,<br><em class="gold">one storefront at a time.</em>
+        </h2>
+        <p class="section-sub" style="margin-bottom: 32px;">
+          The Uptown Lakewood Business Alliance has connected the west end of Madison Avenue since 2007. We're a coalition of independent business owners working to make this stretch of street the most vibrant, welcoming corridor in Lakewood.
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon gold">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Connect Businesses</h4>
+            <p>Networking, shared promotion, and collective advocacy for the district's independent operators.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h4>Guide Visitors</h4>
+            <p>Helping people discover the west end — where to eat, shop, explore, and spend an afternoon.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon terra">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <h4>Engage Community</h4>
+            <p>Events, initiatives, and partnerships that make the neighborhood feel like home.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </div>
+            <h4>Help New Business</h4>
+            <p>Resources and support for entrepreneurs ready to open on Madison Avenue.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up" style="transition-delay: 0.15s;">
+        <div class="about-photo">
+          <div class="about-photo-text">
+            Photography: Madison Avenue<br>looking west at golden hour
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">2007</div>
+          <div class="about-badge-text">Established</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BUSINESS DIRECTORY ═══════════════ -->
+<section class="directory section-pad-lg" id="directory">
+  <div class="container">
+    <div class="directory-header fade-up">
+      <div class="eyebrow slate">Business Directory</div>
+      <h2 class="section-heading">
+        Meet the businesses that<br><em class="blue">make the west end.</em>
+      </h2>
+      <p class="section-sub">
+        From craft beer to handmade confections, vintage finds to wellness — every business here is independently owned and locally operated.
+      </p>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card fade-up">
+        <div class="biz-thumb retail">
+          <div class="biz-thumb-text">The Wandering Lantern</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">The Wandering Lantern</div>
+          <div class="biz-type">Gifts &amp; Curiosities</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.05s;">
+        <div class="biz-thumb drink">
+          <div class="biz-thumb-text">Beer Engine</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Beer Engine</div>
+          <div class="biz-type">Craft Beer &amp; Pub</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.1s;">
+        <div class="biz-thumb food">
+          <div class="biz-thumb-text">Fears Confections</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Fears Confections</div>
+          <div class="biz-type">Artisan Confections</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.15s;">
+        <div class="biz-thumb food">
+          <div class="biz-thumb-text">Roxu</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Roxu</div>
+          <div class="biz-type">Restaurant</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.2s;">
+        <div class="biz-thumb bar">
+          <div class="biz-thumb-text">Mars Bar</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Mars Bar</div>
+          <div class="biz-type">Bar &amp; Lounge</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.25s;">
+        <div class="biz-thumb gallery">
+          <div class="biz-thumb-text">Up and Away</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Up and Away</div>
+          <div class="biz-type">Creative Retail</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.3s;">
+        <div class="biz-thumb retail">
+          <div class="biz-thumb-text">24/7 Cleveland</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">24/7 Cleveland</div>
+          <div class="biz-type">Local Goods &amp; Apparel</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.35s;">
+        <div class="biz-thumb salon">
+          <div class="biz-thumb-text">Carol Lynn Salon Plus</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Carol Lynn Salon Plus</div>
+          <div class="biz-type">Hair Salon</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.4s;">
+        <div class="biz-thumb wellness">
+          <div class="biz-thumb-text">Holistic Lakewood</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Holistic Lakewood</div>
+          <div class="biz-type">Wellness &amp; Healing</div>
+        </div>
+      </div>
+      <div class="biz-card fade-up" style="transition-delay:0.45s;">
+        <div class="biz-thumb cafe">
+          <div class="biz-thumb-text">Blue Cafe</div>
+        </div>
+        <div class="biz-info">
+          <div class="biz-name">Blue Cafe</div>
+          <div class="biz-type">Cafe &amp; Coffee</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EVENTS ═══════════════ -->
+<section class="events section-pad-lg" id="events">
+  <div class="container">
+    <div class="events-inner">
+      <div class="fade-up">
+        <div class="eyebrow terra">Upcoming Events</div>
+        <h2 class="section-heading">
+          Something's always<br><em class="gold">happening uptown.</em>
+        </h2>
+        <p class="section-sub">
+          From sidewalk sales to live music, gallery walks to holiday markets — the west end keeps a full calendar all year long.
+        </p>
+      </div>
+      <div class="events-list">
+        <div class="event-card fade-up">
+          <div class="event-date">
+            <div class="event-date-month">Apr</div>
+            <div class="event-date-day">19</div>
+          </div>
+          <div>
+            <div class="event-title">Spring Sidewalk Sale</div>
+            <div class="event-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                11am – 5pm
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Madison Ave
+              </span>
+            </div>
+            <p class="event-desc">Deals, demos, and live music on the sidewalk. All ULBA businesses participate with special offers and outdoor displays.</p>
+          </div>
+        </div>
+        <div class="event-card fade-up" style="transition-delay:0.1s;">
+          <div class="event-date">
+            <div class="event-date-month">May</div>
+            <div class="event-date-day">10</div>
+          </div>
+          <div>
+            <div class="event-title">Uptown Gallery Walk</div>
+            <div class="event-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                6pm – 9pm
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Multiple Venues
+              </span>
+            </div>
+            <p class="event-desc">Local art in local shops. Businesses host rotating exhibits, live painting, and open studios across the district.</p>
+          </div>
+        </div>
+        <div class="event-card fade-up" style="transition-delay:0.2s;">
+          <div class="event-date">
+            <div class="event-date-month">Jun</div>
+            <div class="event-date-day">14</div>
+          </div>
+          <div>
+            <div class="event-title">Golden Hour Block Party</div>
+            <div class="event-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                4pm – 10pm
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Madison &amp; Warren
+              </span>
+            </div>
+            <p class="event-desc">Live bands, food trucks, craft vendors, and Lake Erie sunset views. The west end's biggest summer celebration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SPOTLIGHT ═══════════════ -->
+<section class="spotlight section-pad-lg" id="spotlight">
+  <div class="container">
+    <div class="spotlight-inner">
+      <div class="spotlight-text fade-up">
+        <div class="eyebrow amber">Business Spotlight</div>
+        <h2 class="section-heading">
+          The Wandering<br><em>Lantern</em>
+        </h2>
+        <p>
+          Tucked into the heart of Uptown Lakewood, The Wandering Lantern is the kind of shop you didn't know you needed until you stepped inside. Part gift shop, part curiosity cabinet, part neighborhood gathering point — it's become one of the west end's most beloved stops.
+        </p>
+        <blockquote>
+          "We wanted to create a place that felt like discovering something. Every shelf should surprise you, and every visit should feel like the first time."
+          <span class="spotlight-cite">— Owner, The Wandering Lantern</span>
+        </blockquote>
+        <p>
+          Open since joining the district, The Wandering Lantern has become a fixture of the Uptown Lakewood experience — proof that independent retail isn't just surviving on Madison Avenue, it's thriving.
+        </p>
+        <a href="#" class="spotlight-link">
+          Read the full story
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="spotlight-portrait fade-up" style="transition-delay:0.15s;">
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">
+            Golden-hour portrait of<br>The Wandering Lantern<br>storefront or owner
+          </div>
+        </div>
+        <div class="portrait-label">
+          <strong>The Wandering Lantern</strong>
+          <span>Gifts &amp; Curiosities &middot; Madison Ave</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ JOIN ═══════════════ -->
+<section class="join section-pad-lg" id="join">
+  <div class="container">
+    <div class="join-inner">
+      <div class="fade-up">
+        <div class="eyebrow amber">Join the Alliance</div>
+        <h2 class="section-heading">
+          Your business belongs<br><em class="gold">on this street.</em>
+        </h2>
+        <p class="section-sub" style="margin-bottom: 24px;">
+          ULBA membership means visibility, community, and a seat at the table. Whether you've been here for years or just signed a lease, we'd love to have you.
+        </p>
+        <p class="section-sub">
+          Members get directory listings, event participation, social media features, and a voice in the future of the district. Annual dues are structured to be accessible for businesses of all sizes.
+        </p>
+      </div>
+      <div class="join-form fade-up" style="transition-delay:0.1s;">
+        <form onsubmit="event.preventDefault(); alert('Thanks for your interest! We\'ll be in touch soon.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bname">Business Name</label>
+            <input type="text" id="bname" placeholder="Your business on Madison Ave" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@yourbusiness.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" placeholder="(216) 555-0100">
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business</label>
+            <textarea id="message" placeholder="What do you do, and how can ULBA help?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Request Membership Info</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ START A BUSINESS ═══════════════ -->
+<section class="start-biz section-pad-lg" id="start">
+  <div class="container">
+    <div class="start-biz-inner">
+      <div>
+        <div class="eyebrow slate fade-up">Start a Business Here</div>
+        <h2 class="section-heading fade-up">
+          Ready to open<br><em class="blue">on Madison Avenue?</em>
+        </h2>
+        <p class="section-sub fade-up" style="margin-bottom: 32px;">
+          Lakewood is one of the most business-friendly cities in Northeast Ohio, and the west end of Madison has available storefronts, foot traffic, and a built-in community of fellow entrepreneurs ready to welcome you.
+        </p>
+        <div class="resource-cards">
+          <div class="resource-card fade-up">
+            <div class="resource-icon gold">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d4960e" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <div class="resource-title">Lakewood Alive</div>
+              <p class="resource-text">Lakewood's community development organization offers free technical assistance, storefront improvement grants, and small business support programs for entrepreneurs launching in the city.</p>
+              <a href="#" class="resource-link">
+                Learn more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="resource-card fade-up" style="transition-delay:0.1s;">
+            <div class="resource-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b7db1" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div class="resource-title">City of Lakewood</div>
+              <p class="resource-text">The city's economic development team can walk you through permits, zoning, licensing, and available incentive programs for new businesses in the Madison Avenue corridor.</p>
+              <a href="#" class="resource-link">
+                Visit city resources
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="resource-card fade-up" style="transition-delay:0.2s;">
+            <div class="resource-icon terra">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c4522a" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="resource-title">ULBA Mentorship</div>
+              <p class="resource-text">Connect with established west end business owners who've been in your shoes. Our members are happy to share advice on everything from lease negotiations to neighborhood marketing.</p>
+              <a href="#join" class="resource-link">
+                Get connected
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="start-biz-cta fade-up">
+          <h3 class="section-heading"><em class="gold">Let's talk.</em></h3>
+          <p>
+            Thinking about opening on the west end? We'd love to hear from you. Reach out to the Alliance or connect directly with our partners.
+          </p>
+          <a href="#join" class="btn-primary" style="display:inline-flex;">Contact the Alliance</a>
+          <div class="contact-row">
+            <a href="#" class="contact-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@uptownlakewood.org
+            </a>
+            <a href="#" class="contact-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Madison Ave, Lakewood OH
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none;">
+        <div class="logo-mark"><span>UL</span></div>
+        <div class="logo-text">
+          <div class="top">Uptown Lakewood</div>
+          <div class="bot">Business Alliance &middot; Est. 2007</div>
+        </div>
+      </a>
+      <p>Connecting businesses and community on the west end of Madison Avenue in Lakewood, Ohio — between Warren and Riverside.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Directory</h5>
+      <ul>
+        <li><a href="#">The Wandering Lantern</a></li>
+        <li><a href="#">Beer Engine</a></li>
+        <li><a href="#">Fears Confections</a></li>
+        <li><a href="#">Roxu</a></li>
+        <li><a href="#">Mars Bar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>More Businesses</h5>
+      <ul>
+        <li><a href="#">Up and Away</a></li>
+        <li><a href="#">24/7 Cleveland</a></li>
+        <li><a href="#">Carol Lynn Salon Plus</a></li>
+        <li><a href="#">Holistic Lakewood</a></li>
+        <li><a href="#">Blue Cafe</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Alliance</h5>
+      <ul>
+        <li><a href="#about">About ULBA</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#join">Join</a></li>
+        <li><a href="#start">Start a Business</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Uptown Lakewood Business Alliance. All rights reserved.</span>
+    <span>
+      <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+// Scroll-aware nav
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll-triggered fade-up animations
+const fadeEls = document.querySelectorAll('.fade-up');
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => fadeObserver.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
