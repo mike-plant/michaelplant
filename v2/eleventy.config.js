@@ -7,6 +7,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/css");
   eleventyConfig.addPassthroughCopy("src/assets/pdf");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  eleventyConfig.addPassthroughCopy("src/lakewood-concepts");
 
   // Paired shortcodes for content formatting
   eleventyConfig.addPairedShortcode("callout", function (content, type) {
