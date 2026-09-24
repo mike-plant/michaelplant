@@ -13,6 +13,12 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 - **Public email:** not `michael@michaelplant.com` (reads repetitive). Personal: `hi@michaelplant.com` or `mike@michaelplant.com`. Real estate: a mailbox on the new real-estate domain.
 - **CRM:** BoldTrail is disliked. Use it only for what the brokerage requires (IDX/MLS feed, anything Red 1 mandates). Run both pipelines (Reclaim + real estate) in one lightweight CRM behind the `/api/intake` function. Choose after confirming what Red 1 requires to live in BoldTrail.
 
+**2026-09-24: Red 1 answers**
+- **Brokerage display text: "Red 1 Realty".** That's the name the brokerage uses publicly and on michaelplant.red1realty.com. The logo (`public/images/redone-realty-logo.png`) reads "RED ONE REALTY". Rule (A) requires the name as licensed, so check the text against the Ohio eLicense lookup before launch.
+- **A separate real-estate domain is allowed.** Send Red 1 the domain and page templates for sign-off before launch.
+- **A personal card with no real-estate wording doesn't need the brokerage name.** The card stays personal.
+- **Nothing has to stay in BoldTrail.** The CRM choice is open. **Listing search:** at launch, keep linking out to the existing Red 1/BoldTrail agent search, which is free and already MLS-compliant. Only add our own IDX feed later if search traffic justifies it; that needs an IDX vendor plus broker sign-off on the MLS IDX agreement.
+
 ## 1. Where things stand today
 
 The repo holds **two different websites**:
@@ -272,8 +278,8 @@ Phases follow the BRD's MVP sequence, with a **Phase 0** for fixes to the live s
 | D2 | Public email + phone for the card | `hi@` or `mike@michaelplant.com` (pick one) + direct cell via `sms:`/`tel:` |
 | D3 | Where men's community lives | Faith & Life, if it's discipleship-shaped; otherwise Community |
 | D4 | Hosting | ✅ Cloudflare |
-| D5 | CRM | Not BoldTrail; lightweight CRM behind `/api/intake`, after Red 1 says what must stay in BoldTrail |
-| D6 | Exact brokerage name/logo; approval of separate RE domain | Ask Red 1 (see §3a email) |
+| D5 | CRM | ✅ Not BoldTrail (nothing required there); pick a lightweight CRM behind `/api/intake` |
+| D6 | Exact brokerage name/logo; approval of separate RE domain | ✅ "Red 1 Realty" + logo; domain allowed, templates go to Red 1 for sign-off |
 | D11 | Real-estate domain name | Brand-like, brokerage-independent (§3a) |
 | D7 | Reclaim domain & public brand name | Separate domain for SEO, `/projects/` redirects to it |
 | D8 | `/connect` vs `/hello` | `/connect` canonical, `/hello` redirect, so both work forever |
