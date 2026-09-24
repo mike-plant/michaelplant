@@ -1,0 +1,43 @@
+[
+  {
+    "key": "home-projects",
+    "label": "I need help with my home",
+    "detail": "Porches, railings, trim, rot, doors — small exterior projects",
+    "url": "/projects/",
+    "commercial": true,
+    "color": "#9A6B3F"
+  },
+  {
+    "key": "real-estate",
+    "label": "I'm thinking about buying or selling",
+    "detail": "Lakewood and Cleveland's west side",
+    "brokerage": true,
+    "url": "/real-estate/",
+    "commercial": true,
+    "color": "#2B6CB0"
+  },
+  {
+    "key": "community",
+    "label": "Books & community",
+    "detail": "The Wandering Lantern and Lakewood",
+    "url": "/community/",
+    "commercial": false,
+    "color": "#4A8B6E"
+  },
+  {
+    "key": "faith",
+    "label": "Faith & life",
+    "detail": "Conversation, coffee, no agenda",
+    "url": "/faith/",
+    "commercial": false,
+    "color": "#8A6FA8"
+  },
+  {
+    "key": "connect",
+    "label": "Just connect",
+    "detail": "Text, email, or grab a coffee",
+    "url": "/contact/",
+    "commercial": false,
+    "color": "#7B8FA1"
+  }
+]

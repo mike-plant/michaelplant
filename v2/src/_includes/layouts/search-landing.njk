@@ -275,6 +275,7 @@ layout: layouts/base.njk
       '\nNotes: ' + leadForm.querySelector('[name="notes"]').value +
       '\nFirst source: ' + ft.source + (ft.campaign ? ' / ' + ft.campaign : '') +
       '\nFirst landing page: ' + ft.landing +
+      (MPLead.lastIntent() ? '\nIntent chosen: ' + MPLead.lastIntent() : '') +
       '\nPage: ' + window.location.href;
 
     function showFallback() {

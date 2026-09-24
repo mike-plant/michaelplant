@@ -1,0 +1,40 @@
+{#
+  Connect hero: used by /connect/ (QR target) and the home page.
+  Content comes from _data/site.json (name, phone, portrait) and _data/paths.json (intent choices).
+  Keep markup semantic and class names generic so a redesign only needs connect.css.
+#}
+<section class="connect" aria-labelledby="connect-greeting">
+  <div class="connect-id">
+    {% if site.portrait %}
+    <img class="connect-portrait" src="{{ site.portrait }}" alt="{{ site.author }}" width="112" height="112">
+    {% else %}
+    <div class="connect-portrait connect-portrait--placeholder" aria-hidden="true">{{ site.firstName | first }}{{ site.lastName | first }}</div>
+    {% endif %}
+    <h1 id="connect-greeting" class="connect-greeting">Hey, I'm {{ site.nickname }}.<br>Good to connect.</h1>
+    <p class="connect-place">{{ site.author }} &middot; {{ site.city }}, Ohio</p>
+  </div>
+
+  <div class="connect-actions">
+    <a class="connect-btn connect-btn--primary" href="/mike.vcf" data-event="save_contact">
+      <span class="connect-btn-icon" aria-hidden="true">＋</span> Save {{ site.nickname }} to contacts
+    </a>
+    <div class="connect-actions-row">
+      <a class="connect-btn" href="sms:{{ site.phoneE164 }}" data-event="text_click">Text {{ site.nickname }}</a>
+      <a class="connect-btn" href="tel:{{ site.phoneE164 }}" data-event="call_click">Call {{ site.nickname }}</a>
+    </div>
+  </div>
+
+  <nav class="connect-intents" aria-labelledby="connect-intents-heading">
+    <h2 id="connect-intents-heading" class="connect-intents-heading">What can I help with?</h2>
+    <ul class="connect-intents-list">
+      {% for p in paths %}
+      <li>
+        <a class="connect-intent" href="{{ p.url }}" style="--intent-color: {{ p.color }}" data-event="intent_select" data-intent="{{ p.key }}">
+          <span class="connect-intent-label">{{ p.label }}</span>
+          <span class="connect-intent-detail">{{ p.detail }}{% if p.brokerage %} &middot; {{ site.brokerage.name }}{% endif %}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</section>

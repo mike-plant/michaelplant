@@ -1,7 +1,10 @@
 ---
 layout: layouts/base.njk
+hideContactBar: true
 ---
 <div class="home">
+  {% include "components/connect-hero.njk" %}
+
   <section class="home-intro">
     <p class="home-lede">{{ lede }}</p>
   </section>

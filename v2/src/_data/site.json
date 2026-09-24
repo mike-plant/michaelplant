@@ -24,5 +24,11 @@
       "buyer": "",
       "report": ""
     }
-  }
+  },
+  "firstName": "Michael",
+  "nickname": "Mike",
+  "lastName": "Plant",
+  "portrait": "",
+  "city": "Lakewood",
+  "region": "OH"
 }

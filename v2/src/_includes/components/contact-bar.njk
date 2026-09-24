@@ -1,0 +1,6 @@
+{# Mobile-only persistent text/call bar (BRD: always a one-tap path to a person). #}
+<nav class="contact-bar" aria-label="Contact {{ site.nickname }}">
+  <a href="sms:{{ site.phoneE164 }}" data-event="text_click">Text {{ site.nickname }}</a>
+  <a href="tel:{{ site.phoneE164 }}" data-event="call_click">Call</a>
+  <a href="/mike.vcf" data-event="save_contact">Save contact</a>
+</nav>

@@ -71,6 +71,29 @@
     });
   }
 
+  /*
+   * Click events: any element with data-event="name" (and optional data-intent).
+   * Forwards to window.MPTrack(name, props) if an analytics tool defines it,
+   * and remembers the last intent chosen so forms can include it.
+   */
+  function lastIntent() {
+    try { return sessionStorage.getItem('mp_intent') || ''; } catch (e) { return ''; }
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-event]');
+    if (!el) return;
+    var props = { page: window.location.pathname, source: firstTouch().source };
+    var intent = el.getAttribute('data-intent');
+    if (intent) {
+      props.intent = intent;
+      try { sessionStorage.setItem('mp_intent', intent); } catch (err) {}
+    }
+    if (typeof window.MPTrack === 'function') {
+      try { window.MPTrack(el.getAttribute('data-event'), props); } catch (err) {}
+    }
+  });
+
   recordFirstTouch();
-  window.MPLead = { submit: submit, isConfigured: isConfigured, firstTouch: firstTouch };
+  window.MPLead = { submit: submit, isConfigured: isConfigured, firstTouch: firstTouch, lastIntent: lastIntent };
 })();

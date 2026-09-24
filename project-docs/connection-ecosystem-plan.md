@@ -26,6 +26,8 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 
 **Phase 0: done on branch** (see git log): Streetlight retired with redirects, Third Places → Community, Fair Housing rewrite of neighborhood "fit" sections, brokerage display on real-estate pages, `/privacy/`, honest form fallback + HubSpot wiring + first-touch source capture, threads fixed, Next.js archived to `legacy-nextjs/`, `.next/` untracked.
 
+**Phase 1: built on branch.** `/connect/` (QR target; `/hello/` redirects there), connect hero reused at the top of the home page, `/mike.vcf`, text/call buttons, five intent paths from `v2/src/_data/paths.json`, a mobile text/call/save bar on every other page, `/projects/` (text-photos intake until Phase 2), `/faith/` (**placeholder copy; Michael to rewrite**), click-event hooks (`data-event`) ready for analytics, and a card QR in `project-docs/card/`. Styling lives in `v2/src/assets/css/connect.css` and is expected to be redesigned. Portrait: set `site.portrait` once the engraved portrait exists (the MP monogram shows until then).
+
 ## 1. Where things stand today
 
 The repo holds **two different websites**:

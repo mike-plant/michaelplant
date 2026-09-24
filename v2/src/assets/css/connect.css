@@ -1,0 +1,209 @@
+/* ========================================
+   Connect hero (/connect/ and home), contact bar, simple CTAs.
+   Structure-only styling on existing tokens — expected to be redesigned.
+   ======================================== */
+
+.connect {
+  max-width: 480px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.connect-id {
+  margin-bottom: var(--space-lg);
+}
+
+.connect-portrait {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto var(--space-md);
+  display: block;
+}
+
+.connect-portrait--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.connect-greeting {
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  line-height: 1.2;
+  margin: 0 0 var(--space-xs);
+}
+
+.connect-place {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Actions */
+.connect-actions {
+  display: grid;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.connect-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 48px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.connect-btn:hover {
+  border-color: var(--color-text-muted);
+}
+
+.connect-btn--primary {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: #fff;
+}
+
+.connect-btn--primary:hover {
+  background: #000;
+  color: #fff;
+}
+
+.connect-btn-icon {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+/* Intents */
+.connect-intents {
+  text-align: left;
+}
+
+.connect-intents-heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0 0 var(--space-sm);
+}
+
+.connect-intents-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.connect-intent {
+  display: block;
+  padding: 0.8rem var(--space-md);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--intent-color, var(--color-border));
+  border-radius: var(--radius);
+  background: var(--color-bg-alt);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.connect-intent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.connect-intent-label {
+  display: block;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.connect-intent-detail {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* /connect/ page */
+.connect-page {
+  padding-top: var(--space-xl);
+}
+
+.connect-more {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* Home: hero sits above the existing lede */
+.home .connect {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* In-page CTA (projects, faith) */
+.projects-cta {
+  margin: var(--space-lg) 0;
+}
+
+/* Mobile contact bar */
+.contact-bar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .contact-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 300;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .contact-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .contact-bar a + a {
+    border-left: 1px solid var(--color-border);
+  }
+
+  body.has-contact-bar {
+    padding-bottom: calc(52px + env(safe-area-inset-bottom));
+  }
+}
