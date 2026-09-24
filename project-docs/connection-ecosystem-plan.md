@@ -4,6 +4,15 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 
 ---
 
+## 0. Decisions log
+
+**2026-09-24**
+- **Streetlight: retire it as a service.** Remove the pricing and audit pages and redirect `/streetlight/*` → `/community/`. Keep one short paragraph in Community about helping Lakewood businesses (e.g. ULBA members) get found. That's neighborly help and relationship-building with local owners who are referral sources, not a product line. Fold **Building** into About.
+- **Hosting: Cloudflare** (Pages + Functions + R2 + Turnstile + Web Analytics). Expected cost: $0 on free tiers plus ~$10/yr per domain registered at cost.
+- **Real estate moves to its own domain** (see §3a). That clears the brokerage-prominence problem off the personal hub.
+- **Public email:** not `michael@michaelplant.com` (reads repetitive). Personal: `hi@michaelplant.com` or `mike@michaelplant.com`. Real estate: a mailbox on the new real-estate domain.
+- **CRM:** BoldTrail is disliked. Use it only for what the brokerage requires (IDX/MLS feed, anything Red 1 mandates). Run both pipelines (Reclaim + real estate) in one lightweight CRM behind the `/api/intake` function. Choose after confirming what Red 1 requires to live in BoldTrail.
+
 ## 1. Where things stand today
 
 The repo holds **two different websites**:
@@ -76,6 +85,36 @@ Third Places mixes three things: the Lantern (a business), men's community (pers
 5. **🟡 Broken thread references.** `threads.json` points to `/real-estate/investors/` and `/real-estate/portfolio/`, which don't exist. Real-estate pages declare thread IDs (`lasting value`, `judgment`, `restraint`, `risk`, `quality`, …) that aren't defined, so thread-nav renders nothing. `CLAUDE-HANDOFF.md` lists pages that don't exist.
 6. **🟡 Repo hygiene.** 44 `.next/` build files are committed. There are three dead `HomeSaleAnalyzer-*` variants and five `Cross-node stubs … copy N.md` files. `Now` was last updated January 2026.
 7. **No analytics of any kind.** The BRD's measurement needs (§10) start from zero.
+
+---
+
+## 3a. Ohio advertising rule: what it requires and how the architecture handles it
+
+The source is [OAC 1301:5-1-02](https://codes.ohio.gov/ohio-administrative-code/rule-1301:5-1-02). This is my reading of the rule, not legal advice. Red 1's broker is responsible for supervising your advertising and has the final say.
+
+| Rule | Text (paraphrased closely) |
+|---|---|
+| (B) Equal prominence | Brokerage name displayed **at least in equal prominence** with the salesperson's name in all advertising, **including websites** the licensee owns or controls |
+| (D) Every page | All internet advertising of real-estate services must show the brokerage name on **every viewable web page**. A page includes the part that scrolls below the screen. Outdated info must be fixed within 14 days |
+| (A) Name | Use your name exactly as it appears on your license |
+| (H) Advertising | Anything that makes properties or services known to the public: websites, social media, blogs, email, signs, **business cards** |
+| (I) Exception | Private communication requested by a client or prospect is not advertising |
+| Carve-out | You're not in violation on platforms you don't control that don't let you set name size (Zillow, etc.) |
+
+**Can it just go in the footer?**
+- **Rule (D):** a footer does satisfy it, because the footer is part of the page even below the fold.
+- **Rule (B):** a footer does not satisfy it on michaelplant.com. "Michael Plant" is the site's name, the header anchor and the domain, so a small footer brokerage line is not *equal prominence*.
+- **So:** on michaelplant.com, footer-only doesn't work. On a separate real-estate site, it can work. There, "Michael Plant | Red 1 Realty" sits together in the header at the same size (plus the logo), and the footer carries the full brokerage disclosure. That is a single line of layout, not a design burden.
+
+**Architecture that follows from this:**
+1. **Real-estate domain.** All buyer/seller/investor pages (`/sell/*`, neighborhood pages, `/invest`, `/home-value`, proof) live there. The layout is co-branded on every page. Ask Red 1 for the logo and exact brokerage display name. Also ask whether BoldTrail can serve IDX search under that domain; otherwise keep linking out to the BoldTrail search as now.
+2. **michaelplant.com (hub)** doesn't advertise real-estate services. The "Buying or selling?" intent button links out to the real-estate domain, and wherever real estate is mentioned the hub says "Michael Plant, Red 1 Realty" in the same text size. Also put a brokerage line in the hub's global footer. It costs nothing and covers the edge case.
+3. **Calling card.** Rule (H) names business cards. If the card mentions real estate anywhere, the brokerage name must appear at equal prominence. **Recommended:** the card stays personal (name, Lakewood, phone, QR, connection prompt) with no real-estate wording, which matches the BRD's "not four miniature ads" direction. Confirm this with Red 1.
+4. **Existing Lakewood neighborhood pages** move to the real-estate domain, with 301 redirects from the old michaelplant.com URLs (Cloudflare `_redirects`) so search rankings carry over.
+
+**Choosing the domain:** the BRD warns against keyword-stuffed domains. Pick something brand-like and speakable that's permanent even if you change brokerages, e.g. `plant.homes`, `mikeplanthomes.com` or `plantrealty…`. The brokerage name should *not* be in the domain. Availability not checked.
+
+**For Red 1 (one email):** exact display name + logo files; whether a separate agent domain is allowed and whether they need to approve it; whether a personal card without real-estate wording needs the brokerage; what, if anything, must stay in BoldTrail.
 
 ---
 
@@ -229,12 +268,13 @@ Phases follow the BRD's MVP sequence, with a **Phase 0** for fixes to the live s
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D1 | Streetlight's place (and Building) | Keep live, de-emphasize under About → Other work; Building folds into About |
-| D2 | Public email + phone for the card | `michael@michaelplant.com` + direct cell via `sms:`/`tel:` |
+| D1 | Streetlight's place (and Building) | ✅ Retire; redirect to /community/; Building → About |
+| D2 | Public email + phone for the card | `hi@` or `mike@michaelplant.com` (pick one) + direct cell via `sms:`/`tel:` |
 | D3 | Where men's community lives | Faith & Life, if it's discipleship-shaped; otherwise Community |
-| D4 | Hosting | Cloudflare Pages |
-| D5 | CRM | Whatever Red 1 already supports for real estate, if its API allows the Reclaim pipeline too; otherwise HubSpot free |
-| D6 | Exact brokerage name/logo + whether the whole site or only the RE pages need it | Ask Red 1; show it on RE pages at minimum now |
+| D4 | Hosting | ✅ Cloudflare |
+| D5 | CRM | Not BoldTrail; lightweight CRM behind `/api/intake`, after Red 1 says what must stay in BoldTrail |
+| D6 | Exact brokerage name/logo; approval of separate RE domain | Ask Red 1 (see §3a email) |
+| D11 | Real-estate domain name | Brand-like, brokerage-independent (§3a) |
 | D7 | Reclaim domain & public brand name | Separate domain for SEO, `/projects/` redirects to it |
 | D8 | `/connect` vs `/hello` | `/connect` canonical, `/hello` redirect, so both work forever |
 | D9 | Seller offer name | "Lakewood Pre-Listing Walkthrough" (plain, searchable) |
