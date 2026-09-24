@@ -1,0 +1,10 @@
+[
+  { "from": "/third-places/", "to": "/community/" },
+  { "from": "/streetlight/", "to": "/community/" },
+  { "from": "/streetlight/audit/", "to": "/community/" },
+  { "from": "/streetlight/pricing/", "to": "/community/" },
+  { "from": "/streetlight/google-looks-for/", "to": "/community/" },
+  { "from": "/streetlight/apple-yelp-consistency/", "to": "/community/" },
+  { "from": "/streetlight/websites-still-matter/", "to": "/community/" },
+  { "from": "/books/", "to": "https://thewanderinglantern.com" }
+]

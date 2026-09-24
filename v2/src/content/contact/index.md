@@ -8,12 +8,12 @@ bubble:
   eligible: false
   contextKey: null
 seo:
-  description: "Get in touch with Michael Plant — email or book a call."
+  description: "Get in touch with Michael Plant — text, call, email, or book a time."
 ---
 
-Two ways to reach me.
+**Text or call** — <a href="sms:{{ site.phoneE164 }}">text {{ site.phone }}</a> or <a href="tel:{{ site.phoneE164 }}">call</a>
 
-**Email** — [msplant@gmail.com](mailto:msplant@gmail.com)
+**Email** — [{{ site.email }}](mailto:{{ site.email }})
 
 **Book a call** — pick a time below, or go to [calendly.com/michaelplant](https://calendly.com/michaelplant).
 

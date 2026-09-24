@@ -19,6 +19,13 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 - **A personal card with no real-estate wording doesn't need the brokerage name.** The card stays personal.
 - **Nothing has to stay in BoldTrail.** The CRM choice is open. **Listing search:** at launch, keep linking out to the existing Red 1/BoldTrail agent search, which is free and already MLS-compliant. Only add our own IDX feed later if search traffic justifies it; that needs an IDX vendor plus broker sign-off on the MLS IDX agreement.
 
+**2026-09-24: domain, email, CRM**
+- **Real-estate domain: `michaelplantrealtor.com`.** NAR's membership-marks rules allow REALTOR® in a domain only when it's combined with the member's own name. `lakewoodrealtor.com` and `westsideclevelandrealtor.com` (a geographic term plus REALTOR) are not permitted for individual members. It also matches the existing `michaelplantrealtor@gmail.com`. Requires active NAR membership.
+- **Public email: `hi@michaelplant.com`.** Create it with Cloudflare Email Routing (free) forwarding to Gmail *before* the site deploys.
+- **CRM: HubSpot.** Site forms post straight to the HubSpot Forms API (no server needed). Set the portal ID + form GUIDs in `v2/src/_data/site.json`.
+
+**Phase 0: done on branch** (see git log): Streetlight retired with redirects, Third Places → Community, Fair Housing rewrite of neighborhood "fit" sections, brokerage display on real-estate pages, `/privacy/`, honest form fallback + HubSpot wiring + first-touch source capture, threads fixed, Next.js archived to `legacy-nextjs/`, `.next/` untracked.
+
 ## 1. Where things stand today
 
 The repo holds **two different websites**:
@@ -275,12 +282,12 @@ Phases follow the BRD's MVP sequence, with a **Phase 0** for fixes to the live s
 | # | Decision | Recommendation |
 |---|---|---|
 | D1 | Streetlight's place (and Building) | ✅ Retire; redirect to /community/; Building → About |
-| D2 | Public email + phone for the card | `hi@` or `mike@michaelplant.com` (pick one) + direct cell via `sms:`/`tel:` |
+| D2 | Public email + phone for the card | ✅ `hi@michaelplant.com` + direct cell via `sms:`/`tel:` |
 | D3 | Where men's community lives | Faith & Life, if it's discipleship-shaped; otherwise Community |
 | D4 | Hosting | ✅ Cloudflare |
-| D5 | CRM | ✅ Not BoldTrail (nothing required there); pick a lightweight CRM behind `/api/intake` |
+| D5 | CRM | ✅ HubSpot |
 | D6 | Exact brokerage name/logo; approval of separate RE domain | ✅ "Red 1 Realty" + logo; domain allowed, templates go to Red 1 for sign-off |
-| D11 | Real-estate domain name | Brand-like, brokerage-independent (§3a) |
+| D11 | Real-estate domain name | ✅ michaelplantrealtor.com |
 | D7 | Reclaim domain & public brand name | Separate domain for SEO, `/projects/` redirects to it |
 | D8 | `/connect` vs `/hello` | `/connect` canonical, `/hello` redirect, so both work forever |
 | D9 | Seller offer name | "Lakewood Pre-Listing Walkthrough" (plain, searchable) |

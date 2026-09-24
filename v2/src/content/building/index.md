@@ -6,12 +6,11 @@ section: building
 contexts:
   - "Building"
 threads:
-  - "findable"
   - "places-work"
 bridges:
-  - url: "/streetlight/"
-    label: "Streetlight"
-    because: "Visibility is mostly fundamentals and systems, not hacks."
+  - url: "/about/"
+    label: "About"
+    because: "The person behind the work."
   - url: "/about/how-i-work/"
     label: "How I work"
     because: "Bounded, transparent, practical."
@@ -38,7 +37,7 @@ Most of what failed was over-engineered.
 
 ## Right now
 
-Streetlight. The Wandering Lantern. Real estate portfolio. This site.
+The Wandering Lantern. Real estate. This site.
 
 ## How I think
 

@@ -1,14 +1,28 @@
 {
   "title": "Michael Plant",
   "url": "https://michaelplant.com",
-  "description": "Real estate, local marketing, community, and building things — from Cleveland.",
+  "description": "Real estate, community, and building things — from Lakewood, Ohio.",
   "author": "Michael Plant",
-  "email": "msplant@gmail.com",
+  "email": "hi@michaelplant.com",
   "phone": "(216) 217-6362",
+  "phoneE164": "+12162176362",
   "location": "Lakewood / Cleveland, OH",
   "social": {
     "linkedin": "https://linkedin.com/in/michaelplant",
     "calendly": "https://calendly.com/michaelplant"
   },
-  "agentSite": "https://michaelplant.red1realty.com/"
+  "agentSite": "https://michaelplant.red1realty.com/",
+  "brokerage": {
+    "name": "Red 1 Realty",
+    "logo": "/assets/img/red1-realty-logo.png",
+    "url": "https://www.red1realty.com/"
+  },
+  "realEstateEmail": "michaelplantrealtor@gmail.com",
+  "hubspot": {
+    "portalId": "",
+    "forms": {
+      "buyer": "",
+      "report": ""
+    }
+  }
 }

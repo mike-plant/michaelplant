@@ -6,9 +6,7 @@ section: real-estate
 contexts:
   - "Real Estate"
 threads:
-  - "lasting value"
-  - "quality"
-  - "reputation"
+  - "deals"
 bridges:
   - url: "/real-estate/"
     label: "How I think about real estate"

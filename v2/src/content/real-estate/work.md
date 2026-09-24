@@ -6,9 +6,8 @@ section: real-estate
 contexts:
   - "Real Estate"
 threads:
-  - "working together"
-  - "clarity"
-  - "decision making"
+  - "deals"
+  - "how-i-work"
 bridges:
   - url: "/real-estate/"
     label: "Real estate, grounded"

@@ -6,12 +6,11 @@ section: real-estate
 contexts:
   - "Real Estate"
 threads:
-  - "community"
-  - "place"
-  - "belonging"
+  - "deals"
+  - "places-work"
 bridges:
-  - url: "/third-places/"
-    label: "Why third places matter"
+  - url: "/community/"
+    label: "Why community matters"
     because: "Housing decisions shape how connected people feel long after closing."
   - url: "/real-estate/search/lakewood/"
     label: "Explore Lakewood neighborhoods"

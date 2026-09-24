@@ -26,14 +26,14 @@ bubble:
   eligible: true
   contextKey: "Real Estate"
 seo:
-  description: "Lakewood Park & Western Lakewood, OH — quieter, greener, and family-oriented. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
+  description: "Lakewood Park & Western Lakewood, OH — quieter, greener, and close to the lake. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---
 
 Western Lakewood offers a quieter, more residential version of the city — with a price tag to match.
 
 ## What defines the area
 
-Lakewood Park anchors the west end with **31 acres of lakefront green space**, recreation, and skyline views. The Solstice Steps overlook and renovated pool area have made it a regional draw. Residential streets nearby skew toward single-family homes, larger colonials, and fewer apartment buildings. The feel is calmer, more family-oriented, and closer to suburban in character.
+Lakewood Park anchors the west end with **31 acres of lakefront green space**, recreation, and skyline views. The Solstice Steps overlook and renovated pool area have made it a regional draw. Residential streets nearby skew toward single-family homes, larger colonials, and fewer apartment buildings. The feel is calmer and closer to suburban in character.
 
 <div class="pull-quote">
 
@@ -43,18 +43,18 @@ The area median sits around $388K — well above Lakewood's citywide $327K — a
 
 Proximity to Rocky River and the Metroparks adds outdoor access you don't get elsewhere in Lakewood.
 
-## Who this area tends to fit
+## A good match if you want
 
-- Families wanting walkability without nightlife noise
-- Buyers prioritizing parks, green space, and schools
-- Dog owners and outdoor-oriented households
-- Buyers planning longer-term stays
+- Walkability without nightlife noise
+- Parks, lakefront, and green space nearby
+- More single-family homes and fewer apartment buildings
+- A place to stay for the long term
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Budget-constrained buyers
-- Nightlife-focused buyers
-- Anyone needing frequent east-side access
+- Lakewood's lowest price points
+- Nightlife within a short walk
+- Frequent, fast trips to the east side
 
 ## What to watch for
 

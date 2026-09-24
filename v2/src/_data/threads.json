@@ -1,24 +1,14 @@
 [
   {
-    "id": "findable",
-    "label": "How things become findable",
-    "summary": "How people actually find local businesses",
-    "pages": [
-      "/streetlight/",
-      "/streetlight/google-looks-for/",
-      "/streetlight/apple-yelp-consistency/",
-      "/streetlight/websites-still-matter/",
-      "/building/"
-    ]
-  },
-  {
     "id": "deals",
-    "label": "How deals work",
-    "summary": "Criteria, underwriting, risk, and decision-making",
+    "label": "How I think about real estate",
+    "summary": "Value, risk, community, and how decisions get made",
     "pages": [
       "/real-estate/",
-      "/real-estate/investors/",
-      "/real-estate/portfolio/"
+      "/real-estate/value/",
+      "/real-estate/risk/",
+      "/real-estate/community/",
+      "/real-estate/work/"
     ]
   },
   {
@@ -26,27 +16,17 @@
     "label": "How places work",
     "summary": "Why neighborhoods, buildings, and businesses succeed or struggle",
     "pages": [
-      "/third-places/",
-      "/real-estate/",
+      "/community/",
+      "/real-estate/community/",
       "/building/"
     ]
   },
   {
-    "id": "systems",
-    "label": "How systems replace stress",
-    "summary": "Simple structure that removes friction",
-    "pages": [
-      "/streetlight/pricing/",
-      "/streetlight/audit/",
-      "/about/how-i-work/"
-    ]
-  },
-  {
     "id": "community",
-    "label": "Why third places matter",
+    "label": "Why community matters",
     "summary": "Belonging, atmosphere, and local ecosystems",
     "pages": [
-      "/third-places/",
+      "/community/",
       "/about/",
       "/now/"
     ]
@@ -57,8 +37,7 @@
     "summary": "What it's like to work together",
     "pages": [
       "/about/how-i-work/",
-      "/streetlight/pricing/",
-      "/real-estate/investors/"
+      "/real-estate/work/"
     ]
   },
   {
@@ -67,7 +46,7 @@
     "summary": "The long arc behind the work",
     "pages": [
       "/about/",
-      "/third-places/",
+      "/community/",
       "/now/"
     ]
   },

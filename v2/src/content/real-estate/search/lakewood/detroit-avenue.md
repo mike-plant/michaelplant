@@ -43,18 +43,18 @@ Detroit Avenue supports over 1,000 small businesses along its length — one of 
 
 </div>
 
-## Who this area tends to fit
+## A good match if you want
 
-- Buyers who want true walk-to-everything living
-- People who enjoy being near restaurants, bars, and events
-- House-hackers and investors targeting doubles
-- Buyers downsizing who value location over space
+- True walk-to-everything living
+- Restaurants, bars, and events close by
+- A double to live in and rent out, or to hold as an investment
+- Location over square footage
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Light sleepers or buyers sensitive to weekend noise
-- Buyers needing multiple off-street parking spaces
-- Anyone expecting suburban quiet near the corridor
+- Quiet nights, especially on weekends
+- Multiple off-street parking spaces
+- Suburban quiet near the corridor
 
 ## What to watch for
 

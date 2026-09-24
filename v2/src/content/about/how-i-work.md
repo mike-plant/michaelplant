@@ -7,7 +7,6 @@ contexts:
   - "Building"
 threads:
   - "how-i-work"
-  - "systems"
 bridges:
   - url: "/about/"
     label: "About"
@@ -43,4 +42,4 @@ Honesty. If something isn't working, tell me.
 
 ## How to start
 
-[Book a call](https://calendly.com/michaelplant) or [email me](mailto:msplant@gmail.com).
+[Book a call](https://calendly.com/michaelplant) or [email me](mailto:{{ site.email }}).

@@ -17,8 +17,8 @@ bridges:
   - url: "/building/"
     label: "Building"
     because: "The professional history and what I've made."
-  - url: "/third-places/"
-    label: "Third Places"
+  - url: "/community/"
+    label: "Community"
     because: "Why community is at the center of everything."
 bubble:
   eligible: false
@@ -29,7 +29,7 @@ seo:
 
 I live in Lakewood, Ohio with my family.
 
-20+ years in digital marketing and technology. Real estate agent, then investor. Children's bookstore. Local marketing service. None of these are separate lives.
+20+ years in digital marketing and technology. Real estate agent, then investor. Children's bookstore. None of these are separate lives.
 
 ## Family
 

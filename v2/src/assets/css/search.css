@@ -195,6 +195,27 @@
   color: var(--color-text);
 }
 
+.lead-form-fallback {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-real-estate);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.lead-form-fallback p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.lead-form-alt {
+  font-size: 0.9rem;
+}
+
 /* ── CTA button (shared) ── */
 
 .search-cta-button {

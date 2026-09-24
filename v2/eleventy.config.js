@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/pdf");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/lakewood-concepts");
@@ -143,9 +144,8 @@ module.exports = function (eleventyConfig) {
     if (!bridges || !bridges.length) return [];
     const contexts = require("./src/_data/contextDefs.json");
     const sectionMap = {
-      "streetlight": "Streetlight",
       "real-estate": "Real Estate",
-      "third-places": "Third Places",
+      "community": "Community",
       "building": "Building",
     };
     const colors = [];
@@ -168,9 +168,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("sectionColor", function (url) {
     const contexts = require("./src/_data/contextDefs.json");
     const sectionMap = {
-      "streetlight": "Streetlight",
       "real-estate": "Real Estate",
-      "third-places": "Third Places",
+      "community": "Community",
       "building": "Building",
       "now": null,
       "about": null,

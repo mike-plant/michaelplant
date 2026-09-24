@@ -1,3 +1,10 @@
 <footer class="site-footer">
+  {% if section == "real-estate" %}
+  <div class="brokerage-disclosure">
+    <img src="{{ site.brokerage.logo }}" alt="{{ site.brokerage.name }}" class="brokerage-logo" width="140" height="35">
+    <p>Michael Plant is a licensed real estate salesperson with {{ site.brokerage.name }}. Real estate services are provided through {{ site.brokerage.name }}.</p>
+  </div>
+  {% endif %}
   <p>&copy; {{ currentYear }} Michael Plant &middot; {{ site.location }} &middot; <a href="/contact/">Contact</a> &middot; <a href="/privacy/">Privacy</a></p>
+  {% if section != "real-estate" %}<p class="site-footer-brokerage">Real estate services through {{ site.brokerage.name }}.</p>{% endif %}
 </footer>

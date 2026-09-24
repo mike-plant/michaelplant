@@ -14,9 +14,8 @@
   --color-link-hover: #111;
 
   /* Context colors */
-  --color-streetlight: #E8A825;
   --color-real-estate: #2B6CB0;
-  --color-third-places: #4A8B6E;
+  --color-community: #4A8B6E;
   --color-building: #7B8FA1;
 
   /* Typography */
@@ -178,6 +177,28 @@ main {
   text-align: center;
   font-size: 0.8rem;
   color: var(--color-text-light);
+}
+
+.brokerage-disclosure {
+  margin-bottom: var(--space-sm);
+}
+
+.brokerage-logo {
+  display: block;
+  width: 140px;
+  height: auto;
+  margin: 0 auto var(--space-xs);
+}
+
+.brokerage-disclosure p,
+.site-footer-brokerage {
+  margin: 0 0 0.25rem;
+}
+
+.name-anchor-sep {
+  font-weight: 400;
+  opacity: 0.5;
+  margin: 0 0.2em;
 }
 
 .site-footer a {

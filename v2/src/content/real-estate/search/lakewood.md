@@ -41,7 +41,7 @@ People don't choose Lakewood by accident — they choose it for how it feels day
 
 The housing stock is distinctive — a mix of century-old doubles, well-kept singles, and smaller multi-family buildings. Tree-lined streets, sidewalks everywhere, and a downtown that still feels like a real neighborhood center rather than a strip mall.
 
-Proximity to Cleveland proper means easy access to employment, hospitals, and culture, without the sprawl. Schools, parks, and the Lakewood Public Library system are consistently cited as reasons families stay.
+Proximity to Cleveland proper means easy access to employment, hospitals, and culture, without the sprawl. Schools, parks, and the Lakewood Public Library system are consistently cited as reasons people stay.
 
 ## What to know about the market
 
@@ -61,5 +61,5 @@ Lakewood has no school buses — every student walks. School zone boundaries are
 - **[Gold Coast & Clifton Boulevard](/real-estate/search/lakewood/gold-coast-clifton/)** — Lake views, high-rise condos, and historic homes. Lakewood's widest range of price points.
 - **[Detroit Avenue Corridor](/real-estate/search/lakewood/detroit-avenue/)** — Lakewood's spine. Walk-to-everything living near hundreds of locally owned businesses.
 - **[Madison Avenue Corridor](/real-estate/search/lakewood/madison-avenue/)** — Scrappier, more independent, and still evolving. Real upside for the right buyer.
-- **[Lakewood Park & Western Lakewood](/real-estate/search/lakewood/lakewood-park-western/)** — Quieter, greener, and more family-oriented. Higher price point, longer-term owners.
+- **[Lakewood Park & Western Lakewood](/real-estate/search/lakewood/lakewood-park-western/)** — Quieter, greener, and closer to the lake. Higher price point, longer-term owners.
 - **[The Eastern Edge](/real-estate/search/lakewood/eastern-edge/)** — Where Lakewood meets Cleveland. The widest range of housing in the fewest blocks.

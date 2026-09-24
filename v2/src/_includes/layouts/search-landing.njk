@@ -105,6 +105,14 @@ layout: layouts/base.njk
     <div class="lead-form-success" id="lead-form-success" hidden>
       <p>Thanks — I'll review this and follow up with a short note about which parts of {{ search.display }} tend to fit what you're looking for.</p>
     </div>
+
+    <div class="lead-form-fallback" id="lead-form-fallback" hidden>
+      <p><strong>That didn't send from here.</strong> Your answers are ready to go — pick whichever is easiest:</p>
+      <p>
+        <a href="#" class="search-cta-button" id="lead-form-mailto">Send by email</a>
+        <a href="sms:{{ site.phoneE164 }}" class="lead-form-alt">or text me at {{ site.phone }}</a>
+      </p>
+    </div>
   </div>
 
   {# ── Market Reports: lead-gated PDF downloads ── #}
@@ -241,71 +249,53 @@ layout: layouts/base.njk
 (function() {
   var leadForm = document.getElementById('lead-form');
   var leadSuccess = document.getElementById('lead-form-success');
-  if (!leadForm) return;
+  var leadFallback = document.getElementById('lead-form-fallback');
+  var mailtoLink = document.getElementById('lead-form-mailto');
+  if (!leadForm || !window.MPLead) return;
+
+  function checked(name) {
+    var out = [];
+    leadForm.querySelectorAll('[name="' + name + '"]:checked').forEach(function(el) { out.push(el.value); });
+    return out;
+  }
 
   leadForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    var button = leadForm.querySelector('button[type="submit"]');
+    var ft = MPLead.firstTouch();
+    var name = leadForm.querySelector('[name="first_name"]').value;
+    var email = leadForm.querySelector('[name="email"]').value;
+    var summary =
+      'Form: ' + leadForm.querySelector('[name="source"]').value +
+      '\nCampaign: ' + leadForm.querySelector('[name="campaign"]').value +
+      '\nTimeline: ' + leadForm.querySelector('[name="timeline"]').value +
+      '\nBudget: ' + leadForm.querySelector('[name="budget_range"]').value +
+      '\nPriorities: ' + checked('priorities').join(', ') +
+      '\nHousing type: ' + checked('housing_type').join(', ') +
+      '\nNotes: ' + leadForm.querySelector('[name="notes"]').value +
+      '\nFirst source: ' + ft.source + (ft.campaign ? ' / ' + ft.campaign : '') +
+      '\nFirst landing page: ' + ft.landing +
+      '\nPage: ' + window.location.href;
 
-    // Collect checked values as arrays
-    var priorities = [];
-    leadForm.querySelectorAll('[name="priorities"]:checked').forEach(function(el) {
-      priorities.push(el.value);
-    });
-    var housingType = [];
-    leadForm.querySelectorAll('[name="housing_type"]:checked').forEach(function(el) {
-      housingType.push(el.value);
-    });
+    function showFallback() {
+      mailtoLink.href = 'mailto:{{ search.contactEmail }}?subject=' +
+        encodeURIComponent('{{ search.display }} area help — ' + name) +
+        '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n' + summary);
+      leadFallback.hidden = false;
+      button.disabled = false;
+      leadFallback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
-    var payload = {
-      source: leadForm.querySelector('[name="source"]').value,
-      campaign: leadForm.querySelector('[name="campaign"]').value,
-      first_name: leadForm.querySelector('[name="first_name"]').value,
-      email: leadForm.querySelector('[name="email"]').value,
-      timeline: leadForm.querySelector('[name="timeline"]').value,
-      budget_range: leadForm.querySelector('[name="budget_range"]').value,
-      priorities: priorities,
-      housing_type: housingType,
-      notes: leadForm.querySelector('[name="notes"]').value,
-      page_url: window.location.href,
-      submitted_at: new Date().toISOString()
-    };
+    if (!MPLead.isConfigured('buyer')) { showFallback(); return; }
 
-    {% if search.leadEndpoint %}
-    fetch('{{ search.leadEndpoint }}', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function() {
-      leadForm.hidden = true;
-      leadSuccess.hidden = false;
-    }).catch(function() {
-      // Fallback: email
-      var body = 'Name: ' + payload.first_name +
-        '\nEmail: ' + payload.email +
-        '\nTimeline: ' + payload.timeline +
-        '\nBudget: ' + payload.budget_range +
-        '\nPriorities: ' + priorities.join(', ') +
-        '\nHousing type: ' + housingType.join(', ') +
-        '\nNotes: ' + payload.notes;
-      window.location.href = 'mailto:{{ search.contactEmail }}?subject=' +
-        encodeURIComponent('Lakewood area help — ' + payload.first_name) +
-        '&body=' + encodeURIComponent(body);
-    });
-    {% else %}
-    // No endpoint configured — email fallback
-    var body = 'Name: ' + payload.first_name +
-      '\nEmail: ' + payload.email +
-      '\nTimeline: ' + payload.timeline +
-      '\nBudget: ' + payload.budget_range +
-      '\nPriorities: ' + priorities.join(', ') +
-      '\nHousing type: ' + housingType.join(', ') +
-      '\nNotes: ' + payload.notes;
-    window.location.href = 'mailto:{{ search.contactEmail }}?subject=' +
-      encodeURIComponent('Lakewood area help — ' + payload.first_name) +
-      '&body=' + encodeURIComponent(body);
-    leadForm.hidden = true;
-    leadSuccess.hidden = false;
-    {% endif %}
+    button.disabled = true;
+    MPLead.submit('buyer', { firstname: name, email: email, message: summary })
+      .then(function() {
+        leadForm.hidden = true;
+        leadFallback.hidden = true;
+        leadSuccess.hidden = false;
+      })
+      .catch(showFallback);
   });
 })();
 </script>
@@ -316,15 +306,17 @@ layout: layouts/base.njk
   var gate = document.getElementById('reports-gate');
   var gateForm = document.getElementById('report-gate-form');
   var success = document.getElementById('reports-success');
-  if (!reportsList || !gate || !gateForm) return;
+  if (!reportsList || !gate || !gateForm || !window.MPLead) return;
 
+  var gated = MPLead.isConfigured('report');
   var pendingFile = null;
 
-  // Click a download button → show the gate form
   reportsList.addEventListener('click', function(e) {
     var btn = e.target.closest('.market-report-download');
     if (!btn) return;
     pendingFile = btn.getAttribute('data-file');
+    // No capture configured: don't pretend to collect details, just deliver the report.
+    if (!gated) { window.open(pendingFile, '_blank'); return; }
     gateForm.querySelector('[name="report_file"]').value = pendingFile;
     gate.hidden = false;
     gateForm.querySelector('[name="name"]').focus();
@@ -332,38 +324,20 @@ layout: layouts/base.njk
 
   gateForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    var payload = {
-      source: gateForm.querySelector('[name="report_source"]').value,
-      campaign: gateForm.querySelector('[name="campaign"]').value,
-      name: gateForm.querySelector('[name="name"]').value,
+    var ft = MPLead.firstTouch();
+    MPLead.submit('report', {
+      firstname: gateForm.querySelector('[name="name"]').value,
       email: gateForm.querySelector('[name="email"]').value,
       phone: gateForm.querySelector('[name="phone"]').value,
-      report_file: pendingFile,
-      page_url: window.location.href,
-      submitted_at: new Date().toISOString()
-    };
-
-    {% if search.leadEndpoint %}
-    fetch('{{ search.leadEndpoint }}', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function() {
-      gate.hidden = true;
-      success.hidden = false;
-      if (pendingFile) window.open(pendingFile, '_blank');
-    }).catch(function() {
-      // Fallback: just deliver the PDF
-      gate.hidden = true;
-      success.hidden = false;
-      if (pendingFile) window.open(pendingFile, '_blank');
-    });
-    {% else %}
-    // No endpoint — deliver PDF directly after capture
-    gate.hidden = true;
-    success.hidden = false;
-    if (pendingFile) window.open(pendingFile, '_blank');
-    {% endif %}
+      message: 'Market report: ' + pendingFile +
+        '\nCampaign: ' + gateForm.querySelector('[name="campaign"]').value +
+        '\nFirst source: ' + ft.source + '\nFirst landing page: ' + ft.landing
+    }).catch(function() { /* still deliver the report */ })
+      .then(function() {
+        gate.hidden = true;
+        success.hidden = false;
+        if (pendingFile) window.open(pendingFile, '_blank');
+      });
   });
 })();
 </script>

@@ -33,9 +33,9 @@ Madison Avenue is Lakewood's scrappier, more independent commercial corridor.
 
 ## What defines the area
 
-Madison runs parallel to Detroit through southern Lakewood and feels noticeably different. It's more eclectic, less polished, and almost entirely locally owned. Auto shops sit next to vintage stores, art supply shops, ethnic groceries, and long-standing neighborhood restaurants.
+Madison runs parallel to Detroit through southern Lakewood and feels noticeably different. It's more eclectic, less polished, and almost entirely locally owned. Auto shops sit next to vintage stores, art supply shops, international groceries, and long-standing neighborhood restaurants.
 
-**Recent city investment has improved walkability and safety** — the "Madison on the Move" lane reduction project widened sidewalks and slowed traffic. But this area is still evolving — and that's part of the appeal.
+**Recent city investment has improved walkability and pedestrian safety** — the "Madison on the Move" lane reduction project widened sidewalks and slowed traffic. But this area is still evolving — and that's part of the appeal.
 
 <div class="pull-quote">
 
@@ -43,18 +43,18 @@ Roughly 95% of Madison Avenue's ~300 businesses are locally owned. Daily vehicle
 
 </div>
 
-## Who this area tends to fit
+## A good match if you want
 
-- Buyers priced out of Detroit Avenue but wanting similar energy
-- Small business owners and creatives
-- Investors looking ahead at long-term momentum
-- Buyers comfortable with mixed-use surroundings
+- Detroit Avenue energy at a lower price
+- A locally owned, eclectic business corridor nearby
+- To buy ahead of long-term neighborhood momentum
+- Mixed-use surroundings
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Buyers wanting a finished, upscale commercial district
-- Anyone sensitive to road noise directly on Madison
-- Buyers expecting uniform residential streets
+- A finished, upscale commercial district
+- Distance from road noise directly on Madison
+- Uniform residential streets
 
 ## What to watch for
 

@@ -8,11 +8,11 @@ threads:
   - "community"
   - "why-i-care"
 bridges:
-  - url: "/streetlight/"
-    label: "Streetlight"
-    because: "Local visibility work I'm doing this month."
-  - url: "/third-places/"
-    label: "Third places"
+  - url: "/real-estate/search/lakewood/"
+    label: "Lakewood neighborhoods"
+    because: "Where most of my real estate time goes right now."
+  - url: "/community/"
+    label: "Community"
     because: "What we're building with The Wandering Lantern."
 bubble:
   eligible: false
@@ -24,10 +24,6 @@ seo:
 A short rolling list of what I'm working on lately.
 
 *Last updated: January 2026*
-
-## Streetlight
-
-Launching a local visibility service. Auditing Google Business Profiles, Apple, Yelp. Turning years of informal work into a real thing.
 
 ## The Wandering Lantern
 

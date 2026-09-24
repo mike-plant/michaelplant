@@ -13,10 +13,16 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/bubble.css">
   <link rel="stylesheet" href="/assets/css/search.css">
+  <script>window.MP_CONFIG = { hubspot: {{ site.hubspot | dump | safe }} };</script>
+  <script src="/assets/js/lead.js"></script>
 </head>
 {% set nc = bridges | neighborColors(section) %}
 <body{% if section %} data-section="{{ section }}"{% endif %}{% if nc | length %} style="--neighbor-1: {{ nc[0] }};{% if nc[1] %} --neighbor-2: {{ nc[1] }};{% endif %}"{% endif %}>
+  {% if section == "real-estate" %}
+  <a href="/" class="name-anchor name-anchor--brokerage">Michael Plant <span class="name-anchor-sep" aria-hidden="true">|</span> {{ site.brokerage.name }}</a>
+  {% else %}
   <a href="/" class="name-anchor">Michael Plant</a>
+  {% endif %}
   {% include "components/bubble.njk" %}
   <main>
     {{ content | safe }}

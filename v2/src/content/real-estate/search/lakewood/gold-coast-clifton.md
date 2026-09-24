@@ -45,18 +45,18 @@ Only 34% of residents in this area are homeowners — one of the lowest rates in
 
 This area rewards buyers who understand nuance.
 
-## Who this area tends to fit
+## A good match if you want
 
-- Condo buyers prioritizing lake views and lower maintenance
-- Buyers who value transit access and proximity to Cleveland
-- Retirees and professionals downsizing from larger homes
-- Buyers comfortable with HOAs and shared building decisions
+- Lake views and lower-maintenance condo living
+- Transit access and a short trip to Cleveland
+- To downsize from a larger home
+- Building amenities, and you're comfortable with HOA decisions
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Buyers wanting private yards or quiet streets
-- Anyone uncomfortable with HOA rules, fees, or assessments
-- Buyers expecting uniform property condition or pricing
+- A private yard or quiet side streets
+- To avoid HOA rules, fees, or special assessments
+- Uniform property condition or pricing
 
 ## What to watch for
 

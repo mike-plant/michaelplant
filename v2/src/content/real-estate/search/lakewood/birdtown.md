@@ -45,18 +45,18 @@ The housing stock is mostly smaller single-family homes, classic Lakewood double
 
 This is not a polished or flashy part of Lakewood — and that's exactly why it works for the right buyer.
 
-## Who Birdtown tends to fit
+## A good match if you want
 
-- First-time buyers who want Lakewood schools and walkability at a lower price point
-- Buyers comfortable trading size or polish for location and affordability
-- Investors targeting doubles in a historically stable rental area
-- People who value diversity and a true neighborhood feel
+- Lakewood walkability at the city's lowest entry price
+- Location and affordability over size or polish
+- Doubles in a historically stable rental area
+- A tight, village-like street grid with real neighborhood feel
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Buyers looking for large homes, wide lots, or quiet suburban spacing
-- Anyone sensitive to industrial edges or rail proximity
-- Buyers who want turnkey homes without renovation or updates
+- A large home, a wide lot, or suburban spacing
+- Distance from industrial edges and the rail line
+- A turnkey home with no renovation or updates
 
 ## What to watch for
 

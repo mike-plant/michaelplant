@@ -6,10 +6,7 @@ section: real-estate
 contexts:
   - "Real Estate"
 threads:
-  - "lasting value"
-  - "judgment"
-  - "community"
-  - "restraint"
+  - "deals"
 bridges:
   - url: "/real-estate/value/"
     label: "Lasting value"

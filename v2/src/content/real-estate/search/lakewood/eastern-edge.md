@@ -26,7 +26,7 @@ bubble:
   eligible: true
   contextKey: "Real Estate"
 seo:
-  description: "The Eastern Edge (W. 117th), Lakewood OH — diverse housing, border dynamics, and hidden value. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
+  description: "The Eastern Edge (W. 117th), Lakewood OH — varied housing, border dynamics, and hidden value. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---
 
 Lakewood's eastern edge packs the city's widest range of housing into a few blocks.
@@ -41,18 +41,18 @@ Lakewood's income tax rate is 1.5% versus Cleveland's 2.5% — a difference of r
 
 </div>
 
-## Who this area tends to fit
+## A good match if you want
 
-- Buyers prioritizing transit and highway access
-- Condo and townhome buyers
-- Buyers sensitive to municipal tax differences
-- People comfortable with density and diversity
+- Quick transit and highway access
+- A condo or townhome
+- To weigh municipal tax differences block by block
+- Denser blocks and a wide mix of housing types
 
-## Who it usually doesn't fit
+## Probably not the match if you want
 
-- Buyers seeking quiet, purely residential streets
-- Families needing clear school boundary certainty
-- Buyers uncomfortable with urban edges
+- Quiet, purely residential streets
+- Certainty about school assignment while boundaries are being redrawn
+- Distance from busy corridors and the city line
 
 ## What to watch for
 

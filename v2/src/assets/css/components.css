@@ -14,9 +14,8 @@
 }
 
 /* Section accent colors on hero border */
-.section-streetlight .page-hero { border-bottom-color: var(--color-streetlight); }
 .section-real-estate .page-hero { border-bottom-color: var(--color-real-estate); }
-.section-third-places .page-hero { border-bottom-color: var(--color-third-places); }
+.section-community .page-hero { border-bottom-color: var(--color-community); }
 .section-building .page-hero { border-bottom-color: var(--color-building); }
 
 .page-body {
@@ -218,7 +217,7 @@
 
 .home-contexts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
