@@ -3,17 +3,10 @@ title: "How I Work"
 date: 2026-01-28
 layout: layouts/page.njk
 section: about
-contexts:
-  - "Building"
-threads:
-  - "how-i-work"
 bridges:
   - url: "/about/"
     label: "About"
     because: "Who I am before how I work."
-bubble:
-  eligible: true
-  contextKey: "Building"
 seo:
   description: "What it feels like to work with me: clarity, boundaries, and practical follow-through."
 ---

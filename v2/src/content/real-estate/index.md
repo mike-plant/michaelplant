@@ -3,10 +3,6 @@ title: "Real Estate"
 date: 2026-01-28
 layout: layouts/page.njk
 section: real-estate
-contexts:
-  - "Real Estate"
-threads:
-  - "deals"
 bridges:
   - url: "/real-estate/value/"
     label: "Lasting value"
@@ -20,9 +16,6 @@ bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Search Lakewood neighborhoods"
     because: "Understand the neighborhoods block by block before you start looking."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 pageCta:
   text: "Ready to look at neighborhoods?"
   url: "/real-estate/search/lakewood/"

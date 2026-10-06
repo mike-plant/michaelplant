@@ -1,6 +1,11 @@
 # michaelplant.com — Connection Ecosystem Architecture & Plan
 
-Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reconciled against what is in this repo today.
+Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reconciled against what is in this repo.
+
+> **Status (2026-10-06):** Phase 0 and Phase 1 are built, and the site has been redesigned around the printed calling card, all on branch `claude/zealous-heisenberg-zn6okn`, **not yet merged to `main`**. Next: Phase 2 (Reclaim intake) or Phase 3 (real-estate engine on michaelplantrealtor.com).
+> - Current site documentation: `v2/CLAUDE-HANDOFF.md`
+> - Remaining owner to-dos: `project-docs/launch-checklist.md`
+> - §1–§3 below are the **original analysis from 2026-09-24**, kept for history. Where they conflict with the decisions log, the decisions log wins.
 
 ---
 
@@ -36,7 +41,7 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 - **Houses of Lakewood:** no group URL yet. "Join the group" opens a prefilled text until there is one.
 - **Card QR:** the designer PDF's QR is clipped and won't scan, and it encodes a vCard rather than a URL. Corrected file: `project-docs/card/MICHAEL_PLANT_card_url-qr.pdf`.
 
-## 1. Where things stand today
+## 1. Where things stood (2026-09-24 analysis)
 
 The repo holds **two different websites**:
 
@@ -161,6 +166,8 @@ The source is [OAC 1301:5-1-02](https://codes.ohio.gov/ohio-administrative-code/
 
 ## 5. Target information architecture
 
+> **Updated by later decisions:** real-estate pages (`/real-estate/**`, `/sell/*`, `/buy/*`, `/invest/`, `/home-value/`, `/proof/`) move to **michaelplantrealtor.com** (§3a). Streetlight is retired, not de-emphasized. `/faith/` is unpublished. The home page is the calling-card page with a 4-item "What I'm Part Of" list rather than 5 intent buttons. The content model shipped as `_data/paths.json` + `_data/card.json`; contexts, threads and the beacon were removed instead of migrated. Brokerage display is driven by `section: real-estate` in `base.njk`/`footer.njk` rather than a separate layout.
+
 ```
 michaelplant.com
 ├── /                        Hub: portrait, "Hey, I'm Mike", Save/Text/Call, 5 intent buttons, "Right now"
@@ -243,22 +250,23 @@ A Pages Function calling the Claude API, grounded only in an `approved-answers/`
 Phases follow the BRD's MVP sequence, with a **Phase 0** for fixes to the live site.
 
 ### Phase 0: Fix the live site (days, not weeks)
-- [ ] Add a brokerage block to all real-estate pages (and the global footer until Red 1 rules on scope) → **needs D6**
-- [ ] Rewrite the neighborhood "fits / doesn't fit" sections to remove protected-class language; send them to Red 1 for review
-- [ ] Add `/privacy/`
-- [ ] Replace `mailto:` form handling with a real endpoint (Formspree/Tally is fine as a stopgap until T1); fix the report gate
-- [ ] Fix `threads.json` and the undefined thread IDs; update `CLAUDE-HANDOFF.md`
-- [ ] Unify the public email (D2); surface the phone number
-- [ ] Repo cleanup: untrack `.next/`, delete dead component variants and duplicate stubs, archive the Next.js app to a branch or `legacy/`
+- [x] Add a brokerage block to all real-estate pages (and the global footer until Red 1 rules on scope) → **needs D6**
+- [x] Rewrite the neighborhood "fits / doesn't fit" sections to remove protected-class language; send them to Red 1 for review
+- [x] Add `/privacy/`
+- [x] Honest form fallback + HubSpot Forms API wiring; report gate fixed. *(HubSpot IDs still needed)*
+- [x] Fix `threads.json` and the undefined thread IDs; update `CLAUDE-HANDOFF.md`
+- [x] Unify the public email (D2); surface the phone number
+- [x] Repo cleanup: untrack `.next/`, delete dead component variants and duplicate stubs, archive the Next.js app to a branch or `legacy/`
 
 ### Phase 1: Connect layer (unblocks card printing)
-- [ ] `paths.json` content model; migrate `contextDefs`
-- [ ] `/connect/` + `/hello/` redirect: portrait, Save to Contacts (`/mike.vcf`), Text (`sms:`), Call (`tel:`), five intent buttons. Two taps to a saved contact
-- [ ] New home above the fold (same component); "Right now" and exploration below
-- [ ] Mobile sticky Text/Call
-- [ ] First-touch source capture script
-- [ ] Hosting move (T1) and `_redirects`: `/books`, `/third-places`, `/buy/lakewood`, `/hello`
-- [ ] **Generate the QR from the live `/connect/` URL, print a proof, scan it on iOS and Android** → card goes to print
+- [x] `paths.json` content model; migrate `contextDefs`
+- [x] `/connect/` + `/hello/` redirect: portrait, Save to Contacts (`/mike.vcf`), Text (`sms:`), Call (`tel:`), five intent buttons. Two taps to a saved contact
+- [x] New home above the fold (same component); "Right now" and exploration below
+- [x] Mobile sticky Text/Call
+- [x] First-touch source capture script
+- [ ] Hosting move to Cloudflare (T1). *`_redirects`/`_headers` are generated; meta-refresh stubs work on GitHub Pages meanwhile*
+- [x] QR generated for `https://michaelplant.com/connect` and placed on the card PDF (`project-docs/card/`)
+- [ ] **Print a proof after the site is live; scan on iOS and Android** → card goes to print
 
 ### Phase 2: Reclaim
 - [ ] `/projects/` hub + 3–5 service pages (porch/deck, railings, trim/rot, doors, pre-sale punch list)

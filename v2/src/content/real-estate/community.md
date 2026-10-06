@@ -3,11 +3,6 @@ title: "Community"
 date: 2026-01-28
 layout: layouts/page.njk
 section: real-estate
-contexts:
-  - "Real Estate"
-threads:
-  - "deals"
-  - "places-work"
 bridges:
   - url: "/community/"
     label: "Why community matters"
@@ -15,9 +10,6 @@ bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Explore Lakewood neighborhoods"
     because: "See which neighborhoods match what you're looking for."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Why neighborhoods outperform spreadsheets over time."
 ---

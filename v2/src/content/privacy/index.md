@@ -3,10 +3,6 @@ title: "Privacy"
 date: 2026-09-24
 layout: layouts/page.njk
 section: about
-contexts: []
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "What information this site collects, why, and what happens to it."
 ---

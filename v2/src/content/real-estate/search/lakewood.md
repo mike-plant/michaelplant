@@ -3,8 +3,6 @@ title: "Homes for Sale in Lakewood, OH"
 date: 2026-02-07
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Lakewood"
   pak: "city:g30_dpmu481c"
@@ -17,9 +15,6 @@ bridges:
   - url: "/real-estate/community/"
     label: "Community"
     because: "Lakewood's neighborhoods are part of what makes it special."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Homes for sale in Lakewood, Ohio. Understand the neighborhoods block by block before you search. Michael Plant, Red 1 Realty."
 ---

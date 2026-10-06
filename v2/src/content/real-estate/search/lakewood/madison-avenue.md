@@ -3,8 +3,6 @@ title: "Madison Avenue Corridor — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Madison Avenue Corridor"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/birdtown/"
     label: "Birdtown"
     because: "Madison's neighbor in Lakewood's southeast corner."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Madison Avenue Corridor, Lakewood OH — eclectic, independent, and evolving. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

@@ -3,10 +3,6 @@ title: "Building"
 date: 2026-01-28
 layout: layouts/page.njk
 section: building
-contexts:
-  - "Building"
-threads:
-  - "places-work"
 bridges:
   - url: "/about/"
     label: "About"
@@ -14,9 +10,6 @@ bridges:
   - url: "/about/how-i-work/"
     label: "How I work"
     because: "Bounded, transparent, practical."
-bubble:
-  eligible: true
-  contextKey: "Building"
 seo:
   description: "Marketing and technical craft that reduces friction and compounds over time."
 ---

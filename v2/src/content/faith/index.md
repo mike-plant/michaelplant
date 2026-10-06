@@ -5,10 +5,6 @@ layout: layouts/page.njk
 section: faith
 permalink: false
 eleventyExcludeFromCollections: true
-contexts: []
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "Conversation about faith and life with Mike Plant. No agenda."
 ---

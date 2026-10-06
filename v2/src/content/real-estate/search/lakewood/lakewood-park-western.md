@@ -3,8 +3,6 @@ title: "Lakewood Park & Western Lakewood — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Lakewood Park & Western Lakewood"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/detroit-avenue/"
     label: "Detroit Avenue"
     because: "Where walkability and nightlife pick up heading east."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Lakewood Park & Western Lakewood, OH — quieter, greener, and close to the lake. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

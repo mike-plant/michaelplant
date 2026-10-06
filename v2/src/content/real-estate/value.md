@@ -3,10 +3,6 @@ title: "Lasting Value"
 date: 2026-01-28
 layout: layouts/page.njk
 section: real-estate
-contexts:
-  - "Real Estate"
-threads:
-  - "deals"
 bridges:
   - url: "/real-estate/"
     label: "How I think about real estate"
@@ -14,9 +10,6 @@ bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Search Lakewood"
     because: "See how these ideas play out neighborhood by neighborhood."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Why quick money is loud, lasting value is quiet, and what usually gets sacrificed first."
 ---

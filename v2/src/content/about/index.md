@@ -3,10 +3,6 @@ title: "About"
 date: 2026-01-28
 layout: layouts/page.njk
 section: about
-contexts: []
-threads:
-  - "community"
-  - "why-i-care"
 bridges:
   - url: "/now/"
     label: "Now"
@@ -20,9 +16,6 @@ bridges:
   - url: "/community/"
     label: "Community"
     because: "Why community is at the center of everything."
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "About Michael Plant — family, building, real estate, community, and figuring it out in Lakewood, Ohio."
 ---

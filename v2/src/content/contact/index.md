@@ -3,10 +3,6 @@ title: "Contact"
 date: 2026-01-29
 layout: layouts/page.njk
 section: about
-contexts: []
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "Get in touch with Michael Plant — text, call, email, or book a time."
 ---

@@ -3,14 +3,10 @@ title: "Home Projects"
 date: 2026-09-24
 layout: layouts/page.njk
 section: projects
-contexts: []
 bridges:
   - url: "/about/"
     label: "About"
     because: "Who you'd be working with."
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "Small exterior carpentry and repair in Lakewood and Cleveland's west side — porches, railings, trim, rot, doors."
 ---

@@ -3,8 +3,6 @@ title: "Detroit Avenue Corridor — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Detroit Avenue Corridor"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/lakewood-park-western/"
     label: "Lakewood Park & Western"
     because: "Where Detroit Avenue quiets down heading west."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Detroit Avenue Corridor, Lakewood OH — walkable, lively, and full of locally owned businesses. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

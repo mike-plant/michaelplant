@@ -3,12 +3,6 @@ title: "Community"
 date: 2026-01-28
 layout: layouts/page.njk
 section: community
-contexts:
-  - "Community"
-threads:
-  - "places-work"
-  - "community"
-  - "why-i-care"
 bridges:
   - url: "/real-estate/community/"
     label: "Community and real estate"
@@ -16,9 +10,6 @@ bridges:
   - url: "/about/"
     label: "About"
     because: "Why community sits at the center of everything else."
-bubble:
-  eligible: true
-  contextKey: "Community"
 seo:
   description: "Why community spaces matter and what I'm building with The Wandering Lantern."
 ---

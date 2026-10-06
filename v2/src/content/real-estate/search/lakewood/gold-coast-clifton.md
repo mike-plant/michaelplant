@@ -3,8 +3,6 @@ title: "Gold Coast & Clifton Boulevard — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Gold Coast & Clifton Boulevard"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/lakewood-park-western/"
     label: "Lakewood Park & Western"
     because: "The quieter west end of the lakefront."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Gold Coast & Clifton Boulevard, Lakewood OH — lake views, high-rises, and historic homes. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

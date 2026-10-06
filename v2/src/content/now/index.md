@@ -3,10 +3,6 @@ title: "Right now"
 date: 2026-01-28
 layout: layouts/page.njk
 section: now
-contexts: []
-threads:
-  - "community"
-  - "why-i-care"
 bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Lakewood neighborhoods"
@@ -14,9 +10,6 @@ bridges:
   - url: "/community/"
     label: "Community"
     because: "What we're building with The Wandering Lantern."
-bubble:
-  eligible: false
-  contextKey: null
 seo:
   description: "What I'm working on lately across projects."
 ---

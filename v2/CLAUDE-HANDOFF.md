@@ -1,191 +1,115 @@
-# michaelplant.com v2 — Handoff Document
+# michaelplant.com — Site Handoff
 
-> **Oct 2026 redesign:** The site now follows the printed calling card ("old Lakewood calling card": paper, ink, engraved portrait, ruled single column, Cormorant SC + EB Garamond) in `assets/css/site.css` (+ `search.css` for neighborhood forms). The beacon, context colors, thread nav and side rail described below were **removed**. Inner pages use a masthead ("Michael Plant", or "Michael Plant | Red 1 Realty" on real-estate pages) and a fine-print footer. Home and `/connect/` use `layouts/card.njk`, fed by `_data/card.json` and `_data/paths.json`. Contexts/threads data remain in `_data/` but nothing renders them now.
+Current as of **2026-10-06** (branch `claude/zealous-heisenberg-zn6okn`).
+For *why* things are the way they are, see `../project-docs/connection-ecosystem-plan.md` (decisions log at the top). For what's left before launch, see `../project-docs/launch-checklist.md`.
 
-## What This Is
+## What this is
 
-A nonlinear personal brand hub built with Eleventy. Not a portfolio or services site — a mind map where visitors explore Michael Plant through interconnected **contexts**, **threads**, and **bridges**. The site should feel like a conversation, not a brochure.
+Michael Plant's personal hub, designed as an **old Lakewood calling card**: one ruled column on paper, an engraved portrait, small-caps display type, Garamond body. It matches the printed card. The physical card's QR points to `/connect/`.
 
-## Tech Stack
+The site is a relationship hub, not a funnel. From the card page, people can text or save Mike's contact, or go to what he's part of: Houses of Lakewood, The Wandering Lantern, Real Estate (with Red 1 Realty), and Reclaim (home projects).
 
-- **Eleventy 2.0.1** (static site generator)
-- **Nunjucks** (templating)
-- **Calendly** (inline embed on /contact/)
-- Input: `src/`, Output: `_site/`
-- `npm run dev` → `eleventy --serve --incremental`
-- `npm run build` → `eleventy`
+## Stack
 
-## Core Concepts
+- **Eleventy 2.0.1** + Nunjucks; input `src/`, output `_site/`
+- `npm run dev` → http://localhost:8080 · `npm run build`
+- Deploy: `.github/workflows/deploy.yml` builds `v2/` and publishes to **GitHub Pages on every push to `main`** (custom domain via `src/CNAME`). The planned move to Cloudflare Pages hasn't happened yet. `_redirects` and `_headers` are already generated for it.
+- No client framework. One small script: `src/assets/js/lead.js`.
 
-**Contexts** — 3 stable areas of attention, each with a color (Streetlight was retired Sept 2026; Third Places was renamed Community):
-
-| Key | Color | Hex |
-|-----|-------|-----|
-| Real Estate | Blue | #2B6CB0 |
-| Community | Green | #4A8B6E |
-| Building | Steel | #7B8FA1 |
-
-Defined in `src/_data/contextDefs.json`. Each page declares 0-2 contexts in front matter.
-
-**Threads** — narrative paths that cross contexts (like subway lines). Defined in `src/_data/threads.json` with ordered page sequences. 6 threads: deals, places-work, community, how-i-work, why-i-care, neighborhoods. (Thread nav is currently commented out in page.njk.)
-
-**Bridges** — curated links at page bottom with human-written "because" rationale. Declared per-page in front matter.
-
-## Navigation Model
-
-There is no traditional nav bar. Navigation happens through:
-
-1. **Beacon** (top-left fixed dot) — context compass. Shows colored dot(s) for current context. Expands to show all 4 contexts. Active context floats to top with larger dot + glow. Context-neutral pages show 4 dots in 2x2 grid.
-2. **Bridges** (bottom of content pages) — scattered pill links with "because" explanations and cross-section color indicators.
-3. **Thread nav** (bottom of threaded pages) — prev/next within a thread sequence.
-4. **Name anchor** ("Michael Plant" top-right fixed link to /) — reorientation.
-
-## File Structure
+## Where things live
 
 ```
 src/
   _data/
-    contextDefs.json    # 4 context definitions (key, label, color, icon, description)
-    threads.json        # 7 thread definitions with page orderings
-    site.json           # Site metadata (title, email, location, social links)
+    site.json        name, nickname, phone (3 formats), email, portrait, brokerage, HubSpot IDs
+    card.json        words on the card page (greeting, about, lead, coffee lines)
+    paths.json       "What I'm Part Of" list (title, detail, url, go-label, brokerage flag)
+    redirects.json   old URL → new URL (generates meta-refresh stubs AND Cloudflare _redirects)
   _includes/
     layouts/
-      base.njk          # HTML shell — loads CSS, beacon, name anchor, footer
-      home.njk          # Home layout — lede, "right now", context cards grid
-      page.njk          # Content layout — context field, hero, body, thread-nav, bridges
+      base.njk           HTML shell: fonts, site.css, masthead, footer, mobile contact bar
+      card.njk           the calling-card page (home + /connect/)
+      page.njk           standard content page (title, body, optional pageCta, Keep Reading)
+      search-landing.njk Lakewood neighborhood pages: lead form, report gate, listings link-out
     components/
-      bubble.njk        # Beacon compass (context dots + expandable map)
-      bridges.njk       # Scattered pill links with "because" text
-      thread-nav.njk    # Prev/next thread navigation
-      footer.njk        # Single-line utility footer
-      header.njk        # UNUSED — exists but not included anywhere
+      footer.njk         fine print: brokerage disclosure (+ logo on real-estate pages), links
+      bridges.njk        "Keep Reading" ruled list from front-matter `bridges`
+      contact-bar.njk    mobile-only Text / Call / Save contact bar
   assets/
-    css/
-      global.css        # Design system, reset, typography, name anchor, footer
-      components.css    # Page layout, bridges, thread hints, home page, context cards
-      bubble.css        # Beacon styles, context field, page glow, neighbor glow
+    css/site.css     the whole design system (tokens at top)
+    css/search.css   neighborhood-page forms; only loaded on section: real-estate
+    js/lead.js       first-touch source capture, HubSpot submit, data-event click hook
+    img/             portrait (webp), vCard photo, OG image, Red 1 logo
   content/
-    index.md            # Home (layout: home.njk, section: home)
-    now/index.md        # What I'm working on right now
-    contact/index.md    # Email + Calendly embed
-    about/
-      index.md          # Personal bio
-      how-i-work.md     # Working style, pricing, expectations
-    real-estate/
-      index.md, value.md, risk.md, community.md, work.md   # Real-estate thinking
-      search/lakewood.md + search/lakewood/*.md            # Neighborhood pages (layouts/search-landing.njk)
-    community/
-      index.md          # Community, The Wandering Lantern, local businesses
-    privacy/
-      index.md          # Privacy policy
-    building/
-      index.md          # 20+ years building things
-    content.json        # Permalink pattern using fixPermalink filter
+    index.md, connect/        card page (layout: card.njk)
+    mike.11ty.js              /mike.vcf (vCard 3.0 with photo)
+    about/, now/, contact/, privacy/, building/, community/, projects/
+    real-estate/              essays + search/lakewood(.md|/*.md) neighborhood guides
+    faith/                    UNPUBLISHED placeholder (permalink: false)
+  redirects/                  stub pages, _redirects, _headers generators
+  lakewood-concepts/          ULBA mockup (noindex; belongs in its own repo eventually)
 ```
 
-## Front Matter Convention
+## Front matter
 
 ```yaml
 ---
 title: "Page Title"
-date: 2026-01-28
+date: 2026-10-06
 layout: layouts/page.njk
-section: community            # slug, sets data-section on body
-contexts:
-  - "Community"               # 0-2 labels matching contextDefs
-threads:
-  - "community"               # 0-3 thread IDs from threads.json
-bridges:
-  - url: "/real-estate/community/"
-    label: "Community and real estate"
-    because: "Human rationale for this connection."
-bubble:
-  eligible: true
-  contextKey: "Community"     # which context this page represents in bubble
+section: real-estate        # drives masthead/footer brokerage + loads search.css
+bridges:                    # optional "Keep Reading" list
+  - url: "/real-estate/risk/"
+    label: "Risk and restraint"
+    because: "One-line reason to click."
+pageCta:                    # optional
+  text: "Ready to look at neighborhoods?"
+  url: "/real-estate/search/lakewood/"
+  label: "Explore Lakewood"
 seo:
   description: "..."
+  ogImage: "/assets/img/..."   # optional; defaults to site.ogImage
 ---
 ```
 
-## Eleventy Config (eleventy.config.js)
+Layout flags (set in a layout's or page's front matter): `hideMasthead`, `hideContactBar`, `wide` (wider sheet for long guides).
 
-**Collections:**
-- `allPages` — all non-draft markdown content
-- `byContext` — pages grouped by context label, sorted by date
-- `byThread` — pages organized by thread ID with label/summary
-- `contextProximity` — co-occurrence map of contexts across pages
+## Rules that must hold (compliance and trust)
 
-**Filters:**
-- `resolveContexts` — converts context label array to full definition objects
-- `neighborColors` — extracts bridge destination colors (skips same-section)
-- `sectionColor` — URL → context color lookup
-- `urlSection` — extracts first path segment from URL
-- `threadInfo` — returns prev/next pages within a thread
-- `includes` — array.includes helper
-- `limit` — array.slice helper
-- `fixPermalink` — normalizes paths to /index.html
+1. **Real-estate pages show the brokerage at equal prominence** (Ohio OAC 1301:5-1-02). Any page with `section: real-estate` gets "Michael Plant | Red 1 Realty" in the masthead at the same size, plus the logo and disclosure in the footer. **Every** page footer carries the one-line disclosure. Don't add a real-estate page without `section: real-estate`.
+2. **Fair Housing.** Describe neighborhoods by property and lifestyle (lot size, transit, noise, renovation, price), never by who lives there or should live there (no "families", "diversity", "retirees", "safe", etc.). "Fit" sections are framed as "A good match if you want…".
+3. **Faith and personal conversations are never tracked or put in a CRM.** No `data-event` attributes on faith content.
+4. **Forms never claim success they didn't achieve.** Without HubSpot configured, the buyer form shows an email/text fallback.
+5. **The calling card stays personal** (no real-estate wording on the card itself).
+6. **NAR mark:** "REALTOR" may appear in a domain/name only combined with Michael's name (hence michaelplantrealtor.com).
 
-**Important:** Data file is `contextDefs.json` (not `contexts.json`) to avoid collision with page-level `contexts` front matter. Eleventy auto-loads data files as global variables by filename.
+## Forms and leads
 
-## CSS Architecture
-
-Three files loaded in order: `global.css` → `components.css` → `bubble.css`
-
-**Design tokens** (CSS custom properties in `:root`):
-- Colors: `--color-bg` (#faf9f7), `--color-text` (#2c2c2c), `--color-text-muted` (#6b6b6b), `--color-border` (#e0ddd8)
-- Context colors: `--color-real-estate`, `--color-community`, `--color-building`
-- Spacing: `--space-xs` (0.5rem) through `--space-2xl` (4rem)
-- Layout: `--max-width` (720px), `--radius` (6px)
-- Font: Inter with system fallbacks
-
-**Visual system:**
-- Each section page gets a subtle top gradient in its context color (4% opacity)
-- Beacon pulse glows with section color
-- Bridge pills have colored left borders for cross-section links
-- Context field: large context name behind page header at 3% opacity
-- Neighbor glow: bottom-of-page gradient from bridge destination colors
-
-**Responsive:** Single breakpoint at 640px. Grid collapses, beacon/anchor resize.
-
-## Content Voice
-
-Declarative. Economical. Fact-based. No marketing fluff, no "I believe" repetition, no bold-heading-as-list formatting. Short paragraphs. Scannable blocks. Michael's voice is direct and practical — "I'd rather show my math" not "I'm passionate about transparency."
-
-## Real-estate compliance (Ohio OAC 1301:5-1-02)
-
-Any page with `section: real-estate` automatically shows "Michael Plant | Red 1 Realty" in the name anchor (equal prominence) and the brokerage logo + disclosure in the footer. All other pages carry a one-line brokerage note in the footer. Brokerage details live in `site.brokerage` in `_data/site.json`. Real-estate pages are planned to move to michaelplantrealtor.com.
-
-## Forms and lead capture
-
-`src/assets/js/lead.js` records first-touch source/landing page (localStorage) and submits forms to HubSpot (Forms API v3) when `site.hubspot.portalId` and the form GUIDs are set in `_data/site.json`. Until then, the buyer form shows an honest fallback (prefilled email / text) instead of claiming success, and market reports download directly with no gate.
-
-## Connect layer (BRD Phase 1)
-
-- `/connect/` is the permanent calling-card QR target (`layouts/connect.njk`, no beacon/name anchor). `/hello/` redirects to it.
-- `components/connect-hero.njk` (portrait, Save/Text/Call, "What can I help with?") is shared by `/connect/` and the home page. Intent buttons come from `_data/paths.json`.
-- `/mike.vcf` is generated by `content/mike.11ty.js` from `_data/site.json`.
-- `components/contact-bar.njk` is a mobile-only text/call/save bar on every page except home and connect (`hideContactBar`).
-- Elements with `data-event` are forwarded to `window.MPTrack(name, props)` if an analytics script defines it. Faith pages intentionally have no events.
-- Styles for all of the above: `assets/css/connect.css` (placeholder design).
+- `lead.js` stores first-touch `{source, campaign, landing}` in localStorage (`/connect/` = `calling-card`) and the last chosen intent in sessionStorage. Both are appended to form submissions.
+- HubSpot: fill `site.hubspot.portalId` and `site.hubspot.forms.buyer` / `.report` with form GUIDs. Each HubSpot form needs fields `firstname`, `email`, `phone`, `message`. Submissions use the public Forms API v3 (no secret needed).
+- `data-event="..."` elements call `window.MPTrack(name, props)` if an analytics script defines it. Nothing is defined yet.
 
 ## Redirects
 
-`_data/redirects.json` generates meta-refresh stubs (work on GitHub Pages) and a Cloudflare Pages `_redirects` file.
+Add `{ "from": "/old/", "to": "/new/" }` to `_data/redirects.json`. That makes a meta-refresh page (works on GitHub Pages now) and a 301 line in `_redirects` (Cloudflare later). Current: `/hello/` → `/connect/`, `/third-places/` and `/streetlight/*` → `/community/`, `/books/` → thewanderinglantern.com.
 
-## Known State
+## External services
 
-- Header component exists but is intentionally unused
-- Calendly embed on /contact/ loads external widget JS
-- "What's next" CTA blocks were planned but deferred — page bottoms already have bridges + thread nav; adding more felt heavy. Inline CTAs in markdown (Book a call / email links) handle conversion on key pages instead.
-- The name anchor is positioned top-right but the CSS has a comment showing how to move it left-of-beacon if preferred
+- Calendly embed on `/contact/` (https://calendly.com/michaelplant)
+- Listing search links out to the Red 1 / BoldTrail agent site (`site.agentSite`)
+- The Wandering Lantern: https://thewanderinglantern.com
+- Emails: `me@michaelplant.com` (public); `michaelplantrealtor@gmail.com` (neighborhood form fallback, `search.contactEmail`)
+- Fonts: Google Fonts (Cormorant SC, EB Garamond)
 
-## Pages With Inline CTAs (in markdown body)
+## Content voice
 
-- `/about/how-i-work/` — "Book a call" Calendly + email link
+Plain, warm, direct. Short paragraphs. No marketing fluff. Mike writes like he talks: "Seriously. Text me."
 
-## External Services
+## Known gaps
 
-- **Calendly:** https://calendly.com/michaelplant (inline embed on /contact/)
-- **RED1 Realty agent site:** https://michaelplant.red1realty.com/
-- **The Wandering Lantern:** https://thewanderinglantern.com
-- **Email:** hi@michaelplant.com (public), michaelplantrealtor@gmail.com (real-estate forms)
+- `/now/` still says January 2026.
+- `/faith/` placeholder, unpublished.
+- Houses of Lakewood has no URL (opens a prefilled text).
+- HubSpot IDs empty; `me@michaelplant.com` must exist before deploy.
+- Real-estate pages still live on michaelplant.com; the move to michaelplantrealtor.com is Phase 3.
+- `real-estate/index.md` and `real-estate/value.md` largely duplicate each other (to consolidate).

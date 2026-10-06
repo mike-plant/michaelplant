@@ -3,8 +3,6 @@ title: "Birdtown — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "Birdtown"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/madison-avenue/"
     label: "Madison Avenue"
     because: "The corridor that borders Birdtown to the north."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Birdtown, Lakewood OH — affordable, walkable, and full of character. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

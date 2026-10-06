@@ -3,8 +3,6 @@ title: "The Eastern Edge (W. 117th Border) — Lakewood, OH"
 date: 2026-02-09
 layout: layouts/search-landing.njk
 section: real-estate
-contexts:
-  - "Real Estate"
 search:
   display: "The Eastern Edge"
   pak: "city:g30_dpmu481c"
@@ -22,9 +20,6 @@ bridges:
   - url: "/real-estate/search/lakewood/gold-coast-clifton/"
     label: "Gold Coast & Clifton"
     because: "The lakefront towers and condos along the border."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "The Eastern Edge (W. 117th), Lakewood OH — varied housing, border dynamics, and hidden value. Understand the streets and blocks before you search. Michael Plant, Red 1 Realty."
 ---

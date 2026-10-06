@@ -3,11 +3,6 @@ title: "How This Shows Up in Practice"
 date: 2026-01-28
 layout: layouts/page.njk
 section: real-estate
-contexts:
-  - "Real Estate"
-threads:
-  - "deals"
-  - "how-i-work"
 bridges:
   - url: "/real-estate/"
     label: "Real estate, grounded"
@@ -15,9 +10,6 @@ bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Search Lakewood"
     because: "Start by understanding which neighborhoods fit."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "What it feels like to make real estate decisions with clarity instead of urgency."
 ---

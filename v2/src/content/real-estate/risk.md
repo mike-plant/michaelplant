@@ -3,10 +3,6 @@ title: "Risk and Restraint"
 date: 2026-01-28
 layout: layouts/page.njk
 section: real-estate
-contexts:
-  - "Real Estate"
-threads:
-  - "deals"
 bridges:
   - url: "/real-estate/value/"
     label: "Lasting value"
@@ -14,9 +10,6 @@ bridges:
   - url: "/real-estate/search/lakewood/"
     label: "Search Lakewood"
     because: "Understanding neighborhoods reduces risk before you buy."
-bubble:
-  eligible: true
-  contextKey: "Real Estate"
 seo:
   description: "Why most deals fail under pressure, not because the math was wrong."
 ---
