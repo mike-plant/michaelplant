@@ -3,6 +3,8 @@ title: "Faith & Life"
 date: 2026-09-24
 layout: layouts/page.njk
 section: faith
+permalink: false
+eleventyExcludeFromCollections: true
 contexts: []
 bubble:
   eligible: false

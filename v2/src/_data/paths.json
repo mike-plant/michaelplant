@@ -1,43 +1,37 @@
 [
   {
-    "key": "home-projects",
-    "label": "I need help with my home",
-    "detail": "Porches, railings, trim, rot, doors — small exterior projects",
-    "url": "/projects/",
-    "commercial": true,
-    "color": "#9A6B3F"
+    "key": "houses-of-lakewood",
+    "title": "Houses of Lakewood",
+    "detail": "Old houses, projects, history, and the people who love them.",
+    "url": "",
+    "fallbackSms": "Hi Mike — add me to Houses of Lakewood!",
+    "go": "Join the group",
+    "commercial": false
+  },
+  {
+    "key": "wandering-lantern",
+    "title": "The Wandering Lantern",
+    "detail": "The children’s bookstore Emily and I run on Madison Avenue.",
+    "url": "https://thewanderinglantern.com",
+    "external": true,
+    "go": "Visit",
+    "commercial": false
   },
   {
     "key": "real-estate",
-    "label": "I'm thinking about buying or selling",
-    "detail": "Lakewood and Cleveland's west side",
-    "brokerage": true,
+    "title": "Real Estate",
+    "detail": "Buying, selling, or figuring out what to do with a house.",
     "url": "/real-estate/",
-    "commercial": true,
-    "color": "#2B6CB0"
+    "brokerage": true,
+    "go": "Learn more",
+    "commercial": true
   },
   {
-    "key": "community",
-    "label": "Books & community",
-    "detail": "The Wandering Lantern and Lakewood",
-    "url": "/community/",
-    "commercial": false,
-    "color": "#4A8B6E"
-  },
-  {
-    "key": "faith",
-    "label": "Faith & life",
-    "detail": "Conversation, coffee, no agenda",
-    "url": "/faith/",
-    "commercial": false,
-    "color": "#8A6FA8"
-  },
-  {
-    "key": "connect",
-    "label": "Just connect",
-    "detail": "Text, email, or grab a coffee",
-    "url": "/contact/",
-    "commercial": false,
-    "color": "#7B8FA1"
+    "key": "reclaim",
+    "title": "Reclaim",
+    "detail": "Renovation and house projects.",
+    "url": "/projects/",
+    "go": "Learn more",
+    "commercial": true
   }
 ]

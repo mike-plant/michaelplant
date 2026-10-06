@@ -2,35 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if seo.description %}{{ seo.description }}{% else %}{{ site.description }}{% endif %}">
-  {% if seo and seo.ogImage %}<meta property="og:image" content="{{ site.url }}{{ seo.ogImage }}">{% endif %}
-  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}{{ site.title }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% if title and title != site.title %}{{ title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:title" content="{% if title and title != site.title %}{{ title }} | {% endif %}{{ site.title }}">
   <meta property="og:description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="/assets/css/global.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/css/bubble.css">
-  <link rel="stylesheet" href="/assets/css/search.css">
-  <link rel="stylesheet" href="/assets/css/connect.css">
+  <meta property="og:image" content="{{ site.url }}{% if seo and seo.ogImage %}{{ seo.ogImage }}{% else %}{{ site.ogImage }}{% endif %}">
+  <meta name="theme-color" content="#efe8da">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  {% if section == "real-estate" %}<link rel="stylesheet" href="/assets/css/search.css">{% endif %}
   <script>window.MP_CONFIG = { hubspot: {{ site.hubspot | dump | safe }} };</script>
   <script src="/assets/js/lead.js"></script>
 </head>
-{% set nc = bridges | neighborColors(section) %}
-<body{% if not hideContactBar %} class="has-contact-bar"{% endif %}{% if section %} data-section="{{ section }}"{% endif %}{% if nc | length %} style="--neighbor-1: {{ nc[0] }};{% if nc[1] %} --neighbor-2: {{ nc[1] }};{% endif %}"{% endif %}>
-  {% if not hideChrome %}
-  {% if section == "real-estate" %}
-  <a href="/" class="name-anchor name-anchor--brokerage">Michael Plant <span class="name-anchor-sep" aria-hidden="true">|</span> {{ site.brokerage.name }}</a>
-  {% else %}
-  <a href="/" class="name-anchor">Michael Plant</a>
-  {% endif %}
-  {% include "components/bubble.njk" %}
-  {% endif %}
-  <main>
+<body{% if not hideContactBar %} class="has-contact-bar"{% endif %}{% if section %} data-section="{{ section }}"{% endif %}>
+  <main class="sheet{% if wide %} sheet--wide{% endif %}">
+    {% if not hideMasthead %}
+    <header class="masthead">
+      {% if section == "real-estate" %}
+      <span><a href="/" class="masthead-name">Michael Plant</a><span class="masthead-sep" aria-hidden="true">|</span><span class="masthead-brokerage">{{ site.brokerage.name }}</span></span>
+      {% else %}
+      <a href="/" class="masthead-name">Michael Plant</a>
+      {% endif %}
+      <span class="masthead-place">{{ site.city }}, Ohio</span>
+    </header>
+    {% endif %}
+
     {{ content | safe }}
+
+    {% include "components/footer.njk" %}
   </main>
-  {% include "components/footer.njk" %}
   {% if not hideContactBar %}{% include "components/contact-bar.njk" %}{% endif %}
 </body>
 </html>

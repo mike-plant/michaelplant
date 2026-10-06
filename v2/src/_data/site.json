@@ -1,9 +1,9 @@
 {
   "title": "Michael Plant",
   "url": "https://michaelplant.com",
-  "description": "Real estate, community, and building things — from Lakewood, Ohio.",
+  "description": "Michael Plant — Lakewood, Ohio. Houses, books, real estate, and the people around me.",
   "author": "Michael Plant",
-  "email": "hi@michaelplant.com",
+  "email": "me@michaelplant.com",
   "phone": "(216) 217-6362",
   "phoneE164": "+12162176362",
   "location": "Lakewood / Cleveland, OH",
@@ -28,7 +28,10 @@
   "firstName": "Michael",
   "nickname": "Mike",
   "lastName": "Plant",
-  "portrait": "",
+  "portrait": "/assets/img/michael-plant-portrait.webp",
   "city": "Lakewood",
-  "region": "OH"
+  "region": "OH",
+  "ogImage": "/assets/img/og-michael-plant.jpg",
+  "phoneDots": "216.217.6362",
+  "phoneDashes": "216-217-6362"
 }

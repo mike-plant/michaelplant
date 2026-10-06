@@ -1,5 +1,7 @@
 # michaelplant.com v2 — Handoff Document
 
+> **Oct 2026 redesign:** The site now follows the printed calling card ("old Lakewood calling card": paper, ink, engraved portrait, ruled single column, Cormorant SC + EB Garamond) in `assets/css/site.css` (+ `search.css` for neighborhood forms). The beacon, context colors, thread nav and side rail described below were **removed**. Inner pages use a masthead ("Michael Plant", or "Michael Plant | Red 1 Realty" on real-estate pages) and a fine-print footer. Home and `/connect/` use `layouts/card.njk`, fed by `_data/card.json` and `_data/paths.json`. Contexts/threads data remain in `_data/` but nothing renders them now.
+
 ## What This Is
 
 A nonlinear personal brand hub built with Eleventy. Not a portfolio or services site — a mind map where visitors explore Michael Plant through interconnected **contexts**, **threads**, and **bridges**. The site should feel like a conversation, not a brochure.

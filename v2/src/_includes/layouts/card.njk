@@ -1,0 +1,64 @@
+---
+layout: layouts/base.njk
+hideMasthead: true
+hideContactBar: true
+---
+{#
+  The calling-card page: home (/) and the QR target (/connect/).
+  Words: _data/card.json · list: _data/paths.json · name/phone/email: _data/site.json
+#}
+<header class="top">
+  <img class="portrait" src="{{ site.portrait }}" alt="Engraved portrait of {{ site.author }}, smiling" width="720" height="678">
+  <h1 class="name">{{ site.author }}</h1>
+  <p class="place">{{ site.city }}, Ohio</p>
+</header>
+
+<div class="intro">
+  <p class="hi">{{ card.hi }}</p>
+  <p>{{ card.about }}</p>
+  <p class="lead">{{ card.lead }}</p>
+  <div class="actions">
+    <a class="btn solid" href="sms:{{ site.phoneE164 }}" data-event="text_click">Text me</a>
+    <a class="btn" href="/mike.vcf" data-event="save_contact">Save my contact</a>
+  </div>
+  <p class="number">{{ site.phoneDots }} <button class="copy" type="button" id="copy-number" data-copy="{{ site.phoneDashes }}">Copy</button></p>
+</div>
+
+<section aria-labelledby="part-of">
+  <h2 id="part-of">{{ card.partOfHeading }}</h2>
+  <ul class="list">
+    {% for p in paths %}
+    {% if p.url %}{% set href = p.url %}{% else %}{% set href = "sms:" + site.phoneE164 + "?&body=" + (p.fallbackSms | urlencode) %}{% endif %}
+    <li><a class="entry" href="{{ href }}"{% if p.external %} target="_blank" rel="noopener"{% endif %} data-event="intent_select" data-intent="{{ p.key }}">
+      <span class="t">{{ p.title }}</span>
+      <span class="d">{{ p.detail }}{% if p.brokerage %} With {{ site.brokerage.name }}.{% endif %}</span>
+      <span class="go">{{ p.go }} &rarr;</span></a></li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="bottom" aria-labelledby="coffee">
+  <p class="big" id="coffee">{{ card.coffee }}</p>
+  <p class="sub">{{ card.coffeeSub }}</p>
+  <dl class="contact">
+    <dt>Phone</dt><dd><a href="tel:{{ site.phoneE164 }}">{{ site.phoneDots }}</a></dd>
+    <dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+  </dl>
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+</section>
+
+{{ content | safe }}
+
+<script>
+(function () {
+  var toast = document.getElementById('toast');
+  var btn = document.getElementById('copy-number');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var v = btn.getAttribute('data-copy');
+    function done() { toast.textContent = 'Number copied.'; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); }
+    function fail() { toast.textContent = 'Copy is blocked here. The number is {{ site.phoneDots }}.'; }
+    try { navigator.clipboard.writeText(v).then(done, fail); } catch (e) { fail(); }
+  });
+})();
+</script>

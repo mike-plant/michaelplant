@@ -28,6 +28,14 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 
 **Phase 1: built on branch.** `/connect/` (QR target; `/hello/` redirects there), connect hero reused at the top of the home page, `/mike.vcf`, text/call buttons, five intent paths from `v2/src/_data/paths.json`, a mobile text/call/save bar on every other page, `/projects/` (text-photos intake until Phase 2), `/faith/` (**placeholder copy; Michael to rewrite**), click-event hooks (`data-event`) ready for analytics, and a card QR in `project-docs/card/`. Styling lives in `v2/src/assets/css/connect.css` and is expected to be redesigned. Portrait: set `site.portrait` once the engraved portrait exists (the MP monogram shows until then).
 
+**2026-10-06: card-driven redesign**
+- **Design direction: "old Lakewood calling card".** Paper, ink, engraved portrait, single-ruled sheet, Cormorant SC + EB Garamond, matching the printed card. It replaces the beacon/context-color navigation on every page. Styles: `v2/src/assets/css/site.css`.
+- **Home and `/connect/`** are now the calling-card page from Michael's HTML mock (`layouts/card.njk`). Copy lives in `_data/card.json`, and the "What I'm Part Of" list in `_data/paths.json`: Houses of Lakewood, The Wandering Lantern, Real Estate (with Red 1 Realty), Reclaim.
+- **Public email is now `me@michaelplant.com`** (it's on the printed card); it replaces the earlier `hi@`.
+- **Faith & Life** isn't in the card design, so `/faith/` is unpublished (the file is kept).
+- **Houses of Lakewood:** no group URL yet. "Join the group" opens a prefilled text until there is one.
+- **Card QR:** the designer PDF's QR is clipped and won't scan, and it encodes a vCard rather than a URL. Corrected file: `project-docs/card/MICHAEL_PLANT_card_url-qr.pdf`.
+
 ## 1. Where things stand today
 
 The repo holds **two different websites**:

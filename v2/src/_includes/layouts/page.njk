@@ -1,19 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
-{%- set resolved = contexts | resolveContexts -%}
-{%- set isSectionIndex = resolved | length and title == resolved[0].label -%}
-
-{% if resolved | length %}
-<div class="context-field" aria-hidden="true">
-  <span class="context-field-label" style="--context-color: {{ resolved[0].color }}">{{ resolved[0].label }}</span>
-  {% if resolved | length > 1 %}
-  <span class="context-field-secondary" style="--secondary-color: {{ resolved[1].color }}"></span>
-  {% endif %}
-</div>
-{% endif %}
-
-<article class="page-content section-{{ section | default('default') }}">
+<article class="page-content">
   <header class="page-hero">
     <h1>{{ title }}</h1>
   </header>
@@ -25,10 +13,9 @@ layout: layouts/base.njk
   {% if pageCta %}
   <div class="page-cta-inline">
     <p>{{ pageCta.text }}</p>
-    <a href="{{ pageCta.url }}" class="page-cta-link">{{ pageCta.label }} &rarr;</a>
+    <a href="{{ pageCta.url }}">{{ pageCta.label }} &rarr;</a>
   </div>
   {% endif %}
-
-  {# {% include "components/thread-nav.njk" %} #}
-  {% include "components/bridges.njk" %}
 </article>
+
+{% include "components/bridges.njk" %}

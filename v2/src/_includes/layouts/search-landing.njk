@@ -1,18 +1,8 @@
 ---
 layout: layouts/base.njk
+wide: true
 ---
-{%- set resolved = contexts | resolveContexts -%}
-
-{% if resolved | length %}
-<div class="context-field" aria-hidden="true">
-  <span class="context-field-label" style="--context-color: {{ resolved[0].color }}">{{ resolved[0].label }}</span>
-  {% if resolved | length > 1 %}
-  <span class="context-field-secondary" style="--secondary-color: {{ resolved[1].color }}"></span>
-  {% endif %}
-</div>
-{% endif %}
-
-<article class="page-content section-{{ section | default('default') }}">
+<article class="page-content">
   <header class="page-hero">
     <h1>{{ title }}</h1>
   </header>
@@ -242,8 +232,9 @@ layout: layouts/base.njk
     <a href="#lead-form" class="search-cta-footer-link">Get in touch</a>
   </div>
 
-  {% include "components/bridges.njk" %}
 </article>
+
+{% include "components/bridges.njk" %}
 
 <script>
 (function() {
