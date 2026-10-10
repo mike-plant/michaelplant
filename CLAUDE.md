@@ -8,7 +8,7 @@ The site is the Eleventy project in `v2/`. Read `v2/CLAUDE-HANDOFF.md` before ch
 - `legacy-nextjs/` is archived. Don't build there.
 
 ## Non-negotiables
-1. michaelplant.com stays small: card page, `/connect`, `/projects`, `/privacy`, vCard. Real-estate pages don't live here. They're in `realtor-site/` (michaelplant.realtor). Reclaim lives in `reclaim-site/` (reclaimhomerepair.com). All three are separate Eleventy sites sharing `v2/src/assets/css/site.css`. One family, so change the shared stylesheet with all three in mind. If one ever must, it uses `section: real-estate` so the masthead shows "Michael Plant | Red 1 Realty" at equal size (Ohio OAC 1301:5-1-02).
+1. michaelplant.com stays small: card page, `/connect`, `/projects`, `/privacy`, vCard. **It never mentions real estate** (no link, no brokerage line); real estate lives only on michaelplant.realtor. Real-estate pages don't live here. They're in `realtor-site/` (michaelplant.realtor). Reclaim lives in `reclaim-site/` (reclaimhomerepair.com). All three are separate Eleventy sites sharing `v2/src/assets/css/site.css`. One family, so change the shared stylesheet with all three in mind. If one ever must, it uses `section: real-estate` so the masthead shows "Michael Plant | Red 1 Realty" at equal size (Ohio OAC 1301:5-1-02).
 2. Fair Housing: describe places by property and lifestyle, never by who lives there (no "families", "diversity", "retirees", "safe"…).
 3. No tracking (`data-event`) or CRM capture on faith/personal content.
 4. No forms (call/text first). Every CTA is tracked by the shared `v2/src/assets/js/cta.js`; keep one event shape across all three sites.

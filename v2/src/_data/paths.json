@@ -18,18 +18,6 @@
     "commercial": false
   },
   {
-    "key": "real-estate",
-    "title": "Michael Plant | Red 1 Realty",
-    "detail": "Real estate in Lakewood: buying, selling, or figuring out what to do with a house.",
-    "url": "",
-    "brokerage": true,
-    "go": "Text me",
-    "commercial": true,
-    "urlFromSite": "realtorSite",
-    "fallbackSms": "Hi Mike, I have a real estate question.",
-    "goWithUrl": "Visit"
-  },
-  {
     "key": "reclaim",
     "title": "Reclaim",
     "detail": "Porch, trim, and stair repair for Lakewood's old houses.",
