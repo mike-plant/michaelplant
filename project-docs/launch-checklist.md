@@ -75,11 +75,7 @@ One list for all three sites (michaelplant.com, michaelplant.realtor, reclaimhom
 1. **michaelplant.com:** live on Cloudflare Pages (Oct 10).
 2. **Cards:** print a proof of `project-docs/card/MICHAEL_PLANT_card_url-qr.pdf` (not the designer file; its QR is clipped). Scan it on iPhone and Android: Connect page opens, Save my contact works.
 3. **reclaimhomerepair.com:** live on Cloudflare Pages (Oct 10); `reclaimSite` is set. Still to do: add `www.reclaimhomerepair.com` as a custom domain.
-4. **michaelplant.realtor,** after Red 1 signs off:
-   - Set up Cloudflare Pages with root `realtor-site`.
-   - At Google Domains, point `www` (now a CNAME to `s.multiscreensite.com`) and the bare domain at Cloudflare.
-   - Turn off the NAR builder site.
-   - Set `realtorSite` in `v2/src/_data/site.json` and redeploy michaelplant.com.
+4. **michaelplant.realtor:** live on Cloudflare Pages (Oct 10), DNS on Cloudflare, `realtorSite` set so old michaelplant.com real estate URLs 301 to the new pages. Still: keep Red 1's written sign-off on file, and confirm the domain's auto-renew before Dec 4, 2026.
 5. **Later:** merge the branch to `main` and switch each Cloudflare project's production branch to `main`. The GitHub Pages workflow is removed; also turn off Pages in the GitHub repo settings.
 
 ## 9. After launch
