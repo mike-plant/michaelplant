@@ -1,0 +1,13 @@
+{
+  "name": "michaelplant.realtor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Michael Plant | Red 1 Realty. Lakewood, Ohio real estate.",
+  "scripts": {
+    "dev": "eleventy --serve --port=8081",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

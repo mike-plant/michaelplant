@@ -1,0 +1,7 @@
+{# Before / during / after sets, like Rocco's project pages. Set `jobs` before including. #}
+{% for p in jobs %}
+<figure class="job">
+  <div class="job-photos">{% for ph in p.photos %}<div><img src="{{ ph.src }}" alt="{{ p.title }}, {{ ph.label | lower }}" loading="lazy"><span>{{ ph.label }}</span></div>{% endfor %}</div>
+  <figcaption><b>{{ p.title }}</b> · {{ p.where }}, {{ p.year }}{% if p.note %}<br>{{ p.note }}{% endif %}</figcaption>
+</figure>
+{% endfor %}

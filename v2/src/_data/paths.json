@@ -4,7 +4,7 @@
     "title": "Houses of Lakewood",
     "detail": "Old houses, projects, history, and the people who love them.",
     "url": "",
-    "fallbackSms": "Hi Mike — add me to Houses of Lakewood!",
+    "fallbackSms": "Hi Mike, add me to Houses of Lakewood!",
     "go": "Join the group",
     "commercial": false
   },
@@ -19,19 +19,24 @@
   },
   {
     "key": "real-estate",
-    "title": "Real Estate",
-    "detail": "Buying, selling, or figuring out what to do with a house.",
-    "url": "/real-estate/",
+    "title": "Michael Plant | Red 1 Realty",
+    "detail": "Real estate in Lakewood: buying, selling, or figuring out what to do with a house.",
+    "url": "",
     "brokerage": true,
-    "go": "Learn more",
-    "commercial": true
+    "go": "Text me",
+    "commercial": true,
+    "urlFromSite": "realtorSite",
+    "fallbackSms": "Hi Mike, I have a real estate question.",
+    "goWithUrl": "Visit"
   },
   {
     "key": "reclaim",
     "title": "Reclaim",
-    "detail": "Renovation and house projects.",
+    "detail": "Porch, trim, and stair repair for Lakewood's old houses.",
     "url": "/projects/",
     "go": "Learn more",
-    "commercial": true
+    "commercial": true,
+    "urlFromSite": "reclaimSite",
+    "goWithUrl": "Visit"
   }
 ]

@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+---
+{# Lakewood buyer guides: the article, then one way to talk to Mike, then nearby guides. #}
+<article class="page-content">
+  <header class="page-hero">
+    {% if parent %}<p class="page-kicker"><a href="{{ parent }}">Buying in Lakewood</a></p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% include "components/byline.njk" %}
+  </header>
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+  {% include "components/faq.njk" %}
+</article>
+
+<section class="ask" aria-labelledby="ask-h">
+  <h2 id="ask-h">Narrow it down with me</h2>
+  <p>Text me what matters to you: budget, how you get around, how much work you'll take on. I'll tell you which streets I'd look at first, and I'll set up a search that sends you new listings there as they come on.</p>
+  <div class="actions">
+    <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ ('Hi Mike, I am looking at ' + title + '. ') | urlencode }}" data-cta="end">Text me what matters</a>
+    <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="end">Call {{ site.phoneDots }}</a>
+  </div>
+  <p class="reassure">I reply the same day. No obligation.</p>
+  <p class="text-link">Selling a Lakewood house instead? <a href="/sell/" data-cta="end">Start with a walkthrough &rarr;</a></p>
+</section>
+
+{% if related and related.length %}
+<section aria-labelledby="near-h">
+  <h2 id="near-h">Keep reading</h2>
+  <ul class="list">
+    {% for r in related %}
+    <li><a class="entry" href="{{ r.url }}"><span class="t">{{ r.label }}</span><span class="d">{{ r.because }}</span><span class="go">Read &rarr;</span></a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

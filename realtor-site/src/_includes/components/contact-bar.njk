@@ -1,0 +1,8 @@
+{# Mobile-only bar. The page's primary action gets the filled, double-width cell.
+   Default is the site goal (book a walkthrough); a page can override with `bar: { label, body }`. #}
+{% set barLabel = bar.label if bar else site.cta.bar %}
+{% set barBody = bar.body if bar else site.cta.body %}
+<nav class="contact-bar" aria-label="Contact {{ site.nickname }}">
+  <a class="primary" href="sms:{{ site.phoneE164 }}?&body={{ barBody | urlencode }}">{{ barLabel }}</a>
+  <a href="tel:{{ site.phoneE164 }}">Call</a>
+</nav>

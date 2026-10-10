@@ -1,0 +1,18 @@
+---
+permalink: /review/
+eleventyExcludeFromCollections: true
+noindex: true
+---
+{# Short link for review cards and texts: {{ site.url }}/review forwards to the Google review form.
+   Set site.reviewUrl once the Google Business Profile exists. Until then it goes home. #}
+{% set target = site.reviewUrl or "/" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ target }}">
+  <title>Leave a review</title>
+</head>
+<body><p><a href="{{ target }}">Leave a review</a></p></body>
+</html>

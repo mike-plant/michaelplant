@@ -1,0 +1,12 @@
+/* Realtor-only additions. Everything else comes from michaelplant.com's site.css. */
+/* Home hero: name and brokerage at the same size (Ohio OAC 1301:5-1-02 equal prominence). */
+.name--cobrand { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+.name--cobrand span + span { font-size: 1em; }
+
+.page-kicker a { color: inherit; text-decoration: none; }
+.page-kicker a:hover { text-decoration: underline; }
+.ask { border-top: 1px solid var(--rule); padding-top: var(--space-md); }
+.ask p { margin: 0; }
+.steps { list-style: none; padding: 0; margin: 0 0 1rem; counter-reset: s; border-top: 1px solid var(--rule); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.5rem; padding: 0.75rem 0; margin: 0; border-bottom: 1px solid var(--rule-soft); }
+.steps li::before { content: counter(s); font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.4; }

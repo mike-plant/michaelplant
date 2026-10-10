@@ -1,0 +1,38 @@
+{
+  "title": "Reclaim Home Repair",
+  "url": "https://reclaimhomerepair.com",
+  "description": "Porch, trim, rot, stair and railing repair for older houses on Cleveland's west side. Fixed prices in writing. Mike Plant answers his own phone.",
+  "owner": "Mike Plant",
+  "phoneDots": "216.217.6362",
+  "phoneE164": "+12162176362",
+  "email": "me@michaelplant.com",
+  "city": "Lakewood",
+  "serviceArea": "Lakewood and the west side",
+  "registration": "",
+  "insurance": "",
+  "personalSite": "https://michaelplant.com/connect/?src=reclaim",
+  "rrp": "",
+  "towns": [
+    "Lakewood",
+    "Rocky River",
+    "Fairview Park",
+    "Bay Village",
+    "Westlake",
+    "Cleveland's west side neighborhoods"
+  ],
+  "cta": {
+    "label": "Text me a photo",
+    "bar": "Text a photo",
+    "body": "Hi Mike, photo attached. Address: ",
+    "reassure": "Free estimate. Same-day answer. I answer my own phone."
+  },
+  "reviewUrl": "",
+  "profiles": {
+    "googleBusinessProfile": "",
+    "youtube": "",
+    "facebook": "",
+    "instagram": "",
+    "yelp": "",
+    "nextdoor": ""
+  }
+}

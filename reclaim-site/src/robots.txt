@@ -1,0 +1,7 @@
+# Search and AI answer engines are welcome. Being found is the point.
+# Campaign pages under /go/ carry a noindex tag instead of being blocked here,
+# so crawlers can see the tag.
+User-agent: *
+Allow: /
+
+Sitemap: https://reclaimhomerepair.com/sitemap.xml

@@ -1,0 +1,13 @@
+{# Proof appears only when real: homes.json (client consent, own photos, "sold" only as listing or buyer agent) and reviews.json (quoted with permission). #}
+{% if homes.length %}
+<section aria-labelledby="homes-h">
+  <h2 id="homes-h">Homes I've helped with</h2>
+  <ul class="list">{% for h in homes %}<li class="entry"><span class="t">{{ h.title }}</span><span class="d">{{ h.role }} · {{ h.where }}, {{ h.year }}{% if h.note %}. {{ h.note }}{% endif %}</span></li>{% endfor %}</ul>
+</section>
+{% endif %}
+{% if reviews.length %}
+<section aria-labelledby="rev-h">
+  <h2 id="rev-h">What clients say</h2>
+  {% for r in reviews %}<blockquote><p>{{ r.text }}</p><footer>{{ r.name }}{% if r.source %}, {{ r.source }}{% endif %}</footer></blockquote>{% endfor %}
+</section>
+{% endif %}

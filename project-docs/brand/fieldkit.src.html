@@ -1,0 +1,386 @@
+<title>Mike Plant Field Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=Zilla+Slab:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: the calling card grown into a bound reference book. One ruled sheet of paper, a fixed contents rail on wide screens, chapters set like a field manual. Single theme on purpose: ink on paper is the brand. */
+:root{
+  --paper:#efe8da;
+  --paper-2:#e6ddcb;
+  --ink:#1f1c18;
+  --ink-soft:#4a443b;
+  --faint:#857b6d;
+  --rule:#1f1c18;
+  --hair:#c9bea9;
+  --display:"Cormorant SC","Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --measure:40rem;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:1.125rem;line-height:1.6;
+  padding-inline:16px;padding-block:28px 64px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .2  0 0 0 0 .12  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.book{max-width:72rem;margin-inline:auto;display:grid;grid-template-columns:13rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);font-size:.98rem;display:flex;flex-direction:column;gap:.9rem}
+.rail .mark{font-family:var(--display);font-weight:600;font-size:1.15rem;letter-spacing:.04em;line-height:1.15}
+.rail ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.rail li{border-bottom:1px solid var(--hair)}
+.rail a{display:flex;gap:.6rem;padding:.38rem 0;text-decoration:none;color:var(--ink-soft)}
+.rail a:hover{color:var(--ink)}
+.rail a span{font-variant-numeric:lining-nums tabular-nums;color:var(--faint);min-width:1.4rem}
+.rail .private{font-style:italic;color:var(--faint);font-size:.92rem;line-height:1.4}
+.sheet{border:1.5px solid var(--rule);padding:clamp(1.5rem,5vw,3.5rem) clamp(1.1rem,5vw,3.5rem);display:flex;flex-direction:column;gap:4.5rem;min-width:0;background:var(--paper)}
+@media (max-width:900px){.book{grid-template-columns:1fr}.rail{position:static}.rail ol{columns:2;column-gap:1.5rem}}
+@media (max-width:480px){.rail ol{columns:1}}
+
+/* Type */
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:.035em;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.8rem,4.4vw,2.4rem)}
+h3{font-size:1.32rem}
+p{margin:0}
+.chapter{display:flex;flex-direction:column;gap:1.4rem;scroll-margin-top:24px}
+.chapter > header{display:flex;flex-direction:column;gap:.5rem;padding-bottom:1rem;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:.95rem;letter-spacing:.08em;color:var(--faint);font-variant-numeric:lining-nums}
+.dek{font-style:italic;color:var(--ink-soft);font-size:1.2rem;max-width:var(--measure)}
+.prose{display:flex;flex-direction:column;gap:1rem;max-width:var(--measure)}
+.prose ul,.prose ol{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem}
+.small{font-size:.98rem;color:var(--ink-soft)}
+.fine{font-size:.9rem;color:var(--faint);line-height:1.5}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* Cover */
+.cover{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:center;padding-bottom:2.5rem;border-bottom:1px solid var(--rule)}
+.cover img{width:100%;height:auto;display:block}
+.cover .name{font-size:clamp(2.3rem,6vw,3.3rem);letter-spacing:.04em}
+.cover .short-rule{width:50px;height:0;border-top:1.5px solid var(--ink);margin:.9rem 0}
+.cover .sub{font-family:var(--display);font-weight:500;font-size:1.15rem;letter-spacing:.05em;color:var(--ink-soft)}
+.cover .rule-line{margin-top:1.4rem;font-size:1.35rem;line-height:1.45;max-width:30rem}
+.cover .meta{margin-top:1rem;font-size:.95rem;color:var(--faint)}
+@media (max-width:640px){.cover{grid-template-columns:1fr;justify-items:center;text-align:center}.cover img{max-width:13rem}.cover .short-rule{margin-inline:auto}.cover .rule-line{margin-inline:auto}}
+
+/* Verdict list */
+.verdict{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);max-width:48rem}
+.verdict li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.8rem;padding:1rem 0;border-bottom:1px solid var(--hair)}
+.verdict .n{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;font-variant-numeric:lining-nums}
+.verdict b{display:block;font-weight:600;font-size:1.18rem;margin-bottom:.15rem}
+
+/* Two-column compare */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem}
+.cols > div{display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.cols ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.4rem}
+@media (max-width:700px){.cols{grid-template-columns:1fr}}
+.col-head{font-family:var(--display);font-weight:600;font-size:1.1rem;letter-spacing:.05em;border-bottom:1px solid var(--rule);padding-bottom:.35rem}
+
+/* Ledger table */
+.ledger-wrap{overflow-x:auto;border-top:1px solid var(--rule)}
+table.ledger{border-collapse:collapse;width:100%;min-width:36rem;font-size:1rem}
+.ledger th,.ledger td{text-align:left;vertical-align:top;padding:.7rem .8rem .7rem 0;border-bottom:1px solid var(--hair)}
+.ledger th{font-family:var(--display);font-weight:600;letter-spacing:.05em;font-size:.98rem;color:var(--ink-soft);border-bottom:1px solid var(--rule)}
+.ledger td:first-child{font-weight:600;white-space:nowrap}
+
+/* Pull */
+.pull{border-left:1.5px solid var(--ink);padding:.2rem 0 .2rem 1.2rem;font-size:1.3rem;line-height:1.45;max-width:36rem}
+.pull cite{display:block;margin-top:.5rem;font-style:normal;font-size:.95rem;color:var(--faint)}
+
+/* Architecture diagram */
+.arch{display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:46rem}
+.tier{border:1px solid var(--rule);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.3rem;background:var(--paper)}
+.tier .lab{font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:.88rem;color:var(--faint)}
+.tier .ttl{font-family:var(--display);font-weight:600;font-size:1.4rem;letter-spacing:.03em}
+.tier.host{border-width:1.5px}
+.join{height:1.6rem;width:0;border-left:1px solid var(--rule);margin-inline:auto}
+.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.ends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.ends .tier .ttl{font-size:1.15rem}
+@media (max-width:640px){.doors,.ends{grid-template-columns:1fr}}
+
+/* Swatches + type */
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.sw{display:flex;flex-direction:column;gap:.45rem;font-size:.95rem;min-width:0}
+.chip{aspect-ratio:4/3;max-width:100%;border:1px solid var(--rule)}
+.sw code{font-family:var(--body);font-variant-numeric:lining-nums;color:var(--ink-soft)}
+@media (max-width:640px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.specimen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem 2.5rem;border-top:1px solid var(--rule);padding-top:1.2rem}
+.specimen .big{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,2.8rem);letter-spacing:.04em;line-height:1.05}
+.specimen .bodyspec{font-size:1.3rem;line-height:1.45}
+@media (max-width:700px){.specimen{grid-template-columns:1fr}}
+
+/* Do / don't */
+.dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem}
+.dd ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.dd li{padding:.55rem 0;border-bottom:1px solid var(--hair)}
+@media (max-width:700px){.dd{grid-template-columns:1fr}}
+
+/* Series */
+.series{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.serie{border:1px solid var(--rule);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.serie .ttl{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:.03em}
+.serie .kind{font-size:.92rem;color:var(--faint);font-style:italic}
+@media (max-width:700px){.series{grid-template-columns:1fr}}
+
+
+/* Family of brands */
+.family{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+@media (max-width:820px){.family{grid-template-columns:1fr}}
+.fam{border:1px solid var(--rule);display:flex;flex-direction:column;min-width:0}
+.fam .face{aspect-ratio:16/9;max-width:100%;display:flex;align-items:center;justify-content:center;gap:.8rem;padding:1rem;border-bottom:1px solid var(--rule)}
+.fam .face svg{width:3.2rem;height:3.2rem;flex:none}
+.fam .txt{padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.fam .ttl{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:.03em}
+.fam ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem;font-size:1rem}
+.dots{display:flex;gap:.35rem}
+.dots i{width:1.1rem;height:1.1rem;border:1px solid var(--rule);display:block}
+.rwm{font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:1.7rem;color:#1F3A2B;line-height:1}
+.rwm small{display:block;font-family:ui-monospace,Menlo,monospace;font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#4A5651;margin-top:.25rem}
+
+/* Social templates */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile-wrap{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.tile{aspect-ratio:4/5;max-width:100%;background:var(--paper-2);border:1px solid var(--hair);padding:7%;display:flex}
+.tile .in{flex:1;border:1.5px solid var(--ink);padding:9% 8%;display:flex;flex-direction:column;gap:6%;justify-content:space-between;min-width:0;container-type:inline-size}
+.tile .tlabel{font-family:var(--display);font-weight:600;letter-spacing:.07em;font-size:max(9px,7.5cqi)}
+.tile .tline{font-family:var(--body);font-weight:500;font-size:max(12px,11.5cqi);line-height:1.15}
+.tile .tsmall{font-family:var(--body);font-style:italic;font-size:max(9px,6.5cqi);color:var(--ink-soft)}
+.tile .photo{flex:1;min-height:30%;background:repeating-linear-gradient(135deg,transparent 0 6px,rgba(31,28,24,.16) 6px 7px);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:max(9px,6cqi);color:var(--ink-soft);font-style:italic}
+.tile .verdict-row{display:flex;gap:.5em;font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:max(9px,7cqi)}
+.tile .verdict-row span{border:1px solid var(--ink);padding:.15em .5em}
+.tile .verdict-row span.on{background:var(--ink);color:var(--paper)}
+.tile .plate{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.4em 0;text-align:center;font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:max(10px,8.5cqi)}
+.tile img{width:62%;margin-inline:auto;display:block;height:auto}
+.tile .center{text-align:center}
+.tile-cap{font-size:.95rem;color:var(--ink-soft)}
+
+/* Posts */
+.posts{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.post{border-bottom:1px solid var(--hair)}
+.post summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem 1rem;padding:.9rem 0;align-items:baseline}
+.post summary::-webkit-details-marker{display:none}
+.post .pt{font-weight:600;font-size:1.12rem;min-width:0}
+.post .pk{font-size:.9rem;color:var(--faint);white-space:nowrap}
+.post .pk::after{content:" +";font-family:var(--body)}
+.post[open] .pk::after{content:" −"}
+.post .body{padding:0 0 1.2rem;display:flex;flex-direction:column;gap:.8rem;max-width:var(--measure)}
+.caption{white-space:pre-wrap;background:var(--paper-2);border:1px solid var(--hair);padding:1rem 1.1rem;font-size:1.04rem;line-height:1.55}
+.post .notes{font-size:.95rem;color:var(--ink-soft)}
+.copy{font:inherit;font-size:.95rem;font-weight:500;align-self:flex-start;background:transparent;border:1px solid var(--ink);color:var(--ink);padding:.35rem .9rem;cursor:pointer;min-height:2.4rem}
+.copy:hover{background:var(--ink);color:var(--paper)}
+
+/* Bios */
+.bios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.bio{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.bio .caption{font-size:1rem}
+@media (max-width:900px){.bios{grid-template-columns:1fr}}
+
+/* Timeline */
+.phases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.phases > li{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1.25rem;padding:1.2rem 0;border-bottom:1px solid var(--hair)}
+.phases .when{font-family:var(--display);font-weight:600;letter-spacing:.04em;font-size:1.05rem;font-variant-numeric:lining-nums}
+.phases .when small{display:block;font-family:var(--body);font-weight:400;letter-spacing:0;font-style:italic;color:var(--faint);font-size:.92rem}
+.phases ul{margin:.4rem 0 0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+@media (max-width:600px){.phases > li{grid-template-columns:1fr;gap:.3rem}}
+
+.canon{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.canon li{font-size:1.25rem;line-height:1.4;font-style:italic}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.5rem 1rem;font-size:.95rem}
+footer.end{border-top:1px solid var(--rule);padding-top:1rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+
+.cover--plain{grid-template-columns:1fr}
+.checks{display:flex;flex-direction:column;gap:.15rem;max-width:44rem}
+.checks h3{margin:1.2rem 0 .4rem}
+.checks label{display:flex;gap:.7rem;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--hair);cursor:pointer}
+.checks input{width:1.15rem;height:1.15rem;margin-top:.3rem;accent-color:#1f1c18;flex:none}
+.checks input:checked + *{color:var(--faint)}
+.sub{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--rule)}
+
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;border-top:1px solid var(--rule);max-width:44rem}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.5rem;padding:.7rem 0;border-bottom:1px solid var(--hair)}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:1.2rem;line-height:1.4}
+.checks label span{min-width:0}
+#reset-checks{margin-top:.6rem}
+</style>
+<div class="book">
+<nav class="rail" aria-label="Contents">
+  <div class="mark">Mike Plant<br>Field Kit</div>
+  <ol>
+    <li><a href="#routine"><span>1</span>Every job, 5 minutes</a></li>
+    <li><a href="#photos"><span>2</span>Photos</a></li>
+    <li><a href="#video"><span>3</span>Video</a></li>
+    <li><a href="#talk"><span>4</span>Talk it, don't write it</a></li>
+    <li><a href="#shape"><span>5</span>The Fix or Leave It shape</a></li>
+    <li><a href="#now"><span>6</span>This week's jobs</a></li>
+    <li><a href="#where"><span>7</span>Where it goes</a></li>
+  </ol>
+  <p class="private">Open this on your phone at the job. Brand Book for the look and voice, Playbook for the plan.</p>
+</nav>
+
+<main class="sheet">
+
+<header class="cover cover--plain">
+  <div>
+    <p class="eyebrow">Houses of Lakewood · Reclaim</p>
+    <h1 class="name">Field Kit</h1>
+    <div class="short-rule" aria-hidden="true"></div>
+    <p class="rule-line">You already say this stuff on every job. The kit is how it ends up on the internet without you sitting down to write.</p>
+  </div>
+</header>
+
+<section class="chapter" id="routine">
+  <header><span class="eyebrow">Chapter 1</span><h2>Every job, 5 minutes</h2>
+  <p class="dek">Before you leave the site. Same routine every time, so it becomes habit.</p></header>
+  <div class="checks" id="checks">
+    <label><input type="checkbox" id="r1"> <span><b>Before:</b> one wide shot from a spot you can find again, one close-up of the problem</span></label>
+    <label><input type="checkbox" id="r2"> <span><b>During:</b> the thing behind the wall. Rot, old wiring, framing, the surprise. This is the shot people stop for.</span></label>
+    <label><input type="checkbox" id="r3"> <span><b>After:</b> the same wide shot from the same spot, same time of day if you can</span></label>
+    <label><input type="checkbox" id="r4"> <span><b>One video:</b> 15 to 30 seconds, vertical, you explaining one thing</span></label>
+    <label><input type="checkbox" id="r5"> <span><b>One voice memo:</b> 2 minutes answering the four questions in Chapter 4</span></label>
+    <label><input type="checkbox" id="r6"> <span><b>Ask:</b> "OK if I share photos? I'll leave out the address."</span></label>
+  </div>
+  <button class="copy" type="button" id="reset-checks">Clear for the next job</button>
+</section>
+
+<section class="chapter" id="photos">
+  <header><span class="eyebrow">Chapter 2</span><h2>Photos with a phone</h2>
+  <p class="dek">You don't need a camera. You need the same spot, good light, and a clean frame.</p></header>
+  <div class="cols">
+    <div><div class="col-head">Do</div><ul>
+      <li><strong>Wipe the lens</strong> on your shirt. Job-site phones are always smudged.</li>
+      <li><strong>Turn on the grid</strong> (iPhone: Settings, Camera, Grid) and keep lines straight.</li>
+      <li><strong>Stand in the same spot</strong> for before and after. Note a landmark: the downspout, the second step.</li>
+      <li><strong>Phone at chest height,</strong> level, not tilted up or down.</li>
+      <li><strong>Tap and hold</strong> on the subject to lock focus and brightness.</li>
+      <li><strong>Use the 1x lens.</strong> Walk closer instead of zooming. 0.5x only in tight spaces; it bends straight lines.</li>
+      <li><strong>Overcast days are best.</strong> In full sun, shoot with the sun behind you.</li>
+      <li><strong>Put a hand, tool, or tape measure</strong> in the close-ups for scale.</li>
+      <li><strong>Horizontal</strong> for before and afters on the website. <strong>Vertical</strong> for social.</li>
+    </ul></div>
+    <div><div class="col-head">Don't</div><ul>
+      <li>Leave trash, cords, or buckets in the frame. Ten seconds of moving stuff is worth it.</li>
+      <li>Show house numbers, license plates, or kids.</li>
+      <li>Use filters. Real photos are the point.</li>
+      <li>Shoot into a bright window or the sky.</li>
+      <li>Post a client's house without asking.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="chapter" id="video">
+  <header><span class="eyebrow">Chapter 3</span><h2>Video</h2>
+  <p class="dek">Short, vertical, one idea. You talking beats music over clips.</p></header>
+  <div class="cols">
+    <div><div class="col-head">The shape</div><ul>
+      <li><strong>Seconds 0 to 3:</strong> show the problem and say it. "This column base is rotted through."</li>
+      <li><strong>Middle:</strong> what caused it and what you're doing about it.</li>
+      <li><strong>End:</strong> your take. "Fix it. Here's why." Or "Leave it."</li>
+      <li>15 to 45 seconds total. One idea per video.</li>
+    </ul></div>
+    <div><div class="col-head">The gear</div><ul>
+      <li>Vertical, 1x lens, phone propped at chest height or held at arm's length.</li>
+      <li>Get out of the wind or use a clip-on mic. Bad sound kills more videos than bad picture.</li>
+      <li>Hold each shot for 3 seconds before moving.</li>
+      <li>Add captions in Instagram's editor. Most people watch with sound off.</li>
+      <li>Hands-working clips with no talking are fine as extra footage.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="chapter" id="talk">
+  <header><span class="eyebrow">Chapter 4</span><h2>Talk it, don't write it</h2>
+  <p class="dek">Record a voice memo in the truck before you drive off. Your phone's Voice Memos app makes a transcript. Paste it into Claude with the prompt below and you get a caption, a group post, and an article draft in your voice.</p></header>
+  <div class="prose"><p><strong>Answer these four out loud, in about 2 minutes:</strong></p>
+  <ol>
+    <li>What did we find?</li>
+    <li>What do most people do, or get wrong, about this?</li>
+    <li>What would I do, and why? Fix it, or leave it?</li>
+    <li>What did it take: time, money, materials? When should someone call a pro?</li>
+  </ol></div>
+  <div class="caption" id="prompt">I'm Mike Plant, an old-house guy in Lakewood, Ohio. I run Houses of Lakewood and Reclaim Home Repair. Below is a voice memo transcript from a job. Turn it into three things, in my voice: plain, warm, a little funny, short sentences, like I'm texting a neighbor. No em dashes or en dashes. No sales words like "trusted" or "premier." Don't invent facts, prices, or opinions I didn't say; put [brackets] where something's missing.
+
+1. An Instagram and Facebook caption in my "Fix or Leave It" format: the thing, why it happens in old Lakewood houses, my verdict, what it takes. Under 150 words. End with "Send me a photo of yours."
+2. A short post for the Houses of Lakewood Facebook group that asks members a question.
+3. A 400 to 600 word article for my website with a plain headline, the same structure, a "What it usually costs" line if I gave numbers, and a "When to call someone" line.
+
+Transcript:
+[paste here]</div>
+  <button class="copy" type="button" data-copy="prompt">Copy prompt</button>
+</section>
+
+<section class="chapter" id="shape">
+  <header><span class="eyebrow">Chapter 5</span><h2>The Fix or Leave It shape</h2>
+  <p class="dek">"Article" just means the longer version of a post. Same six parts every time, so you never start from a blank page.</p></header>
+  <ol class="steps">
+    <li><span><strong>The thing.</strong> One photo, one sentence. "This is a box gutter."</span></li>
+    <li><span><strong>Why it happens here.</strong> What it is about 100-year-old Lakewood houses that causes it.</span></li>
+    <li><span><strong>The verdict.</strong> Fix it, or leave it. Say it plainly.</span></li>
+    <li><span><strong>What I'd do.</strong> The repair, or what to watch instead.</span></li>
+    <li><span><strong>What it takes.</strong> Time, a price range if you know it, materials.</span></li>
+    <li><span><strong>When to call someone.</strong> And who: an electrician, a roofer, me.</span></li>
+  </ol>
+  <p class="small">Repair topics live on Reclaim's site. Buying and selling topics live on michaelplant.realtor. Everything starts as a post in the group.</p>
+</section>
+
+<section class="chapter" id="now">
+  <header><span class="eyebrow">Chapter 6</span><h2>This week's jobs</h2>
+  <p class="dek">Shot lists for what you're already doing. The opinions are yours to fill in.</p></header>
+  <div class="cols">
+    <div><div class="col-head">Insulation at your buddy's</div><ul>
+      <li><strong>Shots:</strong> the empty attic or wall cavity, what was there before (old insulation, nothing, newspapers), any wiring you found, air sealing in progress, the finished depth with a tape measure in frame.</li>
+      <li><strong>Video:</strong> "Here's what's in the attic of a 100-year-old Lakewood house."</li>
+      <li><strong>Fix or Leave It ideas:</strong> old wiring in the attic (if you see knob and tube, that's an electrician's call before anything gets covered), air sealing before insulation, what you'd skip.</li>
+      <li><strong>Caption angle:</strong> "Helping my buddy with his attic today. Here's what we found."</li>
+    </ul></div>
+    <div><div class="col-head">Framing at Leslie's</div><ul>
+      <li><strong>Shots:</strong> wide of the open wall or floor, the joints, any notched or cut joists, old repairs, a hand or tape for scale, the old lumber's rough-sawn size next to modern lumber if you have it.</li>
+      <li><strong>Video:</strong> "What 100-year-old framing tells you."</li>
+      <li><strong>Fix or Leave It ideas:</strong> a joist someone notched for a pipe, an old repair that's actually fine, what you'd sister and why.</li>
+      <li><strong>Ask Leslie first.</strong></li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="chapter" id="where">
+  <header><span class="eyebrow">Chapter 7</span><h2>Where each piece goes</h2></header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Piece</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td>Vertical video</td><td>Instagram reel, then the Facebook group</td></tr>
+      <tr><td>Caption</td><td>With the reel or photo post</td></tr>
+      <tr><td>Group question</td><td>Houses of Lakewood group, a day later</td></tr>
+      <tr><td>Before and after photos</td><td>Reclaim's site, under that service's recent jobs</td></tr>
+      <tr><td>Article</td><td>Reclaim's site (repair) or michaelplant.realtor (buying or selling), once the post did well</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Send me the photos and the article draft and I'll put them on the sites.</p>
+</section>
+
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+var toast=document.getElementById('toast'),tt;
+function say(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},1600)}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('[data-copy]');if(!btn)return;
+  var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+  function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);say('Selected. Press copy.')}
+  try{navigator.clipboard.writeText(el.textContent).then(function(){say('Copied.')},fallback)}catch(err){fallback()}
+});
+(function(){
+  var KEY='mp-fieldkit-checks',state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+  var boxes=document.querySelectorAll('#checks input');
+  boxes.forEach(function(cb){cb.checked=!!state[cb.id];cb.addEventListener('change',function(){state[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}})});
+  document.getElementById('reset-checks').addEventListener('click',function(){state={};boxes.forEach(function(cb){cb.checked=false});try{localStorage.removeItem(KEY)}catch(e){}say('Cleared.')});
+})();
+</script>

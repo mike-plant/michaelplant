@@ -1,0 +1,897 @@
+<title>Mike Plant Go-to-Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=Zilla+Slab:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: the calling card grown into a bound reference book. One ruled sheet of paper, a fixed contents rail on wide screens, chapters set like a field manual. Single theme on purpose: ink on paper is the brand. */
+:root{
+  --paper:#efe8da;
+  --paper-2:#e6ddcb;
+  --ink:#1f1c18;
+  --ink-soft:#4a443b;
+  --faint:#857b6d;
+  --rule:#1f1c18;
+  --hair:#c9bea9;
+  --display:"Cormorant SC","Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --measure:40rem;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:1.125rem;line-height:1.6;
+  padding-inline:16px;padding-block:28px 64px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .2  0 0 0 0 .12  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.book{max-width:72rem;margin-inline:auto;display:grid;grid-template-columns:13rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);font-size:.98rem;display:flex;flex-direction:column;gap:.9rem}
+.rail .mark{font-family:var(--display);font-weight:600;font-size:1.15rem;letter-spacing:.04em;line-height:1.15}
+.rail ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.rail li{border-bottom:1px solid var(--hair)}
+.rail a{display:flex;gap:.6rem;padding:.38rem 0;text-decoration:none;color:var(--ink-soft)}
+.rail a:hover{color:var(--ink)}
+.rail a span{font-variant-numeric:lining-nums tabular-nums;color:var(--faint);min-width:1.4rem}
+.rail .private{font-style:italic;color:var(--faint);font-size:.92rem;line-height:1.4}
+.sheet{border:1.5px solid var(--rule);padding:clamp(1.5rem,5vw,3.5rem) clamp(1.1rem,5vw,3.5rem);display:flex;flex-direction:column;gap:4.5rem;min-width:0;background:var(--paper)}
+@media (max-width:900px){.book{grid-template-columns:1fr}.rail{position:static}.rail ol{columns:2;column-gap:1.5rem}}
+@media (max-width:480px){.rail ol{columns:1}}
+
+/* Type */
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:.035em;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.8rem,4.4vw,2.4rem)}
+h3{font-size:1.32rem}
+p{margin:0}
+.chapter{display:flex;flex-direction:column;gap:1.4rem;scroll-margin-top:24px}
+.chapter > header{display:flex;flex-direction:column;gap:.5rem;padding-bottom:1rem;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:.95rem;letter-spacing:.08em;color:var(--faint);font-variant-numeric:lining-nums}
+.dek{font-style:italic;color:var(--ink-soft);font-size:1.2rem;max-width:var(--measure)}
+.prose{display:flex;flex-direction:column;gap:1rem;max-width:var(--measure)}
+.prose ul,.prose ol{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem}
+.small{font-size:.98rem;color:var(--ink-soft)}
+.fine{font-size:.9rem;color:var(--faint);line-height:1.5}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* Cover */
+.cover{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:center;padding-bottom:2.5rem;border-bottom:1px solid var(--rule)}
+.cover img{width:100%;height:auto;display:block}
+.cover .name{font-size:clamp(2.3rem,6vw,3.3rem);letter-spacing:.04em}
+.cover .short-rule{width:50px;height:0;border-top:1.5px solid var(--ink);margin:.9rem 0}
+.cover .sub{font-family:var(--display);font-weight:500;font-size:1.15rem;letter-spacing:.05em;color:var(--ink-soft)}
+.cover .rule-line{margin-top:1.4rem;font-size:1.35rem;line-height:1.45;max-width:30rem}
+.cover .meta{margin-top:1rem;font-size:.95rem;color:var(--faint)}
+@media (max-width:640px){.cover{grid-template-columns:1fr;justify-items:center;text-align:center}.cover img{max-width:13rem}.cover .short-rule{margin-inline:auto}.cover .rule-line{margin-inline:auto}}
+
+/* Verdict list */
+.verdict{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);max-width:48rem}
+.verdict li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.8rem;padding:1rem 0;border-bottom:1px solid var(--hair)}
+.verdict .n{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;font-variant-numeric:lining-nums}
+.verdict b{display:block;font-weight:600;font-size:1.18rem;margin-bottom:.15rem}
+
+/* Two-column compare */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem}
+.cols > div{display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.cols ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.4rem}
+@media (max-width:700px){.cols{grid-template-columns:1fr}}
+.col-head{font-family:var(--display);font-weight:600;font-size:1.1rem;letter-spacing:.05em;border-bottom:1px solid var(--rule);padding-bottom:.35rem}
+
+/* Ledger table */
+.ledger-wrap{overflow-x:auto;border-top:1px solid var(--rule)}
+table.ledger{border-collapse:collapse;width:100%;min-width:36rem;font-size:1rem}
+.ledger th,.ledger td{text-align:left;vertical-align:top;padding:.7rem .8rem .7rem 0;border-bottom:1px solid var(--hair)}
+.ledger th{font-family:var(--display);font-weight:600;letter-spacing:.05em;font-size:.98rem;color:var(--ink-soft);border-bottom:1px solid var(--rule)}
+.ledger td:first-child{font-weight:600;white-space:nowrap}
+
+/* Pull */
+.pull{border-left:1.5px solid var(--ink);padding:.2rem 0 .2rem 1.2rem;font-size:1.3rem;line-height:1.45;max-width:36rem}
+.pull cite{display:block;margin-top:.5rem;font-style:normal;font-size:.95rem;color:var(--faint)}
+
+/* Architecture diagram */
+.arch{display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:46rem}
+.tier{border:1px solid var(--rule);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.3rem;background:var(--paper)}
+.tier .lab{font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:.88rem;color:var(--faint)}
+.tier .ttl{font-family:var(--display);font-weight:600;font-size:1.4rem;letter-spacing:.03em}
+.tier.host{border-width:1.5px}
+.join{height:1.6rem;width:0;border-left:1px solid var(--rule);margin-inline:auto}
+.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.ends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.ends .tier .ttl{font-size:1.15rem}
+@media (max-width:640px){.doors,.ends{grid-template-columns:1fr}}
+
+/* Swatches + type */
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.sw{display:flex;flex-direction:column;gap:.45rem;font-size:.95rem;min-width:0}
+.chip{aspect-ratio:4/3;max-width:100%;border:1px solid var(--rule)}
+.sw code{font-family:var(--body);font-variant-numeric:lining-nums;color:var(--ink-soft)}
+@media (max-width:640px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.specimen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem 2.5rem;border-top:1px solid var(--rule);padding-top:1.2rem}
+.specimen .big{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,2.8rem);letter-spacing:.04em;line-height:1.05}
+.specimen .bodyspec{font-size:1.3rem;line-height:1.45}
+@media (max-width:700px){.specimen{grid-template-columns:1fr}}
+
+/* Do / don't */
+.dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem}
+.dd ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.dd li{padding:.55rem 0;border-bottom:1px solid var(--hair)}
+@media (max-width:700px){.dd{grid-template-columns:1fr}}
+
+/* Series */
+.series{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.serie{border:1px solid var(--rule);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.serie .ttl{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:.03em}
+.serie .kind{font-size:.92rem;color:var(--faint);font-style:italic}
+@media (max-width:700px){.series{grid-template-columns:1fr}}
+
+
+/* Family of brands */
+.family{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+@media (max-width:820px){.family{grid-template-columns:1fr}}
+.fam{border:1px solid var(--rule);display:flex;flex-direction:column;min-width:0}
+.fam .face{aspect-ratio:16/9;max-width:100%;display:flex;align-items:center;justify-content:center;gap:.8rem;padding:1rem;border-bottom:1px solid var(--rule)}
+.fam .face svg{width:3.2rem;height:3.2rem;flex:none}
+.fam .txt{padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.fam .ttl{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:.03em}
+.fam ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem;font-size:1rem}
+.dots{display:flex;gap:.35rem}
+.dots i{width:1.1rem;height:1.1rem;border:1px solid var(--rule);display:block}
+.rwm{font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:1.7rem;color:#1F3A2B;line-height:1}
+.rwm small{display:block;font-family:ui-monospace,Menlo,monospace;font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#4A5651;margin-top:.25rem}
+
+/* Social templates */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile-wrap{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.tile{aspect-ratio:4/5;max-width:100%;background:var(--paper-2);border:1px solid var(--hair);padding:7%;display:flex}
+.tile .in{flex:1;border:1.5px solid var(--ink);padding:9% 8%;display:flex;flex-direction:column;gap:6%;justify-content:space-between;min-width:0;container-type:inline-size}
+.tile .tlabel{font-family:var(--display);font-weight:600;letter-spacing:.07em;font-size:max(9px,7.5cqi)}
+.tile .tline{font-family:var(--body);font-weight:500;font-size:max(12px,11.5cqi);line-height:1.15}
+.tile .tsmall{font-family:var(--body);font-style:italic;font-size:max(9px,6.5cqi);color:var(--ink-soft)}
+.tile .photo{flex:1;min-height:30%;background:repeating-linear-gradient(135deg,transparent 0 6px,rgba(31,28,24,.16) 6px 7px);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:max(9px,6cqi);color:var(--ink-soft);font-style:italic}
+.tile .verdict-row{display:flex;gap:.5em;font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:max(9px,7cqi)}
+.tile .verdict-row span{border:1px solid var(--ink);padding:.15em .5em}
+.tile .verdict-row span.on{background:var(--ink);color:var(--paper)}
+.tile .plate{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.4em 0;text-align:center;font-family:var(--display);font-weight:600;letter-spacing:.06em;font-size:max(10px,8.5cqi)}
+.tile img{width:62%;margin-inline:auto;display:block;height:auto}
+.tile .center{text-align:center}
+.tile-cap{font-size:.95rem;color:var(--ink-soft)}
+
+/* Posts */
+.posts{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.post{border-bottom:1px solid var(--hair)}
+.post summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem 1rem;padding:.9rem 0;align-items:baseline}
+.post summary::-webkit-details-marker{display:none}
+.post .pt{font-weight:600;font-size:1.12rem;min-width:0}
+.post .pk{font-size:.9rem;color:var(--faint);white-space:nowrap}
+.post .pk::after{content:" +";font-family:var(--body)}
+.post[open] .pk::after{content:" −"}
+.post .body{padding:0 0 1.2rem;display:flex;flex-direction:column;gap:.8rem;max-width:var(--measure)}
+.caption{white-space:pre-wrap;background:var(--paper-2);border:1px solid var(--hair);padding:1rem 1.1rem;font-size:1.04rem;line-height:1.55}
+.post .notes{font-size:.95rem;color:var(--ink-soft)}
+.copy{font:inherit;font-size:.95rem;font-weight:500;align-self:flex-start;background:transparent;border:1px solid var(--ink);color:var(--ink);padding:.35rem .9rem;cursor:pointer;min-height:2.4rem}
+.copy:hover{background:var(--ink);color:var(--paper)}
+
+/* Bios */
+.bios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.bio{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.bio .caption{font-size:1rem}
+@media (max-width:900px){.bios{grid-template-columns:1fr}}
+
+/* Timeline */
+.phases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.phases > li{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1.25rem;padding:1.2rem 0;border-bottom:1px solid var(--hair)}
+.phases .when{font-family:var(--display);font-weight:600;letter-spacing:.04em;font-size:1.05rem;font-variant-numeric:lining-nums}
+.phases .when small{display:block;font-family:var(--body);font-weight:400;letter-spacing:0;font-style:italic;color:var(--faint);font-size:.92rem}
+.phases ul{margin:.4rem 0 0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+@media (max-width:600px){.phases > li{grid-template-columns:1fr;gap:.3rem}}
+
+.canon{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.canon li{font-size:1.25rem;line-height:1.4;font-style:italic}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.5rem 1rem;font-size:.95rem}
+footer.end{border-top:1px solid var(--rule);padding-top:1rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+
+.cover--plain{grid-template-columns:1fr}
+.checks{display:flex;flex-direction:column;gap:.15rem;max-width:44rem}
+.checks h3{margin:1.2rem 0 .4rem}
+.checks label{display:flex;gap:.7rem;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--hair);cursor:pointer}
+.checks input{width:1.15rem;height:1.15rem;margin-top:.3rem;accent-color:#1f1c18;flex:none}
+.checks input:checked + *{color:var(--faint)}
+.checks code{font-size:.9em}
+.sub{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--rule)}
+</style>
+<div class="book">
+<nav class="rail" aria-label="Contents">
+  <div class="mark">Mike Plant<br>Go-to-Market</div>
+  <ol>
+    <li><a href="#engine"><span>1</span>How clients find me</a></li>
+    <li><a href="#offer"><span>2</span>The one offer</a></li>
+    <li><a href="#outreach"><span>3</span>People I know</a></li>
+    <li><a href="#paid"><span>4</span>Paid Reclaim leads</a></li>
+    <li><a href="#found"><span>5</span>Being found</a></li>
+    <li><a href="#google"><span>6</span>Google for real estate</a></li>
+    <li><a href="#ai"><span>7</span>AI answers</a></li>
+    <li><a href="#answers"><span>8</span>Pages that answer AI</a></li>
+    <li><a href="#aiads"><span>9</span>Ads inside AI</a></li>
+    <li><a href="#desk"><span>10</span>The AI desk</a></li>
+    <li><a href="#send"><span>11</span>Where I send people</a></li>
+    <li><a href="#quiet"><span>12</span>Quiet advertising</a></li>
+    <li><a href="#days"><span>13</span>Pre-launch checklist</a></li>
+    <li><a href="#broker"><span>14</span>Ask Red 1</a></li>
+    <li><a href="#research"><span>15</span>Research notes</a></li>
+  </ol>
+  <p class="private">Private working plan. October 2026. Tick boxes save in this browser only. Identity, look and voice live in the Brand Book.</p>
+</nav>
+
+<main class="sheet">
+
+<header class="cover cover--plain">
+  <div>
+    <p class="eyebrow">Mike Plant · Lakewood, Ohio</p>
+    <h1 class="name">Go-to-Market Playbook</h1>
+    <div class="short-rule" aria-hidden="true"></div>
+    <p class="rule-line">Get in front of homeowners as the old-house expert. Reclaim is how strangers meet me. Real estate follows from the relationship.</p>
+    <p class="meta">Every number here comes from research done in October 2026, with sources in the Research notes chapter. Most benchmarks are published by companies that sell ads or leads, so read them as best case.</p>
+  </div>
+</header>
+
+<!-- 1 -->
+<section class="chapter" id="engine">
+  <header>
+    <span class="eyebrow">Chapter 1</span>
+    <h2>How clients find me</h2>
+    <p class="dek">Four ways in, one offer, one person. The brand pages stay clean. Everything that sells lives in its own layer.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Way in</th><th>Who it reaches</th><th>Why it works</th><th>Speed</th></tr></thead>
+    <tbody>
+      <tr><td>People I know</td><td>Bookstore regulars, neighbors, Reclaim clients, church, ULBA</td><td>66% of sellers use a referral or an agent they've used before. Referral leads close far more often than ad leads.</td><td>Fastest</td></tr>
+      <tr><td>Paid Reclaim leads</td><td>Homeowners within 15+ miles with a real repair</td><td>Cheap to buy, and a finished job is a relationship. Some of those homeowners sell within a few years.</td><td>Weeks</td></tr>
+      <tr><td>Being found</td><td>People searching "porch repair Lakewood" or checking me out after a referral</td><td>The map results and reviews decide who gets the call.</td><td>Months</td></tr>
+      <tr><td>Posts</td><td>Houses of Lakewood followers</td><td>Trust over time, a warm audience to retarget, and raw material for pages.</td><td>Slow, compounding</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p><strong>What posts are:</strong> what I put on social media under Houses of Lakewood, in the Facebook group and on one Instagram account. Three a week: one useful, one from the job, one from life. Drafts are in the Brand Book. They matter here because the people who watch half a porch video are exactly who the Reclaim ads should retarget.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="chapter" id="offer">
+  <header>
+    <span class="eyebrow">Chapter 2</span>
+    <h2>The one offer</h2>
+    <p class="dek">Marie ends everything with one clear action. Mine is the walkthrough.</p>
+  </header>
+  <p class="pull">I'll walk your house and tell you what I'd fix, what I'd leave alone, and what it's likely to cost. Text me.<cite>Fix or Leave It walkthrough · free · about 30 minutes</cite></p>
+  <div class="cols">
+    <div><div class="col-head">One offer, three outcomes</div><ul>
+      <li><strong>Staying put:</strong> it becomes a Reclaim job, or a referral to a trade I trust.</li>
+      <li><strong>Selling soon:</strong> it becomes the pre-listing walkthrough on michaelplant.realtor/sell.</li>
+      <li><strong>Buying:</strong> I walk the house they're looking at.</li>
+    </ul></div>
+    <div><div class="col-head">Rules for it</div><ul>
+      <li>When it might turn into a Reclaim job, say it's my company, in writing, and name two other contractors. NAR Standard 6-1 requires disclosure at the time of the recommendation.</li>
+      <li>If price comes up, call it a "price opinion" or "market analysis," never an appraisal.</li>
+      <li>It ends every post, every campaign page, and every Reclaim invoice.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="chapter" id="outreach">
+  <header>
+    <span class="eyebrow">Chapter 3</span>
+    <h2>People I know</h2>
+    <p class="dek">The fastest money. Personal texts, not a blast. Ten a day.</p>
+  </header>
+  <div class="posts">
+    <details class="post" open><summary><span class="pt">The outreach text</span><span class="pk">Weeks 2 to 6</span></summary><div class="body">
+      <div class="caption" id="s-out">Hey [name], it's Mike. I'm doing more real estate and house work this year. If you or anyone you know is thinking about selling in the next year or so, I'll walk the house for free and tell them what's worth fixing first. Either way, hope you're good.</div>
+      <button class="copy" type="button" data-copy="s-out">Copy text</button></div></details>
+    <details class="post"><summary><span class="pt">The Reclaim question</span><span class="pk">End of every job</span></summary><div class="body">
+      <div class="caption" id="s-rec">Any chance you'll sell in the next few years? No pitch. I'm also a Realtor with Red 1, and I'd rather you hear what's worth fixing from me before an inspector tells you.</div>
+      <p class="notes">Write the answer down. If the answer is yes, they go on the follow-up list.</p>
+      <button class="copy" type="button" data-copy="s-rec">Copy text</button></div></details>
+    <details class="post"><summary><span class="pt">The monthly check-in</span><span class="pk">Everyone warm</span></summary><div class="body">
+      <div class="caption" id="s-mo">Thought of you. [One useful thing: my best post this month, or what sold on their street and for how much.] No reply needed.</div>
+      <button class="copy" type="button" data-copy="s-mo">Copy text</button></div></details>
+  </div>
+  <div class="prose">
+    <p><strong>The list:</strong> name, how I know them, last contact, next step, and whether they might sell in the next two years. A spreadsheet is fine. If HubSpot is set up, use it. The point is that nobody warm goes three months without hearing from me.</p>
+  </div>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Weekly scoreboard</th><th>90-day target (mine to set)</th></tr></thead>
+    <tbody>
+      <tr><td>Personal outreach texts</td><td>200+</td></tr>
+      <tr><td>Real conversations or coffees</td><td>40</td></tr>
+      <tr><td>Walkthroughs done</td><td>12</td></tr>
+      <tr><td>Reclaim jobs booked</td><td>track</td></tr>
+      <tr><td>Listing or buyer appointments</td><td>3 to 4</td></tr>
+      <tr><td>Signed</td><td>1 to 2</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 4 -->
+<section class="chapter" id="paid">
+  <header>
+    <span class="eyebrow">Chapter 4</span>
+    <h2>Paid Reclaim leads</h2>
+    <p class="dek">Pay to meet homeowners as a contractor. Don't pay to meet sellers. The rest happens on the job.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Channel</th><th>What it costs</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Google Local Services Ads</td><td>Pay per lead. Handyman leads run about $30 to $55 each.</td><td><strong>Start here.</strong> Categories that fit: Handyman, Carpenters. It needs a background check, liability insurance, and the Lakewood registration. Badge is now "Google Verified." The old Google Guarantee ended Nov 2025.</td></tr>
+      <tr><td>Meta lead ads and retargeting</td><td>Home improvement lead ads average about $43 per lead.</td><td><strong>Second.</strong> Home repair falls under Meta's Housing category: 15-mile minimum radius, no ZIP targeting, no lookalikes. That's fine for me, since outer areas with less competition converted well on Zillow. Retarget video viewers and site visitors first.</td></tr>
+      <tr><td>Google search ads</td><td>Handyman about $54 per lead. General contractor about $166.</td><td>Later, only for the one or two services that pay best.</td></tr>
+      <tr><td>Thumbtack</td><td>Pay per lead, $10 to $100+</td><td>Optional test. No subscription.</td></tr>
+      <tr><td>Angi</td><td>About $300 a year plus $15 to $85 per lead</td><td><strong>Skip.</strong> Each lead goes to 3 to 8 contractors, and contracts auto-renew.</td></tr>
+      <tr><td>Paid real estate leads</td><td>$14 to $40 per lead on Facebook, $140+ on Google. 1 to 3% close, 6 to 18 months out.</td><td><strong>Skip for now.</strong> Reclaim jobs and people I know are cheaper ways to the same homeowners.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div><div class="col-head">How I'll run it</div><ul>
+      <li>Start with $300 to $600 a month, split between Local Services Ads and a Meta retargeting test.</li>
+      <li>Judge on jobs booked and walkthroughs, not leads. Track cost per booked job.</li>
+      <li>Answer every lead within 5 minutes during work hours. The industry average is about 90 minutes, and the fast responder usually wins.</li>
+      <li>Ads point at a campaign page (see Where I send people), never at the brand pages.</li>
+      <li><strong>Free now, paid later:</strong> install GA4 and the Meta Pixel today and build audiences: site visitors, video viewers, people who tapped call or text. Building costs nothing. Ads need about 100 people in an audience, so by the time you spend $10 a day, the warm audience is already there.</li>
+      <li>On Google, home repair probably isn't treated as housing, so Reclaim's search ads can use normal targeting. Real estate ads are housing on both Google and Meta.</li>
+    </ul></div>
+    <div><div class="col-head">Before the first dollar</div><ul>
+      <li>Lakewood contractor registration: annual, about $75, $1M liability insurance naming the city.</li>
+      <li>Reclaim's own site with one page per service.</li>
+      <li>Reclaim's Google profile verified, with the first few reviews.</li>
+      <li>A consent line on any ad form, so texting leads back is allowed.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="chapter" id="found">
+  <header>
+    <span class="eyebrow">Chapter 5</span>
+    <h2>Being found</h2>
+    <p class="dek">I won't beat Zillow for "Lakewood homes for sale." I can win the map for "realtor Lakewood" and "porch repair Lakewood," plus specific questions.</p>
+  </header>
+  <div class="cols">
+    <div><div class="col-head">Agent Google profile</div><ul>
+      <li>Name: "Michael Plant." Google doesn't allow the brokerage in the name at a multi-agent office.</li>
+      <li>Category: Real estate agent.</li>
+      <li>Address: not the Red 1 office, where it gets filtered. Use a real place I work from, set as a service area with the address hidden, unless I actually meet people there during posted hours.</li>
+      <li>Red 1 Realty in the description. Website: michaelplant.realtor, which shows the brokerage on every page. Confirm with Red 1 (the Ask Red 1 chapter).</li>
+    </ul></div>
+    <div><div class="col-head">Reclaim Google profile</div><ul>
+      <li>Primary category Carpenter, with Handyman and others as secondary. Pick Google's predefined services too.</li>
+      <li>Service area. Show the address only if customers come there. Hiding it costs some ranking, but showing a place nobody can visit breaks the rules.</li>
+      <li>Expect video verification: one continuous video showing tools or truck and a business document.</li>
+    </ul></div>
+  </div>
+  <div class="prose">
+    <p><strong>The bookstore basement office:</strong> it's a real place I work from, so it can be Reclaim's hidden service-area base. For the agent profile, Google expects me reachable there during posted hours, and a basement with no public entrance is a weak fit. A suite number only counts if it's real on the building and gets mail; an invented one can get the profile removed. Ohio has no rule I could find against listing a personal office, but presenting it as a real estate office could look like an unlicensed branch. Ask Red 1, and check with Emily first since it's her building too.</p>
+    <p><strong>Reviews:</strong> aim for 10 to 20 Google reviews with written comments on each profile, then a steady trickle. Rankings climb fast up to about that point and then flatten, and 74% of people want reviews from the last 3 months. Hand a review QR card at every closing and finished job. Ask everyone, not only the happy ones; Google bans gating and incentives. Reply to every review. On Yelp, claim the listing and never ask for reviews.</p>
+  </div>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Listing</th><th>For</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Google Business Profile</td><td>Both</td><td>The map, and the biggest single source in Google's AI answers</td></tr>
+      <tr><td>Yelp</td><td>Reclaim</td><td>Shows up in about 80% of ChatGPT's local answers; feeds Apple and Perplexity</td></tr>
+      <tr><td>Apple Business Connect</td><td>Both</td><td>Apple Maps and Siri</td></tr>
+      <tr><td>Bing Places</td><td>Both</td><td>Bing, Copilot, and a large share of ChatGPT search. Imports from Google.</td></tr>
+      <tr><td>Nextdoor, BBB</td><td>Reclaim</td><td>Neighborhood recommendations; BBB is cited often for home services</td></tr>
+      <tr><td>Lakewood contractor list</td><td>Reclaim</td><td>Comes with the city registration</td></tr>
+      <tr><td>Lakewood Chamber directory</td><td>Both</td><td>A real local listing</td></tr>
+      <tr><td>Zillow, Realtor.com, Homes.com</td><td>Agent</td><td>Trust when people check me out. No evidence they help rankings.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Same name, address, and phone everywhere. Mismatches are how both Google and the AI tools lose track of a business.</p>
+</section>
+
+
+<!-- Google engine -->
+<section class="chapter" id="google">
+  <header>
+    <span class="eyebrow">Chapter 6</span>
+    <h2>The Google engine for real estate</h2>
+    <p class="dek">From Brian Icenhower's lead-source ranking, checked against the research. His big point holds: people who don't know an agent trust Google, and the agent profile plus Local Services Ads bring in sellers as well as buyers. Some of his specifics didn't hold up, and those are marked.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Source</th><th>What it costs</th><th>Fit for me</th></tr></thead>
+    <tbody>
+      <tr><td>People I know</td><td>Time</td><td><strong>Always first.</strong> Icenhower's own rule: online leads are extra income, not a replacement.</td></tr>
+      <tr><td>Google Business Profile</td><td>Free</td><td><strong>Build now.</strong> Reviews and services are what move it.</td></tr>
+      <tr><td>Google Local Services Ads, real estate</td><td>Pay per valid lead. One vendor says $24 to $36. Message leads cost half.</td><td><strong>Test once the profile has reviews.</strong> Pick the seller's agent service type to match the walkthrough offer.</td></tr>
+      <tr><td>Pay-at-close referral networks</td><td>25 to 40% of the commission at closing. No cost upfront.</td><td>Realtor.com and HomeLight are the likeliest to take a part-time agent. Zillow, Redfin, and UpNest require production history. Needs Red 1 approval.</td></tr>
+      <tr><td>Google search ads</td><td>About $158 per lead for real estate agents</td><td>Later, if ever. Lakewood volume is small.</td></tr>
+      <tr><td>Facebook and Instagram lead ads</td><td>Cheap leads, mostly buyers, 1 to 2% close</td><td>Retargeting only, per the paid leads chapter.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div><div class="col-head">The agent profile, set up right</div><ul>
+      <li><strong>Services:</strong> add every one that's true, with a sentence each: Seller's agent, Buyer's agent, Pre-listing walkthrough, Price opinion, Older homes. A Sterling Sky test found adding services moved rankings.</li>
+      <li><strong>Reviews</strong> are the strongest signal: 10 to 20 with written comments, then steady. Use michaelplant.realtor/review on every card and text.</li>
+      <li><strong>Booking link</strong> goes to michaelplant.realtor/sell (the walkthrough).</li>
+      <li><strong>Exact same name and phone</strong> as the site and every other listing. He's right that mismatches confuse Google.</li>
+      <li><strong>Photos:</strong> you, real houses you've helped with (with permission), Lakewood streets.</li>
+    </ul></div>
+    <div><div class="col-head">Where he's wrong or unproven</div><ul>
+      <li><strong>"Post regularly or AI won't find you."</strong> A Sterling Sky test found weekly posts didn't change map rankings. Post anyway when you have something real; it shows you're active. Just don't expect posts to do the ranking work.</li>
+      <li><strong>"75% of business comes after the seventh follow-up."</strong> No study behind it. Speed is better proven: leads contacted within an hour were about 7 times more likely to qualify (Harvard Business Review, 2011).</li>
+      <li><strong>Read AI "$39 a month."</strong> The paid note-takers run about $10 to $20 a month: Fireflies, Otter, Read AI.</li>
+      <li><strong>YouTube helps local ranking.</strong> No evidence for that. YouTube is cited more and more in AI answers for how-to topics, though, so posting your Fix or Leave It videos there as Shorts is cheap upside.</li>
+    </ul></div>
+  </div>
+  <div class="prose">
+    <p><strong>Local Services Ads for real estate, the facts:</strong></p>
+    <ul>
+      <li><strong>Category:</strong> Google's US page lists "Real estate agents and brokers" and includes Ohio. Confirm in the sign-up flow with a Lakewood ZIP code.</li>
+      <li><strong>Requirements:</strong> a license check and background checks. Your Red 1 details must match your state license and your Google profile.</li>
+      <li><strong>Budget and credits:</strong> you set a weekly budget. Google now credits invalid leads automatically instead of letting you dispute them.</li>
+      <li><strong>The badge:</strong> it's now "Google Verified." The old money-back guarantee ended October 20, 2025.</li>
+    </ul>
+    <p>Nobody publishes the buyer and seller mix or conversion rates, so track your own with the call and text tagging that's already built.</p>
+    <p><strong>The referral networks also give AI tools more places to find you.</strong> One of Icenhower's agents noticed his brokerage showing up in more search results after he filled out these profiles. That's an anecdote, but it lines up with Whitespark's top AI factor: being prominent on industry sites. Fill out every profile you qualify for, with the same name, photo, and phone.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="chapter" id="ai">
+  <header>
+    <span class="eyebrow">Chapter 7</span>
+    <h2>AI answers</h2>
+    <p class="dek">The realistic goal is to be one of the businesses the answer names, next to Yelp, not instead of it. My tech skills help most in measuring it.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Assistant</th><th>Where it looks for local businesses</th></tr></thead>
+    <tbody>
+      <tr><td>Google AI Overviews and AI Mode</td><td>Google's normal index plus Google Business Profiles. AI Mode leans on Maps; AI Overviews cite business websites more.</td></tr>
+      <tr><td>ChatGPT</td><td>Heavily Yelp (OpenAI licensed Yelp's data) and directories; draws on Bing results</td></tr>
+      <tr><td>Perplexity</td><td>Licenses Yelp; uses directories</td></tr>
+      <tr><td>Claude</td><td>Brave Search</td></tr>
+      <tr><td>Siri and Apple</td><td>Apple Maps (Business Connect) with Yelp reviews</td></tr>
+      <tr><td>Copilot</td><td>Bing</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div><div class="col-head">Do, strongest evidence first</div><ul>
+      <li>Both Google profiles, complete and current.</li>
+      <li>Allow the search crawlers on both sites: Googlebot, Bingbot, OAI-SearchBot, PerplexityBot, Claude-SearchBot, Applebot.</li>
+      <li>Claim Yelp, Bing Places, Apple Business Connect.</li>
+      <li>Same name, address, phone everywhere.</li>
+      <li>Reviews on Google plus the trade's own sites.</li>
+      <li>One plain-facts page per service and area: what I do, where, price ranges, registration number.</li>
+      <li>Get mentioned: local press, Lakewood "best of" lists, Chamber pages. The hardest and the highest-rated factor.</li>
+      <li>Bing Webmaster Tools and IndexNow, for its AI citation report.</li>
+      <li>Schema markup that matches the page. Cheap, weak evidence.</li>
+    </ul></div>
+    <div><div class="col-head">Measure it like an analyst</div><ul>
+      <li>Answers change a lot between runs; the same question repeated cites the same sources only about 43% of the time. One check means nothing.</li>
+      <li>Keep a fixed set of 10 prompts, like "who should I call for porch repair in Lakewood Ohio" and "best realtor for old houses in Lakewood." Run each in ChatGPT, Google AI Mode, Perplexity, and Copilot once a month. Log whether I'm named and which sources are cited.</li>
+      <li>Bing Webmaster Tools' AI Performance report covers Copilot citations.</li>
+      <li>Skip llms.txt. No major AI search engine has said it uses it.</li>
+    </ul></div>
+  </div>
+</section>
+
+
+<!-- answer map -->
+<section class="chapter" id="answers">
+  <header>
+    <span class="eyebrow">Chapter 8</span>
+    <h2>Pages that answer AI questions</h2>
+    <p class="dek">AI assistants quote short, direct answers from pages they trust. Each test question needs one page that answers it in the first two sentences, with a byline and an updated date.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Test question</th><th>Answered by</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Good realtor for older homes in Lakewood?</td><td>michaelplant.realtor/about (facts) and home</td><td>Built</td></tr>
+      <tr><td>Best agent on Cleveland's west side?</td><td>/about facts, plus reviews on the Google profile</td><td>Needs reviews</td></tr>
+      <tr><td>Who to talk to before selling an old house in Rocky River?</td><td>/sell, with Q&amp;A</td><td>Built</td></tr>
+      <tr><td>Medina County realtor who knows older homes?</td><td>/about (areas). A Medina guide later.</td><td>Thin</td></tr>
+      <tr><td>Porch repair in Lakewood?</td><td>reclaimhomerepair.com/porches, with Q&amp;A</td><td>Built</td></tr>
+      <tr><td>Rotted trim and fascia repair near Lakewood?</td><td>/trim-and-rot, with Q&amp;A</td><td>Built</td></tr>
+      <tr><td>Porch steps and railings on the west side?</td><td>/stairs-and-railings, with Q&amp;A</td><td>Built</td></tr>
+      <tr><td>Carpenter for old house repairs in Rocky River or Fairview Park?</td><td>Reclaim /about (towns) and home</td><td>Built</td></tr>
+      <tr><td>What to fix before selling a 100-year-old house in Cleveland?</td><td>/sell Q&amp;A. A full Fix or Leave It article would be stronger.</td><td>Partial</td></tr>
+      <tr><td>Is it worth fixing box gutters?</td><td>A Reclaim note from your voice memo (template is ready)</td><td>Needs your take</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p><strong>How every answer page is built:</strong></p>
+    <ul>
+      <li><strong>A question as the heading,</strong> then the direct answer in one or two sentences, then the details.</li>
+      <li><strong>Real numbers</strong> where you have them.</li>
+      <li><strong>"By Mike Plant · Updated" on every page,</strong> plus Q&amp;A markup search engines can read.</li>
+      <li><strong>Only your facts and your opinions.</strong> The AI desk drafts, you approve.</li>
+      <li><strong>Re-check pages every few months</strong> and bump the date only when something actually changed.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- AI ads -->
+<section class="chapter" id="aiads">
+  <header>
+    <span class="eyebrow">Chapter 9</span>
+    <h2>Early adopter: ads inside AI</h2>
+    <p class="dek">Being early only pays if you measure it, and measuring is your job anyway. Here's what you can actually buy as of October 2026.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Where</th><th>Can I buy it?</th><th>How it works</th></tr></thead>
+    <tbody>
+      <tr><td>ChatGPT</td><td><strong>Yes.</strong> Self-serve Ads Manager (ads.openai.com), open to US businesses since May 2026. Some reports mention waitlists.</td><td>Ads below answers, matched to the conversation (no keywords). Cost per click starts around $3 to $5, or about $25 per thousand views. Targets by state, metro area, or ZIP. Free and Go users only.</td></tr>
+      <tr><td>Google AI Overviews and AI Mode</td><td><strong>Yes, indirectly.</strong></td><td>Normal Google Search campaigns using broad match or AI Max become eligible automatically. You can't target or report AI placements separately.</td></tr>
+      <tr><td>Microsoft Copilot</td><td><strong>Yes, indirectly.</strong></td><td>Microsoft Advertising search ads with a logo are opted in automatically. Cheap clicks. No Copilot-only reporting.</td></tr>
+      <tr><td>Apple Maps</td><td>Announced for summer 2026, self-serve through Apple Business. Confirm it's live.</td><td>Siri and Apple Intelligence draw on Maps listings.</td></tr>
+      <tr><td>Perplexity</td><td>No. Winding ads down.</td><td>Skip.</td></tr>
+      <tr><td>Gemini app, Meta AI app</td><td>No ads.</td><td>Meta does use AI chat topics to target ads on Facebook and Instagram.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div><div class="col-head">The rules</div><ul>
+      <li><strong>Real estate on ChatGPT:</strong> no ads for specific homes for sale or rent. Advertise you and the walkthrough, never an address or listing.</li>
+      <li><strong>Real estate on Google and Microsoft:</strong> no ZIP, age, gender, parental, or marital targeting. Use a radius, city, county, or metro area. On ChatGPT, use the Cleveland metro area to stay safe.</li>
+      <li><strong>Reclaim</strong> isn't housing on Google or ChatGPT, so ZIP targeting is fine there. Meta still treats it as housing.</li>
+      <li><strong>Every ad shows Michael Plant | Red 1 Realty at equal size</strong> when it's real estate. The campaign page does too.</li>
+      <li><strong>Avoid anyone selling a guaranteed ChatGPT ranking.</strong> There's no paid organic placement.</li>
+    </ul></div>
+    <div><div class="col-head">The test, about $300 to $600 a month</div><ul>
+      <li><strong>Google Local Services Ads for Reclaim</strong> first. Proven, pay per lead.</li>
+      <li><strong>ChatGPT, $100 to $150 a month for 2 months,</strong> Reclaim first. Target Lakewood-area ZIPs and send people to reclaimhomerepair.com/go/porch?utm_source=chatgpt. Then real estate: the Cleveland metro area, sent to michaelplant.realtor/go/walkthrough?utm_source=chatgpt.</li>
+      <li><strong>Microsoft Advertising, about $50 a month:</strong> import the Google campaigns and add a logo so they can show in Copilot.</li>
+      <li><strong>Measure clicks to calls and texts,</strong> not ChatGPT's reported clicks. Agencies found OpenAI's click counts didn't match Google Analytics. <code>cta.js</code> already records the utm_source on every call and text tap.</li>
+    </ul></div>
+  </div>
+  <div class="prose">
+    <p><strong>Early results, honestly:</strong></p>
+    <ul>
+      <li><strong>ChatGPT ads are getting clicked less than search ads.</strong> Average click-through is about 0.6 to 0.7%, versus about 2% on search.</li>
+      <li><strong>One agency spent $415</strong> at about $7 a click and got no buyers.</li>
+      <li><strong>Visitors who come from AI assistants convert well once they arrive,</strong> about 1.5 times other referrals in one retail study.</li>
+    </ul>
+    <p>That's why this is a capped test. The upside is learning the channel while it's cheap and empty of local competitors.</p>
+  </div>
+</section>
+
+<!-- AI desk -->
+<section class="chapter" id="desk">
+  <header>
+    <span class="eyebrow">Chapter 10</span>
+    <h2>The AI desk</h2>
+    <p class="dek">Where I can actually get ahead. Most agents use a blank ChatGPT. Mine knows my voice, my rules, and my jobs: Google posts, review replies, follow-up texts from call notes, Fix or Leave It, YouTube scripts, and the monthly AI check.</p>
+  </header>
+  <div class="prose">
+    <p><strong>Setup, 10 minutes:</strong> claude.ai, then Projects, then New project. Paste the instructions below. Add this Playbook, the Brand Book, and the Field Kit as project files.</p>
+    <p><strong>Follow-up workflow:</strong></p>
+    <ol>
+      <li>Take the call on speaker with a note-taker running (Fireflies, Otter, or Read AI, about $10 to $20 a month).</li>
+      <li>Paste the transcript into the project.</li>
+      <li>You get a summary, three texts for 2, 4, and 6 weeks out, and the next step.</li>
+      <li>Log the next step in HubSpot and send the texts yourself.</li>
+    </ol>
+    <p><strong>Recording:</strong> Ohio only needs your consent to record a call. But if the person is in a state like California, its all-party rule can still apply. When a caller might be out of state, say "I record my calls so I don't forget anything" at the start.</p>
+    <p><strong>Texting:</strong> texts you type and send yourself are low risk. Texts a platform sends from a list need prior consent.</p>
+  </div>
+  <div class="caption" id="s-desk">## Who I am
+I&#x27;m Mike Plant (Michael Plant), Lakewood, Ohio. Dad and grandpa. Working on houses since 1992, when I was 12. Three things, one person:
+- **Realtor with Red 1 Realty.** I market on Cleveland&#x27;s west side and inner-ring suburbs and take deals in Lorain and Medina counties too. Site: michaelplant.realtor. My offer: a free walkthrough (about an hour) where I tell sellers what to fix, what to leave, and a price range. No obligation to list.
+- **Reclaim Home Repair,** my company. Porches, trim and rot, stairs and railings on older houses in Lakewood and the nearby west side. Free estimates by photo, fixed price in writing. Site: reclaimhomerepair.com.
+- **Houses of Lakewood,** the Facebook group and social account where I post about old houses.
+Personal site: michaelplant.com. Phone: 216.217.6362. I answer my own phone.
+
+## How I sound
+- Plain, warm, a little funny. Short sentences. Like I&#x27;m texting a neighbor.
+- Never use em dashes or en dashes. Use commas, colons, periods.
+- No sales words: trusted, premier, your local expert, dream home, don&#x27;t miss out.
+- Real numbers when I gave them. Opinions only when I gave them.
+- **Never invent facts, prices, reviews, client names, or opinions.** Put [brackets] where something&#x27;s missing and ask me.
+
+## Rules you always follow
+1. **Real estate marketing names the brokerage.** Anything that advertises my real estate services (posts, Google profile posts, ads, emails, flyers) shows &quot;Michael Plant | Red 1 Realty&quot; with Red 1 Realty at least as prominent as my name (Ohio OAC 1301:5-1-02). Reclaim content never mentions real estate.
+2. **Fair Housing.** Describe homes and places by property and lifestyle: lot size, walkability, condition, price, commute. Never by who lives there or who it&#x27;s &quot;for.&quot; No &quot;family-friendly,&quot; &quot;safe,&quot; &quot;great for retirees,&quot; &quot;diverse,&quot; &quot;exclusive.&quot; Flag it if I slip.
+3. **Reclaim and real estate.** When I recommend Reclaim to a real estate client, say it&#x27;s my company and they&#x27;re never expected to use it, and name other options (NAR Standard 6-1).
+4. **Reclaim claims.** &quot;Registered&quot; and &quot;insured&quot; only. Never &quot;licensed.&quot; Never a BBB seal.
+5. **Prices.** As a Realtor I give a &quot;price opinion&quot; or &quot;market analysis,&quot; never an &quot;appraisal.&quot;
+6. **Sold homes.** Say &quot;sold&quot; only if I was the listing or buyer&#x27;s agent. Client names and photos only with their permission.
+7. **Reviews.** Ask everyone the same way, never only happy clients, never offer anything for a review. Never write a review for someone.
+
+## Jobs I&#x27;ll ask you to do
+
+**Google Business Profile post** (agent or Reclaim). From a photo description, voice memo, or note: 80 to 150 words. Open with the thing, say what it means for a homeowner, end with one action (&quot;Text me a photo&quot; for Reclaim; &quot;Book a free walkthrough&quot; for real estate). Real estate posts end with &quot;Michael Plant | Red 1 Realty.&quot; Suggest the post type: update, offer, or event.
+
+**Review request.** A short personal text after a closing or finished job, with my Google review link [link]. One version for real estate, one for Reclaim.
+
+**Review reply.** Under 60 words, specific to what they said, thank them by first name, no sales pitch. For a negative review: calm, own what&#x27;s mine, offer to talk by phone.
+
+**Follow-up from call notes.** I&#x27;ll paste a transcript or notes from a call. Give me:
+- a 3-line summary: who, what they want, timeline, what I promised
+- three follow-up texts, for 2, 4, and 6 weeks out, each referencing something real from the call and ending with an easy question
+- the next step to log in my CRM
+
+These go out as personal texts I send myself. Never write them as automated blasts.
+
+**Fix or Leave It** (from a voice memo). A caption, a Houses of Lakewood group question, and a 400 to 600 word article: the thing, why it happens in old houses here, the verdict, what I&#x27;d do, what it takes, when to call someone.
+
+**YouTube Short script.** From a job video idea: 30 to 45 seconds, the problem in the first 3 seconds, one idea, my verdict at the end, plus a title under 60 characters.
+
+**Listing or area description.** Property and lifestyle facts only, run through the Fair Housing rule, with the brokerage line.
+
+**Monthly AI check.** When I paste what ChatGPT, Gemini, Perplexity, and Copilot said for my 10 test questions, make a table: question, engine, was I named (agent or Reclaim), which sources were cited. Then say what changed since last month and the one thing to fix.
+
+## My 10 test questions (run monthly)
+1. Who&#x27;s a good realtor for older homes in Lakewood, Ohio?
+2. Best real estate agent on Cleveland&#x27;s west side?
+3. Who should I talk to before selling an old house in Rocky River?
+4. Realtor in Medina County who knows older homes?
+5. Who does porch repair in Lakewood, Ohio?
+6. Rotted trim and fascia repair near Lakewood Ohio?
+7. Who fixes porch steps and railings on the west side of Cleveland?
+8. Carpenter for old house repairs in Rocky River or Fairview Park?
+9. What should I fix before selling a 100-year-old house in Cleveland?
+10. Is it worth fixing box gutters on an old house?</div>
+  <button class="copy" type="button" data-copy="s-desk">Copy project instructions</button>
+</section>
+
+<!-- 7 -->
+<section class="chapter" id="send">
+  <header>
+    <span class="eyebrow">Chapter 11</span>
+    <h2>Where I send people</h2>
+    <p class="dek">Four layers. The "me" pages never carry an ad.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Layer</th><th>What</th><th>In search</th></tr></thead>
+    <tbody>
+      <tr><td>Me</td><td>michaelplant.com card page and /connect. Unchanged.</td><td>Yes</td></tr>
+      <tr><td>Answer pages</td><td>michaelplant.realtor /sell and /lakewood guides. Reclaim site: one page per service (porch, rot and trim, railings, doors), Lakewood-focused. No city-swapped copies; Google calls those doorway pages.</td><td>Yes</td></tr>
+      <tr><td>Campaign pages</td><td>Own URLs like michaelplant.realtor/go/walkthrough and Reclaim's /go/porch. One offer, one button, a short form only for paid traffic. Red 1 Realty at equal size on any real estate one.</td><td>No (noindex)</td></tr>
+      <tr><td>Profiles</td><td>Two Google profiles, Apple, Bing, Yelp, Nextdoor, Chamber</td><td>They are the search results</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p><strong>Making michaelplant.realtor feel less light.</strong> What sellers rate most in an agent: trustworthy (84%), responsive (82%), reputation (77%), local knowledge and sales history (77%). So add proof, done by the rules:</p>
+    <ul>
+      <li><strong>Homes I've helped with.</strong> Say "sold" only where I was the listing or buyer's agent (NAR Standard 12-7). Written consent from each client. My own photos, not MLS photos, which belong to the photographer or listing broker. Keep it current; Ohio wants outdated info fixed within 14 days.</li>
+      <li><strong>Reviews.</strong> Real Google and Zillow reviews, quoted with permission, not just the best lines out of context.</li>
+      <li><strong>Before and after.</strong> Reclaim repairs that helped a sale, with the owner's permission. This is the proof nobody else in Lakewood has.</li>
+      <li><strong>People I trust.</strong> Inspectors, lenders, trades, with no referral fees, and Reclaim marked as my company.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="chapter" id="quiet">
+  <header>
+    <span class="eyebrow">Chapter 12</span>
+    <h2>Quiet advertising</h2>
+    <p class="dek">Never promoted. People find it on their own, which is why it works.</p>
+  </header>
+  <div class="cols">
+    <div><div class="col-head">The house plate</div><ul>
+      <li>Engraved drawing of the house with a small plate: "Built 1916 · The Hendersons, 2026."</li>
+      <li>For closings and for bigger Reclaim jobs.</li>
+      <li>Draw from my own photo, not the MLS photo.</li>
+      <li>Nothing salesy on it. A tiny mark on the back is enough.</li>
+      <li>The IRS caps the business gift deduction at $25 per client per year. It's still worth it.</li>
+    </ul></div>
+    <div><div class="col-head">The job sign</div><ul>
+      <li>A Reclaim sign in the yard during the job, with its own QR code so I can count scans.</li>
+      <li>One contractor credited 10 jobs in a year to job signs. Anecdotal, so measure it.</li>
+      <li>Check Lakewood's temporary sign limits with the Building Department first.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="chapter" id="days">
+  <header>
+    <span class="eyebrow">Chapter 13</span>
+    <h2>Pre-launch checklist</h2>
+    <p class="dek">Everything before and around launch, for all three sites. Tick as you go; it saves in this browser. Same list as project-docs/launch-checklist.md.</p>
+  </header>
+  <div class="checks" id="checks">
+    <h3>1. Accounts and identity</h3>
+    <label><input type="checkbox" id="p1"> <span><strong>Create <code>me@michaelplant.com</code></strong> (Cloudflare Email Routing → Gmail). The card and sites use it.</span></label>
+    <label><input type="checkbox" id="p2"> <span><strong>Confirm your licensed name</strong> on Ohio eLicense matches "Michael Plant" and "Red 1 Realty".</span></label>
+    <label><input type="checkbox" id="p3"> <span><strong>Confirm you own reclaimhomerepair.com</strong> (assumed). michaelplant.realtor is yours.</span></label>
+    <label><input type="checkbox" id="p4"> <span><strong>Decide the public email</strong> for the realtor site (now <code>michaelplantrealtor@gmail.com</code>) and for Reclaim (now <code>me@michaelplant.com</code>).</span></label>
+    <label><input type="checkbox" id="p5"> <span><strong>Fix the live michaelplant.realtor template now</strong>, in NAR's builder:</span></label>
+    <label><input type="checkbox" id="p6"> <span>Keep <strong>NAR membership</strong> active (a .realtor domain requires it).</span></label>
+    <h3>2. Reclaim basics</h3>
+    <label><input type="checkbox" id="p7"> <span><strong>Lakewood contractor registration.</strong> Put the number in <code>registration</code> in <code>reclaim-site/src/_data/site.json</code>, then set <code>"show": true</code> on <code>registered</code> in <code>credentials.json</code>.</span></label>
+    <label><input type="checkbox" id="p8"> <span><strong>Keep a current certificate of insurance</strong> ready to send. "Fully insured" is already on the site.</span></label>
+    <label><input type="checkbox" id="p9"> <span><strong>Line up two or three references</strong> who will take a call. "References on request" is already on the site.</span></label>
+    <label><input type="checkbox" id="p10"> <span><strong>Decide on EPA RRP (lead-safe) certification.</strong> Paid work that disturbs paint on pre-1978 houses generally requires it.</span></label>
+    <label><input type="checkbox" id="p11"> <span><strong>Confirm Reclaim's towns</strong> (<code>towns</code> in <code>reclaim-site/src/_data/site.json</code>; now Lakewood, Rocky River, Fairview Park, Bay Village, Westlake, Cleveland's west side neighborhoods) and the realtor area (<code>areasServed</code> in <code>realtor-site/src/_data/site.json</code>; includes Lorain and Medina counties).</span></label>
+    <label><input type="checkbox" id="p12"> <span><strong>Pull your Zillow numbers:</strong> 12 months of spend and closings, by zip code. That's your cost per closing to beat, and it shows which outer areas to test first.</span></label>
+    <label><input type="checkbox" id="p13"> <span><strong>Check the price ranges</strong> on each service page against your real jobs.</span></label>
+    <label><input type="checkbox" id="p14"> <span><strong>BBB: skip accreditation for now.</strong> It needs 6+ months in business, a quote from BBB Greater Cleveland (third-party estimate: about $485 to $510 a year plus a $75 application fee), and a B rating or better. If a free profile exists, link to it in plain text. Never show the seal unless accredited; Ohio's consumer protection law treats an unearned seal as deceptive.</span></label>
+    <label><input type="checkbox" id="p15"> <span><strong>Say "registered" and "insured," never "licensed."</strong> Ohio has no state license for home improvement work, and claiming one you don't have is deceptive under ORC 1345.02.</span></label>
+    <h3>3. Proof (the sites look empty without it)</h3>
+    <label><input type="checkbox" id="p16"> <span><strong>Before / during / after photos</strong> from 2 or 3 real jobs, with the owner's OK. See <code>reclaim-site/PROJECTS.md</code> and the Field Kit.</span></label>
+    <label><input type="checkbox" id="p17"> <span><strong>First reviews.</strong> Ask every past client and Reclaim customer for a Google review, with written comments if they're willing. Aim for 10 per profile.</span></label>
+    <label><input type="checkbox" id="p18"> <span><strong>Real reviews quoted on the sites,</strong> with permission (<code>reviews.json</code> on Reclaim and realtor).</span></label>
+    <label><input type="checkbox" id="p19"> <span><strong>Homes you've helped with</strong> (<code>realtor-site/src/_data/homes.json</code>). Needs written client consent and your own photos. Say "sold" only where you were the listing or buyer's agent.</span></label>
+    <h3>4. Content (so there's something to find)</h3>
+    <label><input type="checkbox" id="p20"> <span><strong>Three pinned posts</strong> on Houses of Lakewood: "Hey, I'm Mike," your best Fix or Leave It, and a real project.</span></label>
+    <label><input type="checkbox" id="p21"> <span><strong>Six more posts</strong> from the Field Kit routine (the insulation job and Leslie's framing are a start).</span></label>
+    <label><input type="checkbox" id="p22"> <span><strong>First two Fix or Leave It notes</strong> on Reclaim's site, written from voice memos (<code>reclaim-site/src/notes/</code>).</span></label>
+    <label><input type="checkbox" id="p23"> <span><strong>Refresh the realtor site's Lakewood market numbers</strong> (from Feb 2026) and the school boundary note.</span></label>
+    <h3>5. Profiles (where people and AI tools look)</h3>
+    <label><input type="checkbox" id="p24"> <span>Google Business Profile: <strong>Reclaim</strong> (Carpenter, service area, address hidden).</span></label>
+    <label><input type="checkbox" id="p25"> <span>Google Business Profile: <strong>agent</strong>, after Red 1 answers the naming and address questions (Playbook, Ask Red 1). Add every true service (Seller's agent, Buyer's agent, Pre-listing walkthrough, Price opinion, Older homes), booking link to michaelplant.realtor/sell, and real photos. Then set <code>reviewUrl</code> and <code>profiles.googleBusinessProfile</code> in <code>realtor-site/src/_data/site.json</code>.</span></label>
+    <label><input type="checkbox" id="p26"> <span>Same for Reclaim's profile: set <code>reviewUrl</code> and <code>profiles</code> in <code>reclaim-site/src/_data/site.json</code>. The short links michaelplant.realtor/review and reclaimhomerepair.com/review then go straight to the review form.</span></label>
+    <label><input type="checkbox" id="p27"> <span><strong>Referral network profiles</strong> you qualify for, after Red 1 approves (Realtor.com ReadyConnect, HomeLight first). Same name, photo, and phone on each.</span></label>
+    <label><input type="checkbox" id="p28"> <span><strong>YouTube channel</strong> under the same name. Upload Fix or Leave It videos as Shorts.</span></label>
+    <label><input type="checkbox" id="p29"> <span>Apple Business Connect, Bing Places (import from Google), Yelp (claim, never ask for reviews), Nextdoor, Lakewood Chamber directory.</span></label>
+    <label><input type="checkbox" id="p30"> <span>Zillow, Realtor.com, Homes.com agent profiles: same photo, same phone, link to michaelplant.realtor.</span></label>
+    <label><input type="checkbox" id="p31"> <span><strong>Same name, address, and phone everywhere.</strong></span></label>
+    <label><input type="checkbox" id="p32"> <span>Print <strong>review QR cards</strong> for closings and finished jobs.</span></label>
+    <h3>6. Tracking (set up before any traffic)</h3>
+    <label><input type="checkbox" id="p33"> <span><strong>Analytics on all three sites.</strong> GA4 is free; add its snippet to each <code>base.njk</code>. <code>cta.js</code> already sends <code>cta_click</code> with site, page, action, location, and source.</span></label>
+    <label><input type="checkbox" id="p34"> <span><strong>Mark <code>cta_click</code> as a key event</strong> in GA4 and build audiences now: site visitors, people who clicked call or text. Building is free. Google won't serve ads to an audience until it reaches 100 active users in 30 days.</span></label>
+    <label><input type="checkbox" id="p35"> <span><strong>Meta Pixel</strong> on Reclaim and the realtor site (free). Build custom audiences: site visitors, video viewers, Instagram and Facebook engagers. Ads need about 100 matched people. When you run ads, Meta treats both home repair and real estate as Housing: 15-mile minimum radius, no ZIP targeting, no lookalikes. Custom audiences still work.</span></label>
+    <label><input type="checkbox" id="p36"> <span><strong>HubSpot free CRM</strong> as the follow-up list (1,000 contacts and 2 users free): people you know, Reclaim leads, walkthroughs. Its free ad tool only syncs 2 simple website-visitor audiences and can't sync contact lists (that starts at Starter), so build audiences in Meta and Google directly. Skip the HubSpot tracking code; with no forms, it can't tie visits to people.</span></label>
+    <label><input type="checkbox" id="p37"> <span><strong>Missed-call text-back</strong> (Quo, about $15/mo) before any paid ads.</span></label>
+    <label><input type="checkbox" id="p38"> <span><strong>Test every button on a real iPhone and a real Android:</strong> Text me, Call, Save contact, the bar at the bottom. Pre-typed text sometimes drops on iOS, and that's OK as long as the text opens to you.</span></label>
+    <label><input type="checkbox" id="p39"> <span><strong>Turn on Cloudflare Crawler Hints</strong> for each site (it sends IndexNow pings to Bing, which ChatGPT search draws on).</span></label>
+    <label><input type="checkbox" id="p40"> <span><strong>Write the box gutters note and a full "what to fix before selling" article</strong> from voice memos, to close the gaps in the AI answer map.</span></label>
+    <label><input type="checkbox" id="p41"> <span><strong>Bing Webmaster Tools and Google Search Console</strong> for all three sites; submit each sitemap.</span></label>
+    <label><input type="checkbox" id="p42"> <span><strong>Set up the AI desk:</strong> a Claude Project with <code>project-docs/ai/claude-project-instructions.md</code>, plus a note-taker (Fireflies, Otter, or Read AI, about $10 to $20 a month) for follow-up calls.</span></label>
+    <label><input type="checkbox" id="p43"> <span><strong>Start the monthly AI prompt log</strong> (Playbook, AI answers).</span></label>
+    <h3>7. Compliance</h3>
+    <label><input type="checkbox" id="p44"> <span><strong>Send Red 1 the email</strong> in the Playbook's Ask Red 1 chapter:</span></label>
+    <label><input type="checkbox" id="p45"> <span><strong>Confirm the walkthrough promise</strong> on <code>/sell/</code>: free, about an hour, no obligation to list.</span></label>
+    <label><input type="checkbox" id="p46"> <span><strong>Keep the same-day callback promise true,</strong> or change the line on the sites.</span></label>
+    <h3>8. Go live, in this order</h3>
+    <label><input type="checkbox" id="p47"> <span><strong>michaelplant.com:</strong> merge to <code>main</code> (deploys to GitHub Pages).</span></label>
+    <label><input type="checkbox" id="p48"> <span><strong>Cards:</strong> print a proof of <code>project-docs/card/MICHAEL_PLANT_card_url-qr.pdf</code> (not the designer file; its QR is clipped). Scan it on iPhone and Android: Connect page opens, Save my contact works.</span></label>
+    <label><input type="checkbox" id="p49"> <span><strong>reclaimhomerepair.com:</strong> Cloudflare Pages, root <code>reclaim-site</code>, build <code>npm run build</code>, output <code>_site</code>. Then set <code>reclaimSite</code> in <code>v2/src/_data/site.json</code> and redeploy michaelplant.com.</span></label>
+    <label><input type="checkbox" id="p50"> <span><strong>michaelplant.realtor,</strong> after Red 1 signs off:</span></label>
+    <label><input type="checkbox" id="p51"> <span><strong>Hosting move for michaelplant.com,</strong> when convenient: move it to Cloudflare Pages too and turn off the GitHub Pages workflow. <code>_redirects</code> and <code>_headers</code> are already generated.</span></label>
+    <h3>9. After launch</h3>
+    <label><input type="checkbox" id="p52"> <span><strong>Local Services Ads</strong> for Reclaim (Handyman / Carpenters).</span></label>
+    <label><input type="checkbox" id="p53"> <span><strong>Local Services Ads for real estate</strong> (seller's agent service type) once the agent profile has 10+ reviews. Set a weekly budget and track each lead to a walkthrough.</span></label>
+    <label><input type="checkbox" id="p54"> <span><strong>ChatGPT Ads test:</strong> sign up at ads.openai.com. $100 to $150 a month for 2 months, Reclaim first (Lakewood-area ZIPs, to <code>/go/porch?utm_source=chatgpt</code>), then real estate (Cleveland metro area, to <code>/go/walkthrough?utm_source=chatgpt</code>, service-level only).</span></label>
+    <label><input type="checkbox" id="p55"> <span><strong>Microsoft Advertising:</strong> import the Google campaigns and add a logo extension so ads can show in Copilot.</span></label>
+    <label><input type="checkbox" id="p56"> <span><strong>Check whether Apple Maps ads are live</strong> in Apple Business.</span></label>
+    <label><input type="checkbox" id="p57"> <span><strong>Meta retargeting test,</strong> $10 to $20 a day, to <code>/go/porch</code>.</span></label>
+    <label><input type="checkbox" id="p58"> <span><strong>Review at post 30:</strong> what got saved, shared, or texted about.</span></label>
+    <label><input type="checkbox" id="p59"> <span><strong>Turn the best posts into notes and pages.</strong></span></label>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="chapter" id="broker">
+  <header>
+    <span class="eyebrow">Chapter 14</span>
+    <h2>Ask Red 1</h2>
+    <p class="dek">One email to the broker. These are my readings of the rules, not legal advice.</p>
+  </header>
+  <div class="caption" id="s-red1">Hi [broker], a few advertising questions before I launch some things:
+
+1. Google Business Profile: Google won't allow "Red 1 Realty" in my profile name. If I put Red 1 in the description and link to my site, which shows Red 1 at equal size on every page, is that OK under OAC 1301:5-1-02?
+2. Can my profile use a real office I work from in Lakewood (a basement office in a building I co-own), or must it be the brokerage address or hidden?
+3. My site michaelplant.realtor is ready for your review: masthead, footer logo, disclosure, and a pre-listing walkthrough page. Can you sign off?
+4. I own Reclaim Home Repair. When I mention it to clients I'll disclose in writing and name other contractors. Do you need a specific disclosure form?
+5. For a "homes I've helped with" page: written client consent plus my own photos. Anything else you require?
+6. For price conversations I'll say "price opinion," never appraisal. Any required wording?
+7. My personal site (michaelplant.com) has my name large at the top and a real estate link that reads "Michael Plant | Red 1 Realty" at equal size, linking to my realtor site. Is that enough, or should the personal site not mention real estate at all?
+8. Which pay-at-close referral networks does Red 1 already have agreements with (Realtor.com ReadyConnect, HomeLight, Zillow)? Can I sign up for those and Google Local Services Ads under Red 1?
+
+Thanks, Mike</div>
+  <button class="copy" type="button" data-copy="s-red1">Copy email</button>
+</section>
+
+<!-- 11 -->
+<section class="chapter" id="research">
+  <header>
+    <span class="eyebrow">Chapter 15</span>
+    <h2>Research notes</h2>
+    <p class="dek">Where the numbers came from. Vendor studies are marked as such.</p>
+  </header>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>Finding</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>66% of sellers used a referral or past agent; 74% of buyers interviewed one agent</td><td><a href="https://virginiarealtors.org/2025/12/08/key-takeaways-from-nars-2025-profile-of-home-buyers-and-sellers" target="_blank" rel="noopener">NAR 2025 Profile, via Virginia Realtors</a></td></tr>
+      <tr><td>Real estate Facebook leads about $14; form conversion about 10%</td><td><a href="https://localiq.com/blog/facebook-advertising-benchmarks/" target="_blank" rel="noopener">LocaliQ (vendor)</a></td></tr>
+      <tr><td>Real estate agent Google search leads about $158</td><td><a href="https://localiq.com/blog/real-estate-search-advertising-benchmarks/" target="_blank" rel="noopener">LocaliQ (vendor)</a></td></tr>
+      <tr><td>Online leads close at 2 to 2.5% typically; social leads take 6 to 18 months</td><td><a href="https://www.ylopo.com/how-many-online-leads-actually-turn-into-deals" target="_blank" rel="noopener">Ylopo (vendor)</a></td></tr>
+      <tr><td>Handyman search leads about $54; general contractor about $166</td><td><a href="https://localiq.com/blog/home-services-search-advertising-benchmarks/" target="_blank" rel="noopener">LocaliQ (vendor)</a></td></tr>
+      <tr><td>Local Services Ads categories and requirements; Google Guarantee replaced by Google Verified</td><td><a href="https://support.google.com/localservices/answer/12174778?hl=en" target="_blank" rel="noopener">Google</a>, <a href="https://support.google.com/localservices/answer/7125526?hl=en" target="_blank" rel="noopener">Google</a></td></tr>
+      <tr><td>Meta Housing category: 15-mile minimum, no ZIP, no lookalikes; home repair included</td><td><a href="https://www.jonloomer.com/special-ad-categories-meta-ads/" target="_blank" rel="noopener">Jon Loomer</a></td></tr>
+      <tr><td>Business profile address, practitioner, and service-area rules</td><td><a href="https://support.google.com/business/answer/3038177" target="_blank" rel="noopener">Google</a></td></tr>
+      <tr><td>Agent profiles at a shared office get filtered; hidden addresses rank lower</td><td><a href="https://www.sterlingsky.ca/real-estate-agent-seo/" target="_blank" rel="noopener">Sterling Sky</a>, <a href="https://www.sterlingsky.ca/hiding-address-google-business-ranking/" target="_blank" rel="noopener">Sterling Sky</a></td></tr>
+      <tr><td>Review gains flatten after about 10 to 16; recency matters</td><td><a href="https://www.sterlingsky.ca/number-of-reviews-impact-ranking/" target="_blank" rel="noopener">Sterling Sky</a>, <a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal</a></td></tr>
+      <tr><td>Map and AI ranking factors (expert survey)</td><td><a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener">Whitespark 2026</a></td></tr>
+      <tr><td>Sources AI assistants cite for local businesses; Yelp in about 80% of ChatGPT local answers</td><td><a href="https://www.brightlocal.com/resources/ai-directory-sources/" target="_blank" rel="noopener">BrightLocal (vendor)</a></td></tr>
+      <tr><td>Google says AI features need no special schema or AI files</td><td><a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google</a></td></tr>
+      <tr><td>97% of llms.txt files got zero requests</td><td><a href="https://ahrefs.com/blog/llmstxt-study/" target="_blank" rel="noopener">Ahrefs</a></td></tr>
+      <tr><td>OpenAI crawler roles</td><td><a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">OpenAI</a></td></tr>
+      <tr><td>Doorway page policy</td><td><a href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Google</a></td></tr>
+      <tr><td>Who may say "sold"; disclosing interest in a business you recommend</td><td><a href="https://www.nar.realtor/about-nar/governing-documents/code-of-ethics/2026-code-of-ethics-standards-of-practice" target="_blank" rel="noopener">NAR Code of Ethics</a></td></tr>
+      <tr><td>Ohio advertising rule</td><td><a href="https://codes.ohio.gov/ohio-administrative-code/rule-1301:5-1-02" target="_blank" rel="noopener">OAC 1301:5-1-02</a></td></tr>
+      <tr><td>Lakewood contractor registration</td><td><a href="https://lakewoodoh.gov/housing-and-building/contractor-registration/" target="_blank" rel="noopener">City of Lakewood</a></td></tr>
+      <tr><td>Seller priorities: trustworthy 84%, responsive 82%</td><td><a href="https://nowbam.com/inside-the-minds-of-home-sellers-findings-from-zillows-consumer-trends/" target="_blank" rel="noopener">Zillow Consumer Trends, via BAM</a></td></tr>
+      <tr><td>ChatGPT ads: self-serve, state/DMA/ZIP targeting, CPC about $3 to $5</td><td><a href="https://openai.com/index/our-approach-to-advertising-and-expanding-access/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://ppc.land/chatgpt-ads-manager-gets-daily-budgets-geo-targeting-and-dynamic-ctas/" target="_blank" rel="noopener">PPC Land</a></td></tr>
+      <tr><td>Early ChatGPT ad results: 0.6% CTR, about $7 CPC, click mismatches</td><td><a href="https://www.mediapost.com/publications/article/417528/data-reveals-chatgpt-ads-not-performing.html" target="_blank" rel="noopener">MediaPost</a></td></tr>
+      <tr><td>Copilot ads: automatic eligibility, logo required</td><td><a href="https://learn.microsoft.com/en-us/advertising/msa-help/hlp_ba_conc_adsforcopilot" target="_blank" rel="noopener">Microsoft</a></td></tr>
+      <tr><td>Google housing ad targeting limits</td><td><a href="https://support.google.com/adspolicy/answer/16701755" target="_blank" rel="noopener">Google</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="sub"><h3>Move Me to Tennessee (Marie Lee)</h3><p class="small">The model we borrowed the structure from. Researched October 2026.</p>
+    <div class="prose">
+    <p>She brands as <strong>Marie Lee</strong> now. Reuter only survives in her LinkedIn address. She moved to Nashville in 2016 for Teach for America, got licensed in fall 2020, and started posting herself at open houses for other agents before she had clients of her own. She picked pandemic relocators as her niche early, and she's now with REAL Broker. <a href="https://www.inman.com/2025/09/12/marie-lee-faked-it-til-she-made-it-social-media-helped-pave-the-way/" target="_blank" rel="noopener">Inman, Sept 2025</a></p>
+  </div>
+  <div class="ledger-wrap"><table class="ledger">
+    <thead><tr><th>The claim</th><th>What the research found</th></tr></thead>
+    <tbody>
+      <tr><td>All her business comes from social</td><td>Her own figure is <strong>70% from Instagram</strong>: $14M closed in 2023, with content as her only lead source. She reported it herself, and there's no MLS data behind it. <a href="https://realestaterockstarsnetwork.com/marielee/" target="_blank" rel="noopener">Real Estate Rockstars</a></td></tr>
+      <tr><td>Growth</td><td>About $28K in year one, over $250K in year two, mostly from organic social. Around 36K Instagram followers, and her bio says 125+ families served. All self-reported. <a href="https://nowbam.com/agents-are-copying-her-content-heres-the-strategy-theyre-missing/" target="_blank" rel="noopener">BAM, Oct 2025</a></td></tr>
+      <tr><td>She sells Canva templates</td><td><strong>Not hers.</strong> The templates are Coffee &amp; Contracts, Haley Ingram's company, at $74 a month. Marie is one of its coaches and earns through an affiliate link. She also recruits agents into REAL Broker's revenue share. Part of the polish is aimed at other agents, not buyers. <a href="https://coffeecontracts.com/join/" target="_blank" rel="noopener">C&amp;C</a></td></tr>
+      <tr><td>8-week homebuyer program</td><td>Couldn't find it. The closest things are a "90 Days to Homeowner" training and a buyer workbook.</td></tr>
+      <tr><td>The Substack</td><td>New. It had one post when we checked: the Nashville piece from Sept 2026, a skeptical look at builder incentives inflating prices, HOA special assessments, and a supply mismatch. It's analysis, not a market update.</td></tr>
+      <tr><td>What's next for her</td><td>She says relocation is crowded now and she's pivoting to new construction. That's the opposite end of the market from your old houses.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p><strong>Her link page, in order:</strong> a 15 minute "work with me" call, the Substack, a free guide behind an email signup, "what's my home worth," her listings, then a long tail for agents (C&amp;C, REAL recruiting, trainings, podcasts). The booking call sits at the top. Everything else is a softer way in. <a href="https://www.liinks.co/movemetotennessee/" target="_blank" rel="noopener">liinks.co/movemetotennessee</a></p>
+    <p><strong>What she says works:</strong> pick a niche early and say the same thing over and over. Tell stories where the client is the hero. Do lifestyle reels where a listing shows up halfway through. Tag local businesses so they share. Feature trades and lenders, and they send referrals back. Check every quarter where your deals actually came from. She's against auto-DM tools.</p>
+  </div>
+  <div class="cols">
+    <div><div class="col-head">We take</div><ul>
+      <li>A name that says the subject. You already have one: Houses of Lakewood.</li>
+      <li>The same few messages, repeated for years.</li>
+      <li>Stories where the house or the client is the hero.</li>
+      <li>Tagging local businesses, the bookstore first.</li>
+      <li>Featuring trades, the way she features vendors. For you that's also Reclaim's bench.</li>
+      <li>A quarterly look at where work actually came from.</li>
+      <li>Later: one guide, and a Substack-style column of real local analysis.</li>
+    </ul></div>
+    <div><div class="col-head">We leave</div><ul>
+      <li>Relocation volume. Nashville's in-migration powers her whole funnel. Lakewood is mostly local and boomerang buyers.</li>
+      <li>A full-time agent's volume and cadence.</li>
+      <li>Suburb comparison guides. Lakewood is one city.</li>
+      <li>Income from other agents: templates, recruiting, coaching.</li>
+      <li>Instagram as the main room. Your room is the Facebook group, and you own it.</li>
+      <li>The booking link at the top. Your top link is "text me."</li>
+    </ul></div>
+  </div>
+  <p class="pull">Her edge was getting there first in a niche that got crowded. Yours is something nobody can copy fast: 30 years of working on 100 year old houses, in one small city, with your own hands.<cite>Where I land after the research</cite></p>
+  <div class="prose">
+    <p><strong>Where I agree with the take you pasted:</strong> copy the structure, not the volume. The asset is years of being useful in one recognizable lane. Don't become "Move Me to Lakewood." Start publishing and review after 30 to 60 posts.</p>
+    <p><strong>Where I'd push further:</strong> it says the editorial identity is still fuzzy and points everything back to "Michael Plant." I think the fix is already in your hands. Marie's account is named after the subject, and her face is the trust. Do the same: Houses of Lakewood is what people follow, and Mike is who they text. That answers "what do I get if I follow?" in three words, without a tagline.</p>
+    <p><strong>One correction:</strong> the strongest number for her is 70% from Instagram, which she reported herself. That's still remarkable. It's just not "all," and some of her visible polish is selling to other agents rather than to buyers.</p>
+  </div>
+
+</div>
+  <footer class="end"><p class="fine">Not verified: Lakewood's temporary sign limits, NORMLS and Yes MLS photo rules, whether Ohio's platform exemption covers the Google profile name, and whether a Reclaim repair tied to a closing counts as a RESPA settlement service. Those go to Red 1 or the city.</p></footer>
+</section>
+
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+var toast=document.getElementById('toast'),tt;
+function say(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},1600)}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('[data-copy]');if(!btn)return;
+  var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+  function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);say('Selected. Press copy.')}
+  try{navigator.clipboard.writeText(el.textContent).then(function(){say('Copied.')},fallback)}catch(err){fallback()}
+});
+(function(){
+  var KEY='mp-gtm-prelaunch',state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+  document.querySelectorAll('#checks input').forEach(function(cb){
+    cb.checked=!!state[cb.id];
+    cb.addEventListener('change',function(){state[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}});
+  });
+})();
+</script>

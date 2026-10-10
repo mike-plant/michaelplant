@@ -1,0 +1,77 @@
+/* Reclaim additions to the shared calling-card system.
+   One rule: the cedar patch in the mark is the only color. Everything else is ink on paper. */
+:root { --cedar: #b8692e; }
+
+.mark { width: 2.4rem; height: 2.4rem; flex: none; color: var(--ink); }
+.mark .patch { fill: var(--cedar); }
+
+.masthead--reclaim { align-items: center; }
+.brandmark { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+.brandmark span { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.04em; line-height: 1; }
+.brandmark small { display: block; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.12em; color: var(--ink-soft); margin-top: 0.2rem; }
+.masthead-phone { font-weight: 500; font-size: 1.1rem; font-variant-numeric: lining-nums; text-decoration: none; border-bottom: 1px solid var(--ink); }
+
+.hero { display: flex; flex-direction: column; gap: 0.9rem; }
+.hero h1 { font-size: clamp(1.9rem, 6.4vw, 2.6rem); line-height: 1.1; }
+.hero .promise { font-style: italic; color: var(--ink-soft); margin: 0; }
+.hero .actions { margin-top: 0.2rem; }
+
+.trust { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.trust li { margin: 0; padding: 0.7rem 0.2rem; border-bottom: 1px solid var(--rule-soft); font-size: 1rem; line-height: 1.35; }
+.trust b { display: block; font-weight: 500; }
+.trust span { color: var(--ink-soft); font-size: 0.95rem; }
+@media (min-width: 640px) { .trust { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.svc .entry .d b { display: block; font-weight: 400; color: var(--ink); font-variant-numeric: lining-nums; margin-top: 0.15rem; }
+
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; border-top: 1px solid var(--rule); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.5rem; padding: 0.75rem 0; margin: 0; border-bottom: 1px solid var(--rule-soft); }
+.steps li::before { content: counter(s); font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.4; }
+
+.mike { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.1rem; align-items: start; }
+.mike img { width: 100%; height: auto; display: block; filter: grayscale(1) contrast(1.05); border: 1px solid var(--rule); }
+.mike p { margin: 0 0 0.7rem; }
+@media (max-width: 520px) { .mike { grid-template-columns: 1fr; } .mike img { width: 9rem; } }
+
+.twocol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+.twocol ul { margin: 0; }
+@media (max-width: 600px) { .twocol { grid-template-columns: 1fr; } }
+
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+.gallery figcaption { font-size: 0.95rem; color: var(--ink-soft); margin-top: 0.3rem; }
+
+.review { margin: 0; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-soft); }
+.review p { margin: 0 0 0.3rem; font-style: italic; }
+.review cite { font-style: normal; color: var(--ink-soft); font-size: 0.95rem; }
+
+.table-wrap { overflow-x: auto; border-top: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid var(--rule-soft); }
+th { font-family: var(--display); font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); }
+td.num { white-space: nowrap; font-variant-numeric: lining-nums; }
+
+.selling { border-top: 1px solid var(--rule); padding-top: var(--space-md); }
+.faq details { border-bottom: 1px solid var(--rule-soft); padding: 0.7rem 0; }
+.faq summary { cursor: pointer; font-weight: 500; }
+.faq details p { margin: 0.5rem 0 0; color: var(--ink-soft); }
+
+@media (max-width: 520px) {
+  .masthead-phone { font-size: 1rem; }
+  .brandmark span { font-size: 1.25rem; }
+}
+
+/* Credentials checklist (the A Reliable Construction move: plain facts, one per line) */
+.checks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.checks li { position: relative; margin: 0; padding: 0.55rem 0 0.55rem 1.8rem; border-bottom: 1px solid var(--rule-soft); }
+.checks li::before { content: "✓"; position: absolute; left: 0.2rem; top: 0.5rem; font-weight: 600; }
+
+/* Before / during / after */
+.job { margin: 0 0 1.5rem; }
+.job-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.5rem; }
+.job-photos div { position: relative; }
+.job-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border: 1px solid var(--rule); }
+.job-photos span { position: absolute; left: 0.4rem; bottom: 0.4rem; background: var(--paper); padding: 0 0.4rem; font-size: 0.85rem; font-family: var(--display); font-weight: 600; letter-spacing: 0.05em; }
+.job figcaption { font-size: 1rem; color: var(--ink-soft); margin-top: 0.4rem; }
+.job figcaption b { color: var(--ink); font-weight: 500; }

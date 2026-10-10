@@ -1,7 +1,7 @@
 {
   "title": "Michael Plant",
   "url": "https://michaelplant.com",
-  "description": "Michael Plant — Lakewood, Ohio. Houses, books, real estate, and the people around me.",
+  "description": "Michael Plant, Lakewood, Ohio. Houses, books, real estate, and the people around me.",
   "author": "Michael Plant",
   "email": "me@michaelplant.com",
   "phone": "(216) 217-6362",
@@ -11,19 +11,10 @@
     "linkedin": "https://linkedin.com/in/michaelplant",
     "calendly": "https://calendly.com/michaelplant"
   },
-  "agentSite": "https://michaelplant.red1realty.com/",
   "brokerage": {
     "name": "Red 1 Realty",
     "logo": "/assets/img/red1-realty-logo.png",
     "url": "https://www.red1realty.com/"
-  },
-  "realEstateEmail": "michaelplantrealtor@gmail.com",
-  "hubspot": {
-    "portalId": "",
-    "forms": {
-      "buyer": "",
-      "report": ""
-    }
   },
   "firstName": "Michael",
   "nickname": "Mike",
@@ -33,5 +24,7 @@
   "region": "OH",
   "ogImage": "/assets/img/og-michael-plant.jpg",
   "phoneDots": "216.217.6362",
-  "phoneDashes": "216-217-6362"
+  "phoneDashes": "216-217-6362",
+  "realtorSite": "",
+  "reclaimSite": ""
 }

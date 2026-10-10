@@ -19,6 +19,9 @@ Pushing to `main` deploys `v2/` to GitHub Pages (`.github/workflows/deploy.yml`)
 | `v2/` | **The site** (Eleventy). Start with `v2/CLAUDE-HANDOFF.md`. |
 | `project-docs/connection-ecosystem-plan.md` | Architecture plan from the BRD, decisions log, phases |
 | `project-docs/launch-checklist.md` | What's left before launch / card printing |
+| `project-docs/brand/` | Private brand book source (identity, voice, content plan) |
+| `reclaim-site/` | reclaimhomerepair.com: Reclaim Home Repair (shares the v2 stylesheet; `npm run dev` on :8082) |
+| `realtor-site/` | michaelplant.realtor: Mike's real-estate site (shares the v2 stylesheet; `npm run dev` on :8081) |
 | `project-docs/card/` | Print-ready card PDF with the working QR, standalone QR files |
 | `project-docs/design/` | Design reference (the calling-card HTML mock) |
 | `legacy-nextjs/` | Archived earlier Next.js concept (never deployed) |

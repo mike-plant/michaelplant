@@ -1,0 +1,5 @@
+{# Mobile-only bar. Primary action (text a photo) gets the filled, double-width cell. #}
+<nav class="contact-bar" aria-label="Contact Reclaim">
+  <a class="primary" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}">{{ site.cta.bar }}</a>
+  <a href="tel:{{ site.phoneE164 }}">Call</a>
+</nav>

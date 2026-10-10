@@ -336,11 +336,20 @@ a.entry:hover .t { text-decoration: underline; text-underline-offset: 4px; text-
 
   .contact-bar a + a { border-left: 1px solid var(--rule); }
 
+  /* The site's one primary action gets the filled cell and twice the width (thumb-friendly, 52px+). */
+  .contact-bar { display: flex; }
+  .contact-bar a { flex: 1; }
+  .contact-bar a.primary { flex: 2; background: var(--ink); color: var(--paper); }
+
   body.has-contact-bar { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 }
 
 @media (max-width: 520px) {
-  body { font-size: 1.125rem; }
+  /* Phones: drop the ruled frame so content gets the full width (16px gutter stays). */
+  body { font-size: 1.125rem; padding-top: 16px; }
+  .sheet { border: 0; padding: 0.5rem 0 1.5rem; }
+  .portrait { width: min(13rem, 62%); }
+  .top--compact .portrait { width: min(9.5rem, 45%); }
   .lead, .page-body > p:first-child { font-size: 1.2rem; }
   .entry { grid-template-columns: 1fr; }
   .entry .go { grid-column: 1; grid-row: auto; margin-top: 0.3rem; }
@@ -354,3 +363,24 @@ a.entry:hover .t { text-decoration: underline; text-underline-offset: 4px; text-
   body { background: none; padding: 0; }
   .contact-bar, .actions { display: none; }
 }
+
+/* ---------- CTA system (shared by all three sites) ----------
+   One filled button per page = the site's primary action. Everything else is outlined or a text link.
+   It appears at the top, again after the proof (.cta-block), and in the phone bar. */
+.reassure { margin: 0.35rem 0 0; font-size: 1rem; color: var(--ink-soft); font-style: italic; }
+.cta-block { border-top: 1.5px solid var(--rule); border-bottom: 1.5px solid var(--rule); padding: 1.1rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.cta-block .big { font-family: var(--display); font-weight: 600; font-size: 1.5rem; letter-spacing: 0.03em; line-height: 1.2; margin: 0; }
+.cta-block p { margin: 0; }
+.cta-block .actions { margin-top: 0.2rem; }
+.text-link { font-size: 1.05rem; }
+
+/* Answer-first Q&A and bylines (realtor + Reclaim) */
+.faq-list { display: flex; flex-direction: column; gap: 0.35rem; }
+.faq-list h2 { margin: 0 0 0.4rem; }
+.faq-list h3 { margin: 0.9rem 0 0.1rem; font-family: var(--body); font-weight: 500; font-size: 1.15rem; letter-spacing: 0; }
+.faq-list p { margin: 0; color: var(--ink-soft); }
+.byline { margin: 0; font-size: 0.95rem; color: var(--faint); font-style: italic; }
+.facts { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 0.4rem 1rem; margin: 0; border-top: 1px solid var(--rule); padding-top: 0.8rem; }
+.facts dt { color: var(--faint); }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .facts { grid-template-columns: 1fr; gap: 0.1rem; } .facts dd { margin-bottom: 0.6rem; } }

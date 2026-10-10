@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-site="michaelplant.realtor">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% if title and title != site.title %}{{ title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:title" content="{% if title and title != site.title %}{{ title }} | {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
+  {% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
+  <meta name="theme-color" content="#efe8da">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/realtor.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Michael Plant",
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}{{ site.portrait }}",
+    "telephone": "{{ site.phoneE164 }}",
+    "email": "{{ site.email }}",
+    "areaServed": {{ site.areasServed | dump | safe }},
+    "parentOrganization": { "@type": "RealEstateAgent", "name": "{{ site.brokerage.name }}", "url": "{{ site.brokerage.url }}" },
+    "sameAs": {% set links = ["https://michaelplant.com/"] %}{% for k, v in site.profiles %}{% if v %}{% set links = (links.push(v), links) %}{% endif %}{% endfor %}{{ links | dump | safe }}
+  }
+  </script>
+  <script src="/assets/js/cta.js" defer></script>
+</head>
+<body class="has-contact-bar">
+  <main class="sheet{% if wide %} sheet--wide{% endif %}">
+    {# Ohio OAC 1301:5-1-02: brokerage name at least as prominent as Mike's, on every page. #}
+    <header class="masthead">
+      <span><a href="/" class="masthead-name">{{ site.author }}</a><span class="masthead-sep" aria-hidden="true">|</span><span class="masthead-brokerage">{{ site.brokerage.name }}</span></span>
+      <span class="masthead-place">{{ site.city }}, Ohio</span>
+    </header>
+
+    {{ content | safe }}
+
+    {% include "components/footer.njk" %}
+  </main>
+  {% include "components/contact-bar.njk" %}
+</body>
+</html>

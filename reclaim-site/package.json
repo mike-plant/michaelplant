@@ -1,0 +1,13 @@
+{
+  "name": "reclaimhomerepair.com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reclaim Home Repair. Exterior repair for Lakewood's older houses. Owned by Mike Plant.",
+  "scripts": {
+    "dev": "eleventy --serve --port=8082",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

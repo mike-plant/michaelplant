@@ -1,0 +1,89 @@
+---
+layout: layouts/base.njk
+seo:
+  description: "Porch, trim, rot, stair and railing repair for older houses on Cleveland's west side. Free estimates, fixed price in writing. Text Mike Plant a photo: 216.217.6362."
+---
+<section class="hero" aria-labelledby="h">
+  <p class="page-kicker">Repair for century homes · Cleveland's west side</p>
+  <h1 id="h">Porch, trim, and stair repair for the west side's old houses.</h1>
+  <p class="lead">I'm Mike. I fix the outside of hundred-year-old houses: rotted trim, soft porch floors, failing steps and railings. The jobs too big for a handyman and too small for a remodeler.</p>
+  {% set ctaLocation = "hero" %}{% include "components/cta.njk" %}
+  <p class="reassure">{{ site.cta.reassure }}</p>
+  <p class="small">Working in {{ site.towns | join(", ") }}.</p>
+</section>
+
+<section aria-labelledby="why-h">
+  <h2 id="why-h">Why people call</h2>
+  {% include "components/credentials.njk" %}
+</section>
+
+<section class="svc" aria-labelledby="what-h">
+  <h2 id="what-h">What I fix</h2>
+  <ul class="list">
+    {% for s in services %}
+    <li><a class="entry" href="/{{ s.key }}/"><span class="t">{{ s.title }}</span><span class="d">{{ s.detail }}<b>Typically {{ s.range }}</b></span><span class="go">More &rarr;</span></a></li>
+    {% endfor %}
+  </ul>
+  <p class="small">Planning ranges, not quotes. Your price is fixed in writing after I see the job.</p>
+</section>
+
+<section aria-labelledby="how-h">
+  <h2 id="how-h">How it works</h2>
+  <ol class="steps">
+    <li>Text me a photo and your address, or call.</li>
+    <li>Same day, I tell you whether it's a fit and a rough range.</li>
+    <li>If it is, I come look, probe for hidden rot, and measure. Free.</li>
+    <li>You get a written scope and a fixed price. If I find more damage, I show you and price it before I touch it.</li>
+  </ol>
+</section>
+
+{% set ctaLocation = "mid" %}{% include "components/cta-block.njk" %}
+
+{% set jobs = projects | jobsFor(null, 3) %}
+{% if jobs.length %}
+<section aria-labelledby="work-h">
+  <h2 id="work-h">Recent work</h2>
+  {% include "components/projects.njk" %}
+</section>
+{% endif %}
+
+{% if reviews.length %}
+<section aria-labelledby="rev-h">
+  <h2 id="rev-h">What neighbors say</h2>
+  {% for r in reviews %}<blockquote class="review"><p>{{ r.text }}</p><cite>{{ r.name }}, {{ r.where }}</cite></blockquote>{% endfor %}
+</section>
+{% endif %}
+
+<section aria-labelledby="mike-h">
+  <h2 id="mike-h">Who you'd be working with</h2>
+  <div class="mike">
+    <img src="/assets/img/mike-plant.jpg" alt="Mike Plant" width="480" height="480">
+    <div>
+      <p>Me. Just ask for Mike. I started working on houses with my dad in 1992 and have been fixing and remodeling them ever since. I live in Lakewood, and I take a small number of jobs so each one gets done right.</p>
+      <p>I'd rather save original wood than tear it out, and I'll tell you what caused the damage so you don't pay for the same repair twice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="twocol" aria-label="Fit">
+  <div><h2>Good fit</h2><ul>
+    <li>Rotted trim, fascia, soffit, sills</li>
+    <li>Porch floors, columns, beams, ceilings</li>
+    <li>Front steps, back stairs, railings, handrails</li>
+    <li>Deck repair and exterior doors</li>
+    <li>Pre-sale exterior punch lists</li>
+  </ul></div>
+  <div><h2>Not a fit</h2><ul>
+    <li>Electrical, plumbing, HVAC</li>
+    <li>Roofing, gutters, masonry</li>
+    <li>Remodels and additions</li>
+    <li>Small handyman lists</li>
+  </ul><p class="small">If it's not for me, I'll tell you quickly and point you to someone good.</p></div>
+</section>
+
+<section class="selling" aria-labelledby="sell-h">
+  <h2 id="sell-h">Selling soon?</h2>
+  <p>Before you spend money getting ready to list, send me photos of what the inspector is likely to flag. I'll tell you what's worth fixing and what isn't, and price the repairs worth doing as one list.</p>
+</section>
+
+{% set ctaHeading = "Soft spot? Wobbly rail? Send me a photo." %}{% set ctaLocation = "end" %}{% include "components/cta-block.njk" %}

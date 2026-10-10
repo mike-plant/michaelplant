@@ -1,0 +1,5 @@
+# Search and AI answer engines are welcome. Being found is the point.
+User-agent: *
+Allow: /
+
+Sitemap: https://michaelplant.realtor/sitemap.xml

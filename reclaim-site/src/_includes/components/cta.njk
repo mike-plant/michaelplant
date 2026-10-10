@@ -1,0 +1,5 @@
+{# Primary + secondary action pair. Set ctaLocation before including. #}
+<div class="actions">
+  <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}" data-cta="{{ ctaLocation }}">{{ site.cta.label }}</a>
+  <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="{{ ctaLocation }}">Call {{ site.phoneDots }}</a>
+</div>

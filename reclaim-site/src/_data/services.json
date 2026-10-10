@@ -1,0 +1,20 @@
+[
+  {
+    "key": "porches",
+    "title": "Porches",
+    "detail": "Floors, columns and column bases, beams, beadboard ceilings, porch trim.",
+    "range": "$1,800 to $4,500"
+  },
+  {
+    "key": "trim-and-rot",
+    "title": "Rotted trim and exterior wood",
+    "detail": "Fascia, soffit, sills, casings, corner boards, deck boards.",
+    "range": "$1,200 to $4,000"
+  },
+  {
+    "key": "stairs-and-railings",
+    "title": "Steps, stairs and railings",
+    "detail": "Front steps, back stairs, stringers, landings, handrails, code-height railings.",
+    "range": "$800 to $5,000"
+  }
+]

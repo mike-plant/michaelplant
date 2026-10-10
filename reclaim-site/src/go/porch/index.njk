@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: "Porch repair, fixed price"
+noindex: true
+eleventyExcludeFromCollections: true
+seo:
+  description: "Send Mike a photo of your porch. Same-day answer, fixed price in writing."
+---
+{# Campaign page for ads, yard-sign QR codes, and leave-behinds. Not in search (noindex). One offer, one action. #}
+<section class="hero" aria-labelledby="h">
+  <h1 id="h">Soft porch floor? Wobbly rail? Send me a photo.</h1>
+  <p class="lead">Same day, I'll tell you what I'd do and roughly what it costs. If it's a fit, you get a fixed price in writing.</p>
+  {% set ctaLocation = "go-porch" %}{% include "components/cta.njk" %}
+  <p class="reassure">{{ site.cta.reassure }}</p>
+</section>
+{% include "components/credentials.njk" %}
+<ul class="trust">
+  <li><b>Fixed price</b><span>In writing before I start</span></li>
+  <li><b>Most porch repairs</b><span>$1,800 to $4,500</span></li>
+  <li><b>Original wood saved</b><span>Where it's sound</span></li>
+  <li><b>Since 1992</b><span>Old houses, all of it</span></li>
+</ul>
+<div class="mike">
+  <img src="/assets/img/mike-plant.jpg" alt="Mike Plant" width="480" height="480">
+  <p>I'm Mike Plant. I live in Lakewood and fix porches, trim, and stairs on houses like yours. <a href="/porches/">How I approach porch repair</a>.</p>
+</div>

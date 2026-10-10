@@ -1,0 +1,30 @@
+---
+title: "About Reclaim Home Repair"
+layout: layouts/base.njk
+permalink: /about/
+updated: 2026-10-09
+seo:
+  description: "Facts about Reclaim Home Repair: owner, services, service area, pricing, insurance, and how to get an estimate."
+---
+<article class="page-content">
+  <header class="page-hero">
+    <h1>About Reclaim Home Repair</h1>
+    {% include "components/byline.njk" %}
+  </header>
+  <div class="page-body">
+    <p>Reclaim fixes the outside of older houses on Cleveland's west side: porches, rotted trim, stairs and railings. It's owned and run by Mike Plant, who answers the phone himself.</p>
+    <h2>The facts</h2>
+    <dl class="facts">
+      <dt>Owner</dt><dd>Mike Plant, Lakewood, Ohio. Working on houses since 1992.</dd>
+      <dt>Services</dt><dd>{% for s in services %}{{ s.title }} ({{ s.range }}){% if not loop.last %}; {% endif %}{% endfor %}. Also deck repair, exterior doors, and pre-sale exterior punch lists.</dd>
+      <dt>Not offered</dt><dd>Electrical, plumbing, HVAC, roofing, gutters, masonry, remodels, small handyman lists</dd>
+      <dt>Service area</dt><dd>{{ site.towns | join(", ") }}</dd>
+      <dt>Estimates</dt><dd>Free. Text photos and an address for a same-day range, then a site visit.</dd>
+      <dt>Pricing</dt><dd>Fixed price and written scope before work starts. Hidden damage is shown and priced before it's touched.</dd>
+      {% for c in credentials %}{% if c.show and (c.key == "insured" or c.key == "registered" or c.key == "references" or c.key == "leadsafe") %}<dt>{{ {"insured":"Insurance","registered":"Registration","references":"References","leadsafe":"Lead-safe"}[c.key] }}</dt><dd>{{ c.text }}</dd>{% endif %}{% endfor %}
+      <dt>Phone and text</dt><dd><a href="tel:{{ site.phoneE164 }}">{{ site.phoneDots }}</a></dd>
+      <dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+    </dl>
+  </div>
+</article>
+{% set ctaLocation = "about-end" %}{% include "components/cta-block.njk" %}

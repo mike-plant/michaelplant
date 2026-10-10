@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+<article class="page-content">
+  <header class="page-hero hero">
+    <p class="page-kicker">{{ kicker }} · {{ site.city }}, Ohio</p>
+    <h1>{{ title }}</h1>
+    {% include "components/byline.njk" %}
+    {% if lede %}<p class="lead">{{ lede }}</p>{% endif %}
+    {% set ctaLocation = "hero" %}{% include "components/cta.njk" %}
+    <p class="reassure">{{ site.cta.reassure }}</p>
+  </header>
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+  {% include "components/faq.njk" %}
+</article>
+
+{% set jobs = projects | jobsFor(page.fileSlug) %}
+{% if jobs.length %}
+<section aria-labelledby="work-h">
+  <h2 id="work-h">Recent {{ kicker | lower }} jobs</h2>
+  {% include "components/projects.njk" %}
+</section>
+{% endif %}
+
+{% set related = [] %}{% for n in collections.notes %}{% if n.data.service == page.fileSlug %}{% set related = (related.push(n), related) %}{% endif %}{% endfor %}
+{% if related.length %}
+<section aria-labelledby="notes-h">
+  <h2 id="notes-h">Fix or Leave It notes</h2>
+  <ul class="list">{% for n in related | reverse %}<li><a class="entry" href="{{ n.url }}"><span class="t">{{ n.data.title }}</span><span class="d">{{ n.data.description }}</span><span class="go">Read &rarr;</span></a></li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<section aria-labelledby="why-h">
+  <h2 id="why-h">Why people call</h2>
+  {% include "components/credentials.njk" %}
+</section>
+
+{% set ctaLocation = "end" %}{% include "components/cta-block.njk" %}
+
+<section aria-labelledby="more-h">
+  <h2 id="more-h">Other repairs</h2>
+  <ul class="list">
+    {% for s in services %}{% if s.key != page.fileSlug %}
+    <li><a class="entry" href="/{{ s.key }}/"><span class="t">{{ s.title }}</span><span class="d">{{ s.detail }}</span><span class="go">More &rarr;</span></a></li>
+    {% endif %}{% endfor %}
+  </ul>
+</section>

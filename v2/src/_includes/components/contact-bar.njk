@@ -1,6 +1,6 @@
-{# Mobile-only persistent text/call bar (BRD: always a one-tap path to a person). #}
+{# Mobile-only bar on every page. The primary action (Text me) gets the filled, double-width cell. #}
 <nav class="contact-bar" aria-label="Contact {{ site.nickname }}">
-  <a href="sms:{{ site.phoneE164 }}" data-event="text_click">Text me</a>
-  <a href="tel:{{ site.phoneE164 }}" data-event="call_click">Call</a>
-  <a href="/mike.vcf" data-event="save_contact">Save contact</a>
+  <a class="primary" href="sms:{{ site.phoneE164 }}?&body={{ card.textBody | urlencode }}">Text me</a>
+  <a href="tel:{{ site.phoneE164 }}">Call</a>
+  <a href="/mike.vcf">Save</a>
 </nav>

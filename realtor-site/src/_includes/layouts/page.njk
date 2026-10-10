@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+<article class="page-content">
+  <header class="page-hero">
+    {% if kicker %}<p class="page-kicker">{{ kicker }}</p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% include "components/byline.njk" %}
+    {% if cta %}
+    <div class="actions">
+      <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}" data-cta="hero">{{ site.cta.label }}</a>
+      <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="hero">Call {{ site.phoneDots }}</a>
+    </div>
+    <p class="reassure">{{ site.cta.reassure }}</p>
+    {% endif %}
+  </header>
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+  {% include "components/faq.njk" %}
+</article>
+{% if cta %}{% set ctaHeading = "Want to know what's worth fixing?" %}{% set ctaLocation = "end" %}{% include "components/cta-block.njk" %}{% endif %}

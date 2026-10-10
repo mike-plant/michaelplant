@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+---
+<article class="page-content">
+  <header class="page-hero">
+    <p class="page-kicker">Fix or Leave It</p>
+    <h1>{{ title }}</h1>
+    <p class="byline">By Mike Plant · {{ (updated or page.date) | monthYear }}</p>
+  </header>
+  <div class="page-body">
+    {{ content | safe }}
+  </div>
+</article>
+{% set ctaHeading = "Got one like this? Send me a photo." %}{% set ctaLocation = "note-end" %}{% include "components/cta-block.njk" %}

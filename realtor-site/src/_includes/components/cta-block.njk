@@ -1,0 +1,9 @@
+<section class="cta-block" aria-label="Book a walkthrough">
+  <p class="big">{{ ctaHeading or "Thinking about selling in the next year?" }}</p>
+  <p>I'll walk your house and tell you what's worth fixing before you list, and what isn't.</p>
+  <div class="actions">
+    <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}" data-cta="{{ ctaLocation or 'end' }}">{{ site.cta.label }}</a>
+    <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="{{ ctaLocation or 'end' }}">Call {{ site.phoneDots }}</a>
+  </div>
+  <p class="reassure">{{ site.cta.reassure }}</p>
+</section>

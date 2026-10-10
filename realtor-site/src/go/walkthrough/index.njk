@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: "Free pre-listing walkthrough"
+noindex: true
+eleventyExcludeFromCollections: true
+permalink: /go/walkthrough/
+seo:
+  description: "Thinking about selling an older house? Mike will walk it and tell you what to fix, what to leave, and a price range. Free, about an hour."
+---
+{# Campaign page for ads (Google, Microsoft, ChatGPT) and printed QR codes. Not in search (noindex). One offer, one action.
+   Real estate advertising: brokerage shown at equal size (masthead), service-level only, never a specific listing. #}
+<section class="hero" aria-labelledby="h">
+  <h1 id="h">Thinking about selling an older house? Start with a walkthrough.</h1>
+  <p class="lead">I'll walk it the way a buyer's inspector will, then tell you what to fix, what to leave, and a realistic price range.</p>
+  <div class="actions">
+    <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}" data-cta="go-walkthrough">{{ site.cta.label }}</a>
+    <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="go-walkthrough">Call {{ site.phoneDots }}</a>
+  </div>
+  <p class="reassure">{{ site.cta.reassure }}</p>
+</section>
+<ul class="list">
+  <li class="entry"><span class="t">Since 1992</span><span class="d">I've fixed and remodeled houses like yours for 30 years.</span></li>
+  <li class="entry"><span class="t">Fix or leave it</span><span class="d">A short list, so you don't spend $30,000 on what a buyer will redo anyway.</span></li>
+  <li class="entry"><span class="t">{{ site.serviceAreaLine }}</span><span class="d">I live in Lakewood.</span></li>
+</ul>
+<p class="text-link"><a href="/sell/">How the walkthrough works &rarr;</a></p>

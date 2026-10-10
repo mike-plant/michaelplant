@@ -1,0 +1,15 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}/",
+  "telephone": "{{ site.phoneE164 }}",
+  "email": "{{ site.email }}",
+  "description": "{{ site.description }}",
+  "areaServed": {{ site.towns | dump | safe }},
+  "sameAs": {% set links = ["https://michaelplant.com/"] %}{% for k, v in site.profiles %}{% if v %}{% set links = (links.push(v), links) %}{% endif %}{% endfor %}{{ links | dump | safe }},
+  "founder": { "@type": "Person", "name": "Michael Plant", "url": "https://michaelplant.com/" },
+  "makesOffer": [{% for s in services %}{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{ s.title }}", "url": "{{ site.url }}/{{ s.key }}/" } }{% if not loop.last %},{% endif %}{% endfor %}]
+}
+</script>

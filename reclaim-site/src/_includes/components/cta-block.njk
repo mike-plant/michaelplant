@@ -1,0 +1,6 @@
+<section class="cta-block" aria-label="Send a photo">
+  <p class="big">{{ ctaHeading or "Got a photo of it? Send it." }}</p>
+  <p>Same day, I'll tell you what I'd do and roughly what it costs.</p>
+  {% set ctaLocation = ctaLocation or "mid" %}{% include "components/cta.njk" %}
+  <p class="reassure">{{ site.cta.reassure }}</p>
+</section>

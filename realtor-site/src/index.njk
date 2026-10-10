@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+seo:
+  description: "Michael Plant, Realtor with Red 1 Realty. Buying and selling older houses on Cleveland's west side, from Lakewood out to Lorain and Medina counties, with someone who has worked on them since 1992."
+---
+<header class="top top--compact">
+  <img class="portrait" src="{{ site.portrait }}" alt="Engraved portrait of {{ site.author }}, smiling" width="720" height="678">
+  <h1 class="name name--cobrand"><span>{{ site.author }}</span><span>{{ site.brokerage.name }}</span></h1>
+  <p class="place">Realtor · {{ site.city }}, Ohio</p>
+</header>
+
+<div class="intro">
+  <p class="hi">Hey, I'm Mike. I help people buy and sell houses, especially older ones.</p>
+  <p class="lead">When we walk a house together, I'll tell you what I'd fix, what I'd leave alone, and what it's likely to cost you later. Then you decide.</p>
+  <div class="actions">
+    <a class="btn solid" href="sms:{{ site.phoneE164 }}?&body={{ site.cta.body | urlencode }}" data-cta="hero">{{ site.cta.label }}</a>
+    <a class="btn" href="tel:{{ site.phoneE164 }}" data-cta="hero">Call {{ site.phoneDots }}</a>
+  </div>
+  <p class="reassure">{{ site.cta.reassure }}</p>
+  <p class="text-link">Buying instead? <a href="/lakewood/" data-cta="hero">Start with the Lakewood guide &rarr;</a></p>
+  <p>I started working on houses with my dad when I was 12, and I've been fixing and remodeling them ever since. Most of the west side was built a hundred years ago, so that turns out to be useful.</p>
+  <p class="small">Working across {{ site.serviceAreaLine }}. I live in Lakewood.</p>
+</div>
+
+<section aria-labelledby="help-h">
+  <h2 id="help-h">How I can help</h2>
+  <ul class="list">
+    <li><a class="entry" href="/sell/"><span class="t">Selling an older house</span><span class="d">Start with a walkthrough: what to fix, what to leave, and what it's worth.</span><span class="go">How it works &rarr;</span></a></li>
+    <li><a class="entry" href="/lakewood/"><span class="t">Buying in Lakewood</span><span class="d">Where I live: the six parts of the city, block by block. More area guides to come.</span><span class="go">Read &rarr;</span></a></li>
+    <li><a class="entry" href="sms:{{ site.phoneE164 }}?&body={{ 'Hi Mike, can you set up a listings search for me? I am looking for ' | urlencode }}"><span class="t">New listings</span><span class="d">Text me what you're looking for. I'll set up a search that sends you new listings as they come on.</span><span class="go">Text me &rarr;</span></a></li>
+  </ul>
+</section>
+
+{% include "components/proof.njk" %}
+
+{% include "components/cta-block.njk" %}
+
+<section class="bottom" aria-labelledby="q-h">
+  <p class="big" id="q-h">Have a house question?</p>
+  <p class="sub">Even if you're not buying or selling.</p>
+  <div class="actions"><a class="btn" href="sms:{{ site.phoneE164 }}" data-cta="question">Text me a question</a></div>
+  <dl class="contact">
+    <dt>Phone</dt><dd><a href="tel:{{ site.phoneE164 }}">{{ site.phoneDots }}</a></dd>
+    <dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+  </dl>
+</section>

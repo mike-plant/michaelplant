@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-site="michaelplant.com">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -14,9 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
   <link rel="stylesheet" href="/assets/css/site.css">
-  {% if section == "real-estate" %}<link rel="stylesheet" href="/assets/css/search.css">{% endif %}
-  <script>window.MP_CONFIG = { hubspot: {{ site.hubspot | dump | safe }} };</script>
-  <script src="/assets/js/lead.js"></script>
+  <script src="/assets/js/cta.js" defer></script>
 </head>
 <body{% if not hideContactBar %} class="has-contact-bar"{% endif %}{% if section %} data-section="{{ section }}"{% endif %}>
   <main class="sheet{% if wide %} sheet--wide{% endif %}">
