@@ -15,7 +15,7 @@ On 2026-10-06 everything else was retired (About, Now, Contact, Community, Build
 
 - **Eleventy 2.0.1** + Nunjucks; input `src/`, output `_site/`
 - `npm run dev` → http://localhost:8080 · `npm run build`
-- Deploy: `.github/workflows/deploy.yml` builds `v2/` and publishes to **GitHub Pages on every push to `main`** (custom domain via `src/CNAME`). The planned move to Cloudflare Pages hasn't happened yet. `_redirects` and `_headers` are already generated for it.
+- Deploy: Cloudflare Pages builds all three sites from the `claude/zealous-heisenberg-zn6okn` branch (projects `michaelplant` → `v2`, `reclaim` → `reclaim-site`, `realtor` → `realtor-site`; build `npm run build`, output `_site`, `NODE_VERSION=20`). Pushing to that branch deploys. When it's merged to `main`, switch each project's production branch to `main`.
 - No client framework. One small script: `src/assets/js/cta.js`, shared with the realtor and Reclaim sites.
 
 ## Where things live
@@ -87,7 +87,7 @@ Layout flags (set in a layout's or page's front matter): `hideMasthead`, `hideCo
 
 ## Redirects
 
-Add an entry in `_data/redirects.js`. That makes a meta-refresh page (works on GitHub Pages now) and a 301 line in `_redirects` (Cloudflare later). Current: `/hello/` → `/connect/`; `/books/` → thewanderinglantern.com; retired pages (`/about/`, `/now/`, `/contact/`, `/community/`, `/building/`, `/faith/`, `/third-places/`, `/streetlight/*`) → `/`; every `/real-estate/**` URL → `/` while `site.realtorSite` is empty, and to the matching michaelplant.realtor page (301) once it's set.
+Add an entry in `_data/redirects.js`. That makes a meta-refresh page and a 301 line in `_redirects`, which Cloudflare serves as a real redirect. Current: `/hello/` → `/connect/`; `/books/` → thewanderinglantern.com; retired pages (`/about/`, `/now/`, `/contact/`, `/community/`, `/building/`, `/faith/`, `/third-places/`, `/streetlight/*`) → `/`; every `/real-estate/**` URL → `/` while `site.realtorSite` is empty, and to the matching michaelplant.realtor page (301) once it's set.
 
 ## External services
 

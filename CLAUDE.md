@@ -2,7 +2,7 @@
 
 The site is the Eleventy project in `v2/`. Read `v2/CLAUDE-HANDOFF.md` before changing anything. It has the file map, the front-matter fields, and the rules below in more detail.
 
-- Build/verify: `cd v2 && npm install && npm run build` (deploys happen on push to `main`).
+- Build/verify: `cd v2 && npm install && npm run build` . Cloudflare Pages builds all three sites from the `claude/zealous-heisenberg-zn6okn` branch (projects `michaelplant` → `v2`, `reclaim` → `reclaim-site`, `realtor` → `realtor-site`; build `npm run build`, output `_site`, `NODE_VERSION=20`). Pushing to that branch deploys. When it's merged to `main`, switch each project's production branch to `main`.
 - Content and settings are data-driven: `v2/src/_data/site.json` (identity, contact, brokerage, realtorSite/reclaimSite switches), `card.json` (card page words), `paths.json` ("What I’m Part Of"), `redirects.js`.
 - Design system: `v2/src/assets/css/site.css` ("old Lakewood calling card": paper, ink, Cormorant SC + EB Garamond, ruled single column). Match it; don't reintroduce the old beacon/context-color UI.
 - `legacy-nextjs/` is archived. Don't build there.

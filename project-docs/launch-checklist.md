@@ -3,7 +3,7 @@
 One list for all three sites (michaelplant.com, michaelplant.realtor, reclaimhomerepair.com) and everything around them. Work top to bottom; each section unlocks the next. The same list, with tick boxes, is the Pre-launch checklist chapter of the Go-to-Market Playbook.
 
 ## 1. Accounts and identity
-- [ ] **Create `me@michaelplant.com`** (Cloudflare Email Routing → Gmail). The card and sites use it.
+- [ ] **Finish me@michaelplant.com:** forwarding works (catch-all); finish Brevo sending and test DKIM/DMARC with Show original.
 - [ ] **Confirm your licensed name** on Ohio eLicense matches "Michael Plant" and "Red 1 Realty".
 - [ ] **Confirm you own reclaimhomerepair.com** (assumed). michaelplant.realtor is yours.
 - [ ] **Decide the public email** for the realtor site (now `michaelplantrealtor@gmail.com`) and for Reclaim (now `me@michaelplant.com`).
@@ -72,15 +72,15 @@ One list for all three sites (michaelplant.com, michaelplant.realtor, reclaimhom
 - [ ] **Keep the same-day callback promise true,** or change the line on the sites.
 
 ## 8. Go live, in this order
-1. **michaelplant.com:** merge to `main` (deploys to GitHub Pages).
+1. **michaelplant.com:** live on Cloudflare Pages (Oct 10).
 2. **Cards:** print a proof of `project-docs/card/MICHAEL_PLANT_card_url-qr.pdf` (not the designer file; its QR is clipped). Scan it on iPhone and Android: Connect page opens, Save my contact works.
-3. **reclaimhomerepair.com:** Cloudflare Pages, root `reclaim-site`, build `npm run build`, output `_site`. Then set `reclaimSite` in `v2/src/_data/site.json` and redeploy michaelplant.com.
+3. **reclaimhomerepair.com:** live on Cloudflare Pages (Oct 10); `reclaimSite` is set. Still to do: add `www.reclaimhomerepair.com` as a custom domain.
 4. **michaelplant.realtor,** after Red 1 signs off:
    - Set up Cloudflare Pages with root `realtor-site`.
    - At Google Domains, point `www` (now a CNAME to `s.multiscreensite.com`) and the bare domain at Cloudflare.
    - Turn off the NAR builder site.
    - Set `realtorSite` in `v2/src/_data/site.json` and redeploy michaelplant.com.
-5. **Hosting move for michaelplant.com,** when convenient: move it to Cloudflare Pages too and turn off the GitHub Pages workflow. `_redirects` and `_headers` are already generated.
+5. **Later:** merge the branch to `main` and switch each Cloudflare project's production branch to `main`. The GitHub Pages workflow is removed; also turn off Pages in the GitHub repo settings.
 
 ## 9. After launch
 - [ ] **Local Services Ads** for Reclaim (Handyman / Carpenters).

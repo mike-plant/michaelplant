@@ -33,6 +33,9 @@ Source: *Michael Plant Personal Connection Ecosystem BRD v1.1* (Sept 2026), reco
 
 **Phase 1: built on branch.** `/connect/` (QR target; `/hello/` redirects there), connect hero reused at the top of the home page, `/mike.vcf`, text/call buttons, five intent paths from `v2/src/_data/paths.json`, a mobile text/call/save bar on every other page, `/projects/` (text-photos intake until Phase 2), `/faith/` (**placeholder copy; Michael to rewrite**), click-event hooks (`data-event`) ready for analytics, and a card QR in `project-docs/card/`. Styling lives in `v2/src/assets/css/connect.css` and is expected to be redesigned. Portrait: set `site.portrait` once the engraved portrait exists (the MP monogram shows until then).
 
+**2026-10-10: on Cloudflare**
+- michaelplant.com and reclaimhomerepair.com are live on Cloudflare Pages, built from `claude/zealous-heisenberg-zn6okn`. `reclaimSite` is set, so the card's Reclaim link and `/projects/` go to reclaimhomerepair.com. The GitHub Pages workflow is removed. The realtor project waits for Red 1 sign-off and moving michaelplant.realtor's DNS. Email: Cloudflare Email Routing (catch-all) for receiving, Brevo as the sending relay for me@ in Gmail.
+
 **2026-10-10: the personal site drops real estate**
 - michaelplant.com no longer lists Real Estate or carries a brokerage line. That's back to the original brand kit rule: the personal site and card never mention real estate. With michaelplant.realtor built, nothing needs to route through the hub, and the Ohio prominence question for the hub goes away. `site.realtorSite` still drives the old real-estate URL redirects and the schema `sameAs` link.
 

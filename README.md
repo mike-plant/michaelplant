@@ -10,7 +10,7 @@ npm install
 npm run dev     # http://localhost:8080
 ```
 
-Pushing to `main` deploys `v2/` to GitHub Pages (`.github/workflows/deploy.yml`).
+Cloudflare Pages builds all three sites from the `claude/zealous-heisenberg-zn6okn` branch (projects `michaelplant` → `v2`, `reclaim` → `reclaim-site`, `realtor` → `realtor-site`; build `npm run build`, output `_site`, `NODE_VERSION=20`). Pushing to that branch deploys. When it's merged to `main`, switch each project's production branch to `main`.
 
 ## Map
 
