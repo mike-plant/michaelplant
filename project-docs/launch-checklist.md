@@ -6,7 +6,7 @@ One list for all three sites (michaelplant.com, michaelplant.realtor, reclaimhom
 - [ ] **Finish me@michaelplant.com:** forwarding works (catch-all); finish Brevo sending and test DKIM/DMARC with Show original.
 - [ ] **Confirm your licensed name** on Ohio eLicense matches "Michael Plant" and "Red 1 Realty".
 - [ ] **Confirm you own reclaimhomerepair.com** (assumed). michaelplant.realtor is yours.
-- [ ] **Decide the public email** for the realtor site (now `michaelplantrealtor@gmail.com`) and for Reclaim (now `me@michaelplant.com`).
+- [ ] **Reclaim's public email** is `me@michaelplant.com` for now; decide if it should get its own (catch-all on reclaimhomerepair.com). Realtor site uses `hey@michaelplant.realtor` (catch-all and Brevo sending set up Oct 10; also `neighbor@`).
 - [ ] **Fix the live michaelplant.realtor template now**, in NAR's builder:
   - delete the sample testimonials (Adam K, Marry G., Craig R.)
   - change the phone from (614) 585-9020 to 216.217.6362
